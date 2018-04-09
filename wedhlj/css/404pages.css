@@ -1,0 +1,49 @@
+body {
+  height: 2000px;
+  background: #f85162;
+  overflow-y: hidden;
+}
+.box {
+  width: 100%;
+  background: #f85162;
+}
+.main {
+  width: 1000px;
+  margin: 0 auto;
+  padding-top: 100px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.main p {
+  text-align: center;
+  padding: 120px 0;
+}
+.main_x10 {
+  height: 130px;
+  background: url(../images/404pages_x20.jpg) no-repeat center center;
+}
+.main_x10 a {
+  display: inline-block;
+  color: #fff;
+  font-size: 28px;
+  margin: 25px 0 0 635px;
+}
+.live_x10 {
+  width: 100%;
+  border-bottom: 2px solid #fff;
+  padding-top: 365px;
+}
+.live_x20 {
+  width: 50%;
+  border-bottom: 2px solid #fff;
+  padding-top: 348px;
+}
+.live_x30 {
+  width: 50%;
+  margin-left: 50%;
+  border-bottom: 2px solid #fff;
+  padding-top: 68px;
+}
