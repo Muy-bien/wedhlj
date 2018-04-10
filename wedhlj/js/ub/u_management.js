@@ -1,7 +1,5 @@
 //防止多次点击
 var state = 1;
-
-
 //导入信息
 $(document).ready(function(){
 	//导航栏默认选中
@@ -9,14 +7,11 @@ $(document).ready(function(){
 	ready();
 	$(".see_more_but").html('<div class="see_more">查看全部</div>')
 })
-
 //刷新页面
-function winreload(){
+/*function winreload(){
 	window.location.reload();
 }
-
 //单独删除事件
-
 function ondelete(){
 	$(".Show_cont_delete").click(function(){
 		if (state == 1) {
@@ -35,8 +30,6 @@ function ondelete(){
 		}
 	})
 }
-
-
 // 搜索
 $(function(){
 	$(".but_Inquire").click(function(){
@@ -59,10 +52,6 @@ $(function(){
 		}
 	})
 })
-
-
-
-
 //上架
 $(".Show_offts").click(function(){
 	if (state == 1) {
@@ -81,7 +70,6 @@ $(".Show_offts").click(function(){
 		meg("提示","上架成功","body",ready)
 	}
 })
-
 //下架
 $(".Show_onts").click(function(){
 	if (state == 1) {
@@ -100,7 +88,6 @@ $(".Show_onts").click(function(){
 		meg("提示","下架成功","body",ready)
 	}
 })
-
 //批量删除
 $(".Show_delete").click(function(){
 	if (state == 1) {
@@ -126,11 +113,6 @@ $(".Show_delete").click(function(){
 		}
 	}
 })
-	
-
-
-
-
 //获取最新商品
 function ready(){
 	on_Loading()//加载
@@ -140,13 +122,10 @@ function ready(){
 	}
 	loading(data,"product/all")
 }
-
-
 //点击进去添加商品页面
 $(".Show_Addto").click(function(){
 	window.location.href  = 'u_AddCommodity.html'
 });
-
 var this_length = 10;//页面刷新展示的商品个数
 function loading(data,url){
 	$.ajax({
@@ -212,7 +191,6 @@ function loading(data,url){
 		}
 	})
 }
-
 //点击查看全部
 $(function(){
 	$(".see_more").click(function(){
@@ -220,5 +198,5 @@ $(function(){
 		$(".see_more").css("display","none");
 		ready()
 	})
-})
+})*/
 	
