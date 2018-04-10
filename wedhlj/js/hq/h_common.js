@@ -10,7 +10,7 @@ $(document).ready(function(){
 
 	//导航栏
 	var h_nav = "";
-	var h_position = $.cookie("h_position");
+	//var h_position = $.cookie("h_position");
 	var h_position = 1;
 	if (h_position == 1) {
 		h_nav = '<div class="nav_top">商家后台</div>'+
