@@ -30,7 +30,7 @@ $(document).ready(function(){
 			'<li>'+
 				'<i></i>'+
 				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="m_OperationsCenter.html">商品管理</a>'+
+					'<a href="u_management.html">商品管理</a>'+
 				'</div>'+
 			'</li>'+
 			'<li>'+
