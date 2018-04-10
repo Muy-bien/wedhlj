@@ -139,7 +139,7 @@
   flex-wrap: wrap;
   margin-bottom: 50px;
 }
-.foucus_content >a >div{
+.foucus_content  a >div{
   width: 350px;
   border:1px solid #e5e5e5;
   margin-top:50px;
@@ -153,6 +153,19 @@
   margin-top:50px;
   margin-right: 22px;
   box-sizing: border-box;
+}
+.headImg{
+  position: relative;
+}
+.headImg_heart{
+  position: absolute;
+  width: 27px;
+  height: 23px;
+  right: 42px;
+  top:69px;
+  cursor: pointer;
+  background: url(../../images/b_Foucus/heart.png) no-repeat ;
+  display: none;
 }
 .foucus_content .foucus_head{
   width: 110px;
@@ -202,23 +215,38 @@
   color: #666;
 }
 
-.foucus_content_item:hover{
+.headImg:hover .foucus_content_item{
   border-color:#f85162;
-  background: url(../../images/b_Foucus/heart.png) no-repeat  90% 10%;
+  /*background: url(../../images/b_Foucus/heart.png) no-repeat  90% 10%;*/
 }
-.foucus_content_item:hover .foucus_head{
+.headImg:hover .headImg_heart{
+  display: block;
+}
+.headImg:hover .foucus_head{
     border:1px solid #f85162;
     box-sizing: border-box;
 }
 
-.foucus_content_item:hover .foucus_who p{
+.headImg:hover .foucus_who p{
   color: #f85162 ;
 }
-.foucus_content_item:hover .gray i{
+.headImg:hover .gray i{
   background: url(../../images/b_Supermarket_WM/star_on.png) no-repeat !important;
 }
-
 /*舞美道具*/
+.danceImg{
+  position: relative;
+}
+.danceImg_heart{
+  position: absolute;
+  width: 27px;
+  height: 23px;
+  right: 41px;
+  top:248px;
+  cursor: pointer;
+  background: url(../../images/b_Foucus/heart.png) no-repeat ;
+  display: none;
+}
 .danceTools{
   width: 350px;
   height: 359px;
@@ -260,25 +288,42 @@
   box-sizing: border-box;
 }
 /*移入效果*/
-.danceTools:hover{
+.danceImg:hover .danceTools{
   border:1px solid #f85162;
 }
-.danceTools:hover .d_name{
+.danceImg:hover .d_name{
   color: #f85162;
 }
-.danceTools:hover .d_type{
+.danceImg:hover .d_type{
   color: #f85162;
 }
-.danceTools:hover .gray i{
+.danceImg:hover .gray i{
   background: url(../../images/b_Supermarket_WM/star_on.png) no-repeat !important;
 }
-.danceTools:hover .danceTools_img img{
+/*.danceTools:hover .danceTools_img img{
   opacity:1;
+}*/
+.danceImg:hover .danceImg_heart{
+  display: block;
 }
+
 /*策划案例*/
-.case:hover .danceTools_detail{
-   background: url(../../images/b_Foucus/heart.png) no-repeat  90% 10%;
+.planImg_heart{
+  position: absolute;
+  width: 27px;
+  height: 23px;
+  right: 41px;
+  top:309px;
+  cursor: pointer;
+  background: url(../../images/b_Foucus/heart.png) no-repeat ;
+  display: none;
 }
+.planImg:hover .planImg_heart{
+  display: block;
+}
+/*.case:hover .danceTools_detail{
+   background: url(../../images/b_Foucus/heart.png) no-repeat  90% 10%;
+}*/
 /*分页*/
 .fl {
   float: left;

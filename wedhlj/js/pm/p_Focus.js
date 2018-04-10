@@ -8,3 +8,15 @@ $(document).ready(function(){
 		$(this).addClass("check_on").siblings().removeClass("check_on");
 	})
 })
+$(".headImg_heart").click(function(){
+	console.log(123)
+})
+$(".danceImg_heart").click(function(){
+	console.log(456);
+})
+$(".planImg_heart").click(function(){
+	console.log(789);
+})
+$(".searching_button").click(function(){
+	console.log(112);
+})
