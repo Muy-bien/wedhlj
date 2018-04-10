@@ -4,8 +4,6 @@ var state = 1;
 $(document).ready(function(){
 	//导航栏默认选中
 	$(".nav_cont_a").eq(2).addClass("nav_cont_on");
-	ready();
-	$(".see_more_but").html('<div class="see_more">查看全部</div>')
 })
 //刷新页面
 /*function winreload(){

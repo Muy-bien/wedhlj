@@ -131,8 +131,9 @@ $(document).ready(function(){
 			'<a href="index.html"><p>返回首页</p></a>'+
 		'</div>'+
 		'<div class="header_name">'+
-			'<p>用户名：<span class="h_name">'+$.cookie("user")+'</span></p>'+
+			'<p><i></i><span class="h_name">'+$.cookie("user")+'</span></p>'+
 		'</div>'+
+		'<div class="haeder_notice"></div>'+
 		'<div class="sign_out">'+
 			'<p>退出登录</p>'+
 		'</div>'+

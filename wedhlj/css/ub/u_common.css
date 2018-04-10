@@ -103,12 +103,10 @@ header {
 }
 
 .header > div {
-  padding: 0 35px;
-  height: 16px;
+  margin-right: 35px;
   line-height: 16px;
   color: #fff;
   font-size: 12px;
-  border-left: 1px solid #fff;
 }
 
 .Return_index a,.sign_out p{
@@ -120,6 +118,22 @@ header {
   cursor: pointer;
 }
 
-.Return_index{
-  border: none !important;
+.header_name p{
+  display: flex;
+  align-items: center;
+}
+
+.haeder_notice{
+  width: 20px;
+  height: 22px;
+  background: url(../../images/ub/ub_icon.png) no-repeat -40px 0;
+  cursor: pointer;
+}
+
+.header_name i{
+  display: inline-block;
+  width: 20px;
+  height: 22px;
+  background: url(../../images/ub/ub_icon.png) no-repeat;
+  margin-right: 5px;
 }
