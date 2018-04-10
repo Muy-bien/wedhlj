@@ -108,12 +108,7 @@ function login(){
 					$.cookie("h_position", e.user.uStatus,{ path:'/',secure:false}); //储存商户类型定位
 					$.cookie("login_on", e.token,{ path:'/',secure:false}); //登录成功返回信息
 					saveUserInfo();//保存用户信息
-					if($.cookie("referrer") == "true"){
-						location.href = "index.html";
-					}else{
-						$.cookie("referrer","false",{ path:'/',secure:false});//清空储存状态
-						window.location.href=document.referrer;
-					}	
+					location.href = "index.html";
 				}else{
 					state = 1;
 					$(".login_uesr").text("发生未知错误");
@@ -148,11 +143,6 @@ $('.button').click(function(){
 function remove(){
 	$(".login_ts").text("");
 };
-
-//验证是否点击进入特殊页面
-$(".referrer").click(function(){
-	$.cookie("referrer","true",{ path:'/',secure:false}); //储存状态
-})
 
 
 
