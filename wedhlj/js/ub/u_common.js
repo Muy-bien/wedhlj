@@ -48,7 +48,7 @@ $(document).ready(function(){
 			'<li>'+
 				'<i></i>'+
 				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="u_Focus.html">我的关注</a>'+
+					'<a href="m_Setcenter.html">我的关注</a>'+
 				'</div>'+
 			'</li>'+
 			'<li>'+
