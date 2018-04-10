@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	//验证是否为登录状态
 	if ($.cookie("login_on") == "" || !$.cookie("login_on")){
-		window.location.href = "index.html";
+		//window.location.href = "index.html";
 	}
 	//返回首页
 	$(".sign_out p").click(function(){
@@ -11,26 +11,50 @@ $(document).ready(function(){
 	//导航栏
 	var h_nav = "";
 	var h_position = $.cookie("h_position");
-	//var h_position = 3;
+	var h_position = 1;
 	if (h_position == 1) {
 		h_nav = '<div class="nav_top">商家后台</div>'+
 		'<ul class="nav_cont">'+
 			'<li>'+
 				'<i></i>'+
 				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="h_MerchantCenter.html">商家中心</a>'+
+					'<a href="h_MerchantCenter.html">个人中心</a>'+
 				'</div>'+
 			'</li>'+
 			'<li>'+
 				'<i></i>'+
 				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="m_management.html">案例管理</a>'+
+					'<a href="m_management.html">订单管理</a>'+
 				'</div>'+
 			'</li>'+
 			'<li>'+
 				'<i></i>'+
 				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="m_OperationsCenter.html">运营中心</a>'+
+					'<a href="m_OperationsCenter.html">商品管理</a>'+
+				'</div>'+
+			'</li>'+
+			'<li>'+
+				'<i></i>'+
+				'<div class="nav_cont_a nav_cont_off">'+
+					'<a href="m_Setcenter.html">人员管理</a>'+
+				'</div>'+
+			'</li>'+
+			'<li>'+
+				'<i></i>'+
+				'<div class="nav_cont_a nav_cont_off">'+
+					'<a href="m_Setcenter.html">策划管理</a>'+
+				'</div>'+
+			'</li>'+
+			'<li>'+
+				'<i></i>'+
+				'<div class="nav_cont_a nav_cont_off">'+
+					'<a href="m_Setcenter.html">我的关注</a>'+
+				'</div>'+
+			'</li>'+
+			'<li>'+
+				'<i></i>'+
+				'<div class="nav_cont_a nav_cont_off">'+
+					'<a href="m_Setcenter.html">运营中心</a>'+
 				'</div>'+
 			'</li>'+
 			'<li>'+
