@@ -95,11 +95,9 @@ function login(){
 
 		$.ajax({
 			type: 'POST',
-			crossDomain: true,//跨域请求
-			url: apiUrl+'login',
+			url: apiUrl+'login/validation',
 			dataType: 'json',
 			data: data,
-			async: true,//异步请求
 			success: function(e) {
 				//登录失败返回
 				if(e['loginStatus'] == 400){

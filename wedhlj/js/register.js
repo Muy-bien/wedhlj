@@ -24,11 +24,9 @@ $(function(){
 
 			$.ajax({
 				type: 'POST',
-				crossDomain: true,
-				url: apiUrl+'login/register',
+				url: apiUrl+'/register/sendVerificationCode',
 				dataType: 'json',
 				data: data,
-				async: true,//异步请求
 				success: function(e) {
 					if(e['phoneStatus'] == 200){
 						remove();
@@ -135,11 +133,9 @@ $(function(){
 
 			$.ajax({
 				type: 'POST',
-				crossDomain: true,
-				url: apiUrl+'login/registerYzm',
+				url: apiUrl+'/register/registered',
 				dataType: 'json',
 				data: data,
-				async: true,//异步请求
 				success: function(e) {
 					if(e.yzmStatus == 200){
 						meg("提示","注册成功,返回登录页面","body",regThing);	
