@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>商品管理</title>
+	<title>策划管理</title>
 	<link rel="shortcut icon" href="images/index_Avatar.png" type="image/x-icon">
 	<link rel="stylesheet" href="css/common.css">
-	<link rel="stylesheet" href="css/ub/u_management.css">
+	<link rel="stylesheet" href="css/ub/u_PlanManagement.css">
 	<link rel="stylesheet" href="css/ub/u_common.css">
 </head>
 <body>
@@ -24,7 +24,7 @@
 						<div class="img_auto" style="background-image:url(images/ub/ub_user_bg.jpg)"></div>
 					</div>
 					<div class="main_header_user_x10">
-						<p class="main_header_user_type"><i></i>主持人</p>
+						<p class="main_header_user_type"><i></i>婚庆</p>
 						<p class="main_header_user_name">雷电法王杨永信</p>
 					</div>
 				</div>
@@ -44,16 +44,22 @@
 				</ul>
 			</div>
 			<div class="main_title">
-				<h1>全部商品<span>(10)</span></h1>
-				<a href=""><button>添加商品</button></a>
+				<div class="main_title_cont">
+					<h1 class="main_title_cont_on">全部策划<span>(10)</span></h1>
+					<h1>待审核<span>(10)</span></h1>
+					<h1>未通过<span>(10)</span></h1>
+				</div>
+				<a href=""><button>添加策划</button></a>
 			</div>
 			<div class="main_cont">
 				<ul class="main_cont_title">
 					<li>编号</li>
-					<li>商品图片</li>
-					<li>名称</li>
+					<li>策划图片</li>
+					<li>案例风格</li>
+					<li>策划师</li>
 					<li>价格</li>
-					<li>销量</li>
+					<li>购买量</li>
+					<li>关注量</li>
 					<li>审核状态</li>
 					<li>操作</li>
 				</ul>
@@ -61,9 +67,11 @@
 					<ul>
 						<li><p>00001</p></li>
 						<li><div class="main_cont_list_img img_auto" style="background-image:url(images/ub/ub_user_bg.jpg)"></div></li>
-						<li><p>蓝色梦幻主题</p></li>
-						<li><p>500</p></li>
+						<li><p>中式风格</p></li>
+						<li><p>霸刀杨壹</p></li>
 						<li><p>135</p></li>
+						<li><p>520</p></li>
+						<li><p>13320</p></li>
 						<li><p>审核通过</p></li>
 						<li>
 							<button>编辑</button>
@@ -73,9 +81,11 @@
 					<ul>
 						<li><p>00001</p></li>
 						<li><div class="main_cont_list_img img_auto" style="background-image:url(images/ub/ub_user_bg.jpg)"></div></li>
-						<li><p>蓝色梦幻主题</p></li>
-						<li><p>500</p></li>
+						<li><p>中式风格</p></li>
+						<li><p>霸刀杨壹</p></li>
 						<li><p>135</p></li>
+						<li><p>520</p></li>
+						<li><p>13320</p></li>
 						<li><p>审核通过</p></li>
 						<li>
 							<button>编辑</button>
@@ -85,9 +95,11 @@
 					<ul>
 						<li><p>00001</p></li>
 						<li><div class="main_cont_list_img img_auto" style="background-image:url(images/ub/ub_user_bg.jpg)"></div></li>
-						<li><p>蓝色梦幻主题</p></li>
-						<li><p>500</p></li>
+						<li><p>中式风格</p></li>
+						<li><p>霸刀杨壹</p></li>
 						<li><p>135</p></li>
+						<li><p>520</p></li>
+						<li><p>13320</p></li>
 						<li><p>审核通过</p></li>
 						<li>
 							<button>编辑</button>
@@ -97,9 +109,11 @@
 					<ul>
 						<li><p>00001</p></li>
 						<li><div class="main_cont_list_img img_auto" style="background-image:url(images/ub/ub_user_bg.jpg)"></div></li>
-						<li><p>蓝色梦幻主题</p></li>
-						<li><p>500</p></li>
+						<li><p>中式风格</p></li>
+						<li><p>霸刀杨壹</p></li>
 						<li><p>135</p></li>
+						<li><p>520</p></li>
+						<li><p>13320</p></li>
 						<li><p>审核通过</p></li>
 						<li>
 							<button>编辑</button>
@@ -109,9 +123,11 @@
 					<ul>
 						<li><p>00001</p></li>
 						<li><div class="main_cont_list_img img_auto" style="background-image:url(images/ub/ub_user_bg.jpg)"></div></li>
-						<li><p>蓝色梦幻主题</p></li>
-						<li><p>500</p></li>
+						<li><p>中式风格</p></li>
+						<li><p>霸刀杨壹</p></li>
 						<li><p>135</p></li>
+						<li><p>520</p></li>
+						<li><p>13320</p></li>
 						<li><p>审核通过</p></li>
 						<li>
 							<button>编辑</button>
@@ -130,7 +146,7 @@
 	<script type="text/javascript" src="js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript" src="js/paging.js"></script>
-	<script type="text/javascript" src="js/ub/u_management.js"></script>
+	<script type="text/javascript" src="js/ub/u_PlanManagement.js"></script>
 	<script>
 		$('.main_Pagination').paging({
             initPageNo: 1, // 初始页码

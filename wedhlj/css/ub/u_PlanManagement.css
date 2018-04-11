@@ -124,16 +124,33 @@
   text-align: center;
 }
 
+.main_title_cont{
+  display: flex;
+}
+
 .main_title h1 {
   display: inline-block;
   height: 50px;
   width: 150px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border-bottom: 3px solid #f85162;
+  border-bottom: 3px solid #fff;
   font-size: 16px;
-  color: #f85162;
+  color: #666;
   line-height: 40px;
+  margin-right: 30px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.main_title .main_title_cont_on{
+  border-color: #f85162;
+  color: #f85162;
+}
+
+.main_title h1:hover{
+  border-color: #f85162;
+  color: #f85162;
 }
 
 .main_title h1 span {
@@ -183,9 +200,10 @@
 }
 
 .main_cont_title li {
-  width: 160px;
+  width: 125px;
   height: 18px;
   border-right: 1px solid #aaaaab;
+  box-sizing: border-box;
   text-align: center;
   color: #666;
   font-size: 14px;
@@ -207,11 +225,11 @@
   border-top: none;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  height: 130px;
+  height: 110px;
 }
 
 .main_cont_list ul li {
-  width: 161px;
+  width: 125px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -234,8 +252,8 @@
 }
 
 .main_cont_list_img {
-  width: 140px;
-  height: 100px;
+  width: 110px;
+  height: 80px;
 }
 
 .main_cont_list ul li button {
@@ -248,7 +266,7 @@
   border-radius: 5px;
   background: none;
   color: #999;
-  margin: 0 30px;
+  margin:0 30px;
 }
 
 .main_cont_list ul li button:first-child {
