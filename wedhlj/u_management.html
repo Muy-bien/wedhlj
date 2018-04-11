@@ -13,86 +13,66 @@
 		<!-- 导航栏 -->
 		<div class="nav">
 		</div>
-
 		<!-- 头部 -->
 		<header>
 		</header>
 		<!-- 内容 -->
-		<div class="title">
-			<!-- 标题 -->
-			<div class="title_cont">
-				<div class="title_left">
-					<i></i>
-					<p>商品管理</p>
+		<div class="main">
+			<div class="main_header">
+				<div class="main_header_user">
+					<div class="main_header_user_img">
+						<div class="img_auto" style="background-image:url(images/ub/ub_user_bg.jpg)"></div>
+					</div>
+					<div class="main_header_user_x10">
+						<p class="main_header_user_type"><i></i>主持人</p>
+						<p class="main_header_user_name">雷电法王杨永信</p>
+					</div>
 				</div>
-				<div class="title_right"></div>
+				<ul class="main_header_info">
+					<li>
+						<h2>关注</h2>
+						<p>0</p>
+					</li>
+					<li>
+						<h2>订单</h2>
+						<p>0</p>
+					</li>
+					<li>
+						<h2>余额</h2>
+						<p>0</p>
+					</li>
+				</ul>
 			</div>
-			<!-- 查询 -->
-			<div class="Inquire">
-				<div class="Inquire_01">
-					<span>商品名称</span>
-					<input type="text" name="pname">
-				</div>
-				<div  class="Inquire_03">
-					<span>价格区间</span>
-					<input type="text" name="minPrice" class="input_Num">
-					<i></i>
-					<input type="text" name="maxPrice" class="input_Num">
-				</div>
-				<div class="but_Inquire">查询</div>
+			<div class="main_title">
+				<h1>全部商品<span>(10)</span></h1>
+				<a href=""><button>添加商品</button></a>
 			</div>
-			<!-- 商品展示 -->
-			<div class="Show">
-				<!-- 多选编辑区 -->
-				<div class="Show_top">
-					<div class="Show_onts">下架</div>
-					<div class="Show_offts">上架</div>
-					<div class="Show_delete">删除</div>
-					<div class="Show_Addto">添加商品</div>
+			<div class="main_cont">
+				<ul class="main_cont_title">
+					<li>编号</li>
+					<li>商品图片</li>
+					<li>名称</li>
+					<li>价格</li>
+					<li>销量</li>
+					<li>审核状态</li>
+					<li>操作</li>
+				</ul>
+				<div class="main_cont_list">
+					<ul>
+						<li><p>00001</p></li>
+						<li><div class="main_cont_list_img img_auto" style="background-image:url(images/ub/ub_user_bg.jpg)"></div></li>
+						<li><p>蓝色梦幻主题</p></li>
+						<li><p>500</p></li>
+						<li><p>135</p></li>
+						<li><p>审核通过</p></li>
+						<li>
+							<button>编辑</button>
+							<button>删除</button>
+						</li>
+					</ul>
 				</div>
-				<!-- 信息标题 -->
-				<div class="Show_title">
-					<div><input type="checkbox" id="btnCheckAll">全选</div>
-					<div>图片</div>
-					<div>商品名称</div>
-					<div>原价(￥)</div>
-					<div>折扣价(￥)</div>
-					<div>销量</div>
-					<div>库存</div>
-					<div>修改时间</div>
-					<div>状态</div>
-					<div>操作</div>
-				</div>
-				<!-- 商品详情 -->
-				<div class="Show_cont">
-					<!-- <div class="Show_Order">
-						<div class="hide">1</div>
-						<div class="Show_01"><input type="checkbox"></div>
-						<div class="Show_02">
-							<i class="Show_img">
-									<img src="images/logo.png" alt="">
-							</i>
-						</div>
-						<div class="Show_03">长款女装</div>
-						<div class="Show_04">舞美</div>
-						<div class="Show_05">200-500</div>
-						<div class="Show_06">88</div>
-						<div class="Show_07">911</div>
-						<div class="Show_08">2017-05-20</div>
-						<div class="Show_red Show_09">正常</div>
-						<div  class="Show_10">
-							<span>详情</span> |
-							<span>删除</span> |
-							<span>编辑</span>
-						</div>
-					</div> -->
-				</div>
-				<!-- 查看全部 -->
-				<div class="see_more_but">
-					<!-- <div class="see_more">查看全部</div> -->
-				</div> 
-					
 			</div>
+			<div class="main_Pagination"></div>
 		</div>
 	</div>
 
@@ -101,6 +81,18 @@
 	<script type="text/javascript" src="js/ub/u_common.js"></script>
 	<script type="text/javascript" src="js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/paging.js"></script>
 	<script type="text/javascript" src="js/ub/u_management.js"></script>
+	<script>
+		$('.main_Pagination').paging({
+            initPageNo: 1, // 初始页码
+            totalPages: 10, //总页数
+            slideSpeed: 600, // 缓动速度。单位毫秒
+            jump: true, //是否支持跳转
+            // 回调函数
+            callback: function(page) { }
+        })
+
+	</script>
 </body>
 </html>
