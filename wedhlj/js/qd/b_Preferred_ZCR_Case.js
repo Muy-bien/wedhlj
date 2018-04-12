@@ -120,6 +120,7 @@ $(document).ready(function(){
 					'<div class="service_title">作品展示</div>'+
 					'<div class="result_video_show">'+img+'</div>'
 				'</div>';
+				}
 			//服务承诺
 			html+='<div class="service_pro">'+
 				'<div class="service_title">服务承诺</div>'+
@@ -162,7 +163,6 @@ $(document).ready(function(){
 				'</div>'+
 				'<div><hr class="simple_intr_hr"></div>'+
 			'</div>';
-			}
 			
 			$(".total-container").html(html);
 
