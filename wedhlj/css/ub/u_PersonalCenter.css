@@ -111,175 +111,47 @@
   font-size: 18px;
   color: #77010d;
 }
-/* 添加商品 */
-.main_title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin: 30px 0 50px 0;
-  border-bottom: 1px solid #e6e6e6;
-  text-align: center;
-}
-
-.main_title_cont{
-  display: flex;
-}
-
-.main_title h1 {
-  display: inline-block;
-  height: 50px;
-  width: 150px;
-  -webkit-box-sizing: border-box;
+/* **** */
+.content{
+  width: 1130px;
+  margin-top: 48px;
+  background: #f7f7f7;
+  padding-top: 29px;
   box-sizing: border-box;
-  border-bottom: 3px solid #fff;
+  border:1px solid #f0eff0;
+  border-radius: 5px;
+}
+.littleTitle{
+  min-width: 180px;
+  height: 30px;
+  border-left: 5px solid #f85162;
+  margin-left: 30px;
+  font-size: 23px;
+  font-weight: 200;
+  color: #666666;
+  line-height: 30px;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+/* 已发布任务 */
+.myPostTask{
+  height: 404px;
+}
+.myPostTask_content{
+  width: 799px;
+  height: 34px;
+  border:solid;
+  line-height: 34px;
+  margin-top: 50px;
+  display: flex;
+  margin-left: 30px;
+  color: #666;
   font-size: 16px;
-  color: #666;
-  line-height: 40px;
-  margin-right: 30px;
-  cursor: pointer;
-  transition: 0.15s;
 }
-
-.main_title .main_title_cont_on{
-  border-color: #f85162;
-  color: #f85162;
+.myPostTask_date{
+  margin-right: 22px;
 }
-
-.main_title h1:hover{
-  border-color: #f85162;
-  color: #f85162;
-}
-
-.main_title h1 span {
-  font-size: 14px;
-}
-
-.main_title button {
-  width: 100px;
-  height: 33px;
-  border: 1px solid #999;
-  color: #999;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  background: none;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-.main_title button:hover {
-  color: #f85162;
-  border-color: #f85162;
-}
-
-.main_title button:active {
-  color: #fff;
-  background: #f85162;
-  border-color: #f85162;
-}
-/* 内容 */
-.main_cont {
-  border-top: 34px solid #f85162;
-  margin-bottom: 60px;
-}
-
-.main_cont_title {
-  border: 1px solid #d9d9d9;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  height: 38px;
-  border-top: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.main_cont_title li {
-  width: 125px;
-  height: 18px;
-  border-right: 1px solid #aaaaab;
-  box-sizing: border-box;
-  text-align: center;
-  color: #666;
-  font-size: 14px;
-  line-height: 18px;
-}
-
-.main_cont_title li:last-child {
-  border: none;
-}
-
-.main_cont_list ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: 1px solid #d9d9d9;
-  border-top: none;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  height: 110px;
-}
-
-.main_cont_list ul li {
-  width: 125px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-.main_cont_list ul li p {
-  width: 150px;
-  height: 20px;
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 14px;
-  color: #666;
-}
-
-.main_cont_list_img {
-  width: 110px;
-  height: 80px;
-}
-
-.main_cont_list ul li button {
-  width: 56px;
-  height: 26px;
-  border: 1px solid #999;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  font-size: 14px;
-  border-radius: 5px;
-  background: none;
-  color: #999;
-  margin:0 30px;
-}
-
-.main_cont_list ul li button:first-child {
-  margin-bottom: 20px;
-}
-
-.main_cont_list ul li button:hover {
-  color: #f85162;
-  border-color: #f85162;
-}
-
-.main_cont_list ul li button:active {
-  color: #fff;
-  background: #f85162;
-  border-color: #f85162;
+/*档期安排*/
+.myDatePlan{
+  height: 959px;
 }
