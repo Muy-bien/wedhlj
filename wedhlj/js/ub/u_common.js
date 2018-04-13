@@ -18,7 +18,7 @@ $(document).ready(function(){
 			'<li>'+
 				'<i></i>'+
 				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="h_MerchantCenter.html">个人中心</a>'+
+					'<a href="u_PersonalCenter.html">个人中心</a>'+
 				'</div>'+
 			'</li>'+
 			'<li>'+
