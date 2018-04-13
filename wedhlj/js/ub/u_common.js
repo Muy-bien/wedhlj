@@ -24,7 +24,7 @@ $(document).ready(function(){
 			'<li>'+
 				'<i></i>'+
 				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="#">订单管理</a>'+
+					'<a href="u_SupplierOrder_Details.html">订单管理</a>'+
 				'</div>'+
 			'</li>'+
 			'<li>'+
