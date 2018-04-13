@@ -36,7 +36,7 @@ $(document).ready(function(){
 			'<li>'+
 				'<i></i>'+
 				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="m_Setcenter.html">人员管理</a>'+
+					'<a href="u_personnelManagement.html">人员管理</a>'+
 				'</div>'+
 			'</li>'+
 			'<li>'+

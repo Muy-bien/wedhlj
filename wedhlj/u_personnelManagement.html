@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>人员管理</title>
+	<link rel="shortcut icon" href="images/index_Avatar.png" type="image/x-icon">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/ub/u_personnelManagement.css">
+	<link rel="stylesheet" href="css/ub/u_common.css">
+</head>
+<body>
+	<div class="box">
+		<!-- 导航栏 -->
+		<div class="nav">
+		</div>
+		<!-- 头部 -->
+		<header>
+		</header>
+		<!-- 内容 -->
+		<div class="main">
+			<div class="main_header">
+				<div class="main_header_user">
+					<div class="main_header_user_img">
+						<div class="img_auto" style="background-image:url(images/ub/ub_user_bg.jpg)"></div>
+					</div>
+					<div class="main_header_user_x10">
+						<p class="main_header_user_type"><i></i>主持人</p>
+						<p class="main_header_user_name">雷电法王杨永信</p>
+					</div>
+				</div>
+				<ul class="main_header_info">
+					<li>
+						<h2>关注</h2>
+						<p>0</p>
+					</li>
+					<li>
+						<h2>订单</h2>
+						<p>0</p>
+					</li>
+					<li>
+						<h2>余额</h2>
+						<p>0</p>
+					</li>
+				</ul>
+			</div>
+			<div class="main_title">
+				<div class="main_title_cont">
+					<h1 class="main_title_cont_on">合作人员<span>(10)</span></h1>
+					<h1>固定人员<span>(10)</span></h1>
+				</div>
+				<a href=""><button>添加人员</button></a>
+			</div>
+			<div class="main_cont">
+				<ul class="main_cont_title">
+					<li>编号</li>
+					<li>头像</li>
+					<li>姓名</li>
+					<li>接单价格</li>
+					<li>基础工资</li>
+					<li>预约次数</li>
+					<li>关注量</li>
+					<li>订单量</li>
+					<li>完成订单</li>
+					<li>审核状态</li>
+					<li>操作</li>
+				</ul>
+				<div class="main_cont_list">
+					<ul>
+						<li><p>00001</p></li>
+						<li><div class="main_cont_list_img img_auto" style="background-image:url(images/ub/ub_user_bg.jpg)"></div></li>
+						<li><p>霸刀杨壹</p></li>
+						<li><p>500</p></li>
+						<li><p>500</p></li>
+						<li><p>520</p></li>
+						<li><p>520</p></li>
+						<li><p>360</p></li>
+						<li><p>360</p></li>
+						<li><p>审核通过</p></li>
+						<li>
+							<button>编辑</button>
+							<button>删除</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="main_cont">
+				<ul class="main_cont_title main_cont_title_x10">
+					<li>编号</li>
+					<li>姓名</li>
+					<li>基础工资</li>
+					<li>提成率</li>
+					<li>提成工资</li>
+					<li>本月业绩</li>
+					<li>总业绩</li>
+					<li>备注</li>
+					<li>操作</li>
+				</ul>
+				<div class="main_cont_list main_cont_list_x10">
+					<ul>
+						<li><p>00001</p></li>
+						<li><p>霸刀杨壹</p></li>
+						<li><p>500</p></li>
+						<li><p>10%</p></li>
+						<li><p>135</p></li>
+						<li><p>520</p></li>
+						<li><p>360</p></li>
+						<li>
+							<div class="Remarks">
+								<div class="Remarks_cont">123456789123456789</div>
+							</div>
+						</li>
+						<li>
+							<button>编辑</button>
+							<button>删除</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="main_Pagination"></div>
+		</div>
+	</div>
+
+	<!-- script -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/ub/u_common.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/paging.js"></script>
+	<script type="text/javascript" src="js/ub/u_personnelManagement.js"></script>
+	<script>
+		$('.main_Pagination').paging({
+            initPageNo: 1, // 初始页码
+            totalPages: 10, //总页数
+            slideSpeed: 600, // 缓动速度。单位毫秒
+            jump: true, //是否支持跳转
+            // 回调函数
+            callback: function(page) { }
+        })
+
+	</script>
+</body>
+</html>
