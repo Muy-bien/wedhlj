@@ -306,15 +306,31 @@
 }
 
 .Remarks_cont{
-  width: 160px;
+  width: 190px;
   border: 1px solid #b2b2b2;
   border-radius: 10px;
   box-sizing: border-box;
   position: absolute;
   background: #fff;
-  padding: 15px;
+  padding: 10px;
   bottom: 30px;
-  left: -68px;
+  left: -83px;
 }
 
-.Remarks_cont:
+.Remarks_text{
+  font-size: 14px;
+  line-height: 18px;
+  color: #666;/* 
+  max-height: 130px;
+  overflow: auto;  */
+}
+
+.Remarks_cont:before{
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 8px;
+  background: url(../../images/ub/ub_icon.png) no-repeat -175px 0;
+  bottom: -8px;
+  left: 84px;
+}

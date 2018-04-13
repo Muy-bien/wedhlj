@@ -24,7 +24,7 @@ $(document).ready(function(){
 			'<li>'+
 				'<i></i>'+
 				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="m_management.html">订单管理</a>'+
+					'<a href="#">订单管理</a>'+
 				'</div>'+
 			'</li>'+
 			'<li>'+
@@ -54,13 +54,13 @@ $(document).ready(function(){
 			'<li>'+
 				'<i></i>'+
 				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="m_Setcenter.html">运营中心</a>'+
+					'<a href="#">运营中心</a>'+
 				'</div>'+
 			'</li>'+
 			'<li>'+
 				'<i></i>'+
 				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="m_Setcenter.html">设置中心</a>'+
+					'<a href="#">设置中心</a>'+
 				'</div>'+
 			'</li>'+
 		'</ul>';
