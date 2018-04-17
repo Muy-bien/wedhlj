@@ -16,6 +16,7 @@
   border-right: 1px solid #e8e8e9;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  z-index: 1;
 }
 
 .nav_top {

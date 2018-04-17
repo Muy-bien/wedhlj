@@ -139,7 +139,9 @@ $(document).ready(function(){
 		'</div>'+
 	'</div>';
 	$("header").html(h_header);
-
+	$(".haeder_notice").click(function(){
+		window.location.href = "u_NoticeInTheStation.html";
+	})
 	//退出登录
 	$(".sign_out").click(function(){
 		meg2("提示","是否确定退出登录","body",doThing)
