@@ -1,0 +1,93 @@
+/* 头部 */
+.main {
+  width: 1130px;
+  margin-left: auto;
+  padding-bottom: 200px;
+}
+.main_title_cont{
+  display: flex;
+  margin: 30px 0 60px 0;
+  padding-left: 13px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e6e6e6;
+  text-align: center;
+}
+.main_title_cont h2 {
+  display: inline-block;
+  height: 50px;
+  width: 105px;
+  box-sizing: border-box;
+  border-bottom: 3px solid #fff;
+  font-size: 14px;
+  color: #666;
+  line-height: 40px;
+  margin-right: 136px;
+  cursor: pointer;
+  transition: 0.15s;
+  margin-bottom: 0;
+}
+.main_title_cont .main_title_cont_on{
+  border-color:#f85162;
+  color: #f85162;
+}
+/*基本信息录入*/
+.baseMsg{
+  box-sizing: border-box;
+  color: #666
+  height: 778px;
+  border-bottom:1px solid #e6e6e6;
+  margin-left: 13px;
+}
+.baseMsg a{
+  color: #666 !important
+}
+.baseMsgItem{
+  display: flex;
+  margin-bottom: 30px;
+  align-items: center;
+}
+.baseMsgItem_cont{
+  width: 200px;
+  text-align: center;
+  border-bottom:1px solid #666;
+  box-sizing: border-box;
+  margin-right: 50px;
+}
+.baseMsgItem_cont input{
+  width: 200px;
+  border:none;
+  color: #666;
+  text-align: center;
+  font-size: 14px;
+}
+.baseMsgItem p{
+  display:inline-block;
+  width: 117px;
+  font-size: 14px;
+}
+.detailAddr{
+  width: 700px;
+}
+.detailAddr input{
+  width: 700px;
+}
+.addrPos{
+  left:24px !important;
+}
+/*订单详情*/
+
+
+/*人员详情*/
+
+
+
+/*common*/
+
+a:hover{
+  text-decoration: none !important;
+}
+
+.hotelAddrContent{
+  height: 192px;
+  overflow: auto;
+}
