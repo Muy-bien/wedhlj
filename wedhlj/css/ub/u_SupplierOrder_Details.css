@@ -157,7 +157,41 @@
   font-size: 14px;
 }
 
-.main_title button {
+.main_title_right{
+  display: flex;
+}
+
+.main_title_search{
+  width: 206px;
+  height: 33px;
+  border: 1px solid #999;
+  box-sizing: border-box;
+  margin-right: 50px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  align-items: center;
+}
+
+.main_title_search input{
+  width: 160px;
+  height: 30px;
+  padding-left: 15px;
+  font-size: 14px;
+  box-sizing: border-box;
+  border: none;
+  color: #999;
+}
+
+.main_title_search button{
+  width: 40px;
+  height: 100%;
+  background: url(../../images/ub/ub_icon.png) no-repeat -267px 5px;
+  border: none;
+}
+
+.main_title a button {
   width: 100px;
   height: 33px;
   border: 1px solid #999;
@@ -169,20 +203,29 @@
   font-size: 14px;
 }
 
-.main_title button:hover {
+.main_title a button:hover {
   color: #f85162;
   border-color: #f85162;
 }
 
-.main_title button:active {
+.main_title a button:active {
   color: #fff;
   background: #f85162;
   border-color: #f85162;
 }
 /* 内容 */
 .main_cont {
-  border-top: 34px solid #f85162;
   margin-bottom: 60px;
+}
+
+.main_cont_nav{
+  height: 34px;
+  background: #f85162;
+  font-size: 14px;
+  color: #fff;
+  line-height: 34px;
+  padding-left: 15px;
+  box-sizing: border-box; 
 }
 
 .main_cont_title {
@@ -257,20 +300,20 @@
 }
 
 .main_cont_list ul li button {
-  width: 56px;
-  height: 26px;
+  width: 84px;
+  padding: 5px;
   border: 1px solid #999;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-size: 14px;
+  line-height: 14px;
   border-radius: 5px;
   background: none;
   color: #999;
-  margin:0 30px;
 }
 
 .main_cont_list ul li button:first-child {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .main_cont_list ul li button:hover {
@@ -282,4 +325,42 @@
   color: #fff;
   background: #f85162;
   border-color: #f85162;
+}
+
+.Remarks{
+  width: 25px;
+  height: 24px;
+  background: url(../../images/ub/ub_icon.png) no-repeat -124px 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.Remarks_cont{
+  width: 190px;
+  border: 1px solid #b2b2b2;
+  border-radius: 10px;
+  box-sizing: border-box;
+  position: absolute;
+  background: #fff;
+  padding: 10px;
+  bottom: 30px;
+  left: -83px;
+}
+
+.Remarks_text{
+  font-size: 14px;
+  line-height: 18px;
+  color: #666;/* 
+  max-height: 130px;
+  overflow: auto;  */
+}
+
+.Remarks_cont:before{
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 8px;
+  background: url(../../images/ub/ub_icon.png) no-repeat -175px 0;
+  bottom: -8px;
+  left: 84px;
 }
