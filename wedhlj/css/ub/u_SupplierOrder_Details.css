@@ -268,7 +268,7 @@
   border-top: none;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  height: 110px;
+  height: 140px;
 }
 
 .main_cont_list ul li {
@@ -363,4 +363,25 @@
   background: url(../../images/ub/ub_icon.png) no-repeat -175px 0;
   bottom: -8px;
   left: 84px;
+}
+
+.Order_source{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  height: 70px;
+  justify-content: center;
+}
+
+.Order_source input{
+  border: none;
+  border-bottom: 1px solid #333;
+  width: 100px;
+  text-align: center;
+}
+
+.Order_source select{
+  border: none;
+  font-size: 14px;
+  width: 75px;
 }

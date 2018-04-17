@@ -51,13 +51,14 @@
 				</div>
 				<div class="main_title_right">
 					<div class="main_title_search">
-						<input type="text">
+						<input type="text" placeholder="搜索订单">
 						<button></button>
 					</div>
 					<a href="u_PlanAddCommodity.html"><button>添加订单</button></a>
 				</div>
 			</div>
 			<div class="main_info">
+				<!-- 进行中 -->
 				<div class="main_cont">
 					<div class="main_cont_nav">订单编号：0000001</div>
 					<ul class="main_cont_title">
@@ -79,12 +80,20 @@
 							<li><p>霸刀杨壹</p></li>
 							<li><p>18030505480</p></li>
 							<li><p>青城山酒店</p></li>
-							<li><p>13320</p></li>
+							<li>
+								<div class="Order_source">
+									<select>
+										<option>线 上</option>
+										<option>线 下</option>
+									</select>
+									<input type="text" maxlength="8">
+								</div>	
+							</li>
 							<li>
 								<div class="Remarks">
-									<div class="Remarks_cont">
+									<!-- <div class="Remarks_cont">
 										<div class="Remarks_text">霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹</div>
-									</div>
+									</div> -->
 								</div>
 							</li>
 							<li>
@@ -94,7 +103,51 @@
 						</ul>
 					</div>
 				</div>
-
+				<!-- 已完成 -->
+				<div class="main_cont">
+					<div class="main_cont_nav">订单编号：0000001</div>
+					<ul class="main_cont_title">
+						<li>状态</li>
+						<li>日期</li>
+						<li>订单商家</li>
+						<li>负责人</li>
+						<li>电话</li>
+						<li>仪式酒店</li>
+						<li>订单来源</li>
+						<li>备注</li>
+						<li>操作</li>
+					</ul>
+					<div class="main_cont_list">
+						<ul>
+							<li><p>预定</p></li>
+							<li><p>2018.3.6</p></li>
+							<li><p>婚庆名称</p></li>
+							<li><p>霸刀杨壹</p></li>
+							<li><p>18030505480</p></li>
+							<li><p>青城山酒店</p></li>
+							<li>
+								<div class="Order_source">
+									<select>
+										<option>线 上</option>
+										<option>线 下</option>
+									</select>
+									<input type="text" maxlength="8">
+								</div>	
+							</li>
+							<li>
+								<div class="Remarks">
+									<!-- <div class="Remarks_cont">
+										<div class="Remarks_text">霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹</div>
+									</div> -->
+								</div>
+							</li>
+							<li>
+								<button>查看对接单</button>
+								<button>评 论</button>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>	
 			<div class="main_Pagination"></div>
 		</div>
