@@ -238,10 +238,296 @@
 						</div>
 					</div>
 				</a>
-		</div>
+				<!-- 订单详情 -->
+				<a name="serviceDet">
+					<div class="serviceDet">
+						<div class="littleTitle">订单详情</div>
+						<div class="buttons">
+							<div class="removeButton">删除</div>
+							<div class="addButton orderAddButton">添加</div>
+						</div>
+						<div class="orderTable">
+							<!-- 目录 -->
+							<div class="orderTableTr">
+								<div>
+									<label for="totalChoose">
+										<input type="checkbox" class="ordercheck" id="totalChoose">
+										全选
+									</label>
+								</div>
+								<div>区域</div>
+								<div>性质</div>
+								<div>名称</div>
+								<div>尺寸</div>
+								<div>颜色</div>
+								<div>小计</div>
+								<div class="rightBorderNone">责任人信息</div>
+							</div>
+							<!-- item -->
+							<div class="orderTableTr">
+								<div>
+									<label for="totalChoose">
+										<input type="checkbox" name='cds' id="totalChoose">
+										
+									</label>
+								</div>
+								<div>区域</div>
+								<div>性质</div>
+								<div>名称</div>
+								<div>尺寸</div>
+								<div>颜色</div>
+								<div>小计</div>
+								<div class="rightBorderNone">责任人信息</div>
+							</div>
+							<!-- item -->
+							<div class="orderTableTr">
+								<div>
+									<label for="totalChoose">
+										<input type="checkbox" name='cds'  id="totalChoose">
+										
+									</label>
+								</div>
+								<div>区域</div>
+								<div>性质</div>
+								<div>名称</div>
+								<div>尺寸</div>
+								<div>颜色</div>
+								<div>小计</div>
+								<div class="rightBorderNone">责任人信息</div>
+							</div>
+						</div>
+					</div>
+				</a>
+				<!-- 人员详情 -->
+				<a>
+					<div class="serviceDet">
+						<div class="littleTitle">人员详情</div>
+						<div class="buttons">
+							<div class="removeButton">删除</div>
+							<div class="addButton personAddButton">添加</div>
+						</div>
+						<div class="orderTable">
+							<!-- 目录 -->
+							<div class="orderTableTr">
+								<div>
+									<label for="totalChoose">
+										<input type="checkbox" class="check" id="totalChoose">
+										全选
+									</label>
+								</div>
+								<div>人员类型</div>
+								<div>人员名称</div>
+								<div>价格</div>
+								<div class="rightBorderNone">联系方式</div>
+							</div>
+							<!-- item -->
+							<div class="orderTableTr">
+								<div>
+									<label for="totalChoose">
+										<input type="checkbox" name="ids" id="totalChoose">
+									</label>
+								</div>
+								<div>人员类型</div>
+								<div>人员名称</div>
+								<div>价格</div>
+								<div class="rightBorderNone">联系方式</div>
+							</div>
+							<!-- item -->
+							<div class="orderTableTr personDetail">
+								<div>
+									<label for="totalChoose">
+										<input type="checkbox" name="ids" id="totalChoose">
+										
+									</label>
+								</div>
+								<div>人员类型</div>
+								<div>人员名称</div>
+								<div>价格</div>
+								<div class="rightBorderNone">联系方式</div>
+							</div>
+						</div>
+					</div>
+				</a>
+				<!-- 备注 -->
+				<a name="remarks">
+					<div class="remarks">
+						<p>备注：</p>
+						<textarea></textarea> 
+					</div>
+				</a>
+			</div>
 		</form>
 			<!-- <div class="main_Pagination"></div> -->
 		
+	</div>
+	<!-- 绝对定位 弹框-->
+	<div class="addOrderItems">
+		<div class="addOrderItem">
+			<div class="addOrderItemTitle">添加订单详情<span></span></div>
+			<!-- 1行 -->
+			<div class="addOrderItemContent">
+				<div class="addOrderItemDetail">
+					<p>区域：</p>
+					<div class="">
+						<!-- 订单状态 -->
+							<div class="baseMsgItem_cont botBotNo">
+							    <div class="dropdown">
+							        <a class="btn addOrderItem_Addr"
+							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
+							   padding-right: 28px;">主舞台</a>
+							        <ul class="dropdown-menu addOrderItem_AddrContent addrPos">
+							            <li><a>主舞台</a></li>
+							            <li><a>主舞台2</a></li>
+							            <li><a>主舞台3</a></li>
+							            <li><a>主舞台4</a></li>
+							        </ul>
+							    </div>
+							</div>
+						
+					</div>
+				</div>
+				<!-- 2 -->
+				<div class="addOrderItemDetail">
+					<p>名称：</p>
+					<div class="">
+						<!-- 订单状态 -->
+							<div class="baseMsgItem_cont botBotNo">
+							    <div class="dropdown">
+							        <a class="btn addOrderItem_Name"
+							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
+							   padding-right: 28px;">LED灯</a>
+							        <ul class="dropdown-menu addOrderItem_NameContent addrPos">
+							            <li><a>LED灯</a></li>
+							            <li><a>LED灯1</a></li>
+							            <li><a>LED灯2</a></li>
+							            <li><a>LED灯3</a></li>
+							        </ul>
+							    </div>
+							</div>
+						
+					</div>
+				</div>
+			</div>
+			<!-- 2行 -->
+			<div class="addOrderItemContent">
+				<div class="addOrderItemDetail">
+					<p>尺寸：</p>
+					<div class="">
+						<input type="text" class="inputOrderMsg">
+					</div>
+				</div>
+				<!-- 2 -->
+				<div class="addOrderItemDetail">
+					<p>颜色：</p>
+					<div class="">
+						<input type="text" class="inputOrderMsg">
+					</div>
+				</div>
+			</div>
+			<!-- 3行 -->
+			<div class="addOrderItemContent">
+				<div class="addOrderItemDetail">
+					<p>小计：</p>
+					<div class="">
+						<input type="text" class="inputOrderMsg">
+					</div>
+				</div>
+				<!-- 2 -->
+				<div class="addOrderItemDetail">
+					<p>性质：</p>
+					<div class="">
+						<!-- 订单状态 -->
+							<div class="baseMsgItem_cont botBotNo">
+							    <div class="dropdown">
+							        <a class="btn addOrderItem_Pri"
+							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
+							   padding-right: 28px;">舞美</a>
+							        <ul class="dropdown-menu addOrderItem_PriContent addrPos">
+							            <li><a>舞美</a></li>
+							            <li><a>舞美1</a></li>
+							            <li><a>舞美2</a></li>
+							            <li><a>舞美3</a></li>
+							        </ul>
+							    </div>
+							</div>
+						
+					</div>
+				</div>
+			</div>
+			<!-- 4行 -->
+			<div class="addOrderItemContent">
+				<!-- 1 -->
+				<div class="addOrderItemDetail">
+					<p>责任人信息：</p>
+					<div class="">
+						<input type="text" class="inputOrderMsg">
+					</div>
+				</div>
+			</div>
+			<!-- 按钮 -->
+			<div class="orderAddItemButton">
+				<div class="buttonstyle add_order">添加</div>
+				<div class="buttonstyle">取消</div>
+			</div>
+		</div>
+	</div>
+	<!-- 订单定位 -->
+	<div class="addPersonItems">
+		<div class="addPersonItem">
+			<div class="addPersonItemTitle">添加人员详情<span></span></div>
+			<!-- 1行 -->
+			<div class="addOrderItemContent">
+				<div class="addOrderItemDetail">
+					<p>人员类型：</p>
+					<div class="">
+						<!-- 人员类型 -->
+							<div class="baseMsgItem_cont botBotNo">
+							    <div class="dropdown">
+							        <a class="btn addPersonItem_Type"
+							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
+							   padding-right: 28px;">主持人</a>
+							        <ul class="dropdown-menu addPersonItem_TypeContent addrPos">
+							            <li><a>主持人</a></li>
+							            <li><a>摄像师</a></li>
+							            <li><a>摄像师</a></li>
+							            <li><a>化妆师</a></li>
+							            <li><a>花艺师</a></li>
+							        </ul>
+							    </div>
+							</div>
+						
+					</div>
+				</div>
+				<!-- 2 -->
+				<div class="addOrderItemDetail">
+					<p>名称：</p>
+					<div class="">
+						<input type="text" class="inputOrderMsg">
+					</div>
+				</div>
+			</div>
+			<!-- 2行 -->
+			<div class="addOrderItemContent">
+				<!-- 1 -->
+				<div class="addOrderItemDetail">
+					<p>联系方式：</p>
+					<div class="">
+						<input type="text" class="inputOrderMsg">
+					</div>
+				</div>
+				<div class="addOrderItemDetail">
+					<p>价格：</p>
+					<div class="">
+						<input type="text" class="inputOrderMsg">
+					</div>
+				</div>
+			</div>
+			<!-- 按钮 -->
+			<div class="personAddItemButton">
+				<div class="buttonstyle add_order">添加</div>
+				<div class="buttonstyle">取消</div>
+			</div>
+		</div>
 	</div>
 
 	<!-- script -->
