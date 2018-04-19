@@ -5,9 +5,8 @@
 	<title>婚庆添加订单</title>
 	<link rel="shortcut icon" href="images/index_Avatar.png" type="image/x-icon">
 	<link rel="stylesheet" href="css/common.css">
-	<link rel="stylesheet" href="css/ub/u_AddSupplierOrder_Details.css">
+	<link rel="stylesheet" href="css/ub/u_ButtLists.css">
 	<link rel="stylesheet" href="css/ub/u_common.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
 	<div class="box">
@@ -19,471 +18,137 @@
 		</header>
 		<!-- 内容 -->
 		<form class="main">
-			<div class="container">
-				<div class="main_title_cont">
-					<a href="#baseMsg"><h2 class="main_title_cont_on">基本信息录入</h2></a>
-					<a href="#serviceDet"><h2>服务明细</h2></a>
-					<a href="#remarks"><h2>填写备注</h2></a>
-				</div>
-				<!-- 基本信息录入 -->
-				<a name="baseMsg">
-					<div class="baseMsg">
-						<!-- 订单状态 -->
-						<div class="baseMsgItem">
-							<p>订单状态：</p>
-							<div class="baseMsgItem_cont">
-							    <div class="dropdown">
-							        <a class="btn orderStatus"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">跟 单</a>
-							        <ul class="dropdown-menu orderStatusContent addrPos">
-							            <li><a>跟 单</a></li>
-							            <li><a>预 定</a></li>
-							            <li><a>执 行</a></li>
-							            <li><a>完 成</a></li>
-							        </ul>
-							    </div>
-							</div>
+			<!-- 新人信息 -->
+			<div>
+				<div class="m_title">新人信息</div>
+				<div class="newPerson">
+					<!-- 新娘 -->
+					<div class="newPersonItems">
+						<!-- 新娘名字： -->
+						<div class="newPersonItem"> 
+							<p>新娘名字：</p>
+							<input type="text">
 						</div>
-						<!-- 婚礼日期、时间 -->
-						<div class="baseMsgItem">
-							<p>日期：</p>
-							<div class="baseMsgItem_cont">
-								<input type="text">
-							</div>
+						<!-- 新娘电话： -->
+						<div class="newPersonItem"> 
+							<p>新娘电话：</p>
+							<input type="text">
 						</div>
-						<!-- 业务来源 -->
-						<div class="baseMsgItem">
-							<p>订单来源：</p>
-							<div class="baseMsgItem_cont">
-								<div class="dropdown">
-							        <a class="btn businessCome"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">线 上</a>
-							        <ul class="dropdown-menu businessComeContent addrPos">
-							            <li><a>线 上</a></li>
-							            <li><a>地 推</a></li>
-							            <li><a>客 户 介 绍</a></li>
-							            <li><a>其 他</a></li>
-							        </ul>
-							    </div>
-							</div>
+					</div>
+					<!-- 新郎 -->
+					<div class="newPersonItems">
+						<!-- 新郎名字 -->
+						<div class="newPersonItem"> 
+							<p>新郎名字：</p>
+							<input type="text">
 						</div>
-						<!-- 新娘电话 -->
-						<div class="baseMsgItem">
-							<p>订单商家名称：</p>
-							<div class="baseMsgItem_cont">
-								<input type="text">
-							</div>
+						<!-- 新郎电话： -->
+						<div class="newPersonItem"> 
+							<p>新郎电话：</p>
+							<input type="text">
 						</div>
-						<!-- 新郎电话 -->
-						<div class="baseMsgItem">
-							<p>订单负责人：</p>
-							<div class="baseMsgItem_cont">
-								<input type="text">
-							</div>
+					</div>
+					<!-- 负责人 -->
+					<div class="newPersonItems">
+						<!-- 负责人名字 -->
+						<div class="newPersonItem"> 
+							<p>负责人名字：</p>
+							<input type="text">
 						</div>
-						<!-- 订单负责人 -->
-						<div class="baseMsgItem">
+						<!-- 负责人电话： -->
+						<div class="newPersonItem"> 
 							<p>负责人电话：</p>
-							<div class="baseMsgItem_cont">
-								<input type="text">
-							</div>
+							<input type="text">
 						</div>
+					</div>
+					<!-- 时间 -->
+					<div class="newPersonItems">
+						<!-- 入场时间 -->
+						<div class="newPersonItem"> 
+							<p>入场时间：</p>
+							<input type="text">
+						</div>
+						<!-- 布场时间 -->
+						<div class="newPersonItem"> 
+							<p>布场时间：</p>
+							<input type="text">
+						</div>
+					</div>
+					<!-- 酒店名称 -->
+					<div class="newPersonItems">
 						<!-- 酒店名称 -->
-						<div class="baseMsgItem">
-							<p>仪式酒店：</p>
-							<div class="baseMsgItem_cont">
-								<input type="text">
-							</div>
+						<div class="newPersonItem"> 
+							<p>酒店名称：</p>
+							<input type="text">
 						</div>
-						<!-- 酒店地址 -->
-						<div class="baseMsgItem">
-							<p>酒店地址：</p>
-							<!-- 省 -->
-							<div class="baseMsgItem_cont">
-							    <div class="dropdown">
-							        <a class="btn"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">四川省</a>
-								    <ul class="dropdown-menu addrPos" >
-								            <li><a>四川省</a></li>
-							       </ul>
-							    </div>
-							</div>
-							<!-- 市 -->
-							<div class="baseMsgItem_cont">
-							    <div class="dropdown">
-							        <a class="btn"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">成都市</a>
-								    <ul class="dropdown-menu addrPos" >
-								            <li><a>成都市</a></li>
-							       </ul>
-							    </div>
-							</div>
-							<!-- 区 -->
-							<div class="baseMsgItem_cont">
-							    <div class="dropdown">
-							        <a class="btn hotelAddr"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">锦江区</a>
-							        <ul class="dropdown-menu hotelAddrContent addrPos">
-							            <li><a>锦江区</a></li>
-							            <li><a>青羊区</a></li>
-							            <li><a>金牛区</a></li>
-							            <li><a>成华区</a></li>
-							            <li><a>武侯区</a></li>
-							            <li><a>龙泉驿区</a></li>
-							            <li><a>青白江区</a></li>
-							            <li><a>新都区</a></li>
-							            <li><a>温江区</a></li>
-							            <li><a>高新区</a></li>
-
-							            <li><a>郫县</a></li>
-							            <li><a>双流县</a></li>
-							            <li><a>新津县</a></li>
-							            <li><a>金堂县</a></li>
-							            <li><a>大邑县</a></li>
-							            <li><a>蒲江县</a></li>
-
-
-							            <li><a>邛崃市</a></li>
-							            <li><a>崇州市</a></li>
-							            <li><a>彭州市</a></li>
-							            <li><a>都江堰市</a></li>
-							        </ul>
-							    </div>
-							</div>
-						</div>
+					</div>
+					<!-- 酒店详细地址 -->
+					<div class="newPersonItems">
 						<!-- 酒店详细地址 -->
-						<div class="baseMsgItem">
+						<div class="newPersonItem"> 
 							<p>酒店详细地址：</p>
-							<div class="baseMsgItem_cont detailAddr">
-								<input type="text">
-							</div>
+							<input type="text" class="addr_detail">
 						</div>
 					</div>
-				</a>
-				<!-- 订单详情 -->
-				<a name="serviceDet">
-					<div class="serviceDet">
-						<div class="littleTitle">订单详情</div>
-						<div class="buttons">
-							<div class="removeButton">删除</div>
-							<div class="addButton orderAddButton">添加</div>
-						</div>
-						<div class="orderTable">
-							<!-- 目录 -->
-							<div class="orderTableTr">
-								<div>
-									<label for="totalChoose">
-										<input type="checkbox" class="ordercheck" id="totalChoose">
-										全选
-									</label>
-								</div>
-								<div>区域</div>
-								<div>性质</div>
-								<div>名称</div>
-								<div>尺寸</div>
-								<div>颜色</div>
-								<div>小计</div>
-								<div class="rightBorderNone">责任人信息</div>
-							</div>
-							<!-- item -->
-							<div class="orderTableTr">
-								<div>
-									<label for="totalChoose">
-										<input type="checkbox" name='cds' id="totalChoose">
-										
-									</label>
-								</div>
-								<div>区域</div>
-								<div>性质</div>
-								<div>名称</div>
-								<div>尺寸</div>
-								<div>颜色</div>
-								<div>小计</div>
-								<div class="rightBorderNone">责任人信息</div>
-							</div>
-							<!-- item -->
-							<div class="orderTableTr">
-								<div>
-									<label for="totalChoose">
-										<input type="checkbox" name='cds'  id="totalChoose">
-										
-									</label>
-								</div>
-								<div>区域</div>
-								<div>性质</div>
-								<div>名称</div>
-								<div>尺寸</div>
-								<div>颜色</div>
-								<div>小计</div>
-								<div class="rightBorderNone">责任人信息</div>
-							</div>
+					<!-- 酒店详细地址地图 -->
+					<div class="addr_cap"></div>
+					<!-- 接亲详细地址 -->
+					<div class="newPersonItems">
+						<!-- 接亲详细地址 -->
+						<div class="newPersonItem"> 
+							<p>接亲详细地址：</p>
+							<input type="text" class="addr_detail">
 						</div>
 					</div>
-				</a>
-				<!-- 人员详情 -->
-				<a>
-					<div class="serviceDet">
-						<div class="littleTitle">人员详情</div>
-						<div class="buttons">
-							<div class="removeButton">删除</div>
-							<div class="addButton personAddButton">添加</div>
+					<!-- 接亲详细地址地图 -->
+					<div class="addr_cap"></div>
+					<!-- 报销业务 -->
+					<div class="newPersonItems">
+						<div class="newPersonItem"> 
+							<p>报销业务：</p>
 						</div>
-						<div class="orderTable">
-							<!-- 目录 -->
-							<div class="orderTableTr">
-								<div>
-									<label for="totalChoose">
-										<input type="checkbox" class="check" id="totalChoose">
-										全选
-									</label>
-								</div>
-								<div>人员类型</div>
-								<div>人员名称</div>
-								<div>价格</div>
-								<div class="rightBorderNone">联系方式</div>
-							</div>
-							<!-- item -->
-							<div class="orderTableTr">
-								<div>
-									<label for="totalChoose">
-										<input type="checkbox" name="ids" id="totalChoose">
-									</label>
-								</div>
-								<div>人员类型</div>
-								<div>人员名称</div>
-								<div>价格</div>
-								<div class="rightBorderNone">联系方式</div>
-							</div>
-							<!-- item -->
-							<div class="orderTableTr personDetail">
-								<div>
-									<label for="totalChoose">
-										<input type="checkbox" name="ids" id="totalChoose">
-										
-									</label>
-								</div>
-								<div>人员类型</div>
-								<div>人员名称</div>
-								<div>价格</div>
-								<div class="rightBorderNone">联系方式</div>
-							</div>
-						</div>
-					</div>
-				</a>
-				<div class="total_calc">
-					<div>
-						<p class="c_little_calc">小计：<span>123</span></p>
-						<p class="c_total">合计：<span>123</span></p>
 					</div>
 				</div>
-				<!-- 备注 -->
-				<a name="remarks">
-					<div class="remarks">
-						<p>备注：</p>
-						<textarea></textarea> 
-					</div>
-				</a>
 			</div>
+
+
+
+
+
+
+
+
+
+
+
+			<!-- 场景信息 -->
+			<div>
+				<div class="m_title">场景信息</div>
+			</div>
+			<!-- 道具清单 -->
+			<div>
+				<div class="m_title">道具清单</div>
+			</div>
+			<!-- 舞美清单 -->
+			<div>
+				<div class="m_title">舞美清单</div>
+			</div>
+			<!-- 印刷物料 -->
+			<div>
+				<div class="m_title">印刷物料</div>
+			</div>
+
+
 		</form>
 		
-	</div>
-	<!-- 绝对定位 弹框-->
-	<div class="addOrderItems">
-		<div class="addOrderItem">
-			<div class="addOrderItemTitle">添加订单详情<span></span></div>
-			<!-- 1行 -->
-			<div class="addOrderItemContent">
-				<div class="addOrderItemDetail">
-					<p>区域：</p>
-					<div class="">
-						<!-- 订单状态 -->
-							<div class="baseMsgItem_cont botBotNo">
-							    <div class="dropdown">
-							        <a class="btn addOrderItem_Addr"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">主舞台</a>
-							        <ul class="dropdown-menu addOrderItem_AddrContent addrPos">
-							            <li><a>主舞台</a></li>
-							            <li><a>主舞台2</a></li>
-							            <li><a>主舞台3</a></li>
-							            <li><a>主舞台4</a></li>
-							        </ul>
-							    </div>
-							</div>
-						
-					</div>
-				</div>
-				<!-- 2 -->
-				<div class="addOrderItemDetail">
-					<p>名称：</p>
-					<div class="">
-						<!-- 订单状态 -->
-							<div class="baseMsgItem_cont botBotNo">
-							    <div class="dropdown">
-							        <a class="btn addOrderItem_Name"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">LED灯</a>
-							        <ul class="dropdown-menu addOrderItem_NameContent addrPos">
-							            <li><a>LED灯</a></li>
-							            <li><a>LED灯1</a></li>
-							            <li><a>LED灯2</a></li>
-							            <li><a>LED灯3</a></li>
-							        </ul>
-							    </div>
-							</div>
-						
-					</div>
-				</div>
-			</div>
-			<!-- 2行 -->
-			<div class="addOrderItemContent">
-				<div class="addOrderItemDetail">
-					<p>尺寸：</p>
-					<div class="">
-						<input type="text" class="inputOrderMsg">
-					</div>
-				</div>
-				<!-- 2 -->
-				<div class="addOrderItemDetail">
-					<p>颜色：</p>
-					<div class="">
-						<input type="text" class="inputOrderMsg">
-					</div>
-				</div>
-			</div>
-			<!-- 3行 -->
-			<div class="addOrderItemContent">
-				<div class="addOrderItemDetail">
-					<p>小计：</p>
-					<div class="">
-						<input type="text" class="inputOrderMsg">
-					</div>
-				</div>
-				<!-- 2 -->
-				<div class="addOrderItemDetail">
-					<p>性质：</p>
-					<div class="">
-						<!-- 订单状态 -->
-							<div class="baseMsgItem_cont botBotNo">
-							    <div class="dropdown">
-							        <a class="btn addOrderItem_Pri"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">舞美</a>
-							        <ul class="dropdown-menu addOrderItem_PriContent addrPos">
-							            <li><a>舞美</a></li>
-							            <li><a>舞美1</a></li>
-							            <li><a>舞美2</a></li>
-							            <li><a>舞美3</a></li>
-							        </ul>
-							    </div>
-							</div>
-						
-					</div>
-				</div>
-			</div>
-			<!-- 4行 -->
-			<div class="addOrderItemContent">
-				<!-- 1 -->
-				<div class="addOrderItemDetail">
-					<p>责任人信息：</p>
-					<div class="">
-						<input type="text" class="inputOrderMsg">
-					</div>
-				</div>
-			</div>
-			<!-- 按钮 -->
-			<div class="orderAddItemButton">
-				<div class="buttonstyle add_order">添加</div>
-				<div class="buttonstyle remove_order">取消</div>
-			</div>
-		</div>
-	</div>
-	<!-- 订单定位 -->
-	<div class="addPersonItems">
-		<div class="addPersonItem">
-			<div class="addPersonItemTitle">添加人员详情<span></span></div>
-			<!-- 1行 -->
-			<div class="addOrderItemContent">
-				<div class="addOrderItemDetail">
-					<p>人员类型：</p>
-					<div class="">
-						<!-- 人员类型 -->
-							<div class="baseMsgItem_cont botBotNo">
-							    <div class="dropdown">
-							        <a class="btn addPersonItem_Type"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">主持人</a>
-							        <ul class="dropdown-menu addPersonItem_TypeContent addrPos">
-							            <li><a>主持人</a></li>
-							            <li><a>摄像师</a></li>
-							            <li><a>摄像师</a></li>
-							            <li><a>化妆师</a></li>
-							            <li><a>花艺师</a></li>
-							        </ul>
-							    </div>
-							</div>
-						
-					</div>
-				</div>
-				<!-- 2 -->
-				<div class="addOrderItemDetail">
-					<p>名称：</p>
-					<div class="">
-						<input type="text" class="inputOrderMsg">
-					</div>
-				</div>
-			</div>
-			<!-- 2行 -->
-			<div class="addOrderItemContent">
-				<!-- 1 -->
-				<div class="addOrderItemDetail">
-					<p>联系方式：</p>
-					<div class="">
-						<input type="text" class="inputOrderMsg">
-					</div>
-				</div>
-				<div class="addOrderItemDetail">
-					<p>价格：</p>
-					<div class="">
-						<input type="text" class="inputOrderMsg">
-					</div>
-				</div>
-			</div>
-			<!-- 按钮 -->
-			<div class="personAddItemButton">
-				<div class="buttonstyle add_person">添加</div>
-				<div class="buttonstyle remove_person">取消</div>
-			</div>
-		</div>
 	</div>
 
 	<!-- script -->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/ub/u_common.js"></script>
 	<script type="text/javascript" src="js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript" src="js/paging.js"></script>
-	<script type="text/javascript" src="js/ub/u_AddSupplierOrder_Details.js"></script>
-	<script>
-		// $('.main_Pagination').paging({
-  //           initPageNo: 1, // 初始页码
-  //           totalPages: 10, //总页数
-  //           slideSpeed: 600, // 缓动速度。单位毫秒
-  //           jump: true, //是否支持跳转
-  //           // 回调函数
-  //           callback: function(page) { }
-  //       })
- 	// 	$(function(){
-		// 	// 默认显示
-		// 	$(".dropdown-toggle").dropdown('toggle');
-		// }); 
-
-	</script>
+	<script type="text/javascript" src="js/ub/u_ButtLists.js"></script>
 </body>
 </html>
