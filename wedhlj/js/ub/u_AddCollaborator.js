@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	//导航栏默认选中
- 	$(".nav_cont_a").eq(1).addClass("nav_cont_on");
+ 	$(".nav_cont_a").eq(3).addClass("nav_cont_on");
 })
 //选风格,最多只能添加三种风格
 var addStyle=1;//是否可以添加样式
