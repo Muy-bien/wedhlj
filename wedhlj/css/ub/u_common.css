@@ -77,6 +77,7 @@
 
 .nav_cont_a a:hover {
   text-decoration: none;
+  color: #fff !important;
 }
 
 .nav_cont_off:hover {
@@ -139,3 +140,4 @@ header {
   background: url(../../images/ub/ub_icon.png) no-repeat;
   margin-right: 5px;
 }
+
