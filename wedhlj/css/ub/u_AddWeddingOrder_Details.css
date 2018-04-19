@@ -204,7 +204,24 @@
   color: #fff
 }
  /*人员详情*/
- 
+ /*总计*/
+ .total_calc{
+  height: 150px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  color: #666;
+ }
+ .total_calc div{
+  margin-right: 120px;
+ }
+ .c_total{
+  font-size: 18px;
+ }
+ .c_total span{
+  color: #f85162
+ }
  /*备注*/
  .remarks{
   display: flex;

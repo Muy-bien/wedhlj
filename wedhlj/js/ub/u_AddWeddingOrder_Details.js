@@ -47,6 +47,15 @@ $(document).ready(function(){
 	$(".personAddButton").click(function(){
 		$(".addPersonItems").css("display","block");
 	})
+	// 点击订单详情的取消按钮
+	$(".remove_order").click(function(){
+		$(".addOrderItems").css("display","none");
+	})
+	//点击人员详情的取消按钮
+	$(".remove_person").click(function(){
+		$(".addPersonItems").css("display","none");
+	})
+	// 全选
 	$(function(){
 		$(".check").click(function(){
 			$(":input[name='ids']").prop("checked",this.checked);
