@@ -279,3 +279,24 @@ a:hover{
   border:none;
   font-size: 14px;
 }
+/*提交保存*/
+.commitButtons{
+  display: flex;
+  margin-top: 70px !important;
+  width: 571px;
+  margin:0 auto;
+  justify-content: space-between;
+}
+.commitButtons div{
+  width: 200px;
+  height: 43px;
+  line-height: 43px;
+  background-color: #bfbfbf;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+.commitButtons div:hover{
+  background-color: #f85162;
+}
