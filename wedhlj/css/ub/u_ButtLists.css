@@ -3,7 +3,6 @@
   width: 1130px;
   margin-left: auto;
   padding-bottom: 200px;
-  border:solid;
   padding-left: 40px;
   box-sizing: border-box;
 }
@@ -36,7 +35,7 @@
 .newPersonItem{
   display: flex;
 }
-.newPersonItem p{
+.newPersonItem>p{
   width: 120px;
 }
 .newPersonItem input{
@@ -53,7 +52,82 @@
 .addr_cap{
   width: 800px;
   height: 454px;
-  border:solid;
   margin:0 auto;
   margin-bottom: 40px;
 }
+.checked{
+  width: 102px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.checked_item{
+  width:15px;
+  height: 15px;
+  box-sizing:border-box;
+  border:1px solid #999;
+}
+.newPersonItems .introduce>div{
+  margin-right: 50px;
+}
+.checked_on{
+  background-color: #f85162;
+}
+/*道具清单*/
+.cont_box{
+  width: 533px;
+  min-height: 200px;
+  box-sizing:border-box;
+  margin-top: 56px;
+  font-size: 14px;
+  color: #666;
+}
+.c_title>div{
+  height: 50px !important;
+  line-height: 50px !important;
+  border-top:none !important;
+}
+.c_content{
+  display: flex;
+}
+.c_content>div{
+  width: 132px;
+  height: 99px;
+  line-height: 99px;
+  text-align: center;
+  border-right:1px solid #e6e6e6;
+  border-top:1px solid #e6e6e6;
+  box-sizing: border-box;
+}
+.c_content>div:nth-child(4){
+  border-right:none;
+}
+.remarks{
+  height: 101px;
+  color: #666;
+  font-size: 14px;
+  border-bottom: 1px solid #e6e6e6;
+  margin-top: 32px;
+}
+/*操作对接单*/
+.buttons{
+  display: flex;
+  margin-top: 70px !important;
+  width: 571px;
+  margin:0 auto;
+  justify-content: space-between;
+}
+.buttons div{
+  width: 200px;
+  height: 43px;
+  line-height: 43px;
+  background-color: #bfbfbf;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+.buttons div:hover{
+  background-color: #f85162;
+}<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak= EUM7wku1tiGYB3UxjBY8HMMAyUmTmXFK"></script>
+

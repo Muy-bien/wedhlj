@@ -213,8 +213,19 @@
   align-items: center;
   color: #666;
  }
- .total_calc div{
-  margin-right: 120px;
+.total_calc div{
+  margin-right: 10px;
+ }
+ .part_calc{
+  height: 50px;
+  margin-top:50px;
+ }
+ .part_calc p{
+    width:200px;
+    margin-left: 934px;
+ }
+ .total_calc p{
+  width: 200px;
  }
  .c_total{
   font-size: 18px;
