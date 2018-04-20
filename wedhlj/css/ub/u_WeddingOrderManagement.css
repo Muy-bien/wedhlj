@@ -223,9 +223,37 @@
   background: #f85162;
   font-size: 14px;
   color: #fff;
-  line-height: 34px;
   padding-left: 15px;
   box-sizing: border-box; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*角标*/
+.main_cont_nav_Corner{
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.main_cont_nav_Corner span{
+  margin: 0 12px;
+}
+
+.main_cont_nav_Corner i{
+  display: inline-block;
+  width: 8px;
+  height: 13px;
+  background: url(../../images/ub/ub_icon.png) no-repeat;
+}
+
+.main_cont_nav_Corner i:first-child{
+  background-position: -220px 0;
+}
+
+.main_cont_nav_Corner i:last-child{
+  background-position: -254px 0;
 }
 
 .main_cont_title {
@@ -242,7 +270,7 @@
   align-items: center;
 }
 
-.main_cont_title li {
+.main_cont_title > li {
   width: 125px;
   height: 18px;
   border-right: 1px solid #aaaaab;
@@ -253,11 +281,15 @@
   line-height: 18px;
 }
 
-.main_cont_title li:last-child {
+.main_cont_x10 .main_cont_title > li{
+  width: 141px;
+}
+
+.main_cont_title > li:last-child {
   border: none;
 }
 
-.main_cont_list ul {
+.main_cont_list > ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -266,12 +298,13 @@
   align-items: center;
   border: 1px solid #d9d9d9;
   border-top: none;
+  border-bottom: none;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   height: 140px;
 }
 
-.main_cont_list ul li {
+.main_cont_list > ul > li {
   width: 125px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -283,7 +316,11 @@
   flex-wrap: wrap;
 }
 
-.main_cont_list ul li p {
+.main_cont_x10 .main_cont_list > ul > li{
+  width: 141px;
+}
+
+.main_cont_list > ul > li > p {
   width: 150px;
   height: 20px;
   text-align: center;
@@ -294,12 +331,21 @@
   color: #666;
 }
 
+.main_cont_list > ul > li > h4{
+  width: 150px;
+  text-align: center;
+  line-height: 26px;
+  font-size: 14px;
+  color: #666;
+  font-weight: lighter;
+}
+
 .main_cont_list_img {
   width: 110px;
   height: 80px;
 }
 
-.main_cont_list ul li button {
+.main_cont_list > ul > li > button {
   width: 84px;
   padding: 5px;
   border: 1px solid #999;
@@ -310,18 +356,19 @@
   border-radius: 5px;
   background: none;
   color: #999;
+  margin-top: 15px;
 }
 
-.main_cont_list ul li button:first-child {
-  margin-bottom: 15px;
+.main_cont_list > ul > li > button:first-child{
+  margin-top: 0;
 }
 
-.main_cont_list ul li button:hover {
+.main_cont_list > ul > li > button:hover {
   color: #f85162;
   border-color: #f85162;
 }
 
-.main_cont_list ul li button:active {
+.main_cont_list > ul > li > button:active {
   color: #fff;
   background: #f85162;
   border-color: #f85162;
@@ -366,11 +413,10 @@
 }
 
 .Order_source{
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-between;
+  position: relative;
   height: 70px;
-  justify-content: center;
+  padding-top: 50px;
+  box-sizing: border-box;
 }
 
 .Order_source input{
@@ -380,9 +426,166 @@
   text-align: center;
 }
 
-.Order_source select{
-  border: none;
+.Order_source_x10{
+  width: 100px;
+  height: 20px;
   font-size: 14px;
-  width: 75px;
   color: #666;
+  position: absolute;
+  top: 0; left: 0;
+  overflow: hidden;
+  transition: 0.15s;
+}
+
+.Order_source_x10:hover{
+  height: 100px;
+}
+
+.Order_source_x10 h2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  height: 20px;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  font-weight: lighter;
+  cursor: pointer;
+}
+
+.Order_source_x10 h2 i{
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: url(../../images/ub/ub_icon.png) no-repeat -330px 0;
+  margin-left: 10px;
+}
+
+.Order_source_x20{
+  background: #fff;
+  text-align: center;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+}
+
+.Order_source_x20 li{
+  height: 24px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.Order_source_x20 li:hover{
+  background: #f85162;
+  color: #fff;
+}
+
+.Order_source_x20 .Order_source_on{
+  background: #f85162;
+  color: #fff;
+}
+
+.main_cont_switch button{
+  width: 100%;
+  height: 40px;
+  border: 1px solid #f85162;
+  background: #fff;
+  color: #f85162;
+  font-size: 16px;
+  letter-spacing:17px;
+  transition: 0.15s;
+}
+
+.main_cont:hover .main_cont_switch button{
+  background: #f85162;
+  color: #fff;
+}
+/*对接单*/
+.main_cont_ButtList{
+  border-right: 1px solid #d9d9d9;
+  border-left: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.main_cont_ButtList li{
+  width: 140px;
+  height: 180px;
+  border-right: 1px solid #d9d9d9;
+  border-left: 1px solid #d9d9d9;
+  margin-left: -1px;
+  cursor: pointer;
+  text-align: center;
+  color: #666;
+}
+
+.main_cont_ButtList li:last-child{
+  border: none;
+  margin: 0;
+}
+
+.main_cont_ButtList .main_cont_ButtList_on{
+  border-color: #f85162;
+  z-index: 1;
+}
+
+.ButtList_title{
+  width: 100%;
+  height: 36px;
+  line-height: 36px;
+  position: relative;
+  font-size: 14px;
+}
+
+.ButtList_title i{
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  box-sizing: border-box;
+  border: 1px solid #999;
+  top: 8px; left: 106px;
+}
+
+.main_cont_ButtList_on .ButtList_title i{
+  background: url(../../images/ub/ub_icon.png) no-repeat -365px 5px;
+  border-color: #f85162;
+}
+
+.main_cont_ButtList p{
+  font-size: 14px;
+  line-height: 26px;
+  margin-top: 50px;
+}
+
+.main_cont_ButtList button {
+  width: 84px;
+  padding: 5px;
+  border: 1px solid #999;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 14px;
+  border-radius: 5px;
+  background: none;
+  color: #999;
+  margin-bottom: 25px;
+}
+
+.main_cont_ButtList button:hover {
+  color: #f85162;
+  border-color: #f85162;
+}
+
+.main_cont_ButtList button:active {
+  color: #fff;
+  background: #f85162;
+  border-color: #f85162;
+}
+
+.ButtList_but{
+  margin-top: 35px;
 }

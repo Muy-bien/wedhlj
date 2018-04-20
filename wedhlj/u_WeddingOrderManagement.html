@@ -58,13 +58,20 @@
 				</div>
 			</div>
 			<div class="main_info">
-				<!-- 进行中 -->
+				<!-- 进行中第一页 -->
 				<div class="main_cont">
-					<div class="main_cont_nav">订单编号：0000001</div>
+					<div class="main_cont_nav">
+						<p>订单编号：0000001</p>
+						<div class="main_cont_nav_Corner">
+							<i></i>
+							<span>1/2</span>
+							<i></i>
+						</div>
+					</div>
 					<ul class="main_cont_title">
 						<li>状态</li>
 						<li>日期</li>
-						<li>订单商家</li>
+						<li>新人姓名</li>
 						<li>负责人</li>
 						<li>电话</li>
 						<li>仪式酒店</li>
@@ -76,16 +83,20 @@
 						<ul>
 							<li><p>预定</p></li>
 							<li><p>2018.3.6</p></li>
-							<li><p>婚庆名称</p></li>
+							<li><h4>新娘：韩梅梅<br>12345678911<br>新郎：李小璐<br>12345678923</h4></li>
 							<li><p>霸刀杨壹</p></li>
 							<li><p>18030505480</p></li>
 							<li><p>青城山酒店</p></li>
 							<li>
 								<div class="Order_source">
-									<select>
-										<option>线 上</option>
-										<option>线 下</option>
-									</select>
+									<div class="Order_source_x10">
+										<h2>线上<i></i></h2>
+										<ul class="Order_source_x20">
+											<li class="Order_source_on">线上</li>
+											<li>线下</li>
+											<li>其他</li>
+										</ul>
+									</div>
 									<input type="text" maxlength="8">
 								</div>	
 							</li>
@@ -97,23 +108,123 @@
 								</div>
 							</li>
 							<li>
-								<button>查看对接单</button>
-								<button>确认对接</button>
+								<button>编辑</button>
+								<button>生成合同</button>
 							</li>
 						</ul>
 					</div>
+					<div class="main_cont_switch">
+						<button>点击此处查看对接单</button>
+					</div>
 				</div>
-				<!-- 已完成 -->
-				<div class="main_cont">
-					<div class="main_cont_nav">订单编号：0000001</div>
+				<!-- 进行中第二页 -->
+				<div class="main_cont main_cont_x10">
+					<div class="main_cont_nav">
+						<p>订单编号：0000001</p>
+						<div class="main_cont_nav_Corner">
+							<i></i>
+							<span>2/2</span>
+							<i></i>
+						</div>
+					</div>
+					<ul class="main_cont_title">
+						<li>策划师</li>
+						<li>主持人</li>
+						<li>化妆师</li>
+						<li>摄影师</li>
+						<li>摄像师</li>
+						<li>舞美</li>
+						<li>道具</li>
+						<li>操作</li>
+					</ul>
+					<div class="main_cont_list">
+						<ul>
+							<li><h4>新娘：韩梅梅<br>12345678911</h4></li>
+							<li><h4>新娘：韩梅梅<br>12345678911</h4></li>
+							<li><h4>新娘：韩梅梅<br>12345678911</h4></li>
+							<li><h4>新娘：韩梅梅<br>12345678911</h4></li>
+							<li><h4>新娘：韩梅梅<br>12345678911</h4></li>
+							<li><h4>新娘：韩梅梅<br>12345678911</h4></li>
+							<li><h4>新娘：韩梅梅<br>12345678911</h4></li>
+							<li>
+								<button>编辑</button>
+								<button>生成合同</button>
+								<button>生成合同</button>
+							</li>
+						</ul>
+					</div>
+					<div class="main_cont_switch">
+						<button>点击此处查看基础信息</button>
+					</div>
+				</div>
+				<!-- 进行中对接单发送 -->
+				<div class="main_cont main_cont_x20">
+					<div class="main_cont_nav">
+						<p>订单编号：0000001</p>
+						<div class="main_cont_nav_Corner">
+							<i></i>
+							<span>2/2</span>
+							<i></i>
+						</div>
+					</div>
+					<ul class="main_cont_ButtList">
+						<li class="main_cont_ButtList_on">
+							<div class="ButtList_title">策划师<i></i></div>
+							<p>姓名：谁谁谁<br>12345678912</p>
+						</li>
+						<li>
+							<div class="ButtList_title">主持人<i></i></div>
+							<p>姓名：谁谁谁<br>12345678912</p>
+						</li>
+						<li>
+							<div class="ButtList_title">化妆师<i></i></div>
+							<p>姓名：谁谁谁<br>12345678912</p>
+						</li>
+						<li>
+							<div class="ButtList_title">摄影师<i></i></div>
+							<p>姓名：谁谁谁<br>12345678912</p>
+						</li>
+						<li>
+							<div class="ButtList_title">摄像师<i></i></div>
+							<p>姓名：谁谁谁<br>12345678912</p>
+						</li>
+						<li>
+							<div class="ButtList_title">舞美<i></i></div>
+							<p>姓名：谁谁谁<br>12345678912</p>
+						</li>
+						<li class="main_cont_ButtList_on">
+							<div class="ButtList_title">道具<i></i></div>
+							<p>姓名：谁谁谁<br>12345678912</p>
+						</li>
+						<li>
+							<div class="ButtList_title">操作</div>
+							<div class="ButtList_but">
+								<button>确定</button>
+								<button>取消</button>
+							</div>
+						</li>
+					</ul>
+					<div class="main_cont_switch">
+						<button>点击此处查看基础信息</button>
+					</div>
+				</div>
+				<!-- 已完成第一页 -->
+				<div class="main_cont main_cont_x10">
+					<div class="main_cont_nav">
+						<p>订单编号：0000001</p>
+						<div class="main_cont_nav_Corner">
+							<i></i>
+							<span>1/2</span>
+							<i></i>
+						</div>
+					</div>
 					<ul class="main_cont_title">
 						<li>状态</li>
 						<li>日期</li>
-						<li>订单商家</li>
+						<li>新人姓名</li>
 						<li>负责人</li>
 						<li>电话</li>
 						<li>仪式酒店</li>
-						<li>订单来源</li>
 						<li>备注</li>
 						<li>操作</li>
 					</ul>
@@ -121,19 +232,10 @@
 						<ul>
 							<li><p>预定</p></li>
 							<li><p>2018.3.6</p></li>
-							<li><p>婚庆名称</p></li>
+							<li><h4>新娘：韩梅梅<br>12345678911<br>新郎：李小璐<br>12345678923</h4></li>
 							<li><p>霸刀杨壹</p></li>
 							<li><p>18030505480</p></li>
 							<li><p>青城山酒店</p></li>
-							<li>
-								<div class="Order_source">
-									<select>
-										<option>线 上</option>
-										<option>线 下</option>
-									</select>
-									<input type="text" maxlength="8">
-								</div>	
-							</li>
 							<li>
 								<div class="Remarks">
 									<!-- <div class="Remarks_cont">
@@ -142,10 +244,50 @@
 								</div>
 							</li>
 							<li>
-								<button>查看对接单</button>
-								<button>评 论</button>
+								<button>统计</button>
 							</li>
 						</ul>
+					</div>
+					<div class="main_cont_switch">
+						<button>点击此处查看对接单</button>
+					</div>
+				</div>
+				<!-- 已完成第二页 -->
+				<div class="main_cont main_cont_x10">
+					<div class="main_cont_nav">
+						<p>订单编号：0000001</p>
+						<div class="main_cont_nav_Corner">
+							<i></i>
+							<span>2/2</span>
+							<i></i>
+						</div>
+					</div>
+					<ul class="main_cont_title">
+						<li>策划师</li>
+						<li>主持人</li>
+						<li>化妆师</li>
+						<li>摄影师</li>
+						<li>摄像师</li>
+						<li>舞美</li>
+						<li>道具</li>
+						<li>操作</li>
+					</ul>
+					<div class="main_cont_list">
+						<ul>
+							<li><h4>新娘：韩梅梅<br>12345678911</h4></li>
+							<li><h4>新娘：韩梅梅<br>12345678911</h4></li>
+							<li><h4>新娘：韩梅梅<br>12345678911</h4></li>
+							<li><h4>新娘：韩梅梅<br>12345678911</h4></li>
+							<li><h4>新娘：韩梅梅<br>12345678911</h4></li>
+							<li><h4>新娘：韩梅梅<br>12345678911</h4></li>
+							<li><h4>新娘：韩梅梅<br>12345678911</h4></li>
+							<li>
+								<button>评论</button>
+							</li>
+						</ul>
+					</div>
+					<div class="main_cont_switch">
+						<button>点击此处查看基础信息</button>
 					</div>
 				</div>
 			</div>	
