@@ -3,7 +3,14 @@
 var state=1;//防止多次点击
 var username = $.cookie("user");
 $(document).ready(function(){
-	$(".nav_cont_a").eq(5).addClass("nav_cont_on");
+	//var h_position = $.cookie("h_position");
+	var h_position = 1;
+	if(h_position==2){
+		$(".nav_cont_a").eq(3).addClass("nav_cont_on");
+	}else{
+		$(".nav_cont_a").eq(4).addClass("nav_cont_on");
+	}
+	
 	$(".choose_nav_li").click(function(){
 		$(this).addClass("check_on").siblings().removeClass("check_on");
 	})

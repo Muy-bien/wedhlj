@@ -12,116 +12,70 @@ $(document).ready(function(){
 	var h_nav = "";
 	//var h_position = $.cookie("h_position");
 	var h_position = 1;
-	if (h_position == 1) {
-		h_nav = '<div class="nav_top">商家后台</div>'+
-		'<ul class="nav_cont">'+
-			'<li>'+
+	h_nav += '<div class="nav_top">商家后台</div>'+
+	'<ul class="nav_cont">'+
+		'<li>'+
+			'<i></i>'+
+			'<div class="nav_cont_a nav_cont_off">'+
+				'<a href="u_PersonalCenter.html">个人中心</a>'+
+			'</div>'+
+		'</li>';
+		if(h_position == 1){
+			h_nav +='<li>'+
 				'<i></i>'+
 				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="u_PersonalCenter.html">个人中心</a>'+
+					'<a href="u_WeddingOrderManagement.html">订单管理</a>'+
 				'</div>'+
-			'</li>'+
-			'<li>'+
+			'</li>';
+		}else if(h_position == 2 || h_position == 3){
+			h_nav +='<li>'+
 				'<i></i>'+
 				'<div class="nav_cont_a nav_cont_off">'+
 					'<a href="u_SupplierOrder_Details.html">订单管理</a>'+
 				'</div>'+
-			'</li>'+
-			'<li>'+
+			'</li>';
+		}
+		if(h_position == 3){
+			h_nav +='<li>'+
 				'<i></i>'+
 				'<div class="nav_cont_a nav_cont_off">'+
 					'<a href="u_management.html">商品管理</a>'+
 				'</div>'+
-			'</li>'+
-			'<li>'+
-				'<i></i>'+
-				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="u_personnelManagement.html">人员管理</a>'+
-				'</div>'+
-			'</li>'+
-			'<li>'+
+			'</li>';
+		}
+		h_nav +='<li>'+
+			'<i></i>'+
+			'<div class="nav_cont_a nav_cont_off">'+
+				'<a href="u_personnelManagement.html">人员管理</a>'+
+			'</div>'+
+		'</li>';
+		if(h_position == 1){
+			h_nav +='<li>'+
 				'<i></i>'+
 				'<div class="nav_cont_a nav_cont_off">'+
 					'<a href="u_PlanManagement.html">策划管理</a>'+
 				'</div>'+
-			'</li>'+
-			'<li>'+
-				'<i></i>'+
-				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="u_Focus.html">我的关注</a>'+
-				'</div>'+
-			'</li>'+
-			'<li>'+
-				'<i></i>'+
-				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="#">运营中心</a>'+
-				'</div>'+
-			'</li>'+
-			'<li>'+
-				'<i></i>'+
-				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="#">设置中心</a>'+
-				'</div>'+
-			'</li>'+
-		'</ul>';
-	}else if(h_position == 2){
-		h_nav = '<div class="nav_top">人员后台</div>'+
-		'<ul class="nav_cont">'+
-			'<li>'+
-				'<i></i>'+
-				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="h_MerchantCenter.html">人员中心</a>'+
-				'</div>'+
-			'</li>'+
-			'<li>'+
-				'<i></i>'+
-				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="p_management.html">人员管理</a>'+
-				'</div>'+
-			'</li>'+
-			'<li>'+
-				'<i></i>'+
-				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="p_OperationsCenter.html">运营中心</a>'+
-				'</div>'+
-			'</li>'+
-			'<li>'+
-				'<i></i>'+
-				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="p_Setcenter.html">设置中心</a>'+
-				'</div>'+
-			'</li>'+
-		'</ul>';
-	}else if(h_position == 3){
-		h_nav = '<div class="nav_top">商家后台</div>'+
-		'<ul class="nav_cont">'+
-			'<li>'+
-				'<i></i>'+
-				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="h_MerchantCenter.html">商家中心</a>'+
-				'</div>'+
-			'</li>'+
-			'<li>'+
-				'<i></i>'+
-				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="h_management.html">商品管理</a>'+
-				'</div>'+
-			'</li>'+
-			'<li>'+
-				'<i></i>'+
-				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="h_OperationsCenter.html">运营中心</a>'+
-				'</div>'+
-			'</li>'+
-			'<li>'+
-				'<i></i>'+
-				'<div class="nav_cont_a nav_cont_off">'+
-					'<a href="h_Setcenter.html">设置中心</a>'+
-				'</div>'+
-			'</li>'+
-		'</ul>';
-	}
-		
+			'</li>';
+		}
+		h_nav +='<li>'+
+			'<i></i>'+
+			'<div class="nav_cont_a nav_cont_off">'+
+				'<a href="u_Focus.html">我的关注</a>'+
+			'</div>'+
+		'</li>'+
+		'<li>'+
+			'<i></i>'+
+			'<div class="nav_cont_a nav_cont_off">'+
+				'<a href="#">运营中心</a>'+
+			'</div>'+
+		'</li>'+
+		'<li>'+
+			'<i></i>'+
+			'<div class="nav_cont_a nav_cont_off">'+
+				'<a href="#">设置中心</a>'+
+			'</div>'+
+		'</li>'+
+	'</ul>';
 	$(".nav").html(h_nav);
 
 	//头部
