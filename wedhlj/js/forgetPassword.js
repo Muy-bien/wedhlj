@@ -112,7 +112,10 @@ function forgetPassword(){
 		async: false,
 		success: function(e) {
 			if(e['yzmStatus'] == 200 && e['phoneStatus'] == 200){
-				location.href = "login.html";
+				meg('提示','修改密码成功，返回登录页','body',onlogin)
+				function onlogin(){
+					location.href = "login.html";
+				}
 			}else if(e['yzmStatus'] == 400){
 				meg('提示','验证码错误','body')
 				$(".login_yzm").attr("value","");

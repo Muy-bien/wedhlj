@@ -77,6 +77,8 @@ function login(){
 	    	$(".login_pass").text("密码错误");
 	   	 	return false;
 	   	}else if($("input[name='vehicle']").is(':checked') == true){
+	   		checked = "1"
+	   	}else if($("input[name='vehicle']").is(':checked') == false){
 	   		checked = "0"
 	   	}
 	   	if(user_length == 1){
@@ -98,14 +100,15 @@ function login(){
 			url: apiUrl+'login/validation',
 			dataType: 'json',
 			data: data,
-			success: function(e) {
+			success: function(e){
+				console.log(e)
 				//登录失败返回
-				if(e['loginStatus'] == 400){
+				if(e.status == 400){
 					state = 1;
 					$(".login_uesr").text("账户或密码不正确");
-				}else if(e['loginStatus'] == 200){
+				}else if(e.status == 200){
 					$.cookie("user", userVal,{ path:'/',secure:false }); //储存用户名
-					$.cookie("h_position", e.user.uStatus,{ path:'/',secure:false}); //储存商户类型定位
+					$.cookie("h_position", e.user.userType,{ path:'/',secure:false}); //储存商户类型定位
 					$.cookie("login_on", e.token,{ path:'/',secure:false}); //登录成功返回信息
 					saveUserInfo();//保存用户信息
 					location.href = "index.html";
@@ -116,7 +119,7 @@ function login(){
 			},
 			error : function(e) {
 				state = 1;
-				$(".login_uesr").text("请检查网络");
+				$(".login_uesr").text("未能成功连接服务器,请稍后重试");
 			}
 		})
 	}
