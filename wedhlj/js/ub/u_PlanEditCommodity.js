@@ -1,3 +1,6 @@
+var schemeNo=getUrlParam('schemeNo');
+console.log(schemeNo);
+queryScheme(schemeNo);
 //价格必须为正数
 $(".input_money").change(function() {
 	if($(this).val() > 0 == false){
@@ -86,4 +89,46 @@ $(".Upload").click(function(){
 //导航栏默认选中
 function on_navli(){
 	$(".nav_cont_a").eq(3).addClass("nav_cont_on");
+}
+
+
+//获取url中的参数
+function getUrlParam(name){
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+	//构造一个含有目标参数的正则表达式对象
+	var r = window.location.search.substr(1).match(reg);//匹配目标参数
+	if (r != null) return decodeURI(r[2]); return null; //返回参数值
+}
+///scheme/queryScheme策划信息详情查询
+function queryScheme(schemeNo){
+	$.ajax({
+			type: "post",
+			url: apiUrl+"/scheme/queryScheme",
+			data: {schemeNo:schemeNo},
+			success: function(e) {
+				down_Loading()
+				console.log(e.scheme);
+				var scheme=e.scheme[0];
+				console.log(scheme.schemeName);
+				// 案例名称
+				$("input[name=schemeName]").val(scheme.schemeName);
+				// 案例风格
+				 //$("input[name=schemeStyle]").val(scheme.schemeStyle);
+				// 策划师
+				$("input[name=schemeDesigner]").val(scheme.schemeDesigner);
+				// 价格
+				$("input[name=schemePrice]").val(scheme.schemePrice)
+				// 案例介绍
+				// 设计思路
+				// 主舞台
+				// 礼道区
+				// 签到区
+				// 合影区
+				// 甜品区
+			},
+			error : function(e) {
+				down_Loading()
+				meg("提示","服务器开了小差，请稍后重试","body");
+			}
+		});	
 }

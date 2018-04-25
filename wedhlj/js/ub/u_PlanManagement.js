@@ -63,7 +63,6 @@ function queryAllScheme(token,auditStatus,pageNo){
 		            	//console.log(window.search())
 		            }
 	       		 })
-				console.log(e.schemeList);
 				var items=e.schemeList;
 				var itemsHtml='';
 				for(var i=0;i<items.length;i++){
@@ -79,7 +78,7 @@ function queryAllScheme(token,auditStatus,pageNo){
 									'<li><p>'+items[i].attentionNum+'</p></li>'+
 									'<li><p>'+checStatus+'</p></li>'+
 									'<li>'+
-										'<button>编辑</button>'+
+										'<a href="u_PlanEditCommodity.html?schemeNo='+items[i].schemeNo+'"><button>编辑</button></a>'+
 										'<button class="removePlan">删除</button>'+
 										'<button class="hide schemeNo">'+items[i].schemeNo+'</button>'+
 									'</li>'+
