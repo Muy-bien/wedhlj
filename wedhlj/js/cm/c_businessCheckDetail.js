@@ -138,3 +138,7 @@ function reload(){
 	location.reload();
 	window.location.href="c_mainCheck.html?choose=1&&Cstatus=0";
 }
+//导航栏默认选中
+function on_navli(){
+	$(".nav_cont_a").eq(0).addClass("nav_cont_on");
+}

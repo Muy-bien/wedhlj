@@ -1,54 +1,7 @@
-/*-----头部----*/
-.header {
-  width: 100%;
-  margin-bottom: 40px;
-}
-
-.header_cont {
-  background: #f85162;
-  width: 1200px;
-  margin: 0 auto;
-  height: 58px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.header_cont > div {
-  padding: 0 35px;
-  height: 16px;
-  line-height: 16px;
-  color: #fff;
-  font-size: 12px;
-  border-left: 1px solid #fff;
-}
-
-.Return_index a,
-.sign_out p {
-  color: #fff;
-}
-.header_name a {
-  color: #fff;
-}
-.sign_out p:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.Return_index {
-  border: none !important;
-}
-
 /*main*/
 .main {
   width: 770px;
-  margin: 0 auto;
+  margin: 30px auto 0 auto;
   padding-bottom: 200px;
 }
 

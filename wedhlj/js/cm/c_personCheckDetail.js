@@ -111,17 +111,11 @@ function cancel(mypid){
 		error:function(){meg("提示","网络开小差，请检查！","body");}
 	})
 }
-//退出登录
-$(".sign_out").click(function(){
-	meg2("提示","是否确定退出登录","body",doThing)
-	function doThing(){
-		$.cookie("login_on","",{ path:'/',secure:false , expires: -1});//清空token
-		$.cookie("user","",{ path:'/',secure:false , expires: -1});//清空用户名
-		$.cookie("h_position","",{ path:'/',secure:false , expires: -1});//清空用户类型定位信息
-		window.location.href = "index.html";
-	}
-})
 function reload(){
 	location.reload();
 	window.location.href="c_mainCheck.html?choose=0&&Cstatus=0";
+}
+//导航栏默认选中
+function on_navli(){
+	$(".nav_cont_a").eq(0).addClass("nav_cont_on");
 }

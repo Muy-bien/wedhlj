@@ -1,66 +1,65 @@
-$(document).ready(function(){
-	var username=$.cookie('user');
-	if(!username){
-		// window.location.href="index.html";
-	}else{
-		$(".h_name").html(username);
-	}
-	$(".hotel").click(function(){
-		window.location.href="c_mainHotel.html";
-	})
-	//获取地址栏中的两个状态参数  Cstatus-0-待审核 Cstatus-1-审核通过 Cstatus-2-审核未通过 choose-0-人员审核 choose-1-用户基本资料认证
-	var Cstatus=getUrlParam('Cstatus');
-	var choose=getUrlParam('choose');
+//获取地址栏中的两个状态参数  Cstatus-0-待审核 Cstatus-1-审核通过 Cstatus-2-审核未通过 choose-0-人员审核 choose-1-用户基本资料认证
+var Cstatus=getUrlParam('Cstatus');
+var choose=getUrlParam('choose');
 //地址栏没有传参时候的默认状态
-	if(choose == null || Cstatus == null){
-		window.location.href="c_mainCheck.html?choose=0&&Cstatus=0";
-		personDivideMeg(0)
-	}
-// 判断审核大类的choose
-	if(choose==0){
+if(choose == null || Cstatus == null){
+	//导航栏默认选中
+	function on_navli(){
 		$(".nav_cont_a").eq(0).addClass("nav_cont_on");
-		if(Cstatus==0){
-			$('.one').addClass('stateItem_on');
-			personDivideMeg(0)
-		}else if(Cstatus==1){
-			$('.two').addClass('stateItem_on');
-			personDivideMeg(1)
-		}else if(Cstatus==2){
-			$('.three').addClass('stateItem_on');
-			personDivideMeg(2);
-		}
-	}else if(choose==1){
-		$(".nav_cont_a").eq(1).addClass("nav_cont_on");
-		if(Cstatus==0){
-			$('.one').addClass('stateItem_on');
-			merchantDivideMeg(0);
-		}else if(Cstatus==1){
-			$('.two').addClass('stateItem_on');
-			merchantDivideMeg(1);
-		}else if(Cstatus==2){
-			$('.three').addClass('stateItem_on');
-			merchantDivideMeg(2);
-		}
 	}
-	//点击人员审核 用户基本资料审核
-	$(".person").click(function(){//点击人员审核
-		window.location.href="c_mainCheck.html?choose=0&&Cstatus="+Cstatus+"";
-	})
-	$(".merchant").click(function(){//点击用户基本资料审核
-		window.location.href="c_mainCheck.html?choose=1&&Cstatus="+Cstatus+"";
-	})
-	// 选择审核状态choose是之前保存好的大类的类型（确定是人员审核还是用户基本资料审核）
-	$('.stateItem').click(function(){
-		$(this).addClass('stateItem_on');
-		var index = $(this).index();
-		window.location.href="c_mainCheck.html?choose="+choose+"&&Cstatus="+index+"";
-	})
+	$('.one').addClass('stateItem_on');
+	personDivideMeg(0);
+}
+// 判断审核大类的choose
+if(choose==0){
+	//导航栏默认选中
+	function on_navli(){
+		$(".nav_cont_a").eq(0).addClass("nav_cont_on");
+	}
+	if(Cstatus==0){
+		$('.one').addClass('stateItem_on');
+		personDivideMeg(0)
+	}else if(Cstatus==1){
+		$('.two').addClass('stateItem_on');
+		personDivideMeg(1)
+	}else if(Cstatus==2){
+		$('.three').addClass('stateItem_on');
+		personDivideMeg(2);
+	}
+}else if(choose==1){
+	//导航栏默认选中
+	function on_navli(){
+		$(".nav_cont_a").eq(1).addClass("nav_cont_on");
+	}
+	if(Cstatus==0){
+		$('.one').addClass('stateItem_on');
+		merchantDivideMeg(0);
+	}else if(Cstatus==1){
+		$('.two').addClass('stateItem_on');
+		merchantDivideMeg(1);
+	}else if(Cstatus==2){
+		$('.three').addClass('stateItem_on');
+		merchantDivideMeg(2);
+	}
+}
+//点击人员审核 用户基本资料审核
+$(".person").click(function(){//点击人员审核
+	window.location.href="c_mainCheck.html?choose=0&&Cstatus="+Cstatus+"";
+})
+$(".merchant").click(function(){//点击用户基本资料审核
+	window.location.href="c_mainCheck.html?choose=1&&Cstatus="+Cstatus+"";
+})
+// 选择审核状态choose是之前保存好的大类的类型（确定是人员审核还是用户基本资料审核）
+$('.stateItem').click(function(){
+	$(this).addClass('stateItem_on');
+	var index = $(this).index();
+	window.location.href="c_mainCheck.html?choose="+choose+"&&Cstatus="+index+"";
+})
 //人员012，用户基本资料审核123
-	/*************************************/
-	// 用户基本资料审核加渲染分页123
-	//myStatus：地址栏中的Cstatus
+// 用户基本资料审核加渲染分页123
+//myStatus：地址栏中的Cstatus
 function merchantDivideMeg(myStatus){
-		$.ajax({
+	$.ajax({
 		type:'post',
 		url: apiUrl+'/user/selectUserInfo',
 		data:{status:myStatus+1,currentPage:1},
@@ -87,7 +86,7 @@ function merchantDivideMeg(myStatus){
 }
 //person 人员审核加渲染分页123
 function personDivideMeg(myStatus){
-		$.ajax({
+	$.ajax({
 		type:'post',
 		url: apiUrl+'/person/selectAllByStatus',
 		data:{status:myStatus,currentPage:1},
@@ -112,9 +111,6 @@ function personDivideMeg(myStatus){
 		error:function(){meg("提示","网络开小差，请检查！","body");}
 	})
 }
-	/***********************************/
-	//merchantDivideMeg(2);
-})
 //获取地址栏中的数据
 function getUrlParam(name){
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -180,13 +176,3 @@ function selectAllByStatus(mystatus,mycurrentPage){
 		error:function(){meg("提示","网络开小差，请检查！","body");}
 	})
 }
-//退出登录
-$(".sign_out").click(function(){
-	meg2("提示","是否确定退出登录","body",doThing)
-	function doThing(){
-		$.cookie("login_on","",{ path:'/',secure:false , expires: -1});//清空token
-		$.cookie("user","",{ path:'/',secure:false , expires: -1});//清空用户名
-		$.cookie("h_position","",{ path:'/',secure:false , expires: -1});//清空用户类型定位信息
-		window.location.href = "index.html";
-	}
-})

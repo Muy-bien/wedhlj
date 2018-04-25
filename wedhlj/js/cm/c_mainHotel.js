@@ -1,29 +1,8 @@
 var state=1;
-$(document).ready(function(){
-	var username=$.cookie('user');
-	if(!username){
-		// window.location.href="index.html";
-	}else{
-		$(".h_name").html(username);
-	}
-	//点击人员审核 用户基本资料审核
-	$(".person").click(function(){//点击人员审核
-		window.location.href="c_mainCheck.html?choose=0&&Cstatus=0";
-	})
-	$(".merchant").click(function(){//点击用户基本资料审核
-		window.location.href="c_mainCheck.html?choose=1&&Cstatus=0";
-	})
-	//退出登录
-	$(".sign_out").click(function(){
-		meg2("提示","是否确定退出登录","body",doThing)
-		function doThing(){
-			$.cookie("login_on","",{ path:'/',secure:false , expires: -1});//清空token
-			$.cookie("user","",{ path:'/',secure:false , expires: -1});//清空用户名
-			$.cookie("h_position","",{ path:'/',secure:false , expires: -1});//清空用户类型定位信息
-			window.location.href = "index.html";
-		}
-	})
-})
+//修改header样式
+var add_header = function(){
+	$(".header").prepend('<div class="Return_index"><a href="c_AboutHotelAdd.html"><p>添加酒店</p></a></div>')
+}
 //获取地址栏中的数据
 function getUrlParam(name){
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -31,16 +10,12 @@ function getUrlParam(name){
 	var r = window.location.search.substr(1).match(reg);//匹配目标参数
 	if (r != null) return decodeURI(r[2]); return null; //返回参数值
 }
-
 var pageNo=getUrlParam('pageNo');
-	if(pageNo==null){
+if(pageNo==null){
 	queryAllHotelInfo(1);
-	}else{
+}else{
 	queryAllHotelInfo(pageNo);
-	}
-
-		
-		
+}		
 ///hotel/queryAllHotelInfo
 	//pageSize:页面容量
 	//sort：排序方式 0按照星级排序 1价格升序 2价格降序 
@@ -128,4 +103,8 @@ function deleteHotel(hotelId){
 //刷新页面
 function uploaded(){
 	location.reload();
+}
+//导航栏默认选中
+function on_navli(){
+	$(".nav_cont_a").eq(2).addClass("nav_cont_on");
 }
