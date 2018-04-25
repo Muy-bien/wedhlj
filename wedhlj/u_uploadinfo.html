@@ -5,8 +5,8 @@
 	<title>基本资料上传</title>
 	<link rel="shortcut icon" href="images/index_Avatar.png" type="image/x-icon">
 	<link rel="stylesheet" href="css/common.css">
-	<link rel="stylesheet" href="css/hq/h_uploadinfo.css">
-	<link rel="stylesheet" href="css/hq/h_common.css">
+	<link rel="stylesheet" href="css/ub/u_uploadinfo.css">
+	<link rel="stylesheet" href="css/ub/u_common.css">
 </head>
 <body>
 	<div class="box">
@@ -27,29 +27,19 @@
 			<!-- 内容 -->
 			<div class="main">
 				<form id="uploadForm" enctype="multipart/form-data" method="post">
-					<!-- 用户名隐藏域 -->
-					<div class="hide">
-						<input type="text" name="username" class="username">
-					</div>
-					<!-- 是否有营业执照 -->
-					<div class="hide">
-						<input type="text" name="flag" class="flag" value="1">
-					</div>
 					<!-- 商户名称 -->
 					<div class="input_shadow">
 						<p class="input_title">商户名称</p>
 						<div class="input_text_cont">
 							<i class="input_i"></i>
-							<input class="input_text" type="text" placeholder="商户经营使用名称" name="cp_name">
+							<input class="input_text" type="text" placeholder="商户经营使用名称(最多15字符)" name="companyName" maxlength="15">
 						</div>
 					</div>
 					<!-- 商户类型 -->
 					<div class="input_drop">
 						<p class="input_title">商户类型</p>
 						<div class="input_select_cont">
-							<select class="input_select" name="cp_type" id="cp_type">
-							    <option>舞美</option>
-								<option>道具</option>
+							<select class="input_select" name="companyType" id="cp_type">
 						    </select>
 						</div>
 					</div>
@@ -57,13 +47,13 @@
 					<div class="input_drop">
 						<p class="input_title">公司地址</p>
 						<div class="input_select_cont">
-						    <select class="input_select" name="province" id="s1">
+						    <select class="input_select province" id="s1">
 								<option>四川省</option>
 							</select>
-							<select class="input_select" name="city" id="s2">
+							<select class="input_select city" id="s2">
 								<option>成都市</option>
 							</select>
-							<select class="input_select" name="county" id="s3">
+							<select class="input_select county" id="s3">
 								<option>金牛区</option>
 								<option>锦江区</option>
 								<option>青羊区</option>
@@ -88,7 +78,7 @@
 						<p class="input_title">详细地址</p>
 						<div class="input_text_cont">
 							<i class="input_i"></i>
-							<input class="input_text" type="text" placeholder="商户详细地址" name="cp_address">
+							<input class="input_text cp_address" type="text" placeholder="商户详细地址">
 						</div>
 					</div>
 					<!-- 联系电话 -->
@@ -96,7 +86,7 @@
 						<p class="input_title">联系电话</p>
 						<div class="input_text_cont">
 							<i class="input_i"></i>
-							<input class="input_text" type="text" placeholder="商户联系电话" name="phone">
+							<input class="input_text" type="text" placeholder="商户联系电话" name="userPhone">
 						</div>
 					</div>
 					<!-- 营业执照 -->
@@ -121,7 +111,7 @@
 							<p class="input_title">营业执照名称</p>
 							<div class="input_text_cont">
 								<i class="input_i"></i>
-								<input class="input_text" type="text" placeholder="营业执照名称" name="cp_licenseName">
+								<input class="input_text" type="text" placeholder="营业执照名称" name="licenseName">
 							</div>
 						</div>
 						<!-- 执照编号 -->
@@ -129,7 +119,7 @@
 							<p class="input_title">执照编号</p>
 							<div class="input_text_cont">
 								<i class="input_i"></i>
-								<input class="input_text" type="text" placeholder="15位注册号或18位统一社会信用代码" name="cp_licenseNum">
+								<input class="input_text" type="text" placeholder="15位注册号或18位统一社会信用代码" name="licenseNo">
 							</div>
 						</div>
 						<!-- 上传执照 -->
@@ -138,7 +128,7 @@
 							<div class="input_file_cont">
 								<i class="input_i"></i>
 								<div class="input_file">
-									<div class="blueButton blueButton_01"></div>
+									<div class="blueButton"></div>
 							        <input type="file" name="imgFiles" class="myFileUpload file_img01" accept="image/*">
 								</div>	
 							</div>
@@ -160,7 +150,7 @@
 							<p class="input_title">身份证号码</p>
 							<div class="input_text_cont">
 								<i class="input_i"></i>
-								<input class="input_text" type="text" placeholder="身份证号码" name="identityNum">
+								<input class="input_text" type="text" placeholder="身份证号码" name="identityNo">
 							</div>
 						</div>
 						<!-- 上传身份证(正面) -->
@@ -169,7 +159,7 @@
 							<div class="input_file_cont">
 								<i class="input_i"></i>
 								<div class="input_file">
-									<div class="blueButton blueButton_02"></div>
+									<div class="blueButton"></div>
 							        <input type="file" name="imgFiles" class="myFileUpload file_img02" accept="image/*">
 								</div>	
 							</div>
@@ -180,7 +170,7 @@
 							<div class="input_file_cont">
 								<i class="input_i"></i>
 								<div class="input_file">
-									<div class="blueButton blueButton_03"></div>
+									<div class="blueButton"></div>
 							        <input type="file" name="imgFiles" class="myFileUpload file_img03" accept="image/*">
 								</div>	
 							</div>
@@ -196,10 +186,9 @@
 
 	<!-- script -->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/hq/h_common.js"></script>
+	<script type="text/javascript" src="js/ub/u_common.js"></script>
 	<script type="text/javascript" src="js/jquery.cookie.js"></script>
-	<!-- <script type="text/javascript" src="js/hq/gey.js"></script> -->
 	<script type="text/javascript" src="js/common.js"></script>
-	<script type="text/javascript" src="js/hq/h_uploadinfo.js"></script>
+	<script type="text/javascript" src="js/ub/u_uploadinfo.js"></script>
 </body>
 </html>

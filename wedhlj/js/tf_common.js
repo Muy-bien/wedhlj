@@ -70,12 +70,13 @@ $(document).ready(function(){
 		var h_checkStatus = "";
 		$.ajax({
 			type: 'POST',
-			url: apiUrl+'user/selectByUsername',
+			url: apiUrl+'/user/resultUserType',
 			dataType: 'json',
-			data: {username:$.cookie("user")},
+			data: {userName:$.cookie("user"),token:$.cookie("login_on")},
 			success: function(e) {
-				h_position = e.status;//用户类型定位信息
-				h_checkStatus = e.checkStatus;
+				console.log(e);
+				h_position = e.userType;//用户类型定位信息
+				h_checkStatus = e.auditStatus;
 				$.cookie("h_position",h_position,{ path:'/',secure:false}); //储存状态
 				//商家入驻内容
 				if (!h_position || h_position == "" || h_position == 0) {
@@ -100,20 +101,20 @@ $(document).ready(function(){
 				window.location.href = "login.html";
 				return false;
 			}
-			if(h_checkStatus == 2){
+			if(h_checkStatus == 1){
 				if(h_position == 4){
 					window.location.href = "c_mainCheck.html";
 				}else if(h_position == 1||h_position == 2||h_position == 3){
 					window.location.href = "h_MerchantCenter.html";
 				}
-			}else if(h_checkStatus == 0){
+			}else if(h_checkStatus == "-1"){
 				if(h_position == 0){
 					var str = "";
 					str = '<div id="h_position"><div class="hp_cont"><div class="hp_delete">'+
 					'<span><img src="images/hp_delete.png" alt=""></span></div><ul>'+
-					'<li class="hp_cont_x10 hpc_01"><a href="h_uploadinfo.html?info=1"><h1>您的定位:</h1><p>婚礼策划</p></a></li>'+
-					'<li class="hp_cont_x10 hpc_02"><a href="h_uploadinfo.html?info=2"><h1>您的定位:</h1><p>婚庆人员</p></a></li>'+
-					'<li class="hp_cont_x10 hpc_03"><a href="h_uploadinfo.html?info=3"><h1>您的定位:</h1><p>道具舞美</p></a></li>'+
+					'<li class="hp_cont_x10 hpc_01"><a href="u_uploadinfo.html?info=1"><h1>您的定位:</h1><p>婚礼策划</p></a></li>'+
+					'<li class="hp_cont_x10 hpc_02"><a href="u_uploadinfo.html?info=2"><h1>您的定位:</h1><p>婚庆人员</p></a></li>'+
+					'<li class="hp_cont_x10 hpc_03"><a href="u_uploadinfo.html?info=3"><h1>您的定位:</h1><p>道具舞美</p></a></li>'+
 					'</ul></div></div>'
 					$("body").append(str);
 
@@ -121,10 +122,10 @@ $(document).ready(function(){
 					$(".hp_delete span").click(function(){
 						$("#h_position").remove();
 					})
+				}else{
+					window.location.href = "b_Audit.html";
 				}
-			}else if(h_checkStatus == 1){
-				window.location.href = "b_Audit.html";
-			}else if(h_checkStatus == 3){
+			}else if(h_checkStatus == 0){
 				window.location.href = "b_AuditNotThrough.html";
 			}
 		})

@@ -1,6 +1,6 @@
 //存url地址
-//var apiUrl = "http://172.16.14.16:8080/HunLIManage/";/*星儒本地测试api地址*/
-var apiUrl = "http://www.wocxr.com:8080/HunLIManage/";/*星儒测试api地址*/
+var apiUrl = "http://172.16.14.16:8080/";/*星儒本地测试api地址*/
+//var apiUrl = "http://www.wocxr.com:8080/HunLIManage/";/*星儒测试api地址*/
 
 
 
@@ -197,6 +197,7 @@ function imgUpload(obj) {
 				imgSrc[iIndex].push(imgSrcI);//存入图片路径数组
 				imgName[iIndex].push(fileList[i].name);//存入图片名字数组
 				imgFile[iIndex].push(fileList[i]);//存入文件流数组 
+				$(oInput).val("");
 				if(obj.num[iIndex] <= imgbox_default[iIndex].length+imgSrc[iIndex].length){
 			 		$(this).parents(obj.filebox).css("display","none")
 			 		return addNewContent(imgBox,iIndex);

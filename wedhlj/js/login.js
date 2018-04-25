@@ -94,7 +94,7 @@ function login(){
 			password: pass_cont,
 			flag: checked,
 		};
-
+		console.log(data)
 		$.ajax({
 			type: 'POST',
 			url: apiUrl+'login/validation',
