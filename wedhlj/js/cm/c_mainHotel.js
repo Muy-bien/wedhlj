@@ -1,7 +1,7 @@
 var state=1;
 //修改header样式
 var add_header = function(){
-	$(".header").prepend('<div class="Return_index"><a href="c_AboutHotelAdd.html"><p>添加酒店</p></a></div>')
+	$(".header").prepend('<div class="Return_index"><a href="c_AboutHotelAdd.html" target="_blank"><p>添加酒店</p></a></div>')
 }
 //获取地址栏中的数据
 function getUrlParam(name){
