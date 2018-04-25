@@ -55,7 +55,6 @@ var state = 1;
 function login(){
 	if (state == 1) {
 		state = 2;
-		console.log(hex_md5(hex_md5("hljadmin")));
 		var userVal = $('.username').val();
 		var passVal = $('.password').val();
 	  	var checked = $("input[name='vehicle']").is(':checked');
@@ -94,14 +93,12 @@ function login(){
 			password: pass_cont,
 			flag: checked,
 		};
-		console.log(data)
 		$.ajax({
 			type: 'POST',
 			url: apiUrl+'login/validation',
 			dataType: 'json',
 			data: data,
 			success: function(e){
-				console.log(e)
 				//登录失败返回
 				if(e.status == 400){
 					state = 1;

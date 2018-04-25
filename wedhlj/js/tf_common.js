@@ -105,7 +105,7 @@ $(document).ready(function(){
 				if(h_position == 4){
 					window.location.href = "c_mainCheck.html";
 				}else if(h_position == 1||h_position == 2||h_position == 3){
-					window.location.href = "h_MerchantCenter.html";
+					window.location.href = "u_PersonalCenter.html";
 				}
 			}else if(h_checkStatus == "-1"){
 				if(h_position == 0){

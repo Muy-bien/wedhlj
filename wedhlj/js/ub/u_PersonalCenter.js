@@ -1,7 +1,5 @@
 //导入信息
 $(document).ready(function(){
-	//导航栏默认选中
-	$(".nav_cont_a").eq(0).addClass("nav_cont_on");
 	// 日历插件
 	$('#ca').calendar({
         width: 520,
@@ -49,3 +47,7 @@ $(document).ready(function(){
     });
     //
 })
+//导航栏默认选中
+function on_navli(){
+	$(".nav_cont_a").eq(0).addClass("nav_cont_on");
+}
