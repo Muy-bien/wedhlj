@@ -9,7 +9,6 @@ $(document).ready(function(){
 			dataType: 'json',
 			data: {userName:$.cookie("user"),token:$.cookie("login_on")},
 			success: function(e) {
-				console.log(e);
 				onNav(e.userType);//用户类型定位信息
 			}
 		})
