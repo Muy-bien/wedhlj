@@ -3,6 +3,7 @@ $(document).ready(function(){
 	if ($.cookie("login_on") == "" || !$.cookie("login_on")){
 		//window.location.href = "index.html";
 	}else{
+		//获取用户类型
 		$.ajax({
 			type: 'POST',
 			url: apiUrl+'/user/resultUserType',
@@ -17,6 +18,10 @@ $(document).ready(function(){
 				}
 			}
 		})
+		//获取用户基本信息
+		if($("div").hasClass("main_header") == true){
+			userInfo();
+		}
 	}
 	
 	//侧边栏
@@ -164,7 +169,32 @@ $(document).ready(function(){
 		if(typeof add_header === "function"){
 			add_header()
 		}
-		
+	}
+	//用户个人信息
+	function userInfo(){
+		$(".main_header").html('<div class="main_header_user">'+
+			'<div class="main_header_user_img">'+
+				'<div class="img_auto" style="background-image:url(images/ub/ub_user_bg.jpg)"></div>'+
+			'</div>'+
+			'<div class="main_header_user_x10">'+
+				'<p class="main_header_user_type"><i></i>主持人</p>'+
+				'<p class="main_header_user_name">雷电法王杨永信</p>'+
+			'</div>'+
+		'</div>'+
+		'<ul class="main_header_info">'+
+			'<li>'+
+				'<h2>关注</h2>'+
+				'<p>0</p>'+
+			'</li>'+
+			'<li>'+
+				'<h2>订单</h2>'+
+				'<p>0</p>'+
+			'</li>'+
+			'<li>'+
+				'<h2>余额</h2>'+
+				'<p>0</p>'+
+			'</li>'+
+		'</ul>')
 	}	
 	
 })
