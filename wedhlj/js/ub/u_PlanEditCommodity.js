@@ -115,7 +115,6 @@ function queryScheme(schemeNo){
 			success: function(e) {
 				down_Loading()
 				var scheme=e.scheme[0];
-				console.log(scheme);
 				// 案例名称
 				$("input[name=schemeName]").val(scheme.schemeName);
 				// 案例风格
@@ -231,3 +230,4 @@ function queryScheme(schemeNo){
 			}
 		});	
 }
+

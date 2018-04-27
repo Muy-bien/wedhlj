@@ -28,13 +28,25 @@ $(document).ready(function(){
 				'<li>'+
 					'<i></i>'+
 					'<div class="nav_cont_a nav_cont_off person">'+
-						'<a href="c_mainCheck.html?choose=0&&Cstatus=0">人员审核</a>'+
+						'<a href="c_mainCheck.html?choose=1&&Cstatus=0">用户基本资料审核</a>'+
 					'</div>'+
 				'</li>'+
 				'<li>'+
 					'<i></i>'+
 					'<div class="nav_cont_a nav_cont_off merchant">'+
-						'<a href="c_mainCheck.html?choose=1&&Cstatus=0">用户基本资料审核</a>'+
+						'<a href="c_mainCheck.html?choose=0&&Cstatus=0">人员审核</a>'+
+					'</div>'+
+				'</li>'+
+				'<li>'+
+					'<i></i>'+
+					'<div class="nav_cont_a nav_cont_off hotel">'+
+						'<a href="#">策划审核</a>'+
+					'</div>'+
+				'</li>'+
+				'<li>'+
+					'<i></i>'+
+					'<div class="nav_cont_a nav_cont_off hotel">'+
+						'<a href="#">商品审核</a>'+
 					'</div>'+
 				'</li>'+
 				'<li>'+

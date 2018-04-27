@@ -21,7 +21,6 @@ if(!chooseStatus){
 }
 // 根据地址栏中参数
 if(chooseStatus==1){//已审核
-	console.log(12);
 	$(".one").addClass("main_title_cont_on");
 }else if(chooseStatus==-1){//待审核
 	$(".two").addClass("main_title_cont_on");
@@ -45,7 +44,6 @@ function queryAllScheme(token,auditStatus,pageNo){
 		data: {token:token,auditStatus:auditStatus,pageNo:pageNo,pageSize:pageSize},
 		success: function(e) {
 			down_Loading()
-			console.log(e);
 			if(e.schemeList.length!=0){
 				var totalpage=Math.ceil(e.totalCount/pageSize);
 				$('.main_Pagination').paging({
@@ -116,7 +114,6 @@ function delSchemeInfo(schemeNos){
 		data: {schemeNos:schemeNos},
 		success: function(e) {
 			down_Loading()
-			console.log(e);
 			if(e.status==200){
 				meg("提示","策划删除成功！","body",refresh);
 			}else{
@@ -141,7 +138,6 @@ function resultCount(token){
 		data: {token:token},
 		success: function(e) {
 			down_Loading()
-			console.log(e);
 			$(".one span").html('('+e.successAuditCount+')');
 			$(".two span").html('('+e.reviewAuditCount+')');
 			$(".three span").html('('+e.failureAuditingCount+')');
