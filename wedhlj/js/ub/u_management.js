@@ -1,200 +1,143 @@
-//防止多次点击
-var state = 1;
-//导入信息
+//页面加载时执行
 $(document).ready(function(){
-	//导航栏默认选中
+	//页面刷新执行内容渲染
+	resultCount();
+	if(!page){
+		$(".main_title_cont h1").eq(0).addClass('main_title_cont_on')
+		show(1,1,1)
+	}else{
+		show(page,auditStatus,1)
+	}
+	if(auditStatus == 1){
+		$(".main_title_cont h1").eq(0).addClass('main_title_cont_on')
+	}else if(auditStatus == -1){
+		$(".main_title_cont h1").eq(1).addClass('main_title_cont_on')
+	}else if(auditStatus == 0){
+		$(".main_title_cont h1").eq(2).addClass('main_title_cont_on')
+	}
+	//点击标题渲染相应内容
+	$(".main_title_cont h1").click(function(){
+		$(this).addClass('main_title_cont_on').siblings('').removeClass('main_title_cont_on');
+		var index = $(this).index()
+		if(index == 0){
+			history.pushState(history.state,"","?page=1&auditStatus=1")
+			show(1,1,1)
+		}else if(index == 1){
+			history.pushState(history.state,"","?page=1&auditStatus=-1")
+			show(1,-1,1)
+		}else if(index == 2){
+			history.pushState(history.state,"","?page=1&auditStatus=0")
+			show(1,0,1)
+		}
+	})
+})
+//导航栏默认选中
+function on_navli(){
 	$(".nav_cont_a").eq(2).addClass("nav_cont_on");
-})
-//刷新页面
-/*function winreload(){
-	window.location.reload();
 }
-//单独删除事件
-function ondelete(){
-	$(".Show_cont_delete").click(function(){
-		if (state == 1) {
-			state = 2;
-			var s = $(this).parent().prev().text();
-			var boxIds = new Array();
-			boxIds.push(s);
-			meg2('提示','确定是否删除','body',attrdelete)
-			function attrdelete(){
-				var data = {
-					pids:boxIds,
-				}
-				loading(data,"product/delete")//传输id
-				meg("提示","删除成功","body",ready)
-			}
-		}
-	})
+//获取url中的参数
+function getUrlParam(name){
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+	//构造一个含有目标参数的正则表达式对象
+	var r = window.location.search.substr(1).match(reg);//匹配目标参数
+	if (r != null) return unescape(r[2]); return null; //返回参数值
 }
-// 搜索
-$(function(){
-	$(".but_Inquire").click(function(){
-		if (state == 1) {
-			on_Loading()//加载
-			state = 2;
-			$(".see_more").css("display","none");
-			var h_name = $(".h_name").text();
-			var pname = $("input[name='pname']").val();
-			var minPrice = $("input[name='minPrice']").val();
-			var maxPrice = $("input[name='maxPrice']").val();
-			var data = {
-				username:h_name,
-				pname:pname,
-				minPrice:minPrice,
-				maxPrice:maxPrice,
-			}
+//接收URL中的参数
+var page = getUrlParam('page');
+var auditStatus = getUrlParam('auditStatus');
 
-			loading(data,"product/select")//传输id
-		}
-	})
-})
-//上架
-$(".Show_offts").click(function(){
-	if (state == 1) {
-		state = 2;
-		var str = new Array();
-		for(var i=0;i<$(".Show_Order").length;i++){
-			if ($(".Show_Order").eq(i).find("input[type='checkbox']").is(':checked')) {
-				var s = $(".Show_Order").eq(i).find(".hide").text();
-				str.push(s);
-			}		
-		}
-		var data = {
-			pids:str,
-		}
-		loading(data,"product/up")//传输id
-		meg("提示","上架成功","body",ready)
-	}
-})
-//下架
-$(".Show_onts").click(function(){
-	if (state == 1) {
-		state = 2;
-		var str = new Array();
-		for(var i=0;i<$(".Show_Order").length;i++){
-			if ($(".Show_Order").eq(i).find("input[type='checkbox']").is(':checked')) {
-				var s = $(".Show_Order").eq(i).find(".hide").text();
-				str.push(s);
-			}		
-		}
-		var data = {
-			pids:str,
-		}
-		loading(data,"product/down")//传输id
-		meg("提示","下架成功","body",ready)
-	}
-})
-//批量删除
-$(".Show_delete").click(function(){
-	if (state == 1) {
-		state = 2;
-		var str = new Array();
-		for(var i=0;i<$(".Show_Order").length;i++){
-			if ($(".Show_Order").eq(i).find("input[type='checkbox']").is(':checked')) {
-				var s = $(".Show_Order").eq(i).find(".hide").text();
-				str.push(s);
-			}		
-		}
-		if (str.length !== 0) {
-			meg2('提示','确定是否删除','body',ondelete)
-		}else(
-			meg('提示','请选择商品','body')
-		)	
-		function ondelete(){
-			var data = {
-				pids:str,
-			}
-			loading(data,"product/delete")//传输id
-			meg("提示","删除成功","body",ready)
-		}
-	}
-})
-//获取最新商品
-function ready(){
-	on_Loading()//加载
-	var h_name = $(".h_name").text();
-	var data = {
-		username:h_name,
-	}
-	loading(data,"product/all")
-}
-//点击进去添加商品页面
-$(".Show_Addto").click(function(){
-	window.location.href  = 'u_AddCommodity.html'
-});
-var this_length = 10;//页面刷新展示的商品个数
-function loading(data,url){
+//展示全部商品
+function show(page,auditStatus,state){
 	$.ajax({
 		type: 'POST',
-		crossDomain: true,
-		url: apiUrl+url,
+		url: apiUrl+'/product/queryAllProduct',
+		data: {token:$.cookie("login_on"),auditStatus:auditStatus,pageNo:page,pageSize:5},
 		dataType: 'json',
-		data: data,
-		async: true,//异步请求
-		traditional: true,//阻止ajax深度序列化
-		success: function(e){
-			$(".Show_cont").html("");
-			$("#btnCheckAll").attr("checked",false);
-			if(e.length < 10){
-				this_length = e.length;
-				$(".see_more").css("display","none");
-			}else if(this_length != 10){
-				this_length = e.length
-			}
-			var str = ""
-			for(var i=0;i<this_length;i++){
-				//展示图片
-				var img = new Array();
-				img = (e[i].pimage).split(",");
+		success:function(e){
+			showlist(e,auditStatus);//渲染列表内容
+			$('.main_Pagination').paging({
+	            initPageNo: page, // 初始页码
+	            totalPages: Math.ceil(e.totalCount/5), //总页数
+	            slideSpeed: 600, // 缓动速度。单位毫秒
+	            jump: true, //是否支持跳转
+	            // 回调函数
+	            callback: function(page){
+	            	if(state == 1){
+						state = 2 
+	            	}else if(state == 2){
+	            		history.pushState(history.state,"","?page="+page+"&auditStatus="+auditStatus)
+	            		show(page,auditStatus,1)
+	            	}
+	            }
+        	})
 
-				str += "<div class='Show_Order'>"+
-				"<div class='Show_01'><input name='chkItem' type='checkbox'></div><div class='Show_02'>"+
-				"<i class='Show_img'>";
-				if(img[0]){
-					str +="<img src='"+img[0]+"'>"
-				}
-				str +="</i></div><div class='Show_03'>"
-				+""+e[i].pname+""+"</div><div class='Show_04'>"+e[i].price+"</div>";
-				if (e[i].discountPrice != "-1"){
-					str += "<div class='Show_05'>"+e[i].discountPrice+"</div>"
-				}else{
-					str += "<div class='Show_05'>无</div>"
-				};
-				str += "<div class='Show_06'>"+e[i].sellnumber+"</div><div class='Show_07'>"+
-				+e[i].number+"</div><div class='Show_08'>"+e[i].updatetime+"</div>";
-				if(e[i].pstatus == 1){
-					str += "<div class='Show_red Show_09'>正常</div>";
-				}else{
-					str += "<div class='Show_red Show_09'>下架</div>";
-				}
-				str += "<div class='hide'>"+e[i].pid+"</div><div  class='Show_10'><span><a target='_blank' href='b_Addorder.html?spid="+e[i].pid+"'>详情</a></span> | <span class='Show_cont_delete'>删除</span> | <span><a href='h_management_edit.html?spid="+e[i].pid+"'>编辑</a></span></div></div>"
-			}
-			$(".Show_cont").append(str);
-			ondelete();
-			state = 1;
-			//全选按钮事件
-			$("#btnCheckAll").click(function(){
-				$("input[name='chkItem']").prop("checked",this.checked);
-			});
-		
-			$("input[name='chkItem']").click(function(){
-				$("#btnCheckAll").prop("checked",$("input[name='chkItem']").length==$("input[name='chkItem']:checked").length);
-			});
-			down_Loading()//加载
-		},
-		error : function(e) {
-			down_Loading()//加载
 		}
 	})
 }
-//点击查看全部
-$(function(){
-	$(".see_more").click(function(){
-		this_length = 11;
-		$(".see_more").css("display","none");
-		ready()
+//渲染列表内容
+function showlist(data,auditStatus){
+	var str = "";
+	if(data.productList != ""){
+		for(var i=0;i<data.productList.length;i++){
+			var productList = data.productList[i];
+			str +='<ul>'+
+				'<li><p>'+productList.productNo+'</p></li>'+
+				'<li><div class="main_cont_list_img img_auto" style="background-image:url('+apiUrl+productList.productImage.split(",")[0]+')"></div></li>'+
+				'<li><p>'+productList.productName+'</p></li>'+
+				'<li><p>'+(productList.discountPrice="0.0"?productList.productPrice:productList.discountPrice)+'</p></li>'+
+				'<li><p>'+productList.sellNumber+'</p></li>'+
+				'<li><p>'+jsonDateFormat(productList.createTime.time).substr(0,10)+'</p></li>'+
+				'<li>'+
+					'<button onclick="Edit('+productList.productNo+')">编辑</button>'+
+					'<button onclick="onDelete('+productList.productNo+','+auditStatus+')">删除</button>'+
+				'</li>'+
+			'</ul>';
+		}	
+	}else{
+		str = "当前没有商品"
+	}
+	$(".main_cont_list").html(str);
+}
+//所有审核状态个数
+function resultCount(){
+	$.ajax({
+		type: 'POST',
+		url: apiUrl+'/product/resultCount',
+		data: {token:$.cookie("login_on")},
+		dataType: 'json',
+		success:function(e){
+			$(".main_title_cont h1").eq(0).find("span").text("("+e.successAuditCount+")");
+			$(".main_title_cont h1").eq(1).find("span").text("("+e.reviewAuditCount+")");
+			$(".main_title_cont h1").eq(2).find("span").text("("+e.failureAuditingCount+")");
+		}
 	})
-})*/
-	
+}
+//删除
+function onDelete(id,auditStatus){
+	meg2("提示","是否确认删除商品","body",on_Delete)
+	function on_Delete(){
+		$.ajax({
+			type: 'POST',
+			url: apiUrl+'/product/delProduct',
+			data: {productNos:id},
+			dataType: 'json',
+			success:function(e){
+				console.log(e)
+				if(e.status == 200){
+					meg("提示","商品删除成功","body",dothing)
+					function dothing(){
+						resultCount();
+						show(1,auditStatus,1)
+					}
+				}else{
+					meg("提示","删除失败，请稍后重试","body",dothing)
+				}		
+			}
+		})
+	}
+}
+//编辑
+function Edit(id){
+	window.location.href = "u_management_edit.html?id="+id
+}
+

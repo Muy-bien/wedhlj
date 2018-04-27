@@ -305,3 +305,7 @@
 .main_file:hover .main_file_hide {
   bottom: 0;
 }
+
+.input_Num{
+  padding: 0 5px !important;
+}

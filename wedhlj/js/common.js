@@ -196,8 +196,7 @@ function imgUpload(obj) {
 				var imgSrcI = getObjectURL(fileList[i]);//图片预览
 				imgSrc[iIndex].push(imgSrcI);//存入图片路径数组
 				imgName[iIndex].push(fileList[i].name);//存入图片名字数组
-				imgFile[iIndex].push(fileList[i]);//存入文件流数组 
-				$(oInput).val("");
+				imgFile[iIndex].push(fileList[i]);//存入文件流数组
 				if(obj.num[iIndex] <= imgbox_default[iIndex].length+imgSrc[iIndex].length){
 			 		$(this).parents(obj.filebox).css("display","none")
 			 		return addNewContent(imgBox,iIndex);
@@ -205,6 +204,7 @@ function imgUpload(obj) {
 			}
 				
 		}
+		$(oInput).val("");
 		addNewContent(imgBox,iIndex);//图片展示
 	})
 	 
@@ -285,6 +285,23 @@ $(obj).click(function(){
 	});	
 })
 */
+
+/*
+***转换data时间格式
+*/
+function jsonDateFormat(jsonDate) {
+    try {
+        var date = new Date(parseInt(jsonDate.replace("/Date(", "").replace(")/", ""), 10));
+        var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+        var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        var hours = date.getHours();
+        var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+        var seconds = date.getSeconds();
+        return date.getFullYear() + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
+    } catch (ex) {
+        return "";
+    }
+}
 
 
 

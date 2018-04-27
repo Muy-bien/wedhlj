@@ -1,10 +1,7 @@
-//传输用户名到input框
-$(document).ready(function(){
-	var username =  $(".h_name").text();
-	$("#username").val(username);
-	//导航栏默认选中
+//导航栏默认选中
+function on_navli(){
 	$(".nav_cont_a").eq(2).addClass("nav_cont_on");
-})
+}
 
 //价格必须为正数
 $(".input_money").change(function() {
@@ -18,47 +15,39 @@ function login(){
 	if (state == 1) {
 		state = 2;
 		//判断复选框
-		var sp_color = "";
+		var sp_color = [];
 		for(var i = 0;i< $(".input_color input").length;i++){
 			if ($(".input_color input").eq(i).is(':checked')) {
-				sp_color += $(".input_color input").eq(i).val()
+				sp_color.push($(".input_color input").eq(i).val())
 			}
 		}
-		var Attributes = $(".input_Attributes").val(sp_color).val();//商品颜色
-		var pname = $("input[name='pname']").val(); //商品名称
-		var height = $("input[name='height']").val(); //商品尺寸
-		var width = $("input[name='width']").val(); //商品尺寸
-		var length = $("input[name='length']").val(); //商品尺寸
-		var price = $("input[name='price']").val(); //商品原价
-		var dis_price = $("input[name='dis_price']").val(); //商品折扣价
-		var number = $("input[name='number']").val(); //商品数量
-		var pdesc = $("textarea[name='pdesc']").val(); //商品描述
+		var pname = $("input[name='productName']").val(); //商品名称
+		var height = $(".height").val(); //商品尺寸
+		var width = $(".width").val(); //商品尺寸
+		var length = $(".length").val(); //商品尺寸
+		var price = $("input[name='productPrice']").val(); //商品原价
+		var dis_price = $("input[name='discountPrice']").val(); //商品折扣价
+		var number = $("input[name='productNumber']").val(); //商品数量
+		var pdesc = $("textarea[name='productDesc']").val(); //商品描述
 		if (!pname) {
-			$(".input_Attributes").val("");
 			meg('提示','请输入商品名称','body');
 			return false;
 		}else if (!height || !width || !length){
-			$(".input_Attributes").val("");
 			meg('提示','请输入商品尺寸','body');
 			return false;
-		}else if (!Attributes) {
-			$(".input_Attributes").val("");
-			meg('提示','请输入商品颜色','body');
+		}else if (!sp_color) {
+			meg('提示','请选择商品颜色','body');
 			return false;
 		}else if (!price) {
-			$(".input_Attributes").val("");
 			meg('提示','请输入商品原价','body');
 			return false;
 		}else if (Number(price) < Number(dis_price)) {
-			$(".input_Attributes").val("");
 			meg('提示','折扣价不能大于原价','body');
 			return false;
 		}else if (!number) {
-			$(".input_Attributes").val("");
 			meg('提示','请输入库存数量','body');
 			return false;
 		}else if (!pdesc) {
-			$(".input_Attributes").val("");
 			meg('提示','请输入商品描述','body');
 			return false;
 		}else if(imgFile){
@@ -77,7 +66,9 @@ function login(){
 				data.append(files_data[i],imgFile[i][s]);	
 			}
 		}
-		
+		data.append('productProperty',sp_color)//颜色
+		data.append('productSize',height+','+width+','+length)//尺寸
+		data.append('token',$.cookie("login_on"))//token
 		//刷新页面
 		var doThing = function(){
 			window.location.reload();
@@ -89,21 +80,21 @@ function login(){
 		
 		$.ajax({
 			type: 'POST',
-			url: apiUrl+'product',
+			url: apiUrl+'/product/addProductInfo',
 			data: data,
 			processData: false,
 			contentType: false,
 			success: function(e) {
 				down_Loading()
-				if (e['productStatus'] == 200) {
+				if(e.status == 200) {
 					meg2('提示','上传成功,返回商品管理页面','body',hrefing,doThing); 
-				}else if(e['productStatus'] == 400){				
+				}else{				
 					meg('提示','上传失败','body',doThing); 
 				}
 			},
 			error : function(e) {
 				down_Loading()
-				meg('提示','当前网络不畅通,请检查您的网络','body',doThing); 
+				meg('提示','未能成功连接服务器，请稍后重试','body',doThing); 
 			}
 		})
 	}	
