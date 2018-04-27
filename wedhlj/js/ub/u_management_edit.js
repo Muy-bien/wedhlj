@@ -21,18 +21,11 @@ $(document).ready(function(){
 	var dis_price = $("input[name='dis_price']"); //商品折扣价      
 	var number = $("input[name='number']"); //商品数量      
 	var pdesc = $("textarea[name='pdesc']"); //商品描述
-	$("#username").val(id);
-	var data = {
-		pid: id,
-	}
-
 	$.ajax({
 		type: 'POST',
-		crossDomain: true,
-		url: apiUrl+'product/selectOne',
+		url: apiUrl+'/product/queryProduct',
 		dataType: 'json',
 		data: data,
-		async: true,//异步请求
 		success:function(e){
 			//传入当前商品颜色
 			var arr = new Array();
@@ -97,6 +90,8 @@ $(document).ready(function(){
 		}
 	})
 })
+
+//获取商品数据渲染页面
 
 var state = 1;//防止多次点击
 function login(){

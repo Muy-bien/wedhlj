@@ -80,6 +80,12 @@ $(document).ready(function(){
 						'</div>'+
 					'</li>';
 				}
+				h_nav +='<li>'+
+					'<i></i>'+
+					'<div class="nav_cont_a nav_cont_off">'+
+						'<a href="u_personnelManagement.html">人员管理</a>'+
+					'</div>'+
+				'</li>';
 				if(h_position == 3){
 					h_nav +='<li>'+
 						'<i></i>'+
@@ -88,12 +94,6 @@ $(document).ready(function(){
 						'</div>'+
 					'</li>';
 				}
-				h_nav +='<li>'+
-					'<i></i>'+
-					'<div class="nav_cont_a nav_cont_off">'+
-						'<a href="u_personnelManagement.html">人员管理</a>'+
-					'</div>'+
-				'</li>';
 				if(h_position == 1){
 					h_nav +='<li>'+
 						'<i></i>'+
@@ -166,16 +166,17 @@ $(document).ready(function(){
 		}
 		
 	}	
-	//退出登录
-	function sign_out(){
-		$(".sign_out").click(function(){
-			meg2("提示","是否确定退出登录","body",doThing)
-			function doThing(){
-				$.cookie("login_on","",{ path:'/',secure:false , expires: -1});//清空token
-				$.cookie("user","",{ path:'/',secure:false , expires: -1});//清空用户名
-				$.cookie("h_position","",{ path:'/',secure:false , expires: -1});//清空用户类型定位信息
-				window.location.href = "index.html";
-			}
-		})
-	}	
+	
 })
+//退出登录
+function sign_out(){
+	$(".sign_out").click(function(){
+		meg2("提示","是否确定退出登录","body",doThing)
+		function doThing(){
+			$.cookie("login_on","",{ path:'/',secure:false , expires: -1});//清空token
+			$.cookie("user","",{ path:'/',secure:false , expires: -1});//清空用户名
+			$.cookie("h_position","",{ path:'/',secure:false , expires: -1});//清空用户类型定位信息
+			window.location.href = "index.html";
+		}
+	})
+}	
