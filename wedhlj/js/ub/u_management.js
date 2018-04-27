@@ -2,7 +2,7 @@
 $(document).ready(function(){
 	//页面刷新执行内容渲染
 	resultCount();
-	if(!page){
+	if(!page || !auditStatus){
 		$(".main_title_cont h1").eq(0).addClass('main_title_cont_on')
 		show(1,1,1)
 	}else{
@@ -33,7 +33,7 @@ $(document).ready(function(){
 })
 //导航栏默认选中
 function on_navli(){
-	$(".nav_cont_a").eq(2).addClass("nav_cont_on");
+	$(".nav_cont_a").eq(3).addClass("nav_cont_on");
 }
 //获取url中的参数
 function getUrlParam(name){
@@ -130,7 +130,7 @@ function onDelete(id,auditStatus){
 						show(1,auditStatus,1)
 					}
 				}else{
-					meg("提示","删除失败，请稍后重试","body",dothing)
+					meg("提示","删除失败，请稍后重试","body")
 				}		
 			}
 		})

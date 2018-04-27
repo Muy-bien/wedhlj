@@ -150,7 +150,7 @@ function down_Loading(){
 
 /*设置input框必须输入正数*/
 $(".input_Num").change(function() {
-	if($(this).val() > 0 == false){
+	if(Number($(this).val()) > 0 == false){
 		$(this).val("");
 	}
 });

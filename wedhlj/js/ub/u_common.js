@@ -172,29 +172,43 @@ $(document).ready(function(){
 	}
 	//用户个人信息
 	function userInfo(){
-		$(".main_header").html('<div class="main_header_user">'+
-			'<div class="main_header_user_img">'+
-				'<div class="img_auto" style="background-image:url(images/ub/ub_user_bg.jpg)"></div>'+
-			'</div>'+
-			'<div class="main_header_user_x10">'+
-				'<p class="main_header_user_type"><i></i>主持人</p>'+
-				'<p class="main_header_user_name">雷电法王杨永信</p>'+
-			'</div>'+
-		'</div>'+
-		'<ul class="main_header_info">'+
-			'<li>'+
-				'<h2>关注</h2>'+
-				'<p>0</p>'+
-			'</li>'+
-			'<li>'+
-				'<h2>订单</h2>'+
-				'<p>0</p>'+
-			'</li>'+
-			'<li>'+
-				'<h2>余额</h2>'+
-				'<p>0</p>'+
-			'</li>'+
-		'</ul>')
+		$.ajax({
+			type: 'POST',
+			url: apiUrl+'/user/queryUser',
+			dataType: 'json',
+			data: {token:$.cookie("login_on")},
+			success: function(e){
+				var user = e.user
+				if(e.status == 200){
+					if(user.headPhoto != ""){
+						var str = '<div class="img_auto" style="background-image:url(images/ub/ub_user_bg.jpg)"></div>'
+					}else{
+						var str = ""
+					}
+					$(".main_header").html('<div class="main_header_user">'+
+						'<div class="main_header_user_img">'+str+'</div>'+
+						'<div class="main_header_user_x10">'+
+							'<p class="main_header_user_type"><i></i>'+user.companyType+'</p>'+
+							'<p class="main_header_user_name">'+user.companyName+'</p>'+
+						'</div>'+
+					'</div>'+
+					'<ul class="main_header_info">'+
+						'<li>'+
+							'<h2>关注</h2>'+
+							'<p>'+user.attentionNum+'</p>'+
+						'</li>'+
+						'<li>'+
+							'<h2>订单</h2>'+
+							'<p>'+e.indentCount+'</p>'+
+						'</li>'+
+						'<li>'+
+							'<h2>余额</h2>'+
+							'<p>'+user.balance+'</p>'+
+						'</li>'+
+					'</ul>')
+				}
+			}
+		})
 	}	
 	
 })
