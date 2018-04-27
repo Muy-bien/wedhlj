@@ -1,7 +1,9 @@
+//导航栏默认选中
+function on_navli(){
+	$(".nav_cont_a").eq(2).addClass("nav_cont_on");
+}
 //导入信息
 $(document).ready(function(){
-	//导航栏默认选中
-	 $(".nav_cont_a").eq(1).addClass("nav_cont_on");
 	 $("input[name=username]").val($.cookie("user"));
 	 var username=$.cookie("user");
 	 //请求获得团体信息
