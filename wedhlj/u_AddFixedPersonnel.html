@@ -29,7 +29,7 @@
 					<div class="p_name">
 						<div class="add_type_title">名称</div>
 						<i class="input_border"></i>
-						<input type="text" name="pname" class="add_type_name" placeholder="名称请控制在16个字符内" maxlength="16">
+						<input type="text" name="name" class="add_type_name" placeholder="名称请控制在16个字符内" maxlength="16">
 						<input type="text" name="username" class="hide">
 					</div>
 					<!-- 地址 -->
@@ -61,12 +61,14 @@
 								<option>新津县</option>
 							</select>
 						</div>
+						<!-- 地址 -->
+						<input type="text" name="address" class="hide">
 					</div>
 					<!-- 详细地址 -->
 					<div class="p_name">
 						<div class="add_type_title">详细地址</div>
 						<i class="input_border"></i>
-						<input type="text" name="address" class="add_type_name" maxlength="20">
+						<input type="text" class="add_type_name " maxlength="20">
 					</div>
 					<!-- 身高 -->
 					<div class="p_name personHeight">
@@ -80,7 +82,7 @@
 						<!-- 风格类型 -->
 							<div class="Posttask_x10">
 								<ul>
-									<!-- <li class="Posttask_x20">
+									<li class="Posttask_x20">
 										<p>风趣</p>
 									</li>
 									<li class="Posttask_x20">
@@ -103,7 +105,7 @@
 									</li>
 									<li class="Posttask_x20">
 										<p>控场达人</p>
-									</li> -->
+									</li>
 								</ul>
 								<input type="text" name="style" class="hide style">
 							</div>
@@ -112,21 +114,21 @@
 					<div class="p_name">
 						<div class="add_type_title">基本工资</div>
 						<input type="text" class="p_select heigAndPri
-						 yourPrice" name="price" maxlength="8">
+						 yourPrice" name="wage" maxlength="8">
 						 <span class="Company">元</span>
 					</div>
 					<!-- 提成率 -->
 					<div class="p_name">
 						<div class="add_type_title">提成率</div>
 						<input type="text" class="p_select heigAndPri
-						 yourPrice" name="price" maxlength="4">
+						 yourPrice" name="commission" maxlength="4">
 						 <span class="Company">%</span>
 					</div>
 					<!-- 提成工资 -->
 					<div class="p_name">
 						<div class="add_type_title">提成工资</div>
 						<input type="text" class="p_select heigAndPri
-						 yourPrice" name="price" maxlength="8">
+						 yourPrice" name="cut__wages" maxlength="8">
 						 <span class="Company">元</span>
 					</div>
 					<!-- 头像 -->
@@ -135,7 +137,7 @@
 						<div class="main_file_head">
 							<a href='javascript:void(0);' class="blueButton_head"><p>上传头像</p></a>
 							<div class="show_head"></div>
-							<input type="file" name="imgFiles" class="myFileUpload_02 myFileUpload_head" accept="image/*">
+							<input type="file" name="headPortait" class="myFileUpload_02 myFileUpload_head" accept="image/*">
 						</div>
 					</div>
 					<!-- 案例图片 -->
@@ -167,21 +169,21 @@
 									<input type="button" name="" value="删除" class="addr_delete">
 								</li> -->
 							</ul>
-							<input type="text" name="video" class="hide">
+							<input type="text" name="case_video" class="hide">
 						</div>
 					</div>
 					<!-- 人员简介 -->
 					<div class="p_name">
 						<div class="add_type_title">人员简介</div>
 						<div class="descSimple">
-							<textarea name="desc" class="desc" maxlength="200" placeholder="请填写两百字以内的人员简介(必填)"></textarea>
+							<textarea name="introduce" class="desc" maxlength="200" placeholder="请填写两百字以内的人员简介(必填)"></textarea>
 						</div>
 					</div>
 					<!-- 公告 -->
 					<div class="p_name">
 						<div class="add_type_title">公告</div>
 						<div class="descSimple">
-							<textarea name="notice" class="desc" maxlength="200" placeholder="请填写异地费，运费等需知(选填)"></textarea>
+							<textarea name="notice" class="notice desc" maxlength="200" placeholder="请填写异地费，运费等需知(选填)"></textarea>
 						</div>
 					</div>
 					<!-- 上传 -->
@@ -204,7 +206,7 @@
 			filebox:'.upload_img_Choice',//添加图片按钮class
 			inputId:'.file', //input框class
 			imgBox:['#imgBox'], //图片容器ids
-			data:['imgFiles1'], //参数名
+			data:['case_img'], //参数名
 			num:['6'],//上传个数
 		})
 	</script>

@@ -2,91 +2,6 @@
 function on_navli(){
 	$(".nav_cont_a").eq(2).addClass("nav_cont_on");
 }
-//导入信息
-$(document).ready(function(){
-	 $("input[name=username]").val($.cookie("user"));
-	 var username=$.cookie("user");
-	 //请求获得团体信息
-	 /*$.ajax({
-			type: "post",
-			url: apiUrl+'/person/selectOneByTeam',
-			data: {username:username},
-			dataType:'json',
-			success: function(e){
-				console.log(e);
-				var team=e.team;
-				//人员地址===团体地址
-				var personAddr=team.tAddress.split(",");
-				$("select[name=province]").val(personAddr[0]);
-				$("select[name=city]").val(personAddr[1]);
-				$("select[name=county]").val(personAddr[2]);
-				$("input[name=address]").val(personAddr[3]);
-				//根据类型判断是否需要身高的选项
-				if(team.tType!=="主持人"){ 
-					$(".personHeight").css("display","none");
-				}
-				//确定风格
-				var arr=[]; 
-				var html="";
-				if(team.tType=="主持人"){
-					arr=["风趣","简洁","成熟","大气","稳重","温馨","欢快","控场达人"];
-					style(arr);
-				}else if(team.tType=="摄影师"){
-					arr=["靠谱","效率","省心","沟通达人","创意","艺术","古典","简约"];
-					style(arr);
-				}else if(team.tType=="摄像师"){
-					arr=["靠谱","效率","省心","沟通达人","创意","艺术","古典","简约"];
-					style(arr);
-				}else if(team.tType=="化妆师"){
-					arr=["靠谱","效率","省心","沟通达人","唯美","古典","摩登","清新自然"];
-					style(arr);
-				}else if(team.tType=="婚礼执行"){
-					arr=["靠谱","效率","省心","沟通达人","细致","布场能手","耐心"];
-					style(arr);
-				}else if(team.tType=="婚礼管家"){
-					arr=["靠谱","效率","省心","沟通达人","礼仪专家","有范","贴心"];
-					style(arr);
-				}else if(team.tType=="花艺师"){
-					arr=["靠谱","效率","省心","沟通达人","创意","搭配专家","色彩控"];
-					style(arr);
-				}
-				//选风格,最多只能添加三种风格
-				var addStyle=1;//是否可以添加样式
-				$(".Posttask_x10 li").click(function(){
-					var choosedLi=$(".Posttask_x20_on").length+1;
-					 if(choosedLi>3){
-					 	if($(this).hasClass("Posttask_x20_on")){
-					 		$(this).toggleClass(".Posttask_x20_on");
-					 		addStyle=1;
-					 	}else{
-					 		meg("提示", "风格最多只能选择三个", "body", doThing);
-					 		addStyle=0;
-					 	}
-					 }
-					 if(addStyle==1){	
-						 $(this).toggleClass("Posttask_x20_on");
-					}
-				})
-				//arr是哪个风格数组
-				function style(arr){
-					var html="";
-					for(var i=0;i<arr.length;i++){
-						html+='<li class="Posttask_x20">'+
-										'<p>'+arr[i]+'</p>'+
-									'</li>';
-					}
-					$(".Posttask_x10 ul").html(html);
-				}
-			},
-			error:function(){
-				meg("提示","网络错误，请稍后再试","body");
-			}
-	 })*/
-	 
-
-
-
-})
 var doThing=function(){}
 // 验证输入的内容位数字的函数
 function testNumber(thisSelector){
@@ -98,7 +13,7 @@ function testNumber(thisSelector){
 		}
 	})
 }
-//地址
+//地址改变清空详细地址
 $("select[name=county]").on("change",function(){
 	$("input[name=address]").val("");
 })
@@ -123,8 +38,6 @@ $(".Posttask_x10 li").click(function(){
 		 $(this).toggleClass("Posttask_x20_on");
 	}
 })
-
-
 //上传头像
 $(".myFileUpload_head").change(function(e){ 
  	var file = this.files[0];
@@ -170,12 +83,14 @@ $(".myFileUpload_head").change(function(e){
 			}	
 		})
 	})
-
 //上传
 var state = 1;
 $("#btn").on('click', function() {
 	if (state == 1) {
 		state = 2;
+		// 详细地址
+		var addressTot=$("#s1").val()+','+$("#s2").val()+','+$("#s3").val();
+		$("input[name=address]").val(addressTot);
 		//风格上传
 		var style="";
 		for(var i=0;i<$(".Posttask_x20_on").length;i++){
@@ -188,11 +103,8 @@ $("#btn").on('click', function() {
 			addr+=$(".upload_addr li").eq(i).first().text() + ",";
 		}
 		$("input[name=video]").val(addr);
-		console.log(imgFile);
-				console.log(imgFile[0]);
-				console.log(imgFile[0].length);
 		//表单项不能为空验的证
-		if(!$("input[name=pname]").val()){
+		if(!$("input[name=name]").val()){
 			meg("提示","名称不能为空","body");
 			return false;//名称验证
 		}else if(!$("input[name=address]").val()){
@@ -204,24 +116,25 @@ $("#btn").on('click', function() {
 		}else if(!$("input[name=style]").val()){
 			meg("提示","至少选择一种风格","body");
 			return false;//风格验证
-		}else if(!$("input[name=price]").val()){
+		}else if(!$("input[name=wage]").val()){
 			meg("提示","价格不能为空","body");
-			return false;//价格验证
+			return false;//基本工资
+		}else if(!$("input[name=commission]").val()){
+			meg("提示","价格不能为空","body");
+			return false;//提成率
+		}else if(!$("input[name=cut__wages]").val()){
+			meg("提示","价格不能为空","body");
+			return false;//提成工资
 		}else if(!$("div[class=show_head]").html()){
 			meg("提示","头像不能为空","body");
 			return false;//头像验证
 		}else if(imgFile[0].length < 2){
 			meg("提示","请至少上传2张案例图片","body");
 			return false;
-		}else if(!$("textarea[name=desc]").val()){
+		}else if(!$("textarea[name=introduce]").val()){
 			meg("提示","请填写人员简介","body");
 			return false;//人员简介验证
 		}
-		// else if(!$("textarea[name=notice]").val()){
-		// 	meg("提示","请填写公告","body");
-		// 	return false;//人员公告验证
-		// }
-			
 		//用formDate对象上传
 		var data = new FormData($('#uploadForm')[0]);
 		for(var i=0;i<imgFile.length;i++){
@@ -229,21 +142,23 @@ $("#btn").on('click', function() {
 				data.append(files_data[i],imgFile[i][s]);	
 			}
 		}
+		data.append("token",$.cookie("login_on"));
+		//BusinessPersonnel/addBusinessPersonnel
 		$.ajax({
 			type: "post",
-			url: apiUrl+'person/add',
+			url: apiUrl+'BusinessPersonnel/addBusinessPersonnel',
 			data: data,
 			processData: false,
 			contentType: false,
 			success: function(e) {
 				function uploadSuccess(){
-					location.href="p_management.html";
+					location.href="u_personnelManagement.html?PersonnelType=0&page=1";
 				}
-				//console.log(e);personStatus:200
-				if(e.personStatus==200){
-					meg("提示","上传成功","body",uploadSuccess);
-				}else if(e.personStatus==400){
-					meg("提示","上传失败","body");
+				console.log(e)
+				if(e.status==200){
+					meg("提示","人员上传成功","body",uploadSuccess);
+				}else{
+					meg("提示","人员上传失败","body");
 				}
 
 			},

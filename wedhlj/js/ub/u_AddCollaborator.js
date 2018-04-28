@@ -38,10 +38,11 @@ $(".upload").click(function(){
 		}else if(!$("input[name=wage]").val()){//基础工资
 			meg("提示","请填写基础工资！","body");
 		}else if(!$("input[name=commission]").val()){//提成率
-			meg("提示","请填写基础工资！","body");
+			meg("提示","请填写提成率！","body");
 		}
 		var data=new FormData($("#uploadForm")[0]);
 		data.append("PersonnelType",1)//固定人员;
+		data.append("token",$.cookie("login_on"));//加token
 		for(p of data){
 			console.log(p)
 		}
