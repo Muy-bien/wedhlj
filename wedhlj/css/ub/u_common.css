@@ -141,3 +141,111 @@ header {
   margin-right: 5px;
 }
 
+/* 个人信息展示 */
+.main_header {
+  height: 200px;
+  background: url(../../images/ub/ub_user_bg.jpg) no-repeat;
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.main_header_user {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: 135px;
+}
+
+.main_header_user_img {
+  width: 115px;
+  height: 115px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.main_header_user_img div {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+
+.main_header_user_x10 {
+  margin-left: 25px;
+}
+
+.main_header_user_x10 p {
+  width: 100%;
+  line-height: 22px;
+  height: 22px;
+  color: #fff;
+}
+
+.main_header_user_type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.main_header_user_type i {
+  display: inline-block;
+  width: 30px;
+  height: 100%;
+  background: url(../../images/ub/ub_icon.png) no-repeat -79px 0;
+}
+
+.main_header_user_name {
+  font-size: 20px;
+}
+
+.main_header_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-right: 100px;
+}
+
+.main_header_info li {
+  width: 100px;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.main_header_info li h2 {
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.main_header_info li p {
+  font-size: 18px;
+  color: #77010d;
+}
+
