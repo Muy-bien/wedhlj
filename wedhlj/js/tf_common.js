@@ -73,8 +73,7 @@ $(document).ready(function(){
 			url: apiUrl+'/user/resultUserType',
 			dataType: 'json',
 			data: {userName:$.cookie("user"),token:$.cookie("login_on")},
-			success: function(e) {
-				console.log(e);
+			success: function(e){
 				h_position = e.userType;//用户类型定位信息
 				h_checkStatus = e.auditStatus;
 				$.cookie("h_position",h_position,{ path:'/',secure:false}); //储存状态
