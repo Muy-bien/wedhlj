@@ -117,14 +117,11 @@ $("#btn").on('click', function() {
 			meg("提示","至少选择一种风格","body");
 			return false;//风格验证
 		}else if(!$("input[name=wage]").val()){
-			meg("提示","价格不能为空","body");
+			meg("提示","基本工资不能为空","body");
 			return false;//基本工资
 		}else if(!$("input[name=commission]").val()){
-			meg("提示","价格不能为空","body");
+			meg("提示","提成率不能为空","body");
 			return false;//提成率
-		}else if(!$("input[name=cut__wages]").val()){
-			meg("提示","价格不能为空","body");
-			return false;//提成工资
 		}else if(!$("div[class=show_head]").html()){
 			meg("提示","头像不能为空","body");
 			return false;//头像验证

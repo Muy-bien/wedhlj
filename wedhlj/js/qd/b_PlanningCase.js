@@ -106,10 +106,9 @@ function queryAllScheme(auditStatus,sort,schemeStyle,pageNo,pageSize,state){
 			if(schemeList.length!=0){
 				var schemeListCont="";
 				for(var i=0;i<schemeList.length;i++){
-					console.log(schemeList[i]);
 					showPic=schemeList[i].schemeSignArea.split(",");
 					schemeListCont+='<li>'+
-										'<a href="b_Addorder.html">'+
+										'<a href="b_CaseDetails.html?schemeNo='+schemeList[i].schemeNo+'">'+
 											'<div class="main_img" >'+
 												'<div class="img_contain" style="background:url('+apiUrl+showPic[0]+')"></div>'+
 												//'<img src="'+apiUrl+showPic[0]+'" alt="">'+
