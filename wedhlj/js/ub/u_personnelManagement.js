@@ -36,9 +36,12 @@ $(document).ready(function(){
 		queryAllParticularInfo($.cookie("login_on"),1,0,1)
 	}else if(PersonnelType==0){
 		$(".main_title_cont h1").eq(0).addClass('main_title_cont_on');
+		queryAllParticularInfo($.cookie("login_on"),1,0,1);
 	}else if(PersonnelType==1){
 		$(".main_title_cont h1").eq(1).addClass('main_title_cont_on');
+		queryAllParticularInfo($.cookie("login_on"),1,1,1);
 	}
+
 })
 ///BusinessPersonnel/queryAllParticularInfo
 ///PersonnelType  0---合作 1--固定
