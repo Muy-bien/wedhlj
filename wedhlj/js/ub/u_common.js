@@ -181,7 +181,7 @@ $(document).ready(function(){
 				var user = e.user
 				if(e.status == 200){
 					if(user.headPhoto != ""){
-						var str = '<div class="img_auto" style="background-image:url(images/ub/ub_user_bg.jpg)"></div>'
+						var str = '<div class="img_auto" style="background-image:url('+user.headPhoto+')"></div>'
 					}else{
 						var str = ""
 					}

@@ -89,8 +89,10 @@ a:hover{
   border: 1px solid #f85162 !important;
 }
 
-.main_nav_x10_on{
+.main_nav_x10 .main_nav_x10_on{
   border: 1px solid #f85162 !important;
+  background: #f85162;
+  color: #fff;
 }
 
 /*内容*/
@@ -154,9 +156,12 @@ a:hover{
 .mainc_p10{
   font-size: 24px;
   line-height: 24px;
-  color: #666;
   font-weight: 700;
   margin-bottom: 10px;
+}
+
+.mainc_p10 a{
+  color: #666;
 }
 
 .mainc_p20{
@@ -450,6 +455,7 @@ a:hover{
   -ms-flex-align: center;
   align-items: center;
   color: #fff;
+  cursor: pointer;
 }
 
 .sidebox_01 {

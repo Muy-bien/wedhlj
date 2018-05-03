@@ -141,7 +141,7 @@ var apiUrl = "http://172.16.14.16:8080/";/*星儒本地测试api地址*/
  *on_Loading添加
  *down_Loading添加
 */
-function on_Loading(data){
+function on_Loading(){
 	$("body").append('<div id="on_loading"></div>')
 }
 function down_Loading(){

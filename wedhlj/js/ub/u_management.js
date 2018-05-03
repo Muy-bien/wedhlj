@@ -49,8 +49,8 @@ function show(page,auditStatus,state){
 		dataType: 'json',
 		success:function(e){
 			showlist(e,auditStatus);//渲染列表内容
-			$(".main_Pagination").html("")//清空分页列表
-			if(e.productList != ""){
+			$(".main_Pagination").html("");//清空分页列表
+			if(e.productList != "" && Math.ceil(e.totalCount/5)>1){
 				$('.main_Pagination').paging({
 		            initPageNo: page, // 初始页码
 		            totalPages: Math.ceil(e.totalCount/5), //总页数
@@ -80,7 +80,7 @@ function showlist(data,auditStatus){
 				'<li><p>'+productList.productNo+'</p></li>'+
 				'<li><div class="main_cont_list_img img_auto" style="background-image:url('+apiUrl+productList.productImage.split(",")[0]+')"></div></li>'+
 				'<li><p>'+productList.productName+'</p></li>'+
-				'<li><p>'+(productList.discountPrice="0.0"?productList.productPrice:productList.discountPrice)+'</p></li>'+
+				'<li><p>'+(productList.discountPrice=="0.0"?productList.productPrice:productList.discountPrice)+'</p></li>'+
 				'<li><p>'+productList.sellNumber+'</p></li>'+
 				'<li><p>'+jsonDateFormat(productList.createTime.time).substr(0,10)+'</p></li>'+
 				'<li>'+

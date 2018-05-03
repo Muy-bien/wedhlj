@@ -36,7 +36,7 @@ function showInfo(productNo){
 					}
 				}
 				$("input[name=productPrice]").val(data.productPrice);//商品原价
-				$("input[name=discountPrice]").val(data.discountPrice);//商品折扣价
+				$("input[name=discountPrice]").val(data.discountPrice == "0.0"?"":data.discountPrice);//商品折扣价
 				$("input[name=productNumber]").val(data.productNumber);//商品数量
 				$("textarea[name=productDesc]").val(data.productDesc);//商品描述
 				//商品图片

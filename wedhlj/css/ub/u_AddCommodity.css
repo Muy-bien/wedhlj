@@ -202,6 +202,16 @@
   margin: 5px;
 }
 
+.input_Doot span{
+  margin-left: 30px;
+}
+
+.input_Doot span i{
+  color: #f85162;
+  margin-right: 7px;
+  font-size: 14px;
+}
+
 .main_cont .input_textarea {
   height: 150px;
 }
