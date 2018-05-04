@@ -73,7 +73,6 @@ var state = 1;
 $("#btn").on('click', function() {
 	if (state == 1) {
 		state = 2;
-		on_Loading();
 		// 详细地址
 		var addressTot=$("#s1").val()+','+$("#s2").val()+','+$("#s3").val();
 		$("input[name=address]").val(addressTot);
@@ -118,6 +117,8 @@ $("#btn").on('click', function() {
 			meg("提示","请填写人员简介","body");
 			return false;//人员简介验证
 		}
+		
+		on_Loading();
 		//用formDate对象上传
 		var data = new FormData($('#uploadForm')[0]);
 		for(var i=0;i<imgFile.length;i++){
@@ -126,10 +127,11 @@ $("#btn").on('click', function() {
 			}
 		}
 		data.append("token",$.cookie("login_on"));
+		data.append("PersonnelType",0)//合作人员;
 		//BusinessPersonnel/addBusinessPersonnel
 		$.ajax({
 			type: "post",
-			url: apiUrl2+'BusinessPersonnel/addBusinessPersonnel',
+			url: apiUrl+'BusinessPersonnel/addBusinessPersonnel',
 			data: data,
 			processData: false,
 			contentType: false,

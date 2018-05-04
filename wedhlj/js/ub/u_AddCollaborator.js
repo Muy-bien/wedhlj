@@ -25,7 +25,6 @@ queryUser($.cookie("login_on"))
 $(".upload").click(function(){
 	if(state==1){
 		state=2;
-		on_Loading();
 		//风格
 		var stylePer='';
 		for(var i=0;i<$(".Posttask_x10 li.Posttask_x20_on p").length;i++){
@@ -35,13 +34,18 @@ $(".upload").click(function(){
 		console.log(stylePer);
 		if(!$("input[name=name]").val()){//名称
 			meg("提示","请填写名称！","body");
+			return false;
 		}else if(!$("input[name=style]").val()){//风格
 			meg("提示","至少选择一种风格！","body");
+			return false;
 		}else if(!$("input[name=wage]").val()){//基础工资
 			meg("提示","请填写基础工资！","body");
+			return false;
 		}else if(!$("input[name=commission]").val()){//提成率
 			meg("提示","请填写提成率！","body");
+			return false;
 		}
+		on_Loading();
 		var data=new FormData($("#uploadForm")[0]);
 		data.append("PersonnelType",1)//固定人员;
 		data.append("token",$.cookie("login_on"));//加token
@@ -50,7 +54,7 @@ $(".upload").click(function(){
 		}
 		$.ajax({
 			type: 'POST',
-			url: apiUrl2+'BusinessPersonnel/addBusinessPersonnel',
+			url: apiUrl+'BusinessPersonnel/addBusinessPersonnel',
 			data: data,
 			processData:false,
 			contentType:false,

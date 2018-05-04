@@ -67,7 +67,7 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state){
 							state = 2 
 		            	}else if(state == 2){
 		            		history.pushState(history.state,"","?PersonnelType="+PersonnelType+"&page="+page)
-		            		//show(page,auditStatus,1)
+		            		queryAllParticularInfo($.cookie("login_on"),page,PersonnelType,1);
 		            	}
 		            }
 	        	})
@@ -87,21 +87,23 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state){
 									'<li>操作</li>'+
 								'</ul>';
 	        		for(var i=0;i<businessPersonnels.length;i++){
+	        			businessPersonnels[i].audit=0?'未通过':(businessPersonnels[i].audit==1?'通过':'未审核');
+	        			var status=businessPersonnels[i].audit;
 						personHtml+='<div class="main_cont_list">'+
 										'<ul>'+
 											'<li><p>'+businessPersonnels[i].personnelNo+'</p></li>'+
 											'<li><div class="main_cont_list_img img_auto" style="background-image:url('+apiUrl+businessPersonnels[i].headPortait+')"></div></li>'+
-											'<li><p>霸刀杨壹</p></li>'+
-											'<li><p>500</p></li>'+
+											'<li><p>'+businessPersonnels[i].name+'</p></li>'+
+											'<li><p>'+businessPersonnels[i].order_price+'</p></li>'+
 											'<li><p>'+businessPersonnels[i].wage+'</p></li>'+
-											'<li><p>520</p></li>'+
-											'<li><p>520</p></li>'+
-											'<li><p>360</p></li>'+
-											'<li><p>360</p></li>'+
-											'<li><p>审核通过</p></li>'+
+											'<li><p>'+businessPersonnels[i].reservationNumber+'</p></li>'+
+											'<li><p>'+businessPersonnels[i].attention+'</p></li>'+
+											'<li><p>'+businessPersonnels[i].orderQuantity+'</p></li>'+
+											'<li><p>'+businessPersonnels[i].completeOrder+'</p></li>'+
+											'<li><p>'+status+'</p></li>'+
 											'<li>'+
 												'<button>编辑</button>'+
-												'<button>删除</button>'+
+												'<button class="deletePlan">删除<div class="hide">'+businessPersonnels[i].personnelNo+'</div></button>'+
 											'</li>'+
 										'</ul>'+
 									'</div>'
@@ -121,22 +123,26 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state){
 						for(var i=0;i<businessPersonnels.length;i++){
 							personHtml+='<div class="main_cont_list main_cont_list_x10">'+
 											'<ul>'+
-												'<li><p>00001</p></li>'+
-												'<li><p>霸刀杨壹</p></li>'+
-												'<li><p>500</p></li>'+
-												'<li><p>10%</p></li>'+
-												'<li><p>135</p></li>'+
-												'<li><p>520</p></li>'+
-												'<li><p>360</p></li>'+
+												'<li><p>'+businessPersonnels[i].personnelNo+'</p></li>'+
+												'<li><p>'+businessPersonnels[i].name+'</p></li>'+
+												'<li><p>'+businessPersonnels[i].wage+'</p></li>'+
+												'<li><p>'+businessPersonnels[i].commission+'%</p></li>'+
+												'<li><p>'+businessPersonnels[i].monthAchievement*businessPersonnels[i].commission/100+'</p></li>'+
+												'<li><p>'+businessPersonnels[i].monthAchievement+'</p></li>'+
+												'<li><p>'+businessPersonnels[i].totalPerformance+'</p></li>'+
 												'<li>'+
 													'<div class="Remarks">'+
-														'<div class="Remarks_cont">'+
-															'<div class="Remarks_text">霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹霸刀杨壹'+
-													'</div>'+
+														'<div class="Remarks_cont">';
+														if(!businessPersonnels[i].note){
+															personHtml+='<div class="Remarks_text">没有备注'
+														}else{
+															personHtml+='<div class="Remarks_text">'+businessPersonnels[i].note+''
+														}
+							personHtml+=			'</div>'+
 												'</li>'+
 												'<li>'+
 													'<button>编辑</button>'+
-													'<button>删除</button>'+
+													'<button class="deletePlan">删除<div class="hide">'+businessPersonnels[i].personnelNo+'</div></button>'+
 												'</li>'+
 											'</ul>'+
 										'</div>';
@@ -144,6 +150,18 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state){
 	        	}
 
 				$(".main_cont").html(personHtml);
+				// 点击备注
+				$(".Remarks").click(function(){
+					$(this).children().toggleClass("show");
+				})
+				// 点击删除按钮 /BusinessPersonnel/delParticularInfo'
+				$(".deletePlan").click(function(){
+					meg2("提示","确定删除该人员？","body",deleteSuccess);
+					var PersonnelNos=$(this).children().html();
+					function deleteSuccess(){
+					 deletePerson(PersonnelNos);
+					}
+				})
 			}else{
 				$(".main_cont").html('当前区域没有你查找的相关人员！');
 			}
@@ -161,4 +179,26 @@ function getUrlParam(name){
 	//构造一个含有目标参数的正则表达式对象
 	var r = window.location.search.substr(1).match(reg);//匹配目标参数
 	if (r != null) return unescape(r[2]); return null; //返回参数值
+}
+//删除人员接口
+function deletePerson(PersonnelNos){
+	$.ajax({
+		type:'post',
+		url: apiUrl+'/BusinessPersonnel/delParticularInfo',
+		data: {PersonnelNos:PersonnelNos},
+		dataType: 'json',
+		success:function(e){
+			console.log(e);
+			if(e.status==200){
+				meg("提示","人员删除成功！","body",reload);
+			}else{
+				meg("提示","人员删除失败！","body",reload);
+			}
+		},
+		error:function(){meg("提示","网络错误，请稍后再试","body")}
+	})
+}
+// 刷新页面
+function reload(){
+	location.reload();
 }

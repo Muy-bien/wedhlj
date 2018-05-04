@@ -329,6 +329,10 @@ function dataURLtoBlob(dataURI) {
     });
 }
 
+// 刷新页面
+function reload(){
+	location.reload();
+}
 
 
 

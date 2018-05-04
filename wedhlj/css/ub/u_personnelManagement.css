@@ -315,6 +315,7 @@
   padding: 10px;
   bottom: 30px;
   left: -83px;
+  display: none;
 }
 
 .Remarks_text{
@@ -333,4 +334,7 @@
   background: url(../../images/ub/ub_icon.png) no-repeat -175px 0;
   bottom: -8px;
   left: 84px;
+}
+.show{
+  display: block;
 }
