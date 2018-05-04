@@ -122,7 +122,7 @@ $(document).ready(function(){
 				'<li>'+
 					'<i></i>'+
 					'<div class="nav_cont_a nav_cont_off">'+
-						'<a href="#">设置中心</a>'+
+						'<a href="u_Setcenter.html">设置中心</a>'+
 					'</div>'+
 				'</li>'+
 			'</ul>';

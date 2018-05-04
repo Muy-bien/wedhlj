@@ -106,10 +106,10 @@ function show(e){
 			'<div class="mainc_top">'+
 				'<div class="mainc_top_box">'+
 					'<div class="mainc_top_left">'+
-						'<a href="b_Supermarket_FWS.html?id='+data.userName+'"><div class="img_auto" style="background-image:url('+(data.headPhoto =""?"":data.headPhoto)+')"></div></a>'+
+						'<a href="b_Supermarket_FWS.html?id='+data.id+'"><div class="img_auto" style="background-image:url('+(data.headPhoto =""?"":data.headPhoto)+')"></div></a>'+
 					'</div>'+
 					'<div class="mainc_top_content">'+
-						'<p class="mainc_p10"><a href="b_Supermarket_FWS.html?id='+data.userName+'">'+data.companyName+'</a></p>'+
+						'<p class="mainc_p10"><a href="b_Supermarket_FWS.html?id='+data.id+'">'+data.companyName+'</a></p>'+
 						'<p class="mainc_p20">'+data.userAddress+'</p>'+
 						'<p class="mainc_p30">'+star+'</p>'+
 					'</div>'+

@@ -146,14 +146,6 @@
   color: #fff;
 }
 
-.info_amt {
-  padding-left: 20px;
-  min-height: 20px;
-  font-size: 14px;
-  color: #f7949e;
-  background: url(../../images/b_Supermarket_FWS/amt.png) no-repeat 0 6px;
-}
-
 /*内容*/
 .main {
   width: 1200px;
