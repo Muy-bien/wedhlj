@@ -155,7 +155,7 @@ function getUrlParam(name){
 var info = getUrlParam('info');
 //上传按钮
 var info_01 = ["婚庆公司","个人策划"];
-var info_02 = ["主持人","摄影师","摄像师","化妆师","花艺师","婚礼执行","婚礼管家"];
+var info_02 = ["主持人","摄影师","摄像师","化妆师","花艺师","婚礼管家"];
 var info_03 = ["舞美","道具"];
 var cp_type = "";
 if(info == 1){
