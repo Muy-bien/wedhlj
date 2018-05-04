@@ -100,15 +100,16 @@ function show(e){
 				'</div>';
 			}
 		}
+		console.log(data);
 		//所有服务商
 		str +='<div class="main_cont_01">'+
 			'<div class="mainc_top">'+
 				'<div class="mainc_top_box">'+
 					'<div class="mainc_top_left">'+
-						'<a href="b_Supermarket_FWS.html"><div class="img_auto" style="background-image:url('+(data.headPhoto =""?"":data.headPhoto)+')"></div></a>'+
+						'<a href="b_Supermarket_FWS.html?id='+data.userName+'"><div class="img_auto" style="background-image:url('+(data.headPhoto =""?"":data.headPhoto)+')"></div></a>'+
 					'</div>'+
 					'<div class="mainc_top_content">'+
-						'<p class="mainc_p10"><a href="b_Supermarket_FWS.html">'+data.companyName+'</a></p>'+
+						'<p class="mainc_p10"><a href="b_Supermarket_FWS.html?id='+data.userName+'">'+data.companyName+'</a></p>'+
 						'<p class="mainc_p20">'+data.userAddress+'</p>'+
 						'<p class="mainc_p30">'+star+'</p>'+
 					'</div>'+
@@ -199,7 +200,6 @@ function click_nav(){
 function click_sidebox(){
 	$(".sidebox div").click(function(){
 		var this_index = $(this).index();
-		console.log(this_index)
 		if(this_index==1){
 			history.pushState(history.state,"","?sort=0&address=成都市&type=舞美&page=1");
 			NewInfo(0,"成都市","舞美",1,1);

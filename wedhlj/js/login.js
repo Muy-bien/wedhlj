@@ -105,13 +105,12 @@ function login(){
 					$(".login_uesr").text("账户或密码不正确");
 				}else if(e.status == 200){
 					$.cookie("user", userVal,{ path:'/',secure:false }); //储存用户名
-					$.cookie("h_position", e.user.userType,{ path:'/',secure:false}); //储存商户类型定位
 					$.cookie("login_on", e.token,{ path:'/',secure:false}); //登录成功返回信息
 					saveUserInfo();//保存用户信息
 					location.href = "index.html";
 				}else{
 					state = 1;
-					$(".login_uesr").text("发生未知错误");
+					$(".login_uesr").text("发生未知错误,请联系网站管理人员");
 				}
 			},
 			error : function(e) {

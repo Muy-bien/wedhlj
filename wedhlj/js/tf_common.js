@@ -144,7 +144,6 @@ $(document).ready(function(){
 		function doThing(){
 			$.cookie("login_on","",{ path:'/',secure:false , expires: -1});//清空token
 			$.cookie("user","",{ path:'/',secure:false , expires: -1});//清空用户名
-			$.cookie("h_position","",{ path:'/',secure:false , expires: -1});//清空用户类型定位信息
 			window.location.href = "index.html";
 		}	
 	})	
