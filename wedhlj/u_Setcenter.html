@@ -6,6 +6,7 @@
 	<link rel="shortcut icon" href="images/index_Avatar.png" type="image/x-icon">
 	<link rel="stylesheet" href="css/common.css">
 	<link rel="stylesheet" href="css/ub/u_Setcenter.css">
+	<link rel="stylesheet" href="css/cropper.min.css">
 	<link rel="stylesheet" href="css/ub/u_common.css">
 </head>
 <body>
@@ -65,30 +66,29 @@
 								<option>新都区</option>
 								<option>温江区</option>
 								<option>双流区</option>
-								<option>郫县区</option>
 								<option>金堂县</option>
 								<option>大邑县</option>
 								<option>浦江县</option>
 								<option>新津县</option>
 								<option>都江堰</option>
+								<option>郫县</option>
 							</select>
 						</div>
 						<!-- 详细地址 -->
 						<div class="input_shadow">
 							<i class="main_bian"></i>
-							<input name="address" type="text" placeholder="详细地址">
+							<input name="address" type="text" placeholder="详细地址" maxlength="20">
 						</div>
 						<!-- 商户电话 -->
 						<div class="input_shadow">
 							<i class="main_bian"></i>
-							<input name="phone" type="text" >
+							<input name="phone" type="text" maxlength="20">
 						</div>
 						<!-- 商户头像 -->
 						<div class="input_SCTP">
 							<div class="main_file">
-								<a href='javascript:void(0);' class="blueButton"></a>
-						        <div class="show"></div>
-						        <input type="file" name="imgFile" class="myFileUpload" accept="image/png,image/jpg,image/gif,image/JPEG">
+						        <div class="show" id="replaceImg">
+						        </div>
 							</div>
 						</div>
 						<!-- 商户简介 -->
@@ -99,10 +99,6 @@
 						<div class="input_textarea">
 							<textarea name="notice" class="notice" placeholder="填写店铺公告(不能超过200字)"></textarea>
 						</div>
-						<!-- 用户名隐藏域 -->
-						<div class="hide">
-							<input type="text" name="username" id="username">
-						</div>
 					</form>
 					<!-- 上传按钮 -->
 					<div class="Upload">上传</div>
@@ -110,11 +106,45 @@
 			</div>
 			
 		</div>
+		<div style="width: 320px;height: 320px;border: solid 1px #555;padding: 5px;margin-top: 10px">
+		    <img id="finalImg" src="" width="100%">
+		</div>
+		<!--图片裁剪框 start-->
+		<div style="display: none" class="tailoring-container">
+		    <div class="black-cloth" onclick="closeTailor(this)"></div>
+		    <div class="tailoring-content">
+	            <div class="tailoring-content-one">
+	                <label title="上传图片" for="chooseImg" class="l-btn choose-btn">
+	                    <input type="file" accept="image/jpg,image/jpeg,image/png" name="file" id="chooseImg" class="hidden" onchange="selectImg(this)">
+	                    选择图片
+	                </label>
+	                <div class="close-tailoring"  onclick="closeTailor(this)">×</div>
+	            </div>
+	            <div class="tailoring-content-two">
+	                <div class="tailoring-box-parcel">
+	                    <img id="tailoringImg">
+	                </div>
+	                <div class="preview-box-parcel">
+	                    <p>图片预览：</p>
+	                    <div class="square previewImg"></div>
+	                    <div class="circular previewImg"></div>
+	                </div>
+	            </div>
+	            <div class="tailoring-content-three">
+	                <button class="l-btn cropper-reset-btn">复位</button>
+	                <button class="l-btn cropper-rotate-btn">旋转</button>
+	                <button class="l-btn cropper-scaleX-btn">换向</button>
+	                <button class="l-btn sureCut" id="sureCut">确定</button>
+	            </div>
+	        </div>
+		</div>
+		<!--图片裁剪框 end-->
 	</div>
 
 	<!-- script -->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/ub/u_common.js"></script>
+	<script type="text/javascript" src="js/cropper.min.js"></script>
 	<script type="text/javascript" src="js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript" src="js/ub/u_Setcenter.js"></script>

@@ -1,40 +1,5 @@
-/*//传输用户名到input框/获取商户名称
-$(document).ready(function(){
-	on_Loading()
-	$(".nav_cont_a").eq(3).addClass("nav_cont_on");//导航栏默认选中
-	var username = $("#username").val($.cookie("user")).val();
-	var data = {
-		username : username,
-	};
-	$.ajax({
-		type: 'POST',
-		url: apiUrl+'merchant/select',
-		dataType: 'json',
-		data: data,
-		success: function(e) {
-			var merchant = e.merchant;
-			$(".cp_name").text(merchant.mName);//商户名称
-			var mAddress = new Array();
-			mAddress = (merchant.mAddress).split(",");
-			$("#s1").val(mAddress[0]);
-			$("#s1").find("option[text='"+mAddress[0]+"']").attr("selected",true);
-			$("#s2").val(mAddress[1]);
-			$("#s2").find("option[text='"+mAddress[1]+"']").attr("selected",true);
-			$("#s3").val(mAddress[2]);
-			$("#s3").find("option[text='"+mAddress[2]+"']").attr("selected",true);
-			$("input[name=address]").val(mAddress[3]);
-			$("input[name=phone]").val(merchant.mPhone);
-			$(".show").html('<img src="'+merchant.mLogo+'">');
-			$(".mDesc").val(merchant.mDesc);
-			$(".notice").val(merchant.mNotice);
-			down_Loading();
-		},
-		error : function(e) {
-			down_Loading();
-			meg('提示','当前网络不畅通,请检查您的网络','body'); 
-		}
-	})
-})
+
+
 
 //预览图片
 $(".myFileUpload").change(function(e){   
@@ -54,82 +19,106 @@ $(".myFileUpload").change(function(e){
    	
 });
 
-//商家地址
-$("#s1").focus(function(){
-	$("input[name='address']").val("");
-})
 
-$("#s2").focus(function(){
-	$("input[name='address']").val("");
-})
 
-$("#s3").focus(function(){
-	$("input[name='address']").val("");
-})
 
-//上传信息
-var state = 1;
-function login(){
-	if (state == 1) {
-		state = 2;
-		var address = $("input[name='address']").val();//详细地址
-		var mPhone = $("input[name='phone']").val();//负责人电话
-		var imgFile = $(".show").html();//商户头像
-		var mDesc = $(".mDesc").val();//商户简介
-		var notice = $(".notice").val();//店铺公告
-	  	if(!address){
-	  		meg('提示',"请输入详细地址",'body');
-	  		return false;
-	  	}else if(!mPhone){
-	  		meg('提示',"请输入负责人电话",'body');
-	  		return false;
-	  	}else if(!(/^1[34578]\d{9}$/.test(mPhone))){
-	  		meg('提示',"负责人手机号码格式错误",'body');
-	   	 	return false;
-	  	}else if(!imgFile){
-	  		meg('提示',"请选择需要上传的头像",'body');
-	  		return false;
-	  	}else if(!mDesc){
-	  		meg('提示',"请输入商户简介",'body');
-	  		return false;
-	  	}else if(!notice){
-	  		meg("提示","请输入店铺公告","body")
-	  	}
-	  	on_Loading()
-		//上传整个form标签
-		var form = new FormData($('#uploadForm')[0]);
-		//刷新页面
-		var doThing = function(){
-			window.location.reload();
-		}
 
-		$.ajax({
-			type: 'POST',
-			url: apiUrl+'merchant/update',
-			data: form,
-			async: true,//异步请求
-			processData: false,
-			contentType: false,
-			success: function(e) {
-				down_Loading();
-				if (e['updateStatus'] == 200) {
-					meg('提示','上传成功','body',doThing); 
-				}else if(e['updateStatus'] == 400){				
-					meg('提示','上传失败','body',doThing); 
-				}
-			},
-			error : function(e) {
-				down_Loading();
-				meg('提示','服务器开了小差，请稍后重试','body'); 
-			}
-		})
-	}
+
+
+//弹出框水平垂直居中
+(window.onresize = function () {
+    var win_height = $(window).height();
+    var win_width = $(window).width();
+    if (win_width <= 768){
+        $(".tailoring-content").css({
+            "top": (win_height - $(".tailoring-content").outerHeight())/2,
+            "left": 0
+        });
+    }else{
+        $(".tailoring-content").css({
+            "top": (win_height - $(".tailoring-content").outerHeight())/2,
+            "left": (win_width - $(".tailoring-content").outerWidth())/2
+        });
+    }
+})();
+
+//弹出图片裁剪框
+$("#replaceImg").on("click",function () {
+    $(".tailoring-container").toggle();
+});
+//图像上传
+function selectImg(file) {
+    if (!file.files || !file.files[0]){
+        return;
+    }
+    var reader = new FileReader();
+    reader.onload = function (evt) {
+        var replaceSrc = evt.target.result;
+        //更换cropper的图片
+        $('#tailoringImg').cropper('replace', replaceSrc,false);//默认false，适应高度，不失真
+    }
+    reader.readAsDataURL(file.files[0]);
 }
+//cropper图片裁剪
+$('#tailoringImg').cropper({
+    aspectRatio: 1/1,//默认比例
+    preview: '.previewImg',//预览视图
+    guides: true,  //裁剪框的虚线(九宫格)
+    autoCropArea: 0.5,  //0-1之间的数值，定义自动剪裁区域的大小，默认0.8
+    movable: false, //是否允许移动图片
+    dragCrop: true,  //是否允许移除当前的剪裁框，并通过拖动来新建一个剪裁框区域
+    movable: true,  //是否允许移动剪裁框
+    resizable: true,  //是否允许改变裁剪框的大小
+    zoomable: false,  //是否允许缩放图片大小
+    mouseWheelZoom: false,  //是否允许通过鼠标滚轮来缩放图片
+    touchDragZoom: true,  //是否允许通过触摸移动来缩放图片
+    rotatable: true,  //是否允许旋转图片
+    crop: function(e) {
+        // 输出结果数据裁剪图像。
+    }
+});
+//旋转
+$(".cropper-rotate-btn").on("click",function () {
+    $('#tailoringImg').cropper("rotate", 45);
+});
+//复位
+$(".cropper-reset-btn").on("click",function () {
+    $('#tailoringImg').cropper("reset");
+});
+//换向
+var flagX = true;
+$(".cropper-scaleX-btn").on("click",function () {
+    if(flagX){
+        $('#tailoringImg').cropper("scaleX", -1);
+        flagX = false;
+    }else{
+        $('#tailoringImg').cropper("scaleX", 1);
+        flagX = true;
+    }
+    flagX != flagX;
+});
 
-//上传按钮
-$(".Upload").click(function(){
-	login();
-})
-
-
-*/
+//裁剪后的处理
+$("#sureCut").on("click",function () {
+    if ($("#tailoringImg").attr("src") == null ){
+        return false;
+    }else{
+        var cas = $('#tailoringImg').cropper('getCroppedCanvas');//获取被裁剪后的canvas
+        var base64url = cas.toDataURL('image/png'); //转换为base64地址形式
+        $("#replaceImg").html('<img src="'+base64url+'" width="100%">');//显示为图片的形式
+        /*裁剪后处理里面*/
+		var blob = dataURLtoBlob(base64url);
+		/*在全局new 一个 FormData()的对象*/
+		var fd = new FormData();
+		fd.append('file', blob);
+		for(var p of fd){
+			console.log(p)
+		}
+        //关闭裁剪框
+        closeTailor();
+    }
+});
+//关闭裁剪框
+function closeTailor() {
+    $(".tailoring-container").toggle();
+}

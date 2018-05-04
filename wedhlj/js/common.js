@@ -311,6 +311,24 @@ function getUrlParam(name){
 	if (r != null) return decodeURI(r[2]); return null; //返回参数值
 }
 
+/*
+**需要将dataURL转成Blob对象. 这儿在全局写个方法
+**将canvas图片转换为文件类型
+*/
+function dataURLtoBlob(dataURI) {
+    var arr = dataURI.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = (arr[1]),
+        n = bstr.length,
+        u8arr = new Uint8Array(n);
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], {
+        type: mime
+    });
+}
+
 
 
 
