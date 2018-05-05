@@ -59,18 +59,12 @@ a:hover{
 }
 .datePrice_x10 p{
   font-size: 14px;
-  padding: 0 15px;
-  height: 30px;
-  line-height: 28px;
+  height: 35px;
+  line-height: 35px;
   color: #666;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-}
-.datePrice_x10 p:hover{
-  color:#333;
-}
-.datePrice_x10 p:last-child{
-  border:none;
+  margin: 1px 0;
 }
 .datePrice_x20{
   border: 1px solid #f85162;
@@ -78,7 +72,7 @@ a:hover{
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background: #fff;
-  padding:15px;
+  padding:10px 0;
   height: auto;
 }
 /*酒店所在地*/
@@ -129,11 +123,20 @@ a:hover{
 }
 
 .main_nav_x10 p:hover{
-  border: 1px solid #f85162 !important;
+  background: #f85162;
+  color: #fff;
+  border-color: #f85162;
 }
 
 .main_nav_x10_on{
-  border: 1px solid #f85162 !important;
+  border-color: #f85162 !important;
+  background: #f85162 !important;
+  color: #fff !important;
+}
+
+.datePrice_x20 p:hover{
+  background: #f85162;
+  color: #fff;
 }
 
 /* 任务内容 */

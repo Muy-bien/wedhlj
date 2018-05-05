@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	//小图标多选按钮
 	$(".main_box_x30 li").click(function(){
 		if($(this).hasClass('main_box_x30_on')){
 			$(this).removeClass('main_box_x30_on')

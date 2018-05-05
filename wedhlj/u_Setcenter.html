@@ -36,8 +36,8 @@
 					<p>公司地址</p>
 					<p>详细地址</p>
 					<p>商家电话</p>
-					<p class="main_left_x10">商家头像</p>
-					<p>商家简介</p>
+					<p class="main_left_x10">商户头像</p>
+					<p>简介</p>
 					<p class="main_left_x20">店铺公告</p>
 				</div>
 				<div class="main_cont">
@@ -45,7 +45,7 @@
 						<!-- 公司名称 -->
 						<div class="input_shadow">
 							<i class="main_bian"></i>
-							<p class="cp_name">商户经营使用名称</p>
+							<p class="cp_name"></p>
 						</div>
 						<!-- 城市 -->
 						<div class="input_Drop">
@@ -82,32 +82,27 @@
 						<!-- 商户电话 -->
 						<div class="input_shadow">
 							<i class="main_bian"></i>
-							<input name="phone" type="text" maxlength="20">
+							<input name="phone" type="text" placeholder="商家电话" maxlength="20">
 						</div>
 						<!-- 商户头像 -->
 						<div class="input_SCTP">
-							<div class="main_file">
-						        <div class="show" id="replaceImg">
-						        </div>
+							<div class="but_file" id="replaceImg">
+								<p>(点击添加头像)</p>
 							</div>
 						</div>
 						<!-- 商户简介 -->
 						<div class="input_textarea">
-							<textarea name="desc" class="mDesc" placeholder="填写商户简介(不能超过200字)"></textarea>
+							<textarea name="desc" class="mDesc" placeholder="填写商户简介(不能超过200字)" maxlength="200"></textarea>
 						</div>
 						<!-- 店铺公告 -->
 						<div class="input_textarea">
-							<textarea name="notice" class="notice" placeholder="填写店铺公告(不能超过200字)"></textarea>
+							<textarea name="notice" class="notice" placeholder="填写店铺公告(不能超过200字)" maxlength="200"></textarea>
 						</div>
 					</form>
 					<!-- 上传按钮 -->
 					<div class="Upload">上传</div>
 				</div>	
 			</div>
-			
-		</div>
-		<div style="width: 320px;height: 320px;border: solid 1px #555;padding: 5px;margin-top: 10px">
-		    <img id="finalImg" src="" width="100%">
 		</div>
 		<!--图片裁剪框 start-->
 		<div style="display: none" class="tailoring-container">

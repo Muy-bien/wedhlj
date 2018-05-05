@@ -1,3 +1,4 @@
+var state = 1;//防止多次点击事件
 $(document).ready(function(){
 	$(".main_box_x30 li").click(function(){
 		if($(this).hasClass('main_box_x30_on')){
@@ -50,75 +51,79 @@ function Exhibition_hall(id){
 }
 //上传大厅
 function addHall(id,input_img){
-	var HallInfo_img_describe = [];//大厅图片描述
-	var HallInfo_name = $(".HallInfo_name").val();
-	var HallInfo_size = $(".HallInfo_size").val();
-	var HallInfo_number = $(".HallInfo_number").val();
-	var HallInfo_price = $(".HallInfo_price").val();
-	var HallInfo_describe = $(".HallInfo_describe").val();
-	var HallInfo_size = [];
-	for(var b=0;b<$(".HallInfo_bg_x20_size input").length;b++){
-		HallInfo_size.push($(".HallInfo_bg_x20_size input").eq(b).val())
-	}
-	console.log(HallInfo_size)
-	if(!HallInfo_name){
-		meg("提示","大厅名称为空","body")
-		return false;
-	}else if(!HallInfo_size[0]){
-		meg("提示","大厅尺寸长度为空","body")
-		return false;
-	}else if(!HallInfo_size[1]){
-		meg("提示","大厅尺寸宽度为空","body")
-		return false;
-	}else if(!HallInfo_size[2]){
-		meg("提示","大厅尺寸高度为空","body")
-		return false;
-	}else if(!HallInfo_number){
-		meg("提示","最大桌数为空","body")
-		return false;
-	}else if(!HallInfo_price){
-		meg("提示","大厅价格为空","body")
-		return false;
-	}else if(HallInfo_img_describe){
-		for(var i = 0;i<4;i++){
-			var HallInfo_img_describe_val = $(".HallInfo_img_describe input").eq(i).val();
-			HallInfo_img_describe.push(HallInfo_img_describe_val);
-			if(input_img[i]==""){
-				meg("提示","最少选择4张图片","body")
-				return false;
-			}else if(HallInfo_img_describe[i]==""){
-				meg("提示","请填写所有的图片描述","body")
-				return false;
-			}
+	if(state == 1){
+		state = 2;
+		var HallInfo_img_describe = [];//大厅图片描述
+		var HallInfo_name = $(".HallInfo_name").val();
+		var HallInfo_size = $(".HallInfo_size").val();
+		var HallInfo_number = $(".HallInfo_number").val();
+		var HallInfo_price = $(".HallInfo_price").val();
+		var HallInfo_describe = $(".HallInfo_describe").val();
+		var HallInfo_size = [];
+		for(var b=0;b<$(".HallInfo_bg_x20_size input").length;b++){
+			HallInfo_size.push($(".HallInfo_bg_x20_size input").eq(b).val())
 		}
-	}
-	//用formDate对象上传
-	var data = new FormData($('#hallForm')[0]);
-	data.append('lobbySize',HallInfo_size);
-	data.append("lobbyImgIntro",HallInfo_img_describe);
-	data.append("hotelId",id);
-	for(var i=0;i<input_img.length;i++){
-		data.append("lobbyImgUrl",input_img[i])
-	}
-	//发送请求上传大厅
-	$.ajax({
-		type: 'POST',
-		url: apiUrl+'/hotelLobby/addHotelInfo',
-		data: data,
-		processData: false,
-		contentType: false,
-		success:function(e){
-			if(e.status == 200){
-				meg("提示","上传成功","body",dothing)
-				function dothing(){
-					Exhibition_hall(id)
+		console.log(HallInfo_size)
+		if(!HallInfo_name){
+			meg("提示","大厅名称为空","body")
+			return false;
+		}else if(!HallInfo_size[0]){
+			meg("提示","大厅尺寸长度为空","body")
+			return false;
+		}else if(!HallInfo_size[1]){
+			meg("提示","大厅尺寸宽度为空","body")
+			return false;
+		}else if(!HallInfo_size[2]){
+			meg("提示","大厅尺寸高度为空","body")
+			return false;
+		}else if(!HallInfo_number){
+			meg("提示","最大桌数为空","body")
+			return false;
+		}else if(!HallInfo_price){
+			meg("提示","大厅价格为空","body")
+			return false;
+		}else if(HallInfo_img_describe){
+			for(var i = 0;i<4;i++){
+				var HallInfo_img_describe_val = $(".HallInfo_img_describe input").eq(i).val();
+				HallInfo_img_describe.push(HallInfo_img_describe_val);
+				if(input_img[i]==""){
+					meg("提示","最少选择4张图片","body")
+					return false;
+				}else if(HallInfo_img_describe[i]==""){
+					meg("提示","请填写所有的图片描述","body")
+					return false;
 				}
-				//关闭窗口
-				$(".HallInfo_bg").remove();
 			}
 		}
-	})
-					
+		//用formDate对象上传
+		var data = new FormData($('#hallForm')[0]);
+		data.append('lobbySize',HallInfo_size);
+		data.append("lobbyImgIntro",HallInfo_img_describe);
+		data.append("hotelId",id);
+		for(var i=0;i<input_img.length;i++){
+			data.append("lobbyImgUrl",input_img[i])
+		}
+		//发送请求上传大厅
+		$.ajax({
+			type: 'POST',
+			url: apiUrl+'/hotelLobby/addHotelInfo',
+			data: data,
+			processData: false,
+			contentType: false,
+			success:function(e){
+				if(e.status == 200){
+					meg("提示","上传成功","body",dothing)
+					function dothing(){
+						Exhibition_hall(id)
+					}
+					//关闭窗口
+					$(".HallInfo_bg").remove();
+				}else{
+					meg("提示","上传失败，请稍后重试","body")
+				}
+			}
+		})
+	}				
 }
 //点击添加大厅
 function on_addhall(id){
@@ -329,7 +334,7 @@ function delete_hallInfo(hall_id,id){
 			dataType: 'json',
 			success:function(e){
 				if(e.status == 200){
-					meg("提示","已删除","body",dothing)
+					meg("提示","删除成功","body",dothing)
 					function dothing(){
 						Exhibition_hall(id)
 					}
@@ -609,13 +614,13 @@ function edit_Hotel(id){
 			success: function(e){
 				if(e.status == 200){
 					down_Loading()
-					meg('提示','上传成功','body',dothing);
+					meg('提示','酒店信息修改成功','body',dothing);
 					function dothing(){
-						window.location.reload()
+						window.location.href = "c_mainHotel.html"
 					}
 				}else if(e.status == 401){
 					down_Loading()
-					meg('提示','上传失败','body');
+					meg('提示','酒店信息修改失败','body');
 				}else if(e.status == 500){
 					down_Loading()
 					meg('提示','服务器开了小差，请稍后重试','body');

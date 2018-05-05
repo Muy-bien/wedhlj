@@ -153,14 +153,6 @@
   border: none;
 }
 
-.main_file {
-  border: 1px solid #ededee;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  position: relative;
-  width: 100%;
-}
-
 /*按钮*/
 .Upload {
   width: 325px;
@@ -174,26 +166,6 @@
   cursor: pointer;
 }
 
-/*地图*/
-#allmap {
-  height: 240px;
-  border: 1px solid #d9d9da;
-}
-
-/*上传图片*/
-
-.main_cont input[type="file"] {
-  border: none;
-}
-
-.main_file {
-  border: 1px solid #ccc;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  position: relative;
-  width: 100%;
-}
-
 /*--图片上传--*/
 .input_SCTP {
   display: -webkit-box;
@@ -202,77 +174,13 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 200px !important;
-}
-
-.input_SCTP input {
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-}
-
-.input_SCTP div {
-  margin: 0;
-}
-
-.input_SCTP > .main_file {
-  position: relative;
-  margin-right: 10px;
-  width: 200px;
-  height: 200px;
-}
-
-.show > img {
-  width: 100%;
-  height: 100%;
-}
-
-/*蓝色按钮,绝对定位*/
-.blueButton {
-  position: absolute;
-  display: inline-block;
-  width: 200px;
-  height: 200px;
-  background: url(../../images/h_Certification/h_file.png) no-repeat center
-    center;
-}
-
-/*自定义上传,位置大小都和a完全一样,而且完全透明*/
-.myFileUpload {
-  position: absolute;
-  display: block;
-  opacity: 0;
-  cursor: pointer;
-}
-/*显示上传文件夹名的Div*/
-.show {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  height: 100%;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  font-size: 16px;
-  color: #6a717c;
-}
-
-.Upload {
-  width: 325px;
-  height: 56px;
-  background: #f85162;
-  text-align: center;
-  line-height: 56px;
-  color: #fff;
-  font-size: 26px;
-  margin: 0 auto;
-  cursor: pointer;
+  height: 120px !important;
 }
 
 /*商户简介*/
 .input_textarea {
   width: 100%;
-  height: 200px !important;
+  height: 150px !important;
 }
 
 .input_textarea textarea {
@@ -281,25 +189,39 @@
   padding: 10px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  font-size: 14px;
+  color: #666;
+  border: 1px solid #ccc;
 }
 
 /*名称*/
 .main_left .main_left_x10 {
-  margin: 80px 0 180px 0;
+  margin: 30px 0 115px 0;
 }
 
 .main_left .main_left_x20 {
-  margin-top: 140px;
+  margin-top: 95px;
+}
+/* 点击打开裁剪框 */
+.but_file{
+  width: 120px;
+  height: 120px;
+  border: 1px solid #ccc;
+  background: url(../../images/Posttask_img.png) no-repeat center 20px;
+  background-size: 45px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  color: #999;
 }
 
+.but_file p{
+  padding-top: 75px;
+}
 
-
-
-
-
-
-
-
+.but_file img{
+  width: 100%;
+}
 /* 图片裁剪 */
 .l-btn{
     display: inline-block;
@@ -307,14 +229,14 @@
     resize: none;
     border: none;
     padding:5px 10px;
-    background: #8C85E6;
+    background: #f85162;
     color: #fff;
-    border:solid 1px #8C85E6;
+    border:solid 1px #f85162;
     border-radius: 3px;
     font-size: 14px;
 }
 .l-btn:hover{
-    background: #8078e3;
+    background: #f85162;
     animation: anniu 1s infinite;
 }
 .l-btn:active{
@@ -375,6 +297,7 @@
 }
 .tailoring-content .choose-btn{
     float: left;
+    cursor: pointer;
 }
 .tailoring-content .close-tailoring{
     display: inline-block;

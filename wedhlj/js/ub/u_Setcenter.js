@@ -1,30 +1,4 @@
 
-
-
-//预览图片
-$(".myFileUpload").change(function(e){   
- 	var file = this.files[0];
- 	if(file){
- 		if (window.FileReader) {    
-	        var reader = new FileReader();    
-	        reader.readAsDataURL(file);    
-	        //监听文件读取结束后事件    
-	      	reader.onloadend = function (e) {
-	      		$(".show").html("<img src='"+e.target.result+"'>")
-	      	};    
-	   	} 
-	   	}else{
-	   		$(".show").html("")
-	   	}
-   	
-});
-
-
-
-
-
-
-
 //弹出框水平垂直居中
 (window.onresize = function () {
     var win_height = $(window).height();
