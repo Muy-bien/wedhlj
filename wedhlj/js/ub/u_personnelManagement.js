@@ -102,7 +102,7 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state){
 											'<li><p>'+businessPersonnels[i].completeOrder+'</p></li>'+
 											'<li><p>'+status+'</p></li>'+
 											'<li>'+
-												'<button>编辑</button>'+
+												'<a href="u_editAddFixedPersonnel.html?PersonnelNo='+businessPersonnels[i].personnelNo+'"><button>编辑</button></a>'+
 												'<button class="deletePlan">删除<div class="hide">'+businessPersonnels[i].personnelNo+'</div></button>'+
 											'</li>'+
 										'</ul>'+
@@ -141,7 +141,7 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state){
 							personHtml+=			'</div>'+
 												'</li>'+
 												'<li>'+
-													'<button>编辑</button>'+
+													'<a href="u_editAddCollaborator.html?PersonnelNo='+businessPersonnels[i].personnelNo+'"><button>编辑</button></a>'+
 													'<button class="deletePlan">删除<div class="hide">'+businessPersonnels[i].personnelNo+'</div></button>'+
 												'</li>'+
 											'</ul>'+
@@ -197,8 +197,4 @@ function deletePerson(PersonnelNos){
 		},
 		error:function(){meg("提示","网络错误，请稍后再试","body")}
 	})
-}
-// 刷新页面
-function reload(){
-	location.reload();
 }

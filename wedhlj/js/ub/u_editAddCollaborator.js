@@ -22,6 +22,42 @@ queryUser($.cookie("login_on"))
 // 	}
 // })
 //BusinessPersonnel/addBusinessPersonnel添加人员
+var PersonnelNo=getUrlParam("PersonnelNo");
+queryBusinessPersonnelInfo(PersonnelNo);
+//BusinessPersonnel/queryBusinessPersonnelInfo
+function queryBusinessPersonnelInfo(PersonnelNo){
+	$.ajax({
+		type:'post',
+		url:apiUrl+'/BusinessPersonnel/queryBusinessPersonnelInfo',
+		data:{PersonnelNo:PersonnelNo},
+		dataType:'json',
+		success:function(e){
+			console.log(e);
+			console.log(e.businessPersonnelList[0]);
+			var list=e.businessPersonnelList[0];
+			// 名称
+			$("input[name=name]").val(list.name);
+			// 风格
+			var style=list.style.split(",");
+			for(var i=0;i<style.length;i++){
+				for(var j=0;j<$(".Posttask_x10 ul>li>p").length;j++){
+					if(style[i]==$(".Posttask_x10 ul>li>p")[j].innerHTML){
+							$(".Posttask_x10 ul>li").eq(j).addClass("Posttask_x20_on");
+					}
+				}
+			}
+			// 基础工资
+			$("input[name=wage]").val(list.wage);
+			// 提成率
+			$("input[name=commission]").val(list.commission);
+			// 备注
+			$("textarea[name=note]").val(list.note)
+		},
+		error:function(){
+			meg("提示","网络错误，请稍后再试！",'body');
+		}
+	})
+}
 $(".upload").click(function(){
 	if(state==1){
 		state=2;
@@ -48,21 +84,23 @@ $(".upload").click(function(){
 		on_Loading();
 		var data=new FormData($("#uploadForm")[0]);
 		data.append("PersonnelType",1)//固定人员;
-		data.append("token",$.cookie("login_on"));//加token
+		//data.append("token",$.cookie("login_on"));//加token
+		data.append("PersonnelNo",PersonnelNo);//加token
 		for(p of data){
 			console.log(p)
 		}
+		//BusinessPersonnel/updateProduct人员修改
 		$.ajax({
 			type: 'POST',
-			url: apiUrl+'BusinessPersonnel/addBusinessPersonnel',
+			url: apiUrl+'/BusinessPersonnel/updateProduct',
 			data: data,
 			processData:false,
 			contentType:false,
 			success:function(e){
 				if(e.status==200){
-					meg("提示","人员上传成功！","body",dothing);
+					meg("提示","人员修改成功！","body",dothing);
 				}else{
-					meg("提示","人员上传失败！","body");
+					meg("提示","人员修改失败！","body");
 				}
 				function dothing(){
 					location.href="u_personnelManagement.html?PersonnelType=1&page=1";
@@ -70,14 +108,14 @@ $(".upload").click(function(){
 				down_Loading();
 			},
 			error:function(){
-				down();
+				down_Loading();
 				meg("提示","网络错误，请稍后再试！","body")
 			}
 		})
 	}
 })
 
-// 查询人员详情/queryUser
+// 查询人员详情/queryUser 根据风格类型，添加风格
 function queryUser(token){
 	$.ajax({
 			type: "post",

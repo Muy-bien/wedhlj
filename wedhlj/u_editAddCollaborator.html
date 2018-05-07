@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>添加固定人员</title>
+	<link rel="shortcut icon" href="images/index_Avatar.png" type="image/x-icon">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/ub/u_AddFixedPersonnel.css">
+	<link rel="stylesheet" href="css/ub/u_common.css">
+	<!---->
+</head>
+<body>
+	<div class="box">
+		<!-- 导航栏 -->
+		<div class="nav">
+		</div>
+
+		<!-- 头部 -->
+		<header>
+		</header>
+		<!-- 内容 -->
+		<form id="uploadForm" enctype="multiple/form-data" method="post">
+			<div class="main">
+				<div class="title">
+					<div class="add_Person">添加人员</div>
+				</div>
+				<div class="content">
+					<!-- 名称 -->
+					<div class="p_name">
+						<div class="add_type_title">名称</div>
+						<i class="input_border"></i>
+						<input type="text" name="name" class="add_type_name" placeholder="名称请控制在16个字符内" maxlength="16">
+					</div>
+					<!-- 风格 -->
+					<div class="p_name">
+						<div class="add_type_title">风格</div>
+						<!-- 风格类型 -->
+							<div class="Posttask_x10">
+								<ul>
+									<!-- <li class="Posttask_x20">
+										<p>风趣</p>
+									</li>
+									<li class="Posttask_x20">
+										<p>简洁</p>
+									</li>
+									<li class="Posttask_x20">
+										<p>成熟</p>
+									</li>
+									<li class="Posttask_x20">
+										<p>大气</p>
+									</li>
+									<li class="Posttask_x20">
+										<p>稳重</p>
+									</li>
+									<li class="Posttask_x20">
+										<p>温馨</p>
+									</li>
+									<li class="Posttask_x20">
+										<p>欢快</p>
+									</li>
+									<li class="Posttask_x20">
+										<p>控场达人</p>
+									</li> -->
+								</ul>
+								<input type="text" name="style" class="hide style">
+							</div>
+					</div>
+					<!-- 基础工资 -->
+					<div class="p_name">
+						<div class="add_type_title ">基础工资</div>
+						<input type="text" class="p_select heigAndPri
+						 yourPrice input_Num" name="wage" maxlength="8">
+						 <span class="Company">元</span>
+					</div>
+					<!-- 提成率 -->
+					<div class="p_name">
+						<div class="add_type_title">提成率</div>
+						<input type="text" class="p_select heigAndPri
+						 yourPrice input_Num" name="commission" maxlength="4">
+						 <span class="Company">%</span>
+					</div>
+					<!-- 备注 -->
+					<div class="p_name">
+						<div class="add_type_title">备注</div>
+						<div class="descSimple">
+							<textarea name="note" class="desc" maxlength="200" placeholder="请填写两百字以内的人员备注(选填)"></textarea>
+						</div>
+					</div>
+					<!-- 上传 -->
+					<div class="p_upload">
+						<div class="upload" id="btn">确定修改</div>
+					</div>
+			</div>
+		</div>
+	</form>
+	<!-- script -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/ub/u_common.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/ub/u_editAddCollaborator.js"></script>
+</body>
+</html>

@@ -88,6 +88,7 @@ $("#btn").on('click', function() {
 			addr+=$(".upload_addr li").eq(i).first().text() + ",";
 		}
 		$("input[name=video]").val(addr);
+
 		//表单项不能为空验的证
 		if(!$("input[name=name]").val()){
 			meg("提示","名称不能为空","body");
@@ -166,12 +167,13 @@ function queryUser(token){
 			dataType:'json',
 			success: function(e){
 				console.log(e)
-				var type=e.user.companyType;
+				// var type=e.user.companyType;
+				var type=e.companyType;
 				console.log(type);
 				if(type=='婚庆公司'||type=='个人策划'){
 					arr=["西式","新中式","小清新","简约","户外","汉婚","教堂"];
 					style(arr);
-				}else if(type=='舞美'||type=='舞美'){
+				}else if(type=='舞美'||type=='道具'){
 					arr=["靠谱","效率","省心","沟通达人","细致","布场能手","耐心"];
 					style(arr);
 				}else if(type=='主持人'){
