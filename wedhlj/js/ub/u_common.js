@@ -182,7 +182,7 @@ $(document).ready(function(){
 				var user = e.merchant
 				if(e.status == 200){
 					$(".main_header").html('<div class="main_header_user">'+
-						'<div class="main_header_user_img">'+(user.logo==""?"":user.logo)+'</div>'+
+						'<div class="main_header_user_img"><div>'+(user.logo==""?"":'<img src="'+apiUrl+user.logo+'">')+'</div></div>'+
 						'<div class="main_header_user_x10">'+
 							'<p class="main_header_user_type"><i></i>'+user.companyType+'</p>'+
 							'<p class="main_header_user_name">'+user.companyName+'</p>'+

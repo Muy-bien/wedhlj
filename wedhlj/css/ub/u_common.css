@@ -184,9 +184,14 @@ header {
 }
 
 .main_header_user_img div {
-  width: 100px;
-  height: 100px;
+  width: 105px;
+  height: 105px;
   border-radius: 100%;
+  overflow: hidden;
+}
+
+.main_header_user_img div img{
+  width:100%;
 }
 
 .main_header_user_x10 {

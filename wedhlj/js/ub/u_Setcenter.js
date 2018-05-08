@@ -14,7 +14,6 @@ function Obtain_info(){
         data: {token:$.cookie("login_on")},
         success: function(e){
             if(e.status==200){
-                console.log(e)
                 var data=e.merchant
                 $(".cp_name").text(data.mName);//名称
                 var mAddress=data.mAddress.split(",");//地址切割
@@ -78,9 +77,8 @@ function upload(){
                 contentType: false,
                 success: function(e) {
                     down_Loading()
-                    console.log(e);
                     if (e.status == "200") {
-                        meg("提示","商户信息成功","body",Obtain_info);
+                        meg("提示","商户信息成功","body");
                     }else{
                         meg("提示","商户信息失败","body");
                     }
@@ -173,7 +171,6 @@ $("#sureCut").on("click",function () {
         var base64url = cas.toDataURL('image/jpg'); //转换为base64地址形式
         $("#replaceImg").html('<img src="'+base64url+'">');//显示为图片的形式
         /*裁剪后处理里面*/
-        //blob = dataURLtoBlob(base64url);
 		blob = base64url;
         //关闭裁剪框
         closeTailor();
@@ -182,4 +179,13 @@ $("#sureCut").on("click",function () {
 //关闭裁剪框
 function closeTailor() {
     $(".tailoring-container").toggle();
+}
+//导航栏默认选中
+function on_navli(){
+    var position = $.cookie("position");
+    if(position==2){
+        $(".nav_cont_a").eq(5).addClass("nav_cont_on");
+    }else if(position==1||position==3){
+        $(".nav_cont_a").eq(6).addClass("nav_cont_on");
+    }
 }

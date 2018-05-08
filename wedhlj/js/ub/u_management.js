@@ -35,7 +35,6 @@ $(document).ready(function(){
 function on_navli(){
 	$(".nav_cont_a").eq(3).addClass("nav_cont_on");
 }
-
 //接收URL中的参数
 var page = getUrlParam('page');
 var auditStatus = getUrlParam('auditStatus');
