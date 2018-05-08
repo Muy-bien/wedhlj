@@ -75,8 +75,8 @@ $(document).ready(function(){
 			data: {userName:$.cookie("user"),token:$.cookie("login_on")},
 			success: function(e){
 				h_position = e.userType;//用户类型定位信息
-				h_checkStatus = e.auditStatus;
-				$.cookie("h_position",h_position,{ path:'/',secure:false}); //储存状态
+				h_checkStatus = e.auditStatus;//审核状态
+				$.cookie("position",h_position,{ path:'/',secure:false}); //储存状态
 				//商家入驻内容
 				if (!h_position || h_position == "" || h_position == 0) {
 					$(".header_ht").text('商家入驻');
@@ -95,7 +95,7 @@ $(document).ready(function(){
 		
 		//登录状态点击进入后台||用户名
 		$(".hp_block").click(function(){
-			if(h_position != $.cookie("h_position")){
+			if(h_position != $.cookie("position")){
 				$.cookie("referrer","true",{ path:'/',secure:false}); //储存状态
 				window.location.href = "login.html";
 				return false;
@@ -144,6 +144,7 @@ $(document).ready(function(){
 		function doThing(){
 			$.cookie("login_on","",{ path:'/',secure:false , expires: -1});//清空token
 			$.cookie("user","",{ path:'/',secure:false , expires: -1});//清空用户名
+			$.cookie("position","",{ path:'/',secure:false , expires: -1});//清空用户类型
 			window.location.href = "index.html";
 		}	
 	})	

@@ -113,7 +113,7 @@ function login(url){
 	  	on_Loading()
 		//上传整个form标签
 		var form = new FormData($('#uploadForm')[0]);
-		form.append("userAddress",province+city+county+cp_address);
+		form.append("userAddress",province+","+city+","+county+","+cp_address);
 		form.append("token",$.cookie("login_on"));
 		form.append("userType",info);
 		$.ajax({

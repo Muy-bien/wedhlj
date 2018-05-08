@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	//验证是否为登录状态
 	if ($.cookie("login_on") == "" || !$.cookie("login_on")){
-		//window.location.href = "index.html";
+		window.location.href = "index.html";
 	}else{
 		//获取用户类型
 		$.ajax({
@@ -170,23 +170,19 @@ $(document).ready(function(){
 			add_header()
 		}
 	}
-	//用户个人信息
+	//商户个人信息
 	function userInfo(){
 		$.ajax({
 			type: 'POST',
-			url: apiUrl+'/user/queryUser',
+			url: apiUrl+'/merchant/queryMerchantOne',
 			dataType: 'json',
 			data: {token:$.cookie("login_on")},
 			success: function(e){
-				var user = e.user
+				console.log(e);
+				var user = e.merchant
 				if(e.status == 200){
-					if(user.headPhoto != ""){
-						var str = '<div class="img_auto" style="background-image:url('+user.headPhoto+')"></div>'
-					}else{
-						var str = ""
-					}
 					$(".main_header").html('<div class="main_header_user">'+
-						'<div class="main_header_user_img">'+str+'</div>'+
+						'<div class="main_header_user_img">'+(user.logo==""?"":user.logo)+'</div>'+
 						'<div class="main_header_user_x10">'+
 							'<p class="main_header_user_type"><i></i>'+user.companyType+'</p>'+
 							'<p class="main_header_user_name">'+user.companyName+'</p>'+
@@ -199,11 +195,11 @@ $(document).ready(function(){
 						'</li>'+
 						'<li>'+
 							'<h2>订单</h2>'+
-							'<p>'+e.indentCount+'</p>'+
+							'<p>'+user.indentCount+'</p>'+
 						'</li>'+
 						'<li>'+
 							'<h2>余额</h2>'+
-							'<p>'+user.balance+'</p>'+
+							'<p>'+(user.money=="0.0"?0:user.money)+'</p>'+
 						'</li>'+
 					'</ul>')
 				}
@@ -219,6 +215,7 @@ function sign_out(){
 		function doThing(){
 			$.cookie("login_on","",{ path:'/',secure:false , expires: -1});//清空token
 			$.cookie("user","",{ path:'/',secure:false , expires: -1});//清空用户名
+			$.cookie("position","",{ path:'/',secure:false , expires: -1});//清空用户名
 			window.location.href = "index.html";
 		}
 	})

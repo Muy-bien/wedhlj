@@ -28,7 +28,6 @@
 				</div>
 				<div class="title_right"></div>
 			</div>
-
 			<!-- 内容 -->
 			<div class="main">
 				<div class="main_left">
@@ -37,8 +36,6 @@
 					<p>详细地址</p>
 					<p>商家电话</p>
 					<p class="main_left_x10">商户头像</p>
-					<p>简介</p>
-					<p class="main_left_x20">店铺公告</p>
 				</div>
 				<div class="main_cont">
 					<form id="uploadForm" enctype="multipart/form-data" method="post">
@@ -49,13 +46,13 @@
 						</div>
 						<!-- 城市 -->
 						<div class="input_Drop">
-							<select class="select" name="province" id="s1">
+							<select class="province">
 								<option>四川省</option>
 							</select>
-							<select class="select" name="city" id="s2">
+							<select class="city">
 								<option>成都市</option>
 							</select>
-							<select class="select" name="county" id="s3">
+							<select class="county">
 								<option>金牛区</option>
 								<option>锦江区</option>
 								<option>青羊区</option>
@@ -77,26 +74,18 @@
 						<!-- 详细地址 -->
 						<div class="input_shadow">
 							<i class="main_bian"></i>
-							<input name="address" type="text" placeholder="详细地址" maxlength="20">
+							<input class="address" type="text" placeholder="详细地址" maxlength="20">
 						</div>
 						<!-- 商户电话 -->
 						<div class="input_shadow">
 							<i class="main_bian"></i>
-							<input name="phone" type="text" placeholder="商家电话" maxlength="20">
+							<input class="phone" name="mPhone" type="text" placeholder="商家电话" maxlength="20">
 						</div>
 						<!-- 商户头像 -->
 						<div class="input_SCTP">
 							<div class="but_file" id="replaceImg">
 								<p>(点击添加头像)</p>
 							</div>
-						</div>
-						<!-- 商户简介 -->
-						<div class="input_textarea">
-							<textarea name="desc" class="mDesc" placeholder="填写商户简介(不能超过200字)" maxlength="200"></textarea>
-						</div>
-						<!-- 店铺公告 -->
-						<div class="input_textarea">
-							<textarea name="notice" class="notice" placeholder="填写店铺公告(不能超过200字)" maxlength="200"></textarea>
 						</div>
 					</form>
 					<!-- 上传按钮 -->
