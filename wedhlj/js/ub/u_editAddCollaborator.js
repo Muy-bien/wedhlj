@@ -3,6 +3,8 @@ var state=1;
 function on_navli(){
 	$(".nav_cont_a").eq(2).addClass("nav_cont_on");
 }
+//获取地址栏中的参数
+var PersonnelNo=getUrlParam("PersonnelNo");
 //选风格,最多只能添加三种风格
 queryUser($.cookie("login_on"))
 // var addStyle=1;//是否可以添加样式
@@ -22,10 +24,11 @@ queryUser($.cookie("login_on"))
 // 	}
 // })
 //BusinessPersonnel/addBusinessPersonnel添加人员
-var PersonnelNo=getUrlParam("PersonnelNo");
-queryBusinessPersonnelInfo(PersonnelNo);
-//BusinessPersonnel/queryBusinessPersonnelInfo
+// var PersonnelNo=getUrlParam("PersonnelNo");
+// queryBusinessPersonnelInfo(PersonnelNo);
+//BusinessPersonnel/queryBusinessPersonnelInfo查询人员详情
 function queryBusinessPersonnelInfo(PersonnelNo){
+	// queryUser($.cookie("login_on"))
 	$.ajax({
 		type:'post',
 		url:apiUrl+'/BusinessPersonnel/queryBusinessPersonnelInfo',
@@ -38,10 +41,16 @@ function queryBusinessPersonnelInfo(PersonnelNo){
 			// 名称
 			$("input[name=name]").val(list.name);
 			// 风格
+			console.log($(".Posttask_x10 ul>li>p").length);
+			console.log(list.style);
 			var style=list.style.split(",");
+			console.log(style);
 			for(var i=0;i<style.length;i++){
+				console.log('coming1');
 				for(var j=0;j<$(".Posttask_x10 ul>li>p").length;j++){
+					console.log('coming2');
 					if(style[i]==$(".Posttask_x10 ul>li>p")[j].innerHTML){
+					console.log('coming3');
 							$(".Posttask_x10 ul>li").eq(j).addClass("Posttask_x20_on");
 					}
 				}
@@ -161,7 +170,7 @@ function queryUser(token){
 					 		$(this).toggleClass(".Posttask_x20_on");
 					 		addStyle=1;
 					 	}else{
-					 		meg("提示", "风格最多只能选择三个", "body", doThing);
+					 		meg("提示", "风格最多只能选择三个", "body");
 					 		addStyle=0;
 					 	}
 					 }
@@ -169,6 +178,7 @@ function queryUser(token){
 						 $(this).toggleClass("Posttask_x20_on");
 					}
 				})
+				queryBusinessPersonnelInfo(PersonnelNo);
 			},
 			error:function(e) {
 				meg("提示","网络错误，请稍后再试","body");

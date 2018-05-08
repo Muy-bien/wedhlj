@@ -74,8 +74,10 @@ $("#btn").on('click', function() {
 	if (state == 1) {
 		state = 2;
 		// 详细地址
-		var addressTot=$("#s1").val()+','+$("#s2").val()+','+$("#s3").val();
+		var addressTot=$("#s1").val()+','+$("#s2").val()+','+$("#s3").val()+','+$("#s4").val();
 		$("input[name=address]").val(addressTot);
+		console.log(addressTot);
+		console.log($("#s4").val());
 		//风格上传
 		var style="";
 		for(var i=0;i<$(".Posttask_x20_on").length;i++){
@@ -87,7 +89,7 @@ $("#btn").on('click', function() {
 		for(var i=0;i<$(".upload_addr li").length;i++){
 			addr+=$(".upload_addr li").eq(i).first().text() + ",";
 		}
-		$("input[name=video]").val(addr);
+		$("input[name=case_video]").val(addr);
 
 		//表单项不能为空验的证
 		if(!$("input[name=name]").val()){
@@ -129,6 +131,9 @@ $("#btn").on('click', function() {
 		}
 		data.append("token",$.cookie("login_on"));
 		data.append("PersonnelType",0)//合作人员;
+		for(a of data){
+			console.log(a);
+		}
 		//BusinessPersonnel/addBusinessPersonnel
 		$.ajax({
 			type: "post",

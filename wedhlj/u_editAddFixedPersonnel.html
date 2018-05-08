@@ -6,6 +6,7 @@
 	<link rel="shortcut icon" href="images/index_Avatar.png" type="image/x-icon">
 	<link rel="stylesheet" href="css/common.css">
 	<link rel="stylesheet" href="css/ub/u_AddFixedPersonnel.css">
+	<link rel="stylesheet" href="css/cropper.min.css">
 	<link rel="stylesheet" href="css/ub/u_common.css">
 	<!---->
 </head>
@@ -22,7 +23,7 @@
 		<form id="uploadForm" enctype="multiple/form-data" method="post">
 			<div class="main">
 				<div class="title">
-					<div class="add_Person">添加人员</div>
+					<div class="add_Person">修改人员</div>
 				</div>
 				<div class="content">
 					<!-- 名称 -->
@@ -68,7 +69,7 @@
 					<div class="p_name">
 						<div class="add_type_title">详细地址</div>
 						<i class="input_border"></i>
-						<input type="text" class="add_type_name " maxlength="20">
+						<input type="text" class="add_type_name" id='s4' maxlength="20">
 					</div>
 					<!-- 身高 -->
 					<div class="p_name personHeight">
@@ -192,12 +193,18 @@
 					</div>
 			</div>
 		</div>
+
+		<!-- 修改图片隐藏域 -->
+		<div class="hide img_hide">
+			<input type="text" name="oldCase_img">
+		</div>
 	</form>
 	<!-- script -->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript" src="js/ub/u_common.js"></script>
 	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/cropper.min.js"></script>
 	<script type="text/javascript" src="js/ub/u_editAddFixedPersonnel.js"></script>
 	
 	<script>
