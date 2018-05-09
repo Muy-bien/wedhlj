@@ -255,14 +255,11 @@ function queryBusinessPersonnelInfo(PersonnelNo){
 		data:{PersonnelNo:PersonnelNo},
 		dataType:'json',
 		success:function(e){
-			console.log(e);
-			console.log(e.businessPersonnelList[0]);
 			var list=e.businessPersonnelList[0];
 			// 名称
 			$("input[name=name]").val(list.name);
 			// 地址
 			var address=list.address.split(",");
-			console.log(address);
 			$("select[name=province]").val(address[0]);
 			$("select[name=city]").val(address[1]);
 			$("select[name=county]").val(address[2]);
@@ -270,16 +267,10 @@ function queryBusinessPersonnelInfo(PersonnelNo){
 			// 身高
 			$("input[name=height]").val(list.height);
 			// 风格
-			console.log($(".Posttask_x10 ul>li>p").length);
-			console.log(list.style);
 			var style=list.style.split(",");
-			console.log(style);
 			for(var i=0;i<style.length;i++){
-				console.log('coming1');
 				for(var j=0;j<$(".Posttask_x10 ul>li>p").length;j++){
-					console.log('coming2');
 					if(style[i]==$(".Posttask_x10 ul>li>p")[j].innerHTML){
-					console.log('coming3');
 							$(".Posttask_x10 ul>li").eq(j).addClass("Posttask_x20_on");
 					}
 				}

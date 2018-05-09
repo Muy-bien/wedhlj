@@ -144,7 +144,7 @@ function queryScheme(schemeNo){
 						'<div class="show">'+
 						'<img src="'+apiUrl+sStage_img[a]+'" alt="">'+
 						'</div>'+
-						'<div onclick="remove_default(this,\'0\')" class="main_file_hide remove_default">删除</div>'+
+				#imgBox		'<div onclick="remove_default(this,\'0\')" class="main_file_hide remove_default">删除</div>'+
 						'</div>';
 				}
 				$("#imgBox01").html(sStage);
