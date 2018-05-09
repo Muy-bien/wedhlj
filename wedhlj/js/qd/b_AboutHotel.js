@@ -18,7 +18,7 @@ $(document).ready(function(){
 			$(".main_nav_x10").css("height","0");
 		}
 	)
-	var priceDec;
+	var priceDec="";
 	//价格
 	$(".main_nav01").click(function(){
 		$(".price span").html("价格");
@@ -41,9 +41,6 @@ $(document).ready(function(){
 			$(".price_x10").css("height","0");
 		}
 	)
-
-
-	
 	// 默认情况
 	if(pageSize==null&&sort==null&&address==null&&pageNo==null){
 		history.pushState(history.state,"",'?pageSize=6&sort=0&address=成都市&pageNo=1');
@@ -67,16 +64,16 @@ $(document).ready(function(){
 	function priceOn(){
 		var price=$(".datePrice_x20 p");
 		for(var i=0;i<price.length;i++){
-				if(sort==1){
-					if(price[i].innerHTML=='从低到高'){
-						price[i].setAttribute('class','main_nav_x10_on');
-					}
-				}else if(sort==2){
-					if(price[i].innerHTML=='从高到低'){
-						price[i].setAttribute('class','main_nav_x10_on');
-					}
+			if(sort==1){
+				if(price[i].innerHTML=='从低到高'){
+					price[i].setAttribute('class','main_nav_x10_on');
+				}
+			}else if(sort==2){
+				if(price[i].innerHTML=='从高到低'){
+					price[i].setAttribute('class','main_nav_x10_on');
 				}
 			}
+		}
 	}
 	if(sort==0){//星级
 		$(".main_nav01").addClass("main_nav_on");
@@ -86,6 +83,7 @@ $(document).ready(function(){
 			placeOn();
 		}else{
 			$(".main_nav_bg span").html('成都市');
+			$(".main_nav_x10 p").eq(0).addClass('main_nav_x10_on');
 		}
 	}else if(sort==1){//价格从低到高
 		priceOn();
@@ -97,6 +95,7 @@ $(document).ready(function(){
 			placeOn()
 		}else{
 			$(".main_nav_bg span").html('成都市');
+			$(".main_nav_x10 p").eq(0).addClass('main_nav_x10_on');
 		}
 	}else if(sort==2){//价格从高到低
 		priceOn();
@@ -108,6 +107,7 @@ $(document).ready(function(){
 			placeOn()
 		}else{
 			$(".main_nav_bg span").html('成都市');
+			$(".main_nav_x10 p").eq(0).addClass('main_nav_x10_on');
 		}
 	}else{//其他情况，包括先点击地区选中
 		if(address!=null){
@@ -115,6 +115,7 @@ $(document).ready(function(){
 			placeOn()
 		}else{
 			$(".main_nav_bg span").html('成都市');
+			$(".main_nav_x10 p").eq(0).addClass('main_nav_x10_on');
 		}
 	}
 	

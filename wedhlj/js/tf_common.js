@@ -54,17 +54,8 @@ $(document).ready(function(){
 	'</div>';
 	$("footer").html(footer);
 
-	//导航栏二级目录
-	$(".nav_cont_01").hover(
-		function(){
-			var package = $(this).children(".nav_package").height();
-			$(this).css('height',package + "px")
-		},function(){
-			$(this).css('height','40px')
-		}
-	);
 	//验证当前页面是否登录
-	if ($.cookie("login_on")){
+	if($.cookie("login_on")){
 		//获取最新用户状态
 		var h_position = "";
 		var h_checkStatus = "";
@@ -95,11 +86,6 @@ $(document).ready(function(){
 		
 		//登录状态点击进入后台||用户名
 		$(".hp_block").click(function(){
-			if(h_position != $.cookie("position")){
-				$.cookie("referrer","true",{ path:'/',secure:false}); //储存状态
-				window.location.href = "login.html";
-				return false;
-			}
 			if(h_checkStatus == 1){
 				if(h_position == 4){
 					window.location.href = "c_mainCheck.html";
@@ -129,7 +115,6 @@ $(document).ready(function(){
 			}
 		})
 	}else if($.cookie("login_on") == "" || !$.cookie("login_on")){
-		$.cookie("referrer","false",{ path:'/',secure:false}); //储存状态
 		$(".header_ht").removeClass('hp_block');
 		$(".header_user_img").removeClass('header_user_img_on');
 		$(".header_user_cont").html('<a href="login.html">登录</a><span>|</span><a href="register.html">注册</a>');//头部样式

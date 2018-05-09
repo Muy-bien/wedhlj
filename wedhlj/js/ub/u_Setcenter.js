@@ -13,6 +13,7 @@ function Obtain_info(){
         dataType: 'json',
         data: {token:$.cookie("login_on")},
         success: function(e){
+            console.log(e)
             if(e.status==200){
                 var data=e.merchant
                 $(".cp_name").text(data.mName);//名称
@@ -21,11 +22,11 @@ function Obtain_info(){
                 $(".address").val(mAddress[3]);//详细地址
                 $(".phone").val(data.mPhone);//商家电话
                 $(".but_file").html(data.mLogo==""?'<p>(点击添加头像)</p>':'<img src="'+apiUrl+data.mLogo+'">')
-                if($("div").hasClass("mDesc") == true){
+                if($("textarea").hasClass("mDesc") == true){
                     $(".mDesc").val(data.mDesc);//商户简介
                 }
-                if($("div").hasClass("notice") == true){
-                    $(".notice").val(data.notice);//店铺公告
+                if($("textarea").hasClass("notice") == true){
+                    $(".notice").val(data.mNotice);//店铺公告
                 }
                 upload();
                 down_Loading();

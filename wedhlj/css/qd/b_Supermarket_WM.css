@@ -87,6 +87,8 @@ a:hover{
 
 .main_nav_x10 p:hover{
   border: 1px solid #f85162 !important;
+  background: #f85162;
+  color: #fff;
 }
 
 .main_nav_x10 .main_nav_x10_on{
@@ -111,6 +113,7 @@ a:hover{
 /*商家详情*/
 .main_left {
   width: 880px;
+  min-height: 500px;
   position: relative;
 }
 
@@ -170,7 +173,6 @@ a:hover{
   color: #999;
   font-size: 14px;
   background: url(../../images/b_Supermarket_WM/cdt.png) no-repeat 0 center;
-  margin-bottom: 27px;
 }
 
 .mainc_p30 i {
@@ -443,8 +445,7 @@ a:hover{
 .sidebox div {
   height: 49px;
   margin-bottom: 1px;
-  background: #f85162 url(../../images/b_Supermarket_WM/sidebox_01.png)
-    no-repeat 90% center;
+  background: rgba(248,81,98,0.7) url(../../images/b_Supermarket_WM/sidebox_01.png) no-repeat 90% center;
   padding-left: 8px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -456,6 +457,10 @@ a:hover{
   align-items: center;
   color: #fff;
   cursor: pointer;
+}
+
+.sidebox .sidebox_on{
+  background-color: rgba(248,81,98,1);
 }
 
 .sidebox_01 {

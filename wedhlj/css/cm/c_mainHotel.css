@@ -15,6 +15,9 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+.content a:hover{
+  text-decoration: none;
+}
 .hotel_title{
   width: 1100px;
   height: 39px;
@@ -84,19 +87,21 @@
   height: 0px;
 }
 .hotel_detail_item div.buttons .showbutton{
-  width: 50px;
-  height: 20px !important;
-  line-height: 20px;
+  width: 60px;
+  height: 25px !important;
+  line-height: 25px;
   border-radius: 5px;
-  border: 1px solid #333;
-  color: #333;
+  border: 1px solid #666;
+  color: #666;
   background: #fff;
   margin-right: 20px;
   cursor: pointer;
+  font-size: 14px;
 }
 .hotel_detail_item div.buttons .showbutton:hover{
-  border: 1px solid #f85162;
-  color:#f85162;
+  border-color: #f85162;
+  background: #f85162;
+  color: #fff;
 }
 /*分页*/
 .fl {

@@ -39,10 +39,14 @@
   box-sizing: border-box;
 }
 
-.info_logo_box .img_auto{
+.info_logo_img{
   width: 220px;
   height: 220px;
   margin-left: 30px;
+}
+
+.info_logo_img img{
+  width: 100%;
 }
 
 .info_cont > div{
@@ -78,7 +82,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: #999;
+  color: #666;
   font-size: 14px;
 }
 
@@ -89,6 +93,15 @@
   background: url(../../images/b_Supermarket_WM/cdt.png) no-repeat 0 center;
   padding-left: 20px;
   margin-right: 40px;
+}
+
+.info_amt {
+  padding-left: 20px;
+  min-height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  color: #666;
+  background: url(../../images/b_Supermarket_FWS/amt.png) no-repeat 0 6px;
 }
 
 .info_but {

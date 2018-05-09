@@ -63,7 +63,6 @@ function addHall(id,input_img){
 		for(var b=0;b<$(".HallInfo_bg_x20_size input").length;b++){
 			HallInfo_size.push($(".HallInfo_bg_x20_size input").eq(b).val())
 		}
-		console.log(HallInfo_size)
 		if(!HallInfo_name){
 			meg("提示","大厅名称为空","body")
 			return false;

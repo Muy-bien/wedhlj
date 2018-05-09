@@ -15,14 +15,18 @@ $(document).ready(function(){
 	click_sidebox();
 	//展示内容
 	if(sort==null||address==null||type==null||page==null){
-		NewInfo(0,"成都","舞美",1,1);
+		history.pushState(history.state,"","?sort=0&address=成都市&type=舞美&page=1");
+		NewInfo(0,"成都市","舞美",1,1);
+		defaultStyle(0,"成都市");//默认排序
 	}else{
 		NewInfo(sort,address,type,page,1);
+		defaultStyle(sort,address);//默认排序
 	}
+
 	//展示推荐商品
-	if(type==""){
+	if(type==null){
 		Recommend("舞美");
-	}else{
+	}else if(type=="道具"||type=="舞美"){
 		Recommend(type)
 	}
 })
@@ -42,8 +46,8 @@ function NewInfo(sort,address,type,page,state){
 		dataType: 'json',
 		success:function(e){
 			$(".main_Pagination").html("");//清空分页列表
-			if(e.userList != ""){
-				show(e);//渲染商品列表内容
+			if(e.merchantList != ""){
+				show(e,type);//渲染商品列表内容
 				if(Math.ceil(e.totalCount/5)>1){
 					$('.main_Pagination').paging({
 			            initPageNo: page, // 初始页码
@@ -55,8 +59,8 @@ function NewInfo(sort,address,type,page,state){
 			            	if(state == 1){
 								state = 2 
 			            	}else if(state == 2){
-			            		history.pushState(history.state,"","?page="+page+"&auditStatus="+auditStatus)
-			            		NewInfo(0,"成都","道具",1,1)
+			            		history.pushState(history.state,"","?sort="+sort+"&address="+address+"&type="+type+"&page="+page);
+			            		NewInfo(sort,address,type,page,1)
 			            	}
 			            }
 		        	})
@@ -68,10 +72,10 @@ function NewInfo(sort,address,type,page,state){
 	})
 }
 //显示商家列表
-function show(e){
+function show(e,type){
 	var str = "";
-	for(var i=0;i<e.userList.length;i++){
-		var data = e.userList[i];
+	for(var i=0;i<e.merchantList.length;i++){
+		var data = e.merchantList[i];
 		//星级
 		var star = "";
 		for(var s=0;s<data.star;s++){
@@ -83,7 +87,7 @@ function show(e){
 			for(var x=0;x<(data.product.length >= 3?3:data.product.length);x++){
 				var data_product = data.product[x];
 				on_product +='<div>'+
-					'<a href="b_Addorder.html?id='+data_product.productNo+'">'+
+					'<a href="b_Addorder.html?productNo='+data_product.productNo+'&type='+type+'">'+
 						'<div class="mainc_cont_01">'+
 							'<div class="img_auto" style="background-image:url('+apiUrl+data_product.productImage.split(",")[0]+')"></div>'+
 						'</div>'+
@@ -100,22 +104,21 @@ function show(e){
 				'</div>';
 			}
 		}
-		console.log(data);
 		//所有服务商
 		str +='<div class="main_cont_01">'+
 			'<div class="mainc_top">'+
 				'<div class="mainc_top_box">'+
 					'<div class="mainc_top_left">'+
-						'<a href="b_Supermarket_FWS.html?id='+data.id+'"><div class="img_auto" style="background-image:url('+(data.headPhoto =""?"":data.headPhoto)+')"></div></a>'+
+						'<a href="b_Supermarket_FWS.html?id='+data.mId+'&type='+type+'"><div class="img_auto" style="background-image:url('+(data.mLogo==""?"":apiUrl+data.mLogo)+')"></div></a>'+
 					'</div>'+
 					'<div class="mainc_top_content">'+
-						'<p class="mainc_p10"><a href="b_Supermarket_FWS.html?id='+data.id+'">'+data.companyName+'</a></p>'+
-						'<p class="mainc_p20">'+data.userAddress+'</p>'+
+						'<p class="mainc_p10"><a href="b_Supermarket_FWS.html?id='+data.mId+'&type='+type+'">'+data.mName+'</a></p>'+
+						'<p class="mainc_p20">'+data.mAddress.split(",").join("")+'</p>'+
 						'<p class="mainc_p30">'+star+'</p>'+
 					'</div>'+
 				'</div>'+
 				'<div class="mainc_top_right">'+
-					'<div><a href="b_Pshowcase.html">进入商家</a></div>'+
+					'<div><a href="b_Pshowcase.html?id='+data.mId+'">进入商家</a></div>'+
 				'</div>'+
 			'</div>'+
 			'<div class="mainc_cont">'+on_product+'</div>'+
@@ -126,6 +129,12 @@ function show(e){
 //获取推荐商品
 //type==>类型(道具、舞美)
 function Recommend(type){
+	//默认选中
+	if(type=="舞美"){
+		$(".sidebox_01").addClass('sidebox_on');
+	}else if(type=="道具"){
+		$(".sidebox_02").addClass('sidebox_on');
+	}
 	$.ajax({
 		type: 'POST',
 		url: apiUrl+'/product/queryTuiJProduct',
@@ -137,7 +146,7 @@ function Recommend(type){
 				for(var i=0;i<e.productList.length;i++){
 					var data = e.productList[i];
 					str+='<div>'+
-						'<a href="b_Addorder.html?id='+data.productNo+'">'+
+						'<a href="b_Addorder.html?productNo='+data.productNo+'&type='+type+'">'+
 							'<div class="main_rcont_x10"><div class="img_auto" style="background-image:url('+apiUrl+data.productImage.split(",")[0]+')"></div></div>'+
 							'<div class="main_rcont_x20">'+
 								'<h1>【'+data.productName+'】'+data.productDesc+'</h1>'+
@@ -199,6 +208,7 @@ function click_nav(){
 //点击侧边栏导航
 function click_sidebox(){
 	$(".sidebox div").click(function(){
+		$(this).addClass('sidebox_on').siblings('div').removeClass('sidebox_on');
 		var this_index = $(this).index();
 		if(this_index==1){
 			history.pushState(history.state,"","?sort=0&address=成都市&type=舞美&page=1");
@@ -210,4 +220,15 @@ function click_sidebox(){
 			Recommend("道具");//展示推荐商品
 		}
 	})
+}
+//默认样式
+function defaultStyle(sort,address){
+	$(".main_nav01").eq(sort).addClass('main_nav_on');
+	$(".main_nav_bg span").text(address);
+	var list_length = $(".main_nav_x20 p");
+	for(var i=0;i<list_length.length;i++){
+		if(list_length.eq(i).text()==address){
+			$(".main_nav_x20 p").eq(i).addClass('main_nav_x10_on');
+		}
+	}
 }

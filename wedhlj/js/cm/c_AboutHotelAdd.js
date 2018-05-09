@@ -83,7 +83,6 @@ $(".main_but_on").click(function(){
 		processData: false,
 		contentType: false,
 		success: function(e) {
-			console.log(e)
 			if(e.status == 200){
 				down_Loading()
 				meg('提示','上传成功','body',dothing);

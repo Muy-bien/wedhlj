@@ -1,11 +1,8 @@
 $(document).ready(function(){
-	//修改header样式
-	var add_header = function(){
-		$(".header").prepend('<div class="Return_index"><a href="c_AboutHotelAdd.html" target="_blank"><p>添加酒店</p></a></div>')
-	}
 	//获取地址栏上的值，并执行操作
 	var pageNo=getUrlParam('pageNo');
 	if(pageNo==null){
+		history.pushState(history.state,"","?pageNo=1");
 		queryAllHotelInfo(1,1);
 	}else{
 		queryAllHotelInfo(pageNo,1);
@@ -30,7 +27,6 @@ function queryAllHotelInfo(pageNo,state){
 				var totalPage=Math.ceil(e.totalCount/8);
 				var html="";
 				for(var i=0;i<e.hotelList.length;i++){
-					console.log(e.hotelList[i].hotelId);
 					html+='<div class="hotel_detail_item">'+
 								'<a href="b_AboutHotelDetail.html?hid='+e.hotelList[i].hotelId+'" target="_blank"><div>'+e.hotelList[i].hotelName+'</div></a>'+
 								'<div>'+e.hotelList[i].hotelTelephone+'</div>	'+
@@ -84,7 +80,7 @@ function meg_delete(hid){
 				if(e.status==200){
 					meg("提示","删除成功","body",uploaded);
 					function uploaded(){
-						history.pushState(history.state,"","?pageNo="+page);
+						history.pushState(history.state,"","?pageNo=1");
 						queryAllHotelInfo(1,1);
 					}
 				}else{
@@ -100,4 +96,8 @@ function meg_delete(hid){
 //导航栏默认选中
 function on_navli(){
 	$(".nav_cont_a").eq(4).addClass("nav_cont_on");
+}
+//修改header样式
+var add_header = function(){
+	$(".header").prepend('<div class="Return_index"><a href="c_AboutHotelAdd.html" target="_blank"><p>添加酒店</p></a></div>')
 }

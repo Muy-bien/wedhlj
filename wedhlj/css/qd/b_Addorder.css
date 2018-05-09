@@ -20,7 +20,7 @@
 /*限时特惠*/
 /*显示图片的样式*/
 .show_img_style{
-  border:2px solid #f85868;
+  border-color: #f85868 !important;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -41,18 +41,18 @@
 .target_pic{
   width: 861px;
   height:540px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .target_pic>img{
-  height: 100%;
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 ul.show_sale_list{
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -64,8 +64,14 @@ ul.show_sale_list{
   align-items: center;
   overflow: hidden;
   width: 124px;
-  height: 101px;
+  height: 100px;
   cursor: pointer;
+  margin-bottom: 10px;
+  border:2px solid #ccc;
+  box-sizing: border-box;
+}
+.show_sale_list>li:last-child{
+  margin: none;
 }
 .show_sale_list>li>img{
   max-width: 100%;
@@ -135,12 +141,17 @@ ul.show_sale_list{
             justify-content: space-between;
   }
   .show_sale_part2_num{
-    width: 99px;
-    height: 32px;
+    width: 101px;
+    height: 33px;
     border: 1px solid #aaa;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
   }
   .show_sale_part2_num>input{
-    height: 32px;
+    height: 31px;
     width:  35px;
     outline: none;
     border:none;  
@@ -154,7 +165,8 @@ ul.show_sale_list{
   }
   .show_sale_part2_num>button{
     width: 32px;
-    height: 32px;
+    height: 31px;
+    box-sizing: border-box;
     line-height: 32px;
     text-align: center;
     border:none;
@@ -186,6 +198,9 @@ ul.show_sale_list{
      padding-top: 10px;
      text-align: center;
  }
+ .show_sale_part2_right_star img{
+  margin: 0 2px;
+ }
  .show_sale_part2_right_sale{
   margin-top: 18px;
   width:  153px;
@@ -195,11 +210,13 @@ ul.show_sale_list{
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  flex-wrap: wrap;
  }
  .show_sale_part2_right_sale>span{
   display: block;
   color: #666;
   font-size: 14px;
+  margin-right: 10px;
  }
  .submit_sho{
   width: 153px;
