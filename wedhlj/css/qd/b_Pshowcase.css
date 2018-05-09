@@ -46,6 +46,7 @@ a:hover{
   box-sizing: border-box;
   font-weight: 700;
   background: #fafafa;
+  border-left: 4px solid #f85162;
 }
 
 /*导航栏内容*/
@@ -161,13 +162,13 @@ a:hover{
   display: flex;
 }
 
-.Categories_spad_cont li img {
+.Categories_spad_cont li .Categories_spad_img {
   width: 60px;
   height: 70px;
   margin-right: 10px;
 }
 
-.Categories_spad_cont li div{
+.Categories_spad_cont li .Categories_spad_text{
   width: 150px;
 }
 
@@ -206,6 +207,7 @@ a:hover{
 /*商品内容*/
 .spcont {
   width: 800px;
+  min-height: 500px;
 }
 
 /*页面地址*/
@@ -233,22 +235,14 @@ a:hover{
   text-align: center;
 }
 
+.spcont_cont li:hover .Categories_spad_img{
+  transform: scale(1.1);
+}
+
 .spcont_x10 {
   width: 100%;
   height: 185px;
   overflow: hidden;
-}
-
-.spcont_x10 img {
-  width: 100%;
-  height: 100%;
-  -webkit-transition: 0.35s;
-  transition: 0.35s;
-}
-
-.spcont_x10:hover img {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
 }
 
 .spcont_x20 {

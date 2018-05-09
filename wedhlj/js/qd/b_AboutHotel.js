@@ -151,7 +151,7 @@ $(document).ready(function(){
 	//address：地区参数
 	//pageNo：当前页码
 function queryAllHotelInfo(pageSize,sort,address,pageNo,state){
-	on_Loading();
+	$(".main").html("加载中......");
 	$.ajax({
 			type:"post",
 			url: apiUrl+'/hotel/queryAllHotelInfo',
@@ -203,11 +203,9 @@ function queryAllHotelInfo(pageSize,sort,address,pageNo,state){
 				}else{
 					$(".main").html('没有您需要的数据！');
 				}
-			 down_Loading();
 			 },
 			 error:function(){
-			 	down_Loading();
-			 	meg("提示","请检查网络，稍后再试！","body");
+			 	$(".main").html("未能成功连接服务器，请稍后再试");
 			 }
 	})
 }

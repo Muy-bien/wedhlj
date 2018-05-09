@@ -118,7 +118,7 @@ function show(e,type){
 					'</div>'+
 				'</div>'+
 				'<div class="mainc_top_right">'+
-					'<div><a href="b_Pshowcase.html?id='+data.mId+'">进入商家</a></div>'+
+					'<div><a href="b_Pshowcase.html?id='+data.mId+'&type='+type+'">进入商家</a></div>'+
 				'</div>'+
 			'</div>'+
 			'<div class="mainc_cont">'+on_product+'</div>'+

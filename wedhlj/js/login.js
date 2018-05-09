@@ -49,7 +49,18 @@ $(".username").change(function(){
 $(".password").change(function(){
 	user_length = 1
 })
-
+$("input").focus(function(){
+	remove();
+})
+//点击记住密码，清空缓存
+$("input[name='vehicle']").click(function(){
+	var checkedType=$(this).is(':checked');
+	if(checkedType==false){
+		$.cookie("passWord","",{ path:'/',secure:false , expires: -1});
+		$.cookie("userName","",{ path:'/',secure:false , expires: -1});
+		$.cookie("rmbUser","",{ path:'/',secure:false , expires: -1});
+	}
+})
 //-----完成登录
 var state = 1;
 function login(){
@@ -85,7 +96,6 @@ function login(){
 		}else if(user_length == 2){
 			var pass_cont = $.cookie("passWord");
 		}
-		state = 1;
    		//  @data  获取验证码需要的数据
 		//注册需要的参数
 		var data = {

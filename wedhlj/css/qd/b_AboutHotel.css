@@ -142,6 +142,7 @@ a:hover{
 /* 任务内容 */
 .main{
   width: 1200px;
+  min-height: 500px;
   margin: 0 auto;
 }
 .h_items{
