@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	if($.cookie("h_position") != "" && $.cookie("h_position") != 0){
+	if($.cookie("position") != "" && $.cookie("position") != 0){
 		window.location.href = "login.html";
 	}
 })
