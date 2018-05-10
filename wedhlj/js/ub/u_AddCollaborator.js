@@ -54,7 +54,7 @@ $(".upload").click(function(){
 		}
 		$.ajax({
 			type: 'POST',
-			url: apiUrl+'BusinessPersonnel/addBusinessPersonnel',
+			url: apiUrl+'/BusinessPersonnel/addFixedBusinessPersonnel',
 			data: data,
 			processData:false,
 			contentType:false,
@@ -70,7 +70,7 @@ $(".upload").click(function(){
 				down_Loading();
 			},
 			error:function(){
-				down();
+				down_Loading();
 				meg("提示","网络错误，请稍后再试！","body")
 			}
 		})

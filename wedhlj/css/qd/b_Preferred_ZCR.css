@@ -28,7 +28,6 @@
 .main_nav_on{
   background: rgba(255,255,255,0.2);
 }
-
 .main_nav01:hover{
   background: rgba(255,255,255,0.2);
 }
@@ -424,7 +423,7 @@
 .sidebox div {
   height: 49px;
   margin-bottom: 1px;
-  background: #f85162 url(../../images/b_Supermarket_WM/sidebox_01.png)
+  background: rgba(248,81,98,0.7) url(../../images/b_Supermarket_WM/sidebox_01.png)
     no-repeat 90% center;
   padding-left: 8px;
   -webkit-box-sizing: border-box;
@@ -438,6 +437,9 @@
   color: #fff;
 }
 
+.sidebox .sidebox_on{
+  background-color: #f85162;
+}
 .sidebox_01 {
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;

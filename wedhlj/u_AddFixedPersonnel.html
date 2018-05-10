@@ -6,6 +6,7 @@
 	<link rel="shortcut icon" href="images/index_Avatar.png" type="image/x-icon">
 	<link rel="stylesheet" href="css/common.css">
 	<link rel="stylesheet" href="css/ub/u_AddFixedPersonnel.css">
+	<link rel="stylesheet" href="css/cropper.min.css">
 	<link rel="stylesheet" href="css/ub/u_common.css">
 	<!---->
 </head>
@@ -124,6 +125,13 @@
 						 yourPrice" name="commission" maxlength="4">
 						 <span class="Company">%</span>
 					</div>
+					<!-- 接单价格 -->
+					<div class="p_name">
+						<div class="add_type_title">接单价格</div>
+						<input type="text" class="p_select heigAndPri
+						 yourPrice" name="order_price" maxlength="8">
+						 <span class="Company">元</span>
+					</div>
 					<!-- 提成工资 -->
 					<!-- <div class="p_name">
 						<div class="add_type_title">提成工资</div>
@@ -135,9 +143,16 @@
 					<div class="p_name">
 						<div class="add_type_title">头像</div>
 						<div class="main_file_head">
-							<a href='javascript:void(0);' class="blueButton_head"><p>上传头像</p></a>
+							<div class="but_file" id="replaceImg">
+								<p>(点击添加头像)</p>
+							</div>
+							<!-- <a href='javascript:void(0);' class="blueButton_head"><p>上传头像</p></a>
 							<div class="show_head"></div>
-							<input type="file" name="headPortait" class="myFileUpload_02 myFileUpload_head" accept="image/*">
+							<input type="file" name="headPortait" class="myFileUpload_02 myFileUpload_head" accept="image/*"> -->
+							<!-- <div id="replaceImg" class="l-btn">更换图片</div>
+							<div style="width: 320px;height: 320px;border: solid 1px #555;padding: 5px;margin-top: 10px">
+							    <img id="finalImg" src="" width="100%">
+							</div> -->
 						</div>
 					</div>
 					<!-- 案例图片 -->
@@ -193,9 +208,40 @@
 			</div>
 		</div>
 	</form>
+		<!--图片裁剪框 start-->
+		<div style="display: none" class="tailoring-container">
+		    <div class="black-cloth" onclick="closeTailor(this)"></div>
+		    <div class="tailoring-content">
+		            <div class="tailoring-content-one">
+		                <label title="上传图片" for="chooseImg" class="l-btn choose-btn">
+		                    <input type="file" accept="image/jpg,image/jpeg,image/png" name="file" id="chooseImg" class="hidden" onchange="selectImg(this)">
+		                    选择图片
+		                </label>
+		                <div class="close-tailoring"  onclick="closeTailor(this)">×</div>
+		            </div>
+		            <div class="tailoring-content-two">
+		                <div class="tailoring-box-parcel">
+		                    <img id="tailoringImg">
+		                </div>
+		                <div class="preview-box-parcel">
+		                    <p>图片预览：</p>
+		                    <div class="square previewImg"></div>
+		                    <div class="circular previewImg"></div>
+		                </div>
+		            </div>
+		            <div class="tailoring-content-three">
+		                <button class="l-btn cropper-reset-btn">复位</button>
+		                <button class="l-btn cropper-rotate-btn">旋转</button>
+		                <button class="l-btn cropper-scaleX-btn">换向</button>
+		                <button class="l-btn sureCut" id="sureCut">确定</button>
+		            </div>
+		        </div>
+		</div>
+		<!--图片裁剪框 end-->
 	<!-- script -->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/cropper.min.js"></script>
 	<script type="text/javascript" src="js/ub/u_common.js"></script>
 	<script type="text/javascript" src="js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="js/ub/u_AddFixedPersonnel.js"></script>

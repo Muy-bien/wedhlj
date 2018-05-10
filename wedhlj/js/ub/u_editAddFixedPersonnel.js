@@ -1,3 +1,4 @@
+var blob='';
 //导航栏默认选中
 function on_navli(){
 	$(".nav_cont_a").eq(2).addClass("nav_cont_on");
@@ -25,27 +26,27 @@ testNumber($(".yourPrice"));
 queryUser($.cookie("login_on"));
 
 //上传头像
-$(".myFileUpload_head").change(function(e){ 
- 	var file = this.files[0];
- 	if (file){
- 		$(".blueButton_head").css("display","none");
- 		if (window.FileReader) {    
-            var reader = new FileReader();
-            reader.readAsDataURL(file); //将文件读取为DataURL  
-            //监听文件读取结束后事件 
-          	reader.onloadend = function (e){
-          		var result=$(this).result;
-          		// console.log(e.target.result);
-          		var src=e.target.result.substr(22);
-          		var base64Img=e.target.result;
-          		$(".show_head").html('<div class="img_auto" style="background-image:url('+base64Img+')"></div>');
-          	};    
-       	}
-	}else{
-   		$(".blueButton_head").css("display","block");
-   		$(".show_head").html("");
-    }
-});
+// $(".myFileUpload_head").change(function(e){ 
+//  	var file = this.files[0];
+//  	if (file){
+//  		$(".blueButton_head").css("display","none");
+//  		if (window.FileReader) {    
+//             var reader = new FileReader();
+//             reader.readAsDataURL(file); //将文件读取为DataURL  
+//             //监听文件读取结束后事件 
+//           	reader.onloadend = function (e){
+//           		var result=$(this).result;
+//           		// console.log(e.target.result);
+//           		var src=e.target.result.substr(22);
+//           		var base64Img=e.target.result;
+//           		$(".show_head").html('<div class="img_auto" style="background-image:url('+base64Img+')"></div>');
+//           	};    
+//        	}
+// 	}else{
+//    		$(".blueButton_head").css("display","block");
+//    		$(".show_head").html("");
+//     }
+// });
 
 //添加案例视频
 	/*添加地址*/
@@ -77,8 +78,6 @@ $("#btn").on('click', function() {
 		// 详细地址
 		var addressTot=$("#s1").val()+','+$("#s2").val()+','+$("#s3").val()+','+$("#s4").val();
 		$("input[name=address]").val(addressTot);
-		console.log(addressTot);
-		console.log($("#s4").val());
 		//风格上传
 		var style="";
 		for(var i=0;i<$(".Posttask_x20_on").length;i++){
@@ -111,7 +110,10 @@ $("#btn").on('click', function() {
 		}else if(!$("input[name=commission]").val()){
 			meg("提示","提成率不能为空","body");
 			return false;//提成率
-		}else if(!$(".show_head").html()){
+		}else if(!$("input[name=order_price]").val()){
+			meg("提示","接单价格不能为空","body");
+			return false;//接单价格
+		}else if(!blob&&$("#replaceImg img").length<=0){
 			meg("提示","头像不能为空","body");
 			return false;//头像验证
 		}else if(imgFile[0].length + imgbox_default[0].length< 2){
@@ -143,9 +145,7 @@ $("#btn").on('click', function() {
 		data.append("token",$.cookie("login_on"));
 		data.append("PersonnelType",0)//合作人员;
 		data.append("PersonnelNo",PersonnelNo);
-		for(a of data){
-			console.log(a);
-		}
+		data.append("headPortait",blob);
 		///BusinessPersonnel/updateProduct修改人员
 		$.ajax({
 			type: "post",
@@ -183,7 +183,6 @@ function queryUser(token){
 			data:{token:token},
 			dataType:'json',
 			success: function(e){
-				console.log(e)
 				// var type=e.user.companyType;
 				var type=e.companyType;
 				console.log(type);
@@ -279,8 +278,10 @@ function queryBusinessPersonnelInfo(PersonnelNo){
 			$("input[name=wage]").val(list.wage);
 			// 提成率
 			$("input[name=commission]").val(list.commission);
+			// 接单价格
+			$("input[name=order_price]").val(list.order_price);
 			// 头像<img src='+apiUrl+list.headPortait+'/>
-			$(".show_head").html('<div class="img_auto" style="background:url('+apiUrl+list.headPortait+')"></div>')
+			$("#replaceImg").html('<img id="finalImg" src="'+apiUrl+list.headPortait+'" width="100%">')
 			//$("input[name=headPortait]");
 			// 案例图片
 			var sPassage_img = new Array();
@@ -309,7 +310,6 @@ function queryBusinessPersonnelInfo(PersonnelNo){
 			//添加案例视频
 			var video=list.case_video.split(",");
 			video.pop();
-			console.log(video);
 			var videoHtml="";
 			for(var i=0;i<video.length;i++){
 				videoHtml+='<li>'+
@@ -332,6 +332,120 @@ function queryBusinessPersonnelInfo(PersonnelNo){
 		}
 	})
 }
+
+// 剪裁头像插件
+
+    //弹出框水平垂直居中
+    (window.onresize = function () {
+        var win_height = $(window).height();
+        var win_width = $(window).width();
+        if (win_width <= 768){
+            $(".tailoring-content").css({
+                "top": (win_height - $(".tailoring-content").outerHeight())/2,
+                "left": 0
+            });
+        }else{
+            $(".tailoring-content").css({
+                "top": (win_height - $(".tailoring-content").outerHeight())/2,
+                "left": (win_width - $(".tailoring-content").outerWidth())/2
+            });
+        }
+    })();
+
+    //弹出图片裁剪框
+    $("#replaceImg").on("click",function () {
+        $(".tailoring-container").toggle();
+    });
+    //图像上传
+    function selectImg(file) {
+        if (!file.files || !file.files[0]){
+            return;
+        }
+        var reader = new FileReader();
+        reader.onload = function (evt) {
+            var replaceSrc = evt.target.result;
+            //更换cropper的图片
+            $('#tailoringImg').cropper('replace', replaceSrc,false);//默认false，适应高度，不失真
+        }
+        reader.readAsDataURL(file.files[0]);
+    }
+    //cropper图片裁剪
+    $('#tailoringImg').cropper({
+        aspectRatio: 1/1,//默认比例
+        preview: '.previewImg',//预览视图
+        guides: false,  //裁剪框的虚线(九宫格)
+        autoCropArea: 0.5,  //0-1之间的数值，定义自动剪裁区域的大小，默认0.8
+        movable: false, //是否允许移动图片
+        dragCrop: true,  //是否允许移除当前的剪裁框，并通过拖动来新建一个剪裁框区域
+        movable: true,  //是否允许移动剪裁框
+        resizable: true,  //是否允许改变裁剪框的大小
+        zoomable: false,  //是否允许缩放图片大小
+        mouseWheelZoom: false,  //是否允许通过鼠标滚轮来缩放图片
+        touchDragZoom: true,  //是否允许通过触摸移动来缩放图片
+        rotatable: true,  //是否允许旋转图片
+        crop: function(e) {
+            // 输出结果数据裁剪图像。
+        }
+    });
+    //旋转
+    $(".cropper-rotate-btn").on("click",function () {
+        $('#tailoringImg').cropper("rotate", 45);
+    });
+    //复位
+    $(".cropper-reset-btn").on("click",function () {
+        $('#tailoringImg').cropper("reset");
+    });
+    //换向
+    var flagX = true;
+    $(".cropper-scaleX-btn").on("click",function () {
+        if(flagX){
+            $('#tailoringImg').cropper("scaleX", -1);
+            flagX = false;
+        }else{
+            $('#tailoringImg').cropper("scaleX", 1);
+            flagX = true;
+        }
+        flagX != flagX;
+    });
+
+    //裁剪后的处理
+    $("#sureCut").on("click",function () {
+        if ($("#tailoringImg").attr("src") == null ){
+            return false;
+        }else{
+            var cas = $('#tailoringImg').cropper('getCroppedCanvas');//获取被裁剪后的canvas
+            var base64url = cas.toDataURL('image/png'); //转换为base64地址形式
+            $("#replaceImg").html('<img src="'+base64url+'" width="100%">');//显示为图片的形式base64url
+            /*裁剪后处理里面*/
+            blob = base64url
+            //关闭裁剪框
+            closeTailor();
+        }
+    });
+    //关闭裁剪框
+    function closeTailor() {
+        $(".tailoring-container").toggle();
+    }
+    /*
+    **需要将dataURL转成Blob对象. 这儿在全局写个方法
+    **将canvas图片转换为文件类型
+    */
+    function dataURLtoBlob(dataURI) {
+        var arr = dataURI.split(','),
+            mime = arr[0].match(/:(.*?);/)[1],
+            bstr = (arr[1]),
+            n = bstr.length,
+            u8arr = new Uint8Array(n);
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new Blob([u8arr], {
+            type: mime
+        });
+    }
+
+
+
 // var state=1;
 // //导航栏默认选中
 // function on_navli(){

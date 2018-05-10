@@ -11,7 +11,6 @@ $(document).ready(function(){
 	//u_AddFixedPersonnel.html合作人员
 	//点击添加人员
 	$(".addPer").click(function(){
-		console.log($(".main_title_cont h1").eq(0).hasClass("main_title_cont_on"));
 		if($(".main_title_cont h1").eq(0).hasClass("main_title_cont_on")==true){
 			location.href="u_AddFixedPersonnel.html";
 		}else{
@@ -36,12 +35,11 @@ $(document).ready(function(){
 		queryAllParticularInfo($.cookie("login_on"),1,0,1)
 	}else if(PersonnelType==0){
 		$(".main_title_cont h1").eq(0).addClass('main_title_cont_on');
-		queryAllParticularInfo($.cookie("login_on"),1,0,1);
+		queryAllParticularInfo($.cookie("login_on"),page,0,1);
 	}else if(PersonnelType==1){
 		$(".main_title_cont h1").eq(1).addClass('main_title_cont_on');
-		queryAllParticularInfo($.cookie("login_on"),1,1,1);
+		queryAllParticularInfo($.cookie("login_on"),page,1,1);
 	}
-
 })
 ///BusinessPersonnel/queryAllParticularInfo
 ///PersonnelType  0---合作 1--固定
@@ -53,7 +51,6 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state){
 		data: {token:token,pageNo:pageNo,pageSize:pageSize,PersonnelType:PersonnelType},
 		dataType: 'json',
 		success:function(e){
-			console.log(e);
 			var businessPersonnels=e.businessPersonnels;
 			if(businessPersonnels.length!=0){
 				$('.main_Pagination').paging({
@@ -198,3 +195,18 @@ function deletePerson(PersonnelNos){
 		error:function(){meg("提示","网络错误，请稍后再试","body")}
 	})
 }
+//查询数据条数/BusinessPersonnel/resultTypeCount
+function resultTypeCount(token){
+	$.ajax({
+		type:'post',
+		url: apiUrl+'/BusinessPersonnel/resultTypeCount',
+		data: {token:token},
+		dataType: 'json',
+		success:function(e){
+			$(".coop span").html('('+e.fixedNumberCount+')')
+			$(".fixed span").html('('+e.cooperationNumCount+')')
+		},
+		error:function(){meg("提示","网络错误，请稍后再试","body")}
+	})
+}
+resultTypeCount($.cookie('login_on'))
