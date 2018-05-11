@@ -52,7 +52,7 @@ if(!username){
     // 酒店详细地址
     $("input[name=hotelAddress]").val($("#s1").val()+','+$("#s2").val()+','+$("#s3").val()+','+$("input[name=address]").val());
     //确定类型
-    $("input[name=takeType]").val($(".Posttask_x20_on p").html());
+    $("input[name=type]").val($(".Posttask_x20_on p").html());
     //方案草图的实际上传个数
     var imgFiles=$(".show img");
     //验证任务项目
