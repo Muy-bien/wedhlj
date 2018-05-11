@@ -23,28 +23,28 @@ $(document).ready(function(){
 		var index=$(this).index();
 		if(index==0){
 			history.pushState(history.state,"","?PersonnelType=0&page=1");
-			queryAllParticularInfo($.cookie("login_on"),1,0,1)
+			queryAllParticularInfo($.cookie("login_on"),1,0,1,1)
 		}else if(index==1){
 			history.pushState(history.state,"","?PersonnelType=1&page=1");
-			queryAllParticularInfo($.cookie("login_on"),1,1,1)
+			queryAllParticularInfo($.cookie("login_on"),1,1,1,1)
 		}
 	})
 	// 根据导航栏判断人员类型
 	if(!PersonnelType){
 		$(".main_title_cont h1").eq(0).addClass('main_title_cont_on');
-		queryAllParticularInfo($.cookie("login_on"),1,0,1)
+		queryAllParticularInfo($.cookie("login_on"),1,0,1,1)
 	}else if(PersonnelType==0){
 		$(".main_title_cont h1").eq(0).addClass('main_title_cont_on');
-		queryAllParticularInfo($.cookie("login_on"),page,0,1);
+		queryAllParticularInfo($.cookie("login_on"),page,0,1,1);
 	}else if(PersonnelType==1){
 		$(".main_title_cont h1").eq(1).addClass('main_title_cont_on');
-		queryAllParticularInfo($.cookie("login_on"),page,1,1);
+		queryAllParticularInfo($.cookie("login_on"),page,1,1,1);
 	}
 })
 ///BusinessPersonnel/queryAllParticularInfo
 ///PersonnelType  0---合作 1--固定
 var pageSize=5;
-function queryAllParticularInfo(token,pageNo,PersonnelType,state){
+function queryAllParticularInfo(token,pageNo,PersonnelType,state,reset){
 	$.ajax({
 		type: 'POST',
 		url: apiUrl+'/BusinessPersonnel/queryAllParticularInfo',
@@ -52,7 +52,11 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state){
 		dataType: 'json',
 		success:function(e){
 			var businessPersonnels=e.businessPersonnels;
-			if(businessPersonnels.length!=0){
+			if(reset==1){
+				$('.main_Pagination').html("");
+			}
+			if(Math.ceil(e.totalCount/pageSize)>1&&reset==1){
+				$('.main_Pagination').html("");
 				$('.main_Pagination').paging({
 		            initPageNo: pageNo, // 初始页码
 		            totalPages: Math.ceil(e.totalCount/pageSize), //总页数
@@ -64,11 +68,14 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state){
 							state = 2 
 		            	}else if(state == 2){
 		            		history.pushState(history.state,"","?PersonnelType="+PersonnelType+"&page="+page)
-		            		queryAllParticularInfo($.cookie("login_on"),page,PersonnelType,1);
+		            		queryAllParticularInfo($.cookie("login_on"),page,PersonnelType,1,2);
 		            	}
 		            }
 	        	})
-	        	var personHtml="";
+			}
+
+			if(businessPersonnels.length>=1){
+				var personHtml="";
 	        	if(PersonnelType==0){//合作人员
 		        	personHtml+='<ul class="main_cont_title">'+
 									'<li>编号</li>'+
