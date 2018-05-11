@@ -44,9 +44,9 @@ $(document).ready(function(){
 	// 默认情况
 	if(pageSize==null&&sort==null&&address==null&&pageNo==null){
 		history.pushState(history.state,"",'?pageSize=6&sort=0&address=成都市&pageNo=1');
-		queryAllHotelInfo(6,0,'成都市',1,1);//默认每页6条数据，按星级排序，全成都市数据，第一页
+		queryAllHotelInfo(6,0,'成都市',1,1,1);//默认每页6条数据，按星级排序，全成都市数据，第一页
 	}else{
-		queryAllHotelInfo(pageSize,sort,address,pageNo,1);
+		queryAllHotelInfo(pageSize,sort,address,pageNo,1,1);
 	}
 	// 根据地址栏做导航栏判断
 	// 地址栏中的详细地址p
@@ -125,23 +125,23 @@ $(document).ready(function(){
 		getUrl();
 		if($(this).html()=='从低到高'){
 			history.pushState(history.state,"",'?pageSize='+pageSize+'&sort=1&address='+address+'&pageNo=1');
-    		queryAllHotelInfo(pageSize,1,address,1,1);
+    		queryAllHotelInfo(pageSize,1,address,1,1,1);
 		}else if($(this).html()=='从高到低'){
 			history.pushState(history.state,"",'?pageSize='+pageSize+'&sort=2&address='+address+'&pageNo=1');
-    		queryAllHotelInfo(pageSize,2,address,1,1);
+    		queryAllHotelInfo(pageSize,2,address,1,1,1);
 		}
 	})
 	// 星级
 	$(".main_nav01").click(function(){
 		getUrl();
 		history.pushState(history.state,"",'?pageSize='+pageSize+'&sort=0&address='+address+'&pageNo=1');
-		queryAllHotelInfo(pageSize,0,address,1,1);
+		queryAllHotelInfo(pageSize,0,address,1,1,1);
 	})
 	//地区encodeURI(name)decodeURI 
 	$(".main_nav_x20 p").click(function(){
 		getUrl();
 		history.pushState(history.state,"",'?pageSize='+pageSize+'&sort='+sort+'&address='+$(this).text()+'&pageNo=1');
-		queryAllHotelInfo(pageSize,sort,$(this).text(),1,1);
+		queryAllHotelInfo(pageSize,sort,$(this).text(),1,1,1);
 	})
 })
 
@@ -150,7 +150,8 @@ $(document).ready(function(){
 	//sort：排序方式 0按照星级排序 1价格升序 2价格降序 
 	//address：地区参数
 	//pageNo：当前页码
-function queryAllHotelInfo(pageSize,sort,address,pageNo,state){
+	//Reset===>>判断是否刷新分页Dom(1:是)
+function queryAllHotelInfo(pageSize,sort,address,pageNo,state,Reset){
 	$(".main").html("加载中......");
 	$.ajax({
 			type:"post",
@@ -158,7 +159,6 @@ function queryAllHotelInfo(pageSize,sort,address,pageNo,state){
 			dataType: 'json',
 			data: {pageSize:pageSize,sort:sort,address:address,pageNo:pageNo},
 			success:function(e){
-				$(".main_Pagination").html("");
 				if(e.totalCount>=1){
 					var totalPage=Math.ceil(e.totalCount/pageSize);
 					var html="";
@@ -184,22 +184,25 @@ function queryAllHotelInfo(pageSize,sort,address,pageNo,state){
 					}
 					$(".main").html(html);
 					max_text();
-					if(totalPage > 1){
-						$('.main_Pagination').paging({
-				            initPageNo: pageNo, // 初始页码
-				            totalPages: totalPage, //总页数
-				            slideSpeed: 600, // 缓动速度。单位毫秒
-				            jump: true, //是否支持跳转
-				            callback: function(page) {
-				            	if(state==1){
-				            		state=2;
-				            	}else if(state==2){
-				            		history.pushState(history.state,"",'?pageSize='+pageSize+'&sort='+sort+'&address='+address+'&pageNo='+page);
-				            		queryAllHotelInfo(pageSize,sort,address,page,1);
-				            	}
-				            }
-				        })
-					}
+					if(Reset==1){
+						$(".main_Pagination").html("");
+						if(totalPage > 1){
+							$('.main_Pagination').paging({
+					            initPageNo: pageNo, // 初始页码
+					            totalPages: totalPage, //总页数
+					            slideSpeed: 600, // 缓动速度。单位毫秒
+					            jump: true, //是否支持跳转
+					            callback: function(page) {
+					            	if(state==1){
+					            		state=2;
+					            	}else if(state==2){
+					            		history.pushState(history.state,"",'?pageSize='+pageSize+'&sort='+sort+'&address='+address+'&pageNo='+page);
+					            		queryAllHotelInfo(pageSize,sort,address,page,1,2);
+					            	}
+					            }
+					        })
+						}
+					}	
 				}else{
 					$(".main").html('没有您需要的数据！');
 				}

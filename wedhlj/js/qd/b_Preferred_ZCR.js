@@ -1,5 +1,7 @@
 var state=1;//防止多次点击
-$(".nav_li").eq(3).find("a").addClass("nav_on");
+$(document).ready(function(){
+	$(".nav_li").eq(3).find("a").addClass("nav_on");
+})
 var type=getUrlParam("type");
 var address=getUrlParam('address');
 var sort=getUrlParam('sort');
@@ -12,7 +14,7 @@ if(!sort&&!type&&!address&&!pageNo){
 	type='主持人',address=null,sort=0,pageNo=1;
 	history.pushState(history.state,"",'?type='+type+'&address='+address+'&sort=0&pageNo=1');
 	$(".sidebox a").eq(1).children().addClass('sidebox_on').siblings('').removeClass();
-	findAllParticularInfo('主持人',null,0,1,pageSize,0);//默认调用
+	findAllParticularInfo('主持人',null,0,1,pageSize,1,1);//默认调用
 }else if(sort==0){
 	$(".main_nav01").eq(0).addClass('main_nav_on').siblings('').removeClass('main_nav_on');
 		if(type=='主持人'){
@@ -30,7 +32,7 @@ if(!sort&&!type&&!address&&!pageNo){
 		}else if(type=='婚礼管家'){
 		 	$(".sidebox a").eq(7).children().addClass('sidebox_on').siblings('').removeClass();
 		}
-		findAllParticularInfo(type,address,sort,pageNo,pageSize,1);
+		findAllParticularInfo(type,address,sort,pageNo,pageSize,1,1);
 }else if(sort==1){
 	$(".main_nav01").eq(1).addClass('main_nav_on').siblings('').removeClass('main_nav_on');
 		if(type=='主持人'){
@@ -48,7 +50,7 @@ if(!sort&&!type&&!address&&!pageNo){
 		}else if(type=='婚礼管家'){
 		 	$(".sidebox a").eq(7).children().addClass('sidebox_on').siblings('').removeClass();
 		}
-		findAllParticularInfo(type,address,sort,pageNo,pageSize,1);
+		findAllParticularInfo(type,address,sort,pageNo,pageSize,1,1);
 }else if(sort==2){
 	$(".main_nav01").eq(2).addClass('main_nav_on').siblings('').removeClass('main_nav_on');
 		if(type=='主持人'){
@@ -66,7 +68,7 @@ if(!sort&&!type&&!address&&!pageNo){
 		}else if(type=='婚礼管家'){
 		 	$(".sidebox a").eq(7).children().addClass('sidebox_on').siblings('').removeClass();
 		}
-		findAllParticularInfo(type,address,sort,pageNo,pageSize,1);
+		findAllParticularInfo(type,address,sort,pageNo,pageSize,1,1);
 }
 //根据导航栏参数判断地址信息
 (function(){
@@ -83,7 +85,7 @@ $(".sidebox div").click(function(){
 	type=$(this).html();
 	$(this).addClass("sidebox_on").parent().siblings('').children().removeClass("sidebox_on");
 	history.pushState(history.state,"",'?type='+$(this).html()+'&address='+address+'&sort='+sort+'&pageNo=1');
-	findAllParticularInfo(type,address,sort,pageNo,pageSize,1);
+	findAllParticularInfo(type,address,sort,pageNo,pageSize,1,1);
 })
 $(".main_nav01").click(function(){
 	var index=$(this).index();
@@ -101,7 +103,7 @@ $(".main_nav01").click(function(){
 	$(".main_nav_bg").css({'background':'url(images/main_nav02.png) no-repeat 120px center'});
 	//$(".main_nav_x10 p").removeClass('main_nav_x10_on');
 	$(this).addClass('main_nav_on').siblings('').removeClass('main_nav_on');
-	findAllParticularInfo(type,address,sort,pageNo,pageSize,1);
+	findAllParticularInfo(type,address,sort,pageNo,pageSize,1,1);
 })
 // 点击地址栏地区
 $(".main_nav_x10 p").click(function(){
@@ -115,7 +117,7 @@ $(".main_nav_x10 p").click(function(){
 	//$(".main_nav01").removeClass('main_nav_on');
 	$(this).addClass('main_nav_x10_on').siblings('').removeClass('main_nav_x10_on');
 	history.pushState(history.state,"",'?type='+type+'&address='+$(this).html()+'&sort=2&pageNo=1');
-	findAllParticularInfo(type,address,sort,pageNo,pageSize,1);
+	findAllParticularInfo(type,address,sort,pageNo,pageSize,1,1);
 })
 $(".main_nav_bg").hover(
 	function(){
@@ -132,7 +134,8 @@ $(".main_nav_bg").hover(
 //sort：排序方式---综合-0；星级-1；人气-2
 //pageNo:当前页数
 //pageSize:每页的最大数据数量
-function findAllParticularInfo(type,address,sort,pageNo,pageSize,state){
+//Reset===>>判断是否刷新分页Dom(1:是)
+function findAllParticularInfo(type,address,sort,pageNo,pageSize,state,Reset){
 	$.ajax({
 		type:"post",
 		url:apiUrl+'/BusinessPersonnel/findAllParticularInfo',
@@ -184,26 +187,31 @@ function findAllParticularInfo(type,address,sort,pageNo,pageSize,state){
 								'</a>'+
 							'</li>';
 				}
-				$("ul.main_cont").html(perHtml);
-				$('.main_Pagination').paging({
-					initPageNo: pageNo, // 初始页码
-		            totalPages: Math.ceil(e.totalCount/pageSize), //总页数
-		            slideSpeed: 600, // 缓动速度。单位毫秒
-		            jump: true, //是否支持跳转
-		           	 callback: function(page){ // 回调函数	
-		            	if(state == 1){
-							state = 2 
-		            	}else if(state == 2){
-		            		pageNo=page;
-		            		history.pushState(history.state,"",'?type='+type+'&address='+address+'&sort='+sort+'&pageNo='+page)
-		            		findAllParticularInfo(type,address,sort,pageNo,pageSize,1);
-		            	}
-		            }
-	        	})
+				$("ul.main_cont").html(perHtml);	
 			}else{
 				//数据为空的时候
 				$(".main_cont").html("当前区域没有你查找的相关人员");
-				$('.main_Pagination').html('');
+			}
+			if(Reset==1){
+				$(".main_Pagination").html();
+				var totalCount = Math.ceil(e.totalCount/pageSize);
+				if(totalCount>1){
+					$('.main_Pagination').paging({
+						initPageNo: pageNo, // 初始页码
+			            totalPages: totalCount, //总页数
+			            slideSpeed: 600, // 缓动速度。单位毫秒
+			            jump: true, //是否支持跳转
+			           	 callback: function(page){ // 回调函数	
+			            	if(state == 1){
+								state = 2 
+			            	}else if(state == 2){
+			            		pageNo=page;
+			            		history.pushState(history.state,"",'?type='+type+'&address='+address+'&sort='+sort+'&pageNo='+page)
+			            		findAllParticularInfo(type,address,sort,pageNo,pageSize,1,2);
+			            	}
+			            }
+		        	})
+				}	
 			}
 		},
 		error:function(){

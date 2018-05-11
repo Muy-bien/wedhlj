@@ -16,29 +16,35 @@ $(document).ready(function(){
         window.location.href = "b_Supermarket_WM.html";
     }else if(!pageNo){
         history.pushState(history.state,"","?id="+id+"&type="+type+"&pageNo=1");
-        Cont(id,1,1);
+        Cont(id,1,1,1);
     }else{
         history.pushState(history.state,"","?id="+id+"&type="+type+"&pageNo="+pageNo);
-        Cont(id,pageNo,1);
+        Cont(id,pageNo,1,1);
     }
-    
+    //购物车
+    if(!$.cookie("login_on")){
+        $(".splist_x10").html('<p class="splist_Prompt">登陆后可查看购物车</p>')
+    }else{
+        ShoppingCart();
+    }
 })
 var type = getUrlParam('type');//商家类型
 //商品列表内容刷新
 //id==>商家id
 //pageNo==>当前页
-//state==>重置
-function Cont(id,pageNo,state){
+//state==> 判断是否执行分页回调
+//Reset===>>判断是否刷新分页Dom(1:是)
+function Cont(id,pageNo,state,Reset){
     $.ajax({
         type: 'POST',
         url: apiUrl+"/product/queryAllProductOfMerchant",
         dataType: 'json',
-        data: {merchantId:id,pageNo:pageNo,pageSize:1},
+        data: {merchantId:id,pageNo:pageNo,pageSize:9},
         success:function(e){
             show(e.allProductOfMerchant.productList);//商品展示
-            var PageCount=Math.ceil(e.totalCount/1);
+            var PageCount=Math.ceil(e.totalCount/9);
             //分页
-            if(PageCount > 1){
+            if(PageCount > 1&& Reset==1){
                 $('.main_Pagination').paging({
                     initPageNo: pageNo, // 初始页码
                     totalPages: PageCount, //总页数
@@ -49,7 +55,7 @@ function Cont(id,pageNo,state){
                             state=2
                         }else{
                             history.pushState(history.state,"","?id="+id+"&type="+type+"&pageNo="+page);
-                            Cont(id,page,1);
+                            Cont(id,page,1,2);
                         }
                     }
                 })
@@ -61,16 +67,16 @@ function Cont(id,pageNo,state){
     })
 }
 //商品展示
-function show(data){
+function show(data){ 
     if(data!=null){
         var str = "";
         for(var i=0;i<data.length;i++){
             var list = data[i];
-            str +='<li><div class="spcont_x10"><a target="_blank" href="b_Addorder.html?productNo='+list.productNo+'$type='+type+'">'+
+            str +='<li><div class="spcont_x10"><a href="b_Addorder.html?productNo='+list.productNo+'&type='+type+'">'+
             '<div class="img_auto Categories_spad_img" style="background-image:url('+apiUrl+list.productImage.split(",")[0]+')"></div></a>'+
             '</div><div class="spcont_x20"><h1>'+list.productName+'</h1>'+
             '<p>'+(list.discountPrice=="0.0"?'￥'+list.productPrice:'<span>￥'+list.productPrice+'</span>￥'+list.discountPrice)+'</p>'+
-            '<div onclick="AddGoods('+list.productNo+')">添加</div></div></li>';
+            '<div onclick="AddGoods('+list.productId+')">添加</div></div></li>';
         }
         $(".spcont_cont").html(str);
     }else{
@@ -116,11 +122,12 @@ function Recommend(type){
 function ShoppingCart(){
     $.ajax({
         type: 'post',
-        url: apiUrl+"cart/cart",
+        url: apiUrl+"/cart/queryCart",
         dataType: 'json',
-        data:{username:$.cookie("user"),},
+        data:{token:$.cookie("login_on"),},
         async: false,
         success:function(e){
+            console.log(e)
             if(e.list != null){
                 var str = "";
                 var Total = "";//总价
@@ -242,18 +249,15 @@ function calcNumber(){
 //添加商品
 function AddGoods(spid){
     if($.cookie("login_on")){
-       var data = {
-            pid:spid,
-            num:1,
-            username:$.cookie("user"),
-        }
         $.ajax({
             type: 'post',
-            url: apiUrl+"cart/add",
+            url: apiUrl+"/cart/addProductToCartOrUpdate",
             dataType: 'json',
-            data: data,
+            data: {token:$.cookie("login_on"),StrProductId:spid,StrProductNum:1},
             success:function(e){
-                ShoppingCart()
+                if(e.status==200){
+                    console.log("添加成功");
+                }
             },
             error:function(){
                 meg("提示","服务器开了小差，请稍后重试","body");

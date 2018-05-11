@@ -82,10 +82,14 @@
 
 .main_nav_x10 p:hover{
   border: 1px solid #f85162 !important;
+  background: #f85162;
+  color: #fff;
 }
 
-.main_nav_x10_on{
+.main_nav_x10 .main_nav_x10_on{
   border: 1px solid #f85162 !important;
+  background: #f85162;
+  color: #fff;
 }
 
 /*内容*/
@@ -140,7 +144,6 @@
 
 .details_logo img{
   width: 100%;
-  height: 100%;
 }
 
 .details_user h1{

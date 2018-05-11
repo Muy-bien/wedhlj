@@ -141,7 +141,7 @@ ul.show_sale_list{
             justify-content: space-between;
   }
   .show_sale_part2_num{
-    width: 101px;
+    width: 110px;
     height: 33px;
     border: 1px solid #aaa;
     box-sizing: border-box;
@@ -152,7 +152,7 @@ ul.show_sale_list{
   }
   .show_sale_part2_num>input{
     height: 31px;
-    width:  35px;
+    width:  44px;
     outline: none;
     border:none;  
     text-align: center;

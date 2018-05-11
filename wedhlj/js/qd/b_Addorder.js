@@ -54,6 +54,7 @@ function show(productNo,type){
             //商品描述
             $(".shop_detail").text(data.productDesc);          
             calcNumber(Number(data.productNumber));
+            addCommodity(data.productId,Number(data.productNumber),type,e.merchantId);
             down_Loading();
         },
         error:function(){
@@ -63,42 +64,53 @@ function show(productNo,type){
     })
 }
 //点击添加商品
-function addCommodity(id){
+function addCommodity(id,productNumber,type,mid){
+    var state=1;
     //添加商品
     $(".submit_sho").click(function(){
-        if(!$.cookie("login_on")){
-            function dothing(){
-                window.open("login.html");
-            }
-            meg("提示","请先登录","body",dothing);
-            return false;
-        }else if($(".show_num").val() < 1){
-            meg("提示","商品数量不能小于1","body");
-            return false;
-        }
-        on_Loading();
-        var data = {
-            pid:id,
-            num:$(".show_num").val(),
-            username:$.cookie("user"),
-        }
-        $.ajax({
-            type:"post",
-            url: apiUrl+'cart/add',
-            dataType: 'json',
-            data: data,
-            success:function(e){
+        if(state==1){
+            state=2;
+            var show_num = Number($(".show_num").val());
+            console.log(show_num+"<==>"+productNumber)
+            if(!$.cookie("login_on")){
                 function dothing(){
-                    window.open("b_Pshowcase.html?fwsid="+fwsid)
+                    window.open("login.html");
                 }
-                down_Loading();
-                meg("提示","添加成功","body",dothing);
-            },
-            error:function(){
-                down_Loading();
-                meg("提示","服务器开了小差，请稍后重试","body");
+                meg("提示","请先登录","body",dothing);
+                return false;
+            }else if(show_num>productNumber){
+                meg("提示","商品数量不能大于库存","body");
+                return false;
+            }else if(show_num<1){
+                meg("提示","商品数量不能小于库存","body");
+                return false;
+            }else if(!(Number(show_num)>=1)){
+                meg("提示","商品数量错误","body");
+                return false;
             }
-        })
+            on_Loading();
+            $.ajax({
+                type:"post",
+                url: apiUrl+'/cart/addProductToCartOrUpdate',
+                dataType: 'json',
+                data: {token:$.cookie("login_on"),StrProductId:id,StrProductNum:show_num},
+                success:function(e){
+                    down_Loading();
+                    if(e.status==200){
+                        function dothing(){
+                            window.location.href="b_Pshowcase.html?id="+mid+"&type="+type
+                        }
+                        meg("提示","添加成功","body",dothing);
+                    }else{
+                        meg("提示","添加失败","body");
+                    } 
+                },
+                error:function(){
+                    down_Loading();
+                    meg("提示","服务器开了小差，请稍后重试","body");
+                }
+            })
+        }
     });
 }
 

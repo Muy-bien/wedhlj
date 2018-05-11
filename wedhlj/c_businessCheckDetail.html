@@ -12,64 +12,61 @@
 <body>
 	<div class="box">
 		<!-- nav -->
-		<div class="nav">
-		</div>
+		<div class="nav"></div>
 		<!-- header -->
 		<header></header>
 		<!-- content -->
 		<div class="content">
 			<div class="container">
-				<div class="p_title"><i></i>基本资料上传</div>
+				<div class="p_title"><i></i>用户基本资料审核</div>
 				<div class="personItems">
 					<!-- 商户名称 -->
 					<div class="p_name">
 						<div class="add_type_title">商户名称</div>
-						<input type="text" name="pname" class="add_type_name" maxlength="16" readonly="true">
+						<div class="add_type_icon"></div>
+						<div class="add_type_name merchantName"></div>
 					</div>
 					<!-- 商户类型 -->
 					<div class="p_name">
 						<div class="add_type_title">商户类型</div>
-						<input type="text" name="ptype" class="add_type_name" maxlength="16" readonly="true">
+						<div class="add_type_icon"></div>
+						<div class="add_type_name companyType"></div>
 					</div>
 					<!-- 公司地址 -->
 					<div class="p_name">
 						<div class="add_type_title">公司地址</div>
-						<input type="text" name="paddress" class="add_type_name" maxlength="16" readonly="true">
+						<div class="add_type_icon"></div>
+						<div class="add_type_name address"></div>
 					</div>
-					<!-- 详细地址 -->
-					<!-- <div class="p_name">
-						<div class="add_type_title">详细地址</div>
-						<input type="text" name="pdetailaddr" class="add_type_name" maxlength="16" readonly="true">
-					</div> -->
 					<!-- 联系电话 -->
 					<div class="p_name">
 						<div class="add_type_title">联系电话</div>
-						<input type="text" name="ptel" class="add_type_name" maxlength="16" readonly="true">
+						<div class="add_type_icon"></div>
+						<div class="add_type_name userPhone"></div>
 					</div>
 					<!-- 营业执照名称 -->
 					<div class="p_name">
 						<div class="add_type_title">营业照名称</div>
-						<input type="text" name="psalecard" class="add_type_name" maxlength="16" readonly="true">
+						<div class="add_type_icon"></div>
+						<div class="add_type_name licenseName"></div>
 					</div>
 					<!-- 执照编码 -->
 					<div class="p_name">
 						<div class="add_type_title">执照编码</div>
-						<input type="text" name="psalecode" class="add_type_name" maxlength="16" readonly="true">
+						<div class="add_type_icon"></div>
+						<div class="add_type_name licenseNo"></div>
 					</div>
-					<!-- 上传执照 -->
-					<!-- <div class="p_name">
-						<div class="add_type_title">上传执照</div>
-						<div class="p_picture"></div>
-					</div> -->
 					<!-- 身份证名称 -->
 					<div class="p_name">
 						<div class="add_type_title">身份证名称</div>
-						<input type="text" name="ppersonname" class="add_type_name" maxlength="16" readonly="true">
+						<div class="add_type_icon"></div>
+						<div class="add_type_name identityName"></div>
 					</div>
 					<!-- 身份证号 -->
 					<div class="p_name">
 						<div class="add_type_title">身份证号</div>
-						<input type="text" name="pIDcard" class="add_type_name" maxlength="16" readonly="true">
+						<div class="add_type_icon"></div>
+						<div class="add_type_name identityNo"></div>
 					</div>
 					<!-- 上传身份证 上传执照-->
 					<div class="p_name">
@@ -114,35 +111,23 @@
 			</div>
 			
 		</div>
-		<!-- <div class="showBigPic"></div> -->
 	</div>
 	<!-- script -->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery.cookie.js"></script>
-	<script type="text/javascript" src="js/ub/u_common.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/ub/u_common.js"></script>
 	<script type="text/javascript" src="js/cm/c_businessCheckDetail.js"></script>
 	<script type="text/javascript">
 		$(function() {
-	
 			var magnifierConfig = {
 				magnifier : "#magnifier1",//最外层的大容器
-				width : 500,//承载容器宽
-				height : 500,//承载容器高
+				width : 400,//承载容器宽
+				height : 400,//承载容器高
 				moveWidth : null,//如果设置了移动盒子的宽度，则不计算缩放比例
-				zoom : 5//缩放比例
+				zoom : 2//缩放比例
 			};
-
 			var _magnifier = magnifier(magnifierConfig);
-
-			/*magnifier的内置函数调用*/
-			/*
-				//设置magnifier函数的index属性
-				_magnifier.setIndex(1);
-
-				//重新载入主图,根据magnifier函数的index属性
-				_magnifier.eqImg();
-			*/
 		});
 	</script>
 

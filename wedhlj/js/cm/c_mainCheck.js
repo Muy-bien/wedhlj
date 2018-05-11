@@ -1,178 +1,137 @@
-//获取地址栏中的两个状态参数  Cstatus-0-待审核 Cstatus-1-审核通过 Cstatus-2-审核未通过 choose-0-人员审核 choose-1-用户基本资料认证
-var Cstatus=getUrlParam('Cstatus');
-var choose=getUrlParam('choose');
-//地址栏没有传参时候的默认状态
-if(choose == null || Cstatus == null){
-	//导航栏默认选中
+//获取地址栏信息
+var type = getUrlParam("type");
+var AuditStatus = getUrlParam("AuditStatus");
+var pageNo = getUrlParam("pageNo");
+var dataUrl = "";//接口地址
+var dataHref=["","","",""]//跳转地址
+//导航栏默认选中
+if(!type || type==0 || !AuditStatus || !pageNo){
 	function on_navli(){
 		$(".nav_cont_a").eq(0).addClass("nav_cont_on");
 	}
-	$('.one').addClass('stateItem_on');
-	personDivideMeg(0);
-}
-// 判断审核大类的choose
-if(choose==0){
-	//导航栏默认选中
-	function on_navli(){
-		$(".nav_cont_a").eq(0).addClass("nav_cont_on");
-	}
-	if(Cstatus==0){
-		$('.one').addClass('stateItem_on');
-		personDivideMeg(0)
-	}else if(Cstatus==1){
-		$('.two').addClass('stateItem_on');
-		personDivideMeg(1)
-	}else if(Cstatus==2){
-		$('.three').addClass('stateItem_on');
-		personDivideMeg(2);
-	}
-}else if(choose==1){
-	//导航栏默认选中
+	dataUrl="/user/queryAllUser";
+}else if(type==1){
 	function on_navli(){
 		$(".nav_cont_a").eq(1).addClass("nav_cont_on");
 	}
-	if(Cstatus==0){
-		$('.one').addClass('stateItem_on');
-		merchantDivideMeg(0);
-	}else if(Cstatus==1){
-		$('.two').addClass('stateItem_on');
-		merchantDivideMeg(1);
-	}else if(Cstatus==2){
-		$('.three').addClass('stateItem_on');
-		merchantDivideMeg(2);
+	dataUrl="/BusinessPersonnel/queryAuditingAllParticularInfo";
+}else if(type==2){
+	function on_navli(){
+		$(".nav_cont_a").eq(2).addClass("nav_cont_on");
 	}
+	dataUrl="/scheme/queryAllScheme";
+}else if(type==3){
+	function on_navli(){
+		$(".nav_cont_a").eq(3).addClass("nav_cont_on");
+	}
+	dataUrl="/product/queryAllProduct";
 }
-//点击人员审核 用户基本资料审核
-$(".person").click(function(){//点击人员审核
-	window.location.href="c_mainCheck.html?choose=0&&Cstatus="+Cstatus+"";
+//审核状态渲染内容
+if(!type || !AuditStatus || !pageNo){
+	history.pushState(history.state,"","?type=0&AuditStatus=-1&pageNo=1");
+	$(".stateItem").eq(0).addClass('stateItem_on');
+	show(-1,1,1,1);
+}else if(AuditStatus=="-1"){
+	history.pushState(history.state,"","?type="+type+"&AuditStatus=-1&pageNo="+pageNo);
+	$(".stateItem").eq(0).addClass('stateItem_on');
+	show(-1,pageNo,1,1);
+}else if(AuditStatus==1){
+	history.pushState(history.state,"","?type="+type+"&AuditStatus=1&pageNo="+pageNo);
+	$(".stateItem").eq(1).addClass('stateItem_on');
+	show(1,pageNo,1,1);
+}else if(AuditStatus==0){
+	history.pushState(history.state,"","?type="+type+"&AuditStatus=0&pageNo="+pageNo);
+	$(".stateItem").eq(2).addClass('stateItem_on');
+	show(0,pageNo,1,1);
+}
+//点击审核状态
+$(".stateItem").click(function(){
+	var this_index = $(this).index();
+	$(this).addClass('stateItem_on').siblings('').removeClass('stateItem_on');
+	if(this_index==0){
+		history.pushState(history.state,"","?type="+type+"&AuditStatus=-1&pageNo=1");
+		show(-1,1,1,1);
+	}else if(this_index==1){
+		history.pushState(history.state,"","?type="+type+"&AuditStatus=1&pageNo=1");
+		show(1,1,1,1);
+	}else if(this_index==2){
+		history.pushState(history.state,"","?type="+type+"&AuditStatus=0&pageNo=1");
+		show(0,1,1,1);
+	}
 })
-$(".merchant").click(function(){//点击用户基本资料审核
-	window.location.href="c_mainCheck.html?choose=1&&Cstatus="+Cstatus+"";
-})
-// 选择审核状态choose是之前保存好的大类的类型（确定是人员审核还是用户基本资料审核）
-$('.stateItem').click(function(){
-	$(this).addClass('stateItem_on');
-	var index = $(this).index();
-	window.location.href="c_mainCheck.html?choose="+choose+"&&Cstatus="+index+"";
-})
-//人员012，用户基本资料审核123
-// 用户基本资料审核加渲染分页123
-//myStatus：地址栏中的Cstatus
-function merchantDivideMeg(myStatus){
+/**
+ *获取数据
+ *Reset===>>判断是否刷新分页Dom(1:是)
+ *type==>>种类(0:用户,1:人员,2:策划,3:商品);
+ *AuditStatus==>>审核状态(未审核：-1，未通过审核：0，审核通过：1);
+ *pageNo==>>当前页数;
+**/
+function show(sAuditStatus,spageNo,state,Reset){
+	$(".checkList").html("加载中......");
 	$.ajax({
-		type:'post',
-		url: apiUrl+'/user/selectUserInfo',
-		data:{status:myStatus+1,currentPage:1},
+		type: 'POST',
+		url: apiUrl+dataUrl,
+		data: {auditStatus:sAuditStatus,pageNo:spageNo,pageSize:1},
 		dataType: 'json',
 		success:function(e){
 			console.log(e);
-			if(e.list.lists.length!=0){//有数据渲染分页插件
-			$('.main_Pagination').paging({
-		        initPageNo: 1, // 初始页码
-		        totalPages: e.list.totalPage, //总页数
-		        // totalCount: '合计' + 10 + '条数据', // 条目总数
-		        slideSpeed: 600, // 缓动速度。单位毫秒
-		        jump: true, //是否支持跳转
-		        callback: function(page) {
-		        	selectUserInfo(myStatus+1,page);	
-		        }
-		    })
-			}else{//美有数据不渲染分页插件
-				$(".checkList").html('当前区域没有数据');
-			}
-		},
-		error:function(){meg("提示","网络开小差，请检查！","body");}
-	})
-}
-//person 人员审核加渲染分页123
-function personDivideMeg(myStatus){
-	$.ajax({
-		type:'post',
-		url: apiUrl+'/person/selectAllByStatus',
-		data:{status:myStatus,currentPage:1},
-		dataType: 'json',
-		success:function(e){
-			console.log(e);
-			if(e.lists.length!=0){//有数据渲染分页插件
-			$('.main_Pagination').paging({
-		        initPageNo: 1, // 初始页码
-		        totalPages: e.totalPage, //总页数
-		        // totalCount: '合计' + 10 + '条数据', // 条目总数
-		        slideSpeed: 600, // 缓动速度。单位毫秒
-		        jump: true, //是否支持跳转
-		        callback: function(page) {
-		        	selectAllByStatus(myStatus,page);	
-		        }
-		    })
-			}else{//美有数据不渲染分页插件
-				$(".checkList").html('当前区域没有数据');
-			}
-		},
-		error:function(){meg("提示","网络开小差，请检查！","body");}
-	})
-}
-//获取地址栏中的数据
-function getUrlParam(name){
-	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-	//构造一个含有目标参数的正则表达式对象
-	var r = window.location.search.substr(1).match(reg);//匹配目标参数
-	if (r != null) return unescape(r[2]); return null; //返回参数值
-}
-// --商户审核--/user/ selectUserInfo  status 状态0是未审核  1是已通过审核  2未通过审核 currentPage(当前页)
-function selectUserInfo(mystatus,mycurrentPage){
-	$(".checkList").html('');//清空之前的数据
-	$.ajax({
-		type:'post',
-		url: apiUrl+'/user/selectUserInfo',
-		data:{status:mystatus,currentPage:mycurrentPage},
-		dataType: 'json',
-		success:function(e){
-			console.log(e);
-			var lists=e.list.lists;
-			var listHtml='';
-				for(var i=0;i<lists.length;i++){
-					var list=lists[i];
-					listHtml+='<div class="checklistItem">'+list.cp_name+'<div class="hide">'+list.id+'</div></div>';
-				}
-			$(".checkList").html(listHtml);
-			//点击列表项
-				$(".checklistItem").click(function(){
-					//传参数--id
-					var id=$(this).children().html();
-					window.location.href="c_businessCheckDetail.html?id="+id+"";
-				});
-		},
-		error:function(){meg("提示","网络开小差，请检查！","body");}
-	})
-}
-//展示所有的人员信息 /person/ selectAllByStatus  参数status,当前页currentPage
-function selectAllByStatus(mystatus,mycurrentPage){
-	$(".checkList").html('');//清空之前的数据
-	$.ajax({
-		type:'post',
-		url: apiUrl+'/person/selectAllByStatus',
-		data:{status:mystatus,currentPage:mycurrentPage},
-		dataType: 'json',
-		success:function(e){
-			console.log(e);
-			var lists=e.lists;
-			var listHtml='';
-			if(lists.length){
-				for(var i=0;i<lists.length;i++){
-					var list=lists[i];
-					listHtml+='<div class="checklistItem">'+list.p_name+'<div class="hide">'+list.p_id+'</div></div>';
+			if(e.status=="200"){
+				RenderingList(e);
+				var totalCount=Math.ceil(e.totalCount/1);//总页数
+				if(Reset==1){
+					$(".main_Pagination").html("");//清空分页列表
+					if(totalCount>0 && Reset==1){
+						$('.main_Pagination').paging({
+				            initPageNo: spageNo, // 初始页码
+				            totalPages: totalCount, //总页数
+				            slideSpeed: 600, // 缓动速度。单位毫秒 
+				            jump: true, //是否支持跳转
+				            // 回调函数
+				            callback: function(page){
+				            	if(state == 1){
+									state = 2 
+				            	}else if(state == 2){
+				            		history.pushState(history.state,"","?type="+type+"&AuditStatus="+sAuditStatus+"&pageNo="+page)
+				            		show(sAuditStatus,page,1,2)
+				            	}
+				            }
+			        	})
+					}
 				}
 			}else{
-				listHtml+='当前区域没有数据';
+				$(".checkList").html("未查询到相关信息，请稍后重试");
 			}
-			$(".checkList").html(listHtml);
-			//点击列表项
-				$(".checklistItem").click(function(){
-					//传参数--id
-					var id=$(this).children().html();
-					window.location.href="c_personCheckDetail.html?pid="+id+"";
-				});
-		},
-		error:function(){meg("提示","网络开小差，请检查！","body");}
+		}
 	})
 }
+//渲染列表内容
+function RenderingList(e){
+	var data = "";
+	if(type==0){
+		data=e.userList;//用户基本信息
+	}else if(type==1){
+		data=e.businessPersonnels;//人员
+	}else if(type==2){
+		data=e.schemeList;//策划
+	}else if(type==3){
+		data=e.productList;//商品
+	}
+	if(data.length>0){
+		for(var i=0;i<data.length;i++){
+			if(type==0){
+				$(".checkList").html('<a href="c_businessCheckDetail.html?id='+data[i].userId+'"><div class="checklistItem"><p>'+data[i].merchantName+'</p></div></a>')
+			}else if(type==1){
+				$(".checkList").html('<a href="c_personCheckDetail.html?id='+data[i].personnelNo+'"><div class="checklistItem"><p>'+data[i].name+'</p></div></a>')
+			}else if(type==2){
+				$(".checkList").html('<a href="c_PlanToExamine.html?id='+data[i].schemeNo+'"><div class="checklistItem"><p>'+data[i].schemeName+'</p></div></a>')
+			}else if(type==3){
+				$(".checkList").html('<a href="c_commodityToExamine.html?id='+data[i].productNo+'"><div class="checklistItem"><p>'+data[i].productName+'</p></div></a>')
+			}
+		}
+	}else{
+		$(".checkList").html("未查询到相关信息")
+	}
+	
+}
+
+

@@ -4,9 +4,9 @@ $(document).ready(function(){
 	resultCount();
 	if(!page || !auditStatus){
 		$(".main_title_cont h1").eq(0).addClass('main_title_cont_on')
-		show(1,1,1)
+		show(1,1,1,1)
 	}else{
-		show(page,auditStatus,1)
+		show(page,auditStatus,1,1)
 	}
 	if(auditStatus == 1){
 		$(".main_title_cont h1").eq(0).addClass('main_title_cont_on')
@@ -21,13 +21,13 @@ $(document).ready(function(){
 		var index = $(this).index()
 		if(index == 0){
 			history.pushState(history.state,"","?page=1&auditStatus=1")
-			show(1,1,1)
+			show(1,1,1,1)
 		}else if(index == 1){
 			history.pushState(history.state,"","?page=1&auditStatus=-1")
-			show(1,-1,1)
+			show(1,-1,1,1)
 		}else if(index == 2){
 			history.pushState(history.state,"","?page=1&auditStatus=0")
-			show(1,0,1)
+			show(1,0,1,1)
 		}
 	})
 })
@@ -40,7 +40,8 @@ var page = getUrlParam('page');
 var auditStatus = getUrlParam('auditStatus');
 
 //展示全部商品
-function show(page,auditStatus,state){
+//Reset===>>判断是否刷新分页Dom(1:是)
+function show(page,auditStatus,state,Reset){
 	$.ajax({
 		type: 'POST',
 		url: apiUrl+'/product/queryAllProduct',
@@ -48,23 +49,25 @@ function show(page,auditStatus,state){
 		dataType: 'json',
 		success:function(e){
 			showlist(e,auditStatus);//渲染列表内容
-			$(".main_Pagination").html("");//清空分页列表
-			if(e.productList != "" && Math.ceil(e.totalCount/5)>1){
-				$('.main_Pagination').paging({
-		            initPageNo: page, // 初始页码
-		            totalPages: Math.ceil(e.totalCount/5), //总页数
-		            slideSpeed: 600, // 缓动速度。单位毫秒
-		            jump: true, //是否支持跳转
-		            // 回调函数
-		            callback: function(page){
-		            	if(state == 1){
-							state = 2 
-		            	}else if(state == 2){
-		            		history.pushState(history.state,"","?page="+page+"&auditStatus="+auditStatus)
-		            		show(page,auditStatus,1)
-		            	}
-		            }
-	        	})
+			if(Reset==1){
+				$(".main_Pagination").html("");//清空分页列表
+				if(e.productList != "" && Math.ceil(e.totalCount/5)>1 && Reset==1){
+					$('.main_Pagination').paging({
+			            initPageNo: page, // 初始页码
+			            totalPages: Math.ceil(e.totalCount/5), //总页数
+			            slideSpeed: 600, // 缓动速度。单位毫秒
+			            jump: true, //是否支持跳转
+			            // 回调函数
+			            callback: function(page){
+			            	if(state == 1){
+								state = 2 
+			            	}else if(state == 2){
+			            		history.pushState(history.state,"","?page="+page+"&auditStatus="+auditStatus)
+			            		show(page,auditStatus,1,2)
+			            	}
+			            }
+		        	})
+				}
 			}
 		}
 	})

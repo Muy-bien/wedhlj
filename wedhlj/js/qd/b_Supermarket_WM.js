@@ -16,10 +16,10 @@ $(document).ready(function(){
 	//展示内容
 	if(sort==null||address==null||type==null||page==null){
 		history.pushState(history.state,"","?sort=0&address=成都市&type=舞美&page=1");
-		NewInfo(0,"成都市","舞美",1,1);
+		NewInfo(0,"成都市","舞美",1,1,1);
 		defaultStyle(0,"成都市");//默认排序
 	}else{
-		NewInfo(sort,address,type,page,1);
+		NewInfo(sort,address,type,page,1,1);
 		defaultStyle(sort,address);//默认排序
 	}
 
@@ -37,7 +37,8 @@ $(document).ready(function(){
 //type==>类型(道具、舞美)
 //page==>当前页数
 //state==>初始化函数
-function NewInfo(sort,address,type,page,state){
+//Reset===>>判断是否刷新分页Dom(1:是)
+function NewInfo(sort,address,type,page,state,Reset){
 	$(".main_cont").html("加载中......");
 	$.ajax({
 		type: 'POST',
@@ -45,25 +46,27 @@ function NewInfo(sort,address,type,page,state){
 		data: {type:type,address:address,sort:sort,pageNo:page,pageSize:5},
 		dataType: 'json',
 		success:function(e){
-			$(".main_Pagination").html("");//清空分页列表
 			if(e.merchantList != ""){
 				show(e,type);//渲染商品列表内容
-				if(Math.ceil(e.totalCount/5)>1){
-					$('.main_Pagination').paging({
-			            initPageNo: page, // 初始页码
-			            totalPages: Math.ceil(e.totalCount/5), //总页数
-			            slideSpeed: 600, // 缓动速度。单位毫秒
-			            jump: true, //是否支持跳转
-			            // 回调函数
-			            callback: function(page){
-			            	if(state == 1){
-								state = 2 
-			            	}else if(state == 2){
-			            		history.pushState(history.state,"","?sort="+sort+"&address="+address+"&type="+type+"&page="+page);
-			            		NewInfo(sort,address,type,page,1)
-			            	}
-			            }
-		        	})
+				if(Reset==1){
+					$(".main_Pagination").html("");//清空分页列表
+					if(Math.ceil(e.totalCount/5)>1){
+						$('.main_Pagination').paging({
+				            initPageNo: page, // 初始页码
+				            totalPages: Math.ceil(e.totalCount/5), //总页数
+				            slideSpeed: 600, // 缓动速度。单位毫秒
+				            jump: true, //是否支持跳转
+				            // 回调函数
+				            callback: function(page){
+				            	if(state == 1){
+									state = 2 
+				            	}else if(state == 2){
+				            		history.pushState(history.state,"","?sort="+sort+"&address="+address+"&type="+type+"&page="+page);
+				            		NewInfo(sort,address,type,page,1,2)
+				            	}
+				            }
+			        	})
+					}
 				}
 			}else{
 				$(".main_cont").html("未查询到相关信息");
@@ -187,7 +190,7 @@ function click_nav(){
 			address = "成都市";
 		}
 		history.pushState(history.state,"","?sort="+this_index+"&address="+address+"&type="+type+"&page=1");
-		NewInfo(this_index,address,type,1,1);
+		NewInfo(this_index,address,type,1,1,1);
 	})
 	//点击所在地
 	$(".main_nav_x10 p").click(function(){
@@ -202,7 +205,7 @@ function click_nav(){
 			sort = 0;
 		}
 		history.pushState(history.state,"","?sort="+sort+"&address="+this_text+"&type="+type+"&page=1");
-		NewInfo(sort,this_text,type,1,1);
+		NewInfo(sort,this_text,type,1,1,1);
 	})
 }
 //点击侧边栏导航
@@ -212,11 +215,11 @@ function click_sidebox(){
 		var this_index = $(this).index();
 		if(this_index==1){
 			history.pushState(history.state,"","?sort=0&address=成都市&type=舞美&page=1");
-			NewInfo(0,"成都市","舞美",1,1);
+			NewInfo(0,"成都市","舞美",1,1,1);
 			Recommend("舞美");//展示推荐商品
 		}else if(this_index==2){
 			history.pushState(history.state,"","?sort=0&address=成都市&type=道具&page=1");
-			NewInfo(0,"成都市","道具",1,1);
+			NewInfo(0,"成都市","道具",1,1,1);
 			Recommend("道具");//展示推荐商品
 		}
 	})

@@ -12,45 +12,35 @@ var state=1;
 function selectById(myid){
 	$.ajax({
 		type:'post',
-		url: apiUrl+'/BusinessPersonnel/queryBusinessPersonnelInfo',
-		data:{PersonnelNo:myid},
+		url: apiUrl+'/product/queryProduct',
+		data:{productNo:myid},
 		dataType: 'json',
 		success:function(e){
 			console.log(e);
-			var user=e.businessPersonnelList[0];
-			// 名称
-			$(".name").html(user.name);
-			// 地址
-			$(".address").html(user.address.split(",").join(""));
-			// 身高
-			$(".height").html(user.height);
-			// 风格
-			$(".style").html(user.style);
-			// 基本工资
-			$(".wage").html(user.wage+"元");
-			// 提成率
-			$(".commission").html(user.commission+"%");
-			// 接单价格
-			$(".order_price").html(user.order_price+"元");
-			// 人员简介
-			$(".introduce").html(user.introduce);
-			// 公告
-			$(".notice").html(user.notice);
-			//头像
-			$(".add_type_logo").html('<li><img src="'+apiUrl+user.headPortait+'"></li>')
-			//案例视频
-			var case_video=user.case_video.split(",");
-			for(var x=0;x<case_video.length;x++){
-				$(".case_video").append('<p>'+case_video[x]+'</p>');
-			}
-			//图片
+			var user=e.product[0];
+			// 商品名称
+			$(".productName").html(user.productName);
+			// 商品尺寸
+			var productSize=user.productSize.split(",");
+			$(".address").html(productSize[0]+"cm*"+productSize[1]+"cm*"+productSize[2]+"cm");
+			// 商品属性
+			$(".productProperty").html(user.productProperty);
+			// 商品原价
+			$(".productPrice").html(user.productPrice+" 元");
+			// 商品折扣价
+			$(".discountPrice").html(user.discountPrice+" 元");
+			// 库存
+			$(".productNumber").html(user.productNumber+" 件");
+			// 商品详情
+			$(".productDesc").html(user.productDesc);
+			//商品图片
 			var Planimg_whole=[];//全部图片
-			var Planimg=user.case_img.split(",");
+			var Planimg=user.productImage.split(",");
 			for(var s=0;s<Planimg.length;s++){
 				Planimg_whole.push(Planimg[s]);
-				$(".add_type_map").append('<li><img src="'+apiUrl+Planimg[s]+'"></li>')
+				$(".add_type_img").append('<li><img src="'+apiUrl+Planimg[s]+'"></li>')
 			}
-			//酒店图片渲染
+			//图片渲染
 			var hotel_img = "";
 			for(var q=0;q<Planimg_whole.length;q++){
 				hotel_img+='<div class="swiper-slide swiper-no-swiping Exhibition_img_box"><img src="'+apiUrl+Planimg_whole[q]+'"></div>'
@@ -65,7 +55,7 @@ function selectById(myid){
 			$(".Exhibition").css("display","none");
 			img_block();
 			//审核按钮
-			Examine(user.personnelNo);
+			Examine(user.productNo);
 		},
 		error:function(){
 			meg("提示","网络开小差，请检查！","body");
@@ -93,8 +83,8 @@ function Examine(username){
 function ToExamine(username,auditStatus){
 	$.ajax({
 		type:'post',
-		url: apiUrl+'/BusinessPersonnel/businessPersonnel',
-		data:{PersonnelNo:username,audit:auditStatus},
+		url: apiUrl+'/product/auditProduct',
+		data:{productNos:username,auditStatus:auditStatus},
 		dataType: 'json',
 		success:function(e){
 			if(e.status==200){
@@ -118,7 +108,7 @@ function img_block(){
 	$(".Exhibition_bg").click(function(){
 		$(".Exhibition").css("display","none")
 	})
-	$(".add_type_map li").click(function(){
+	$(".add_type_img li").click(function(){
 		var this_index = $(this).index();
 		$(".Exhibition").css({"display":"block","opacity":"0"});
 		var mySwiper = new Swiper('.Exhibition_cont_img', {

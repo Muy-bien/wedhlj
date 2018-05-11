@@ -22,20 +22,19 @@
   font-size: 16px;
   color: #333;
   height: 80px;
-  line-height: 80px;
+  display: flex;
+  align-items: center;
   border-bottom:1px solid #f85162;
   position: relative;
   padding-left: 25px;
   box-sizing: border-box;
 }
 .p_title i{
-  position: absolute;
   display: inline-block;
   height: 25px;
   width: 5px;
   background: #f85162;
-  top:40%;
-  left:0;
+  margin-right: 15px;
 }
 /*人员详情*/
 .personItems{
@@ -59,18 +58,25 @@
   font-size: 16px;
   color: #666666;
 }
+.add_type_icon{
+  width: 8px;
+  min-height: 54px;
+  background: #f85162;
+}
 .add_type_name{
-  display: block;
-  width: 400px;
-  height: 54px;
-  line-height: 54px;
+  display: flex;
+  width: 600px;
+  min-height: 54px;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
   border:1px solid #e6e6e6;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  border-left: 8px solid #f85162;
+  border-left: none;
   font-size: 16px;
   color: #666666;
-  padding-left: 10px;
+  padding: 10px;
 }
 .p_picture{
   width: 156px;
@@ -108,17 +114,92 @@
   cursor: pointer;
 }
 .showBigPic{
-    position:absolute;
-    left: 950px;
-    top: 140px;
-    width:1000px;
-    height: 950px;
-    display: none;
-    border:solid;
-    vertical-align: center;
-    overflow:hidden;
-  }
-  .showBigPic img{
-    width: 100%;
-    height: 100%;
-  }
+  position:absolute;
+  left: 950px;
+  top: 140px;
+  width:1000px;
+  height: 950px;
+  display: none;
+  border:solid;
+  vertical-align: center;
+  overflow:hidden;
+}
+.showBigPic img{
+  width: 100%;
+  height: 100%;
+}
+.add_type_img{
+  width: 730px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.add_type_img li{
+  width: 120px;
+  height: 120px;
+  margin: 0 20px 15px 0;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.add_type_img li img{
+  max-width: 100%;
+  max-height: 100%;
+}
+.case_video p{
+  width: 100%;
+}
+/*图片展示*/
+.Exhibition {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 50;
+  opacity: 0;
+}
+
+.Exhibition_bg {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.Exhibition_cont {
+  position: fixed;
+  width: 80%;
+  height: 80%;
+  background: #000;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.Exhibition img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.Exhibition_cont_img {
+  height: 100%;
+}
+
+.Exhibition_img_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.swiper-pagination {
+  color: #fff !important;
+}

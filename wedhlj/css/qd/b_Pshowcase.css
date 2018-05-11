@@ -268,7 +268,7 @@ a:hover{
 
 .spcont_x20 span {
   font-size: 10px;
-  color: #d7d7d7;
+  color: #bbb;
   text-decoration: line-through;
   margin-right: 20px;
 }
@@ -542,4 +542,8 @@ a:hover{
   margin-left: 10px;
   float: left;
   font-size: 14px;
+}
+/* 提示 */
+.splist_Prompt{
+  text-align: center;
 }
