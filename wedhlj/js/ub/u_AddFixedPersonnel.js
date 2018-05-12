@@ -23,30 +23,6 @@ testNumber($(".yourHeight"));
 testNumber($(".yourPrice"));
 // 风格
 queryUser($.cookie("login_on"));
-
-//上传头像
-// $(".myFileUpload_head").change(function(e){ 
-//  	var file = this.files[0];
-//  	if (file){
-//  		$(".blueButton_head").css("display","none");
-//  		if (window.FileReader) {    
-//             var reader = new FileReader();
-//             reader.readAsDataURL(file); //将文件读取为DataURL  
-//             //监听文件读取结束后事件 
-//           	reader.onloadend = function (e){
-//           		var result=$(this).result;
-//           		// console.log(e.target.result);
-//           		var src=e.target.result.substr(22);
-//           		var base64Img=e.target.result;
-//           		$(".show_head").html('<div class="img_auto" style="background-image:url('+base64Img+')"></div>');
-//           	};    
-//        	}
-// 	}else{
-//    		$(".blueButton_head").css("display","block");
-//    		$(".show_head").html("");
-//     }
-// });
-
 //添加案例视频
 	/*添加地址*/
 	$(".add_addr_btn").on("click",function(){
@@ -84,12 +60,10 @@ $("#btn").on('click', function() {
 		}
 		$(".style").val(style);
 		//视频地址上传
-		var addr="";
+		var addr=[];
 		for(var i=0;i<$(".upload_addr li").length;i++){
-			addr+=$(".upload_addr li").eq(i).first().text() + ",";
+			addr.push($(".upload_addr li").eq(i).first().text());
 		}
-		$("input[name=case_video]").val(addr);
-
 		//表单项不能为空验的证
 		if(!$("input[name=name]").val()){
 			meg("提示","名称不能为空","body");
@@ -134,6 +108,7 @@ $("#btn").on('click', function() {
 		data.append("token",$.cookie("login_on"));
 		data.append("PersonnelType",0)//合作人员;
 		data.append("headPortait",blob);
+		data.append("case_video",addr);
 		//BusinessPersonnel/addBusinessPersonnel
 		$.ajax({
 			type: "post",
