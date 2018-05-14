@@ -93,12 +93,12 @@ function addCommodity(id,productNumber,type,mid){
                 type:"post",
                 url: apiUrl+'/cart/addProductToCartOrUpdate',
                 dataType: 'json',
-                data: {token:$.cookie("login_on"),StrProductId:id,StrProductNum:show_num},
+                data: {token:$.cookie("login_on"),strProductId:id,strMerchantId:mid,strProductNum:show_num},
                 success:function(e){
                     down_Loading();
                     if(e.status==200){
                         function dothing(){
-                            window.location.href="b_Pshowcase.html?id="+mid+"&type="+type
+                            window.location.href="b_Pshowcase.html?id="+mid+"&type="+type+"&pageNo=1";
                         }
                         meg("提示","添加成功","body",dothing);
                     }else{

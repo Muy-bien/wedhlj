@@ -41,7 +41,7 @@ function Cont(id,pageNo,state,Reset){
         dataType: 'json',
         data: {merchantId:id,pageNo:pageNo,pageSize:9},
         success:function(e){
-            show(e.allProductOfMerchant.productList);//商品展示
+            show(e.allProductOfMerchant.productList,id);//商品展示
             var PageCount=Math.ceil(e.totalCount/9);
             //分页
             if(PageCount > 1&& Reset==1){
@@ -67,7 +67,7 @@ function Cont(id,pageNo,state,Reset){
     })
 }
 //商品展示
-function show(data){ 
+function show(data,id){ 
     if(data!=null){
         var str = "";
         for(var i=0;i<data.length;i++){
@@ -76,7 +76,7 @@ function show(data){
             '<div class="img_auto Categories_spad_img" style="background-image:url('+apiUrl+list.productImage.split(",")[0]+')"></div></a>'+
             '</div><div class="spcont_x20"><h1>'+list.productName+'</h1>'+
             '<p>'+(list.discountPrice=="0.0"?'￥'+list.productPrice:'<span>￥'+list.productPrice+'</span>￥'+list.discountPrice)+'</p>'+
-            '<div onclick="AddGoods('+list.productId+')">添加</div></div></li>';
+            '<div onclick="AddGoods('+list.productId+','+id+',1'+')">添加</div></div></li>';
         }
         $(".spcont_cont").html(str);
     }else{
@@ -124,57 +124,47 @@ function ShoppingCart(){
         type: 'post',
         url: apiUrl+"/cart/queryCart",
         dataType: 'json',
-        data:{token:$.cookie("login_on"),},
+        data:{token:$.cookie("login_on")},
         async: false,
         success:function(e){
-            console.log(e)
-            if(e.list != null){
+            if(e.merchantAndProductList != ""){
                 var str = "";
                 var Total = "";//总价
-                for(var i=0;i<e.list.length;i++){
-                    var list = e.list[i];
+                for(var i=0;i<e.merchantAndProductList.length;i++){
+                    var list = e.merchantAndProductList[i];
                     str +='<div class="splist_x20 splist_x20_on">'+
-                        '<h1><p>'+list.mName+'</p><i></i></h1>'+
+                        '<h1><p>'+list.merchantName+'</p><i></i></h1>'+
                         '<ul class="splist_cont">';
-                        for(var p=0;p<list.list.length;p++){
-                            var list_two = list.list[p];
+                        for(var p=0;p<list.product.length;p++){
+                            var list_two = list.product[p];
                             //价钱
-                            if(list_two.discountPrice == "-1"){
-                                var moeny = list_two.productNum*list_two.price;
-                            }else{
-                                var moeny = list_two.productNum*list_two.discountPrice;
-                            }
+                            var moeny = (list_two.discountPrice=="0.0"?Number(list_two.productPrice)*Number(list_two.productNum):Number(list_two.discountPrice)*Number(list_two.productNum));
+                            //内容
                             str +='<li class="splist_li">'+
                                 '<div class="splist_cont_img">'+
-                                    '<a href="b_Addorder.html?spid='+list_two.pid+'">'+
-                                        '<img src="'+list_two.pimage.split(',')[0]+'">'+
+                                    '<a href="b_Addorder.html?productNo='+list_two.productNo+'&type='+type+'">'+
+                                        '<img src="'+apiUrl+list_two.productImg.split(',')[0]+'">'+
                                     '</a>'+
                                 '</div>'+
                                 '<div class="splist_cont_user">'+
-                                    '<a href="b_Addorder.html?spid='+list_two.pid+'">'+list_two.pname+'</a>'+
+                                    '<a href="b_Addorder.html?productNo='+list_two.productNo+'&type='+type+'">'+list_two.productName+'</a>'+
                                 '</div>'+
-                                '<div class="main_lcont_Quantity">';
-                                    if(list_two.productNum <= 1){
-                                        str +='<button class="main_lcont_Less main_lcont_on">' 
-                                    }else{
-                                        str +='<button class="main_lcont_Less">'
-                                    };
-                                    str +='-</button><input maxlength="'+String(list_two.number).length+'" value="'+list_two.productNum+'" type="text" class="main_lcont_amount"><';
-                                    if(list_two.productNum >= list_two.number){
-                                        str +='button class="main_lcont_plus main_lcont_on">+</button>'
-                                    }else{
-                                        str +='button class="main_lcont_plus">+</button>'
-                                    }
-                                    str +='<div class="hide splist_pid">'+list_two.pid+'</div>'+
-                                    '<div class="hide splist_number">'+list_two.number+'</div>'+
+                                '<div class="main_lcont_Quantity">'+
+                                    ''+(Number(list_two.productNum)<=1?'<button class="main_lcont_Less main_lcont_on">':'<button class="main_lcont_Less">')+''+
+                                    '-</button><input maxlength="'+String(list_two.number).length+'" value="'+list_two.productNum+'" type="text" class="main_lcont_amount">'+
+                                    ''+(Number(list_two.productNum)>=Number(list_two.productNumber)?'<button class="main_lcont_plus main_lcont_on">':'<button class="main_lcont_plus">')+'+</button>'+
+                                    '<div class="hide splist_pid">'+list_two.productId+'</div>'+
+                                    '<div class="hide splist_number">'+list_two.productNumber+'</div>'+
+                                    '<div class="hide splist_merchantId">'+list.merchantId+'</div>'+
                                 '</div>'+
                                 '<div class="splist_cont_money">￥<span>'+moeny+'</span></div>'+
-                                '<div class="splist_cont_delete" onclick="PromptGoods('+list_two.pid+')"></div>'+
+                                '<div class="splist_cont_delete" onclick="PromptGoods('+list_two.productId+','+list.merchantId+')"></div>'+
                             '</li>';
                             Total = Number(Total)+Number(moeny);
                         }
                     str +='</ul></div>';
                 }
+
                 $(".splist_total span").html("￥"+Total+" 元");
                 $(".splist_x10").html(str);
                 calcNumber()
@@ -197,14 +187,15 @@ function calcNumber(){
         var this_pid = $(this).siblings('.splist_pid').html();//获取当前商品id
         var inputNumber=Number($(this).siblings(".main_lcont_amount").val());//当前的数量
         var storage_index =Number($(this).siblings(".splist_number").html());//当前商品的库存
+        var this_mid = $(this).siblings(".splist_merchantId").html();//当前商户的id
         var this_input = $(this).siblings(".main_lcont_amount");//当前的input
         if($(this).html()=="+"&&inputNumber<storage_index){
             inputNumber++;
-            modifyGoods(this_pid,inputNumber);
+            modifyGoods(this_pid,this_mid,inputNumber);
         }
         else if($(this).html()=="-"&&inputNumber>1){
             inputNumber--;
-            modifyGoods(this_pid,inputNumber);
+            modifyGoods(this_pid,this_mid,inputNumber);
         }
         $(this).siblings(".main_lcont_amount").val(inputNumber);
         butStyle(this_input);
@@ -212,18 +203,19 @@ function calcNumber(){
     // 数量输入框的值输入标准判断
     $(".main_lcont_Quantity>input").change(function(e){
         var this_pid = $(this).siblings('.splist_pid').html();//获取当前商品id
+        var this_mid = $(this).siblings(".splist_merchantId").html();//当前商户的id
         var this_index = $(this).parents(".splist_li").index();//当前商品索引
         var this_input = $(this);//当前的input
         var storage_index = $(this).siblings(".splist_number").html()//当前商品的库存
         var myInput=this_input.val();
         if(isNaN(myInput)||Number(myInput)<1||!myInput){
             this_input.val(1);
-            modifyGoods(this_pid,1);
+            modifyGoods(this_pid,this_mid,1);
         }else if(Number(myInput)>Number(storage_index)){
             this_input.val(storage_index);
-            modifyGoods(this_pid,storage_index);
+            modifyGoods(this_pid,this_mid,storage_index);
         }else{
-            modifyGoods(this_pid,$(this).val());
+            modifyGoods(this_pid,this_mid,$(this).val());
         }
         butStyle(this_input);
     })
@@ -247,16 +239,19 @@ function calcNumber(){
 }
 
 //添加商品
-function AddGoods(spid){
+function AddGoods(spid,id,number){
     if($.cookie("login_on")){
         $.ajax({
             type: 'post',
             url: apiUrl+"/cart/addProductToCartOrUpdate",
             dataType: 'json',
-            data: {token:$.cookie("login_on"),StrProductId:spid,StrProductNum:1},
+            data: {token:$.cookie("login_on"),strProductId:spid,strMerchantId:id,strProductNum:number},
             success:function(e){
                 if(e.status==200){
-                    console.log("添加成功");
+                    meg("提示","添加成功","body");
+                    ShoppingCart();
+                }else{
+                    meg("提示","添加失败","body");
                 }
             },
             error:function(){
@@ -268,46 +263,38 @@ function AddGoods(spid){
     }  
 }
 //修改商品
-function modifyGoods(spid,num){
-    if($.cookie("user")){
-        var data = {
-            pid:spid,
-            num:num,
-            username:$.cookie("user"),
-        }
+function modifyGoods(spid,id,num){
+    if($.cookie("login_on")){
         $.ajax({
             type: 'post',
-            url: apiUrl+"cart/update",
+            url: apiUrl+"/cart/addProductToCartOrUpdate",
             dataType: 'json',
-            data: data,
+            data: {token:$.cookie("login_on"),strProductId:spid,strMerchantId:id,strProductNum:num},
             success:function(e){
-                if(e.status == "200"){
-                    ShoppingCart() 
+                if(e.status!=200){
+                    meg("提示","修改失败","body");
                 }
+                ShoppingCart();
             },
             error:function(){
                 meg("提示","服务器开了小差，请稍后重试","body");
             }
-        })
+        }) 
     }else{
-        window.location.reload();
-    }      
+        window.open("login.html");
+    }  
 }  
 //删除商品
-function PromptGoods(spid){
+function PromptGoods(spid,mid){
     if($.cookie("user")){
         meg2("提示","是否确定删除商品","body",deleteGoods);
         var pid = spid;
         function deleteGoods(){
-            var data = {
-                pid:pid,
-                username:$.cookie("user"),
-            }
             $.ajax({
                 type: 'post',
-                url: apiUrl+"cart/delete",
+                url: apiUrl+"/cart/delProductToCart",
                 dataType: 'json',
-                data: data,
+                data: {token:$.cookie("login_on"),productId:spid,merchantId:mid},
                 success:function(e){
                     ShoppingCart()
                 },
@@ -322,9 +309,17 @@ function PromptGoods(spid){
 } 
 $(".splist_but").click(function(){
     if($(".splist_li").length > 0){
-        window.open("b_DetermineOrder.html")
+        if(!$.cookie("login_on")){
+            meg("提示","请先登录","body");
+            return false;
+        }else if($.cookie("position")==0){
+            meg("提示","请先注册商户，点击商家入驻注册商户","body");
+            return false;
+        }else{
+            window.open("b_DetermineOrder.html")
+        }
     }else{
-        meg("提示","请选择需要购买得商品","body")
+        meg("提示","请选择需要购买得商品","body");
     }
     
 })

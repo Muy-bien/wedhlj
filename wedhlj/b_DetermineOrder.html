@@ -29,6 +29,27 @@
 							<input type="text" class="DOrder_input_x10" placeholder="请使用真实姓名" maxlength="6">
 						</div>
 					</div>
+	                <!-- 礼仪时间 -->
+					<div class='input-group date' id='datetimepicker4'>
+						<span class="input-group-addon Ceremony_title">礼仪时间：<span>*</span></span>
+			            <input type='text' class="form-control">
+			            <span class="input-group-addon Ceremony_icon"><span class="glyphicon glyphicon-calendar"></span>
+			            </span>
+			        </div>
+					<!-- 酒店名称 -->
+					<div class="DOrder_input">
+						<div class="DOrder_left">酒店名称：<span>*</span></div>
+						<div class="DOrder_right">
+							<input type="text" class="DOrder_input_x20" placeholder="请填写酒店名称" maxlength="20">
+						</div>
+					</div>
+					<!-- 新人姓名 -->
+					<div class="DOrder_input">
+						<div class="DOrder_left">新人姓名：<span>*</span></div>
+						<div class="DOrder_right">
+							<input type="text" class="DOrder_input_x20" placeholder="为确保配送无误，请填写新人姓名" maxlength="10">
+						</div>
+					</div>
 					<!-- 收货地址 -->
 					<div class="DOrder_input">
 						<div class="DOrder_left">收货地址：<span>*</span></div>
@@ -87,7 +108,7 @@
 					<div class="DOrder_input">
 						<div class="DOrder_left">详细地址：<span>*</span></div>
 						<div class="DOrder_right">
-							<input type="text" class="DOrder_input_x20" placeholder="请填写详细地址，不少于三个汉字，不能全是数字/字母" maxlength="20">
+							<input type="text" class="DOrder_input_x20" placeholder="请填写详细地址" maxlength="20">
 						</div>
 					</div>
 					<!-- 联系电话 -->
@@ -194,14 +215,22 @@
     <script src="js/moment-with-locales.js"></script>
     <script src="js/bootstrap-datetimepicker.js"></script>
 	<script type="text/javascript">
+		//使用时间区间
         $(function () {
             $('#datetimepicker6').datetimepicker({
                 locale: 'zh-cn',
-                format:"YYYY-MM-DD HH:mm"
+                format:"YYYY-MM-DD HH:mm",
+                minDate:new Date()
             });
             $('#datetimepicker7').datetimepicker({
                 locale: 'zh-cn',
-                format:"YYYY-MM-DD HH:mm"
+                format:"YYYY-MM-DD HH:mm",
+                minDate:new Date()
+            });
+            $('#datetimepicker4').datetimepicker({
+            	locale: 'zh-cn',
+                format:"YYYY-MM-DD HH:mm",
+                minDate:new Date()
             });
             $("#datetimepicker6").on("dp.change",function (e) {
                 $('#datetimepicker7').data("DateTimePicker").minDate(e.date);

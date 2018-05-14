@@ -71,13 +71,12 @@ function show(sAuditStatus,spageNo,state,Reset){
 	$.ajax({
 		type: 'POST',
 		url: apiUrl+dataUrl,
-		data: {auditStatus:sAuditStatus,pageNo:spageNo,pageSize:1},
+		data: {auditStatus:sAuditStatus,pageNo:spageNo,pageSize:20},
 		dataType: 'json',
 		success:function(e){
-			console.log(e);
 			if(e.status=="200"){
 				RenderingList(e);
-				var totalCount=Math.ceil(e.totalCount/1);//总页数
+				var totalCount=Math.ceil(Number(e.totalCount)/20);//总页数
 				if(Reset==1){
 					$(".main_Pagination").html("");//清空分页列表
 					if(totalCount>0 && Reset==1){
@@ -117,17 +116,19 @@ function RenderingList(e){
 		data=e.productList;//商品
 	}
 	if(data.length>0){
+		str="";
 		for(var i=0;i<data.length;i++){
 			if(type==0){
-				$(".checkList").html('<a href="c_businessCheckDetail.html?id='+data[i].userId+'"><div class="checklistItem"><p>'+data[i].merchantName+'</p></div></a>')
+				str+='<a href="c_businessCheckDetail.html?id='+data[i].userId+'"><div class="checklistItem"><p>'+data[i].merchantName+'</p></div></a>'
 			}else if(type==1){
-				$(".checkList").html('<a href="c_personCheckDetail.html?id='+data[i].personnelNo+'"><div class="checklistItem"><p>'+data[i].name+'</p></div></a>')
+				str+='<a href="c_personCheckDetail.html?id='+data[i].personnelNo+'"><div class="checklistItem"><p>'+data[i].name+'</p></div></a>'
 			}else if(type==2){
-				$(".checkList").html('<a href="c_PlanToExamine.html?id='+data[i].schemeNo+'"><div class="checklistItem"><p>'+data[i].schemeName+'</p></div></a>')
+				str+='<a href="c_PlanToExamine.html?id='+data[i].schemeNo+'"><div class="checklistItem"><p>'+data[i].schemeName+'</p></div></a>'
 			}else if(type==3){
-				$(".checkList").html('<a href="c_commodityToExamine.html?id='+data[i].productNo+'"><div class="checklistItem"><p>'+data[i].productName+'</p></div></a>')
+				str+='<a href="c_commodityToExamine.html?id='+data[i].productNo+'"><div class="checklistItem"><p>'+data[i].productName+'</p></div></a>'
 			}
 		}
+		$(".checkList").html(str);
 	}else{
 		$(".checkList").html("未查询到相关信息")
 	}

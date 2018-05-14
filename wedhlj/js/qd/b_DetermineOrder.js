@@ -1,68 +1,61 @@
 $(document).ready(function(){
+    if(!$.cookie("login_on")){
+        window.location.href="login.html"
+        return false;
+    }else if($.cookie("position")==0 || !$.cookie("position")){
+        window.location.href="b_Supermarket_WM.html"
+        return false;
+    }
 	$(".nav").html('<i class="nav_border"></i>'+
 		'<i class="nav_border_x10"></i>'+
 		'<div class="nav_cont"><p class="nav_cont_x10">确定订单信息</p><p>缴纳保证金</p><p>等待卖家确认</p><p>缴纳尾款</p><p>等待确认收款</p><p>退还保证金</p><p>完成</p></div>'
 	);
-
 	$(".address_ul li").click(function(){
 		$(this).addClass('address_on').siblings('').removeClass('address_on');
 		$(".DOrder_right_cont").eq(2).find('span').text($(this).text());
-	})
-	ShoppingCart()
-
+	});
+	ShoppingCart();
 })
-
 //获取最新商品清单信息
 function ShoppingCart(){
     $.ajax({
         type: 'post',
-        url: apiUrl+"order/showCartAndOrder",
+        url: apiUrl+"/cart/queryCart",
         dataType: 'json',
-        data:{username:$.cookie("user")},
+        data:{token:$.cookie("login_on")},
         success:function(e){
-            if(e.list != null){
+            if(e.status==200){
                 var str = "";
                 var Total = "";//总价
                 var Total_num = "";//总数
-                for(var i=0;i<e.list.length;i++){
-                	for(var p=0;p<e.list[i].list.length;p++){
-						var list = e.list[i].list[p];
+                for(var i=0;i<e.merchantAndProductList.length;i++){
+                	for(var p=0;p<e.merchantAndProductList[i].product.length;p++){
+						var list = e.merchantAndProductList[i].product[p];
 						//价钱
-                        if(list.discountPrice == "-1"){
-                            var moeny = list.productNum*list.price;
-                        }else{
-                            var moeny = list.productNum*list.discountPrice;
-                        }
+                        var moeny = (list.discountPrice=="0.0"?Number(list.productPrice)*Number(list.productNum):Number(list.discountPrice)*Number(list.productNum));
 						str +='<li>'+
 							'<div class="main03_cont_x10">'+
-								'<img src="'+list.pimage.split(',')[0]+'">'+
+								'<img src="'+apiUrl+list.productImg.split(',')[0]+'">'+
 								'<div class="main03_cont_user">'+
-									'<p class="main03_user_x10">'+list.pname+'</p>'+
+									'<p class="main03_user_x10">'+list.productName+'</p>'+
 									'<p class="main03_user_x20">'+
-										'<span>库存：'+list.number+'</span>'+
-										'<span>销量：'+list.sellnumber+'</span>'+
+										'<span>库存：'+list.productNumber+'</span>'+
+										'<span>售价：￥'+(list.discountPrice=="0.0"?list.productPrice:list.discountPrice)+'</span>'+
 									'</p>'+
 								'</div>'+
 							'</div>'+
 							'<div class="main03_cont_x20">'+
-								'<div class="main03_cont_x30">'+
-									'<button class="but_01">—</button'+
-									'><input class="main_lcont_amount" maxlength="'+String(list.number).length+'" value="'+list.productNum+'" type="text"><'+
-									'button class="but_02">+</button>'+
-									'<div class="hide splist_pid">'+list.pid+'</div>'+
-                                    '<div class="hide splist_number">'+list.number+'</div>'+
-								'</div>'+
+								'<div class="main03_cont_x30">'+list.productNum+'</div>'+
 								'<div class="main03_cont_x40">￥'+moeny+'</div>'+
 							'</div>'+
 						'</li>';
 						Total = Number(Total)+Number(moeny);
                 	}   
-                	Total_num = Number(Total_num)+Number(e.list[i].list.length);
+                	Total_num = Number(Total_num)+Number(e.merchantAndProductList[i].product.length);
                 }
                 $(".main03_cont").html(str);
                 $(".main04_x10 span").html(Total_num);
                 $(".main04_x20 span").html("￥"+Total);
-                calcNumber();
             }else{
                 window.location.href = "b_Supermarket_WM.html";
             }
@@ -72,70 +65,6 @@ function ShoppingCart(){
         }
     })
 } 
-
-// 商品数量加减以及数量输入框的值输入标准判断
-function calcNumber(){
-    //商品数量加减
-    $(".main03_cont_x30>button").click(function(e){
-        var this_pid = $(this).siblings('.splist_pid').html();//获取当前商品id
-        var inputNumber= Number($(this).siblings(".main_lcont_amount").val());//当前的数量
-        var storage_index = Number($(this).siblings(".splist_number").html());//当前商品的库存
-        var this_input = $(this).siblings(".main_lcont_amount");//当前的input
-        if($(this).html()=="+"&&inputNumber<storage_index){
-            inputNumber++;
-            modifyGoods(this_pid,inputNumber);
-        }
-        else if($(this).html()=="—"&&inputNumber>1){
-            inputNumber--;
-            modifyGoods(this_pid,inputNumber);
-        }
-        $(this).siblings(".main_lcont_amount").val(inputNumber);
-    })
-    // 数量输入框的值输入标准判断
-    $(".main03_cont_x30>input").change(function(e){
-        var this_pid = $(this).siblings('.splist_pid').html();//获取当前商品id
-        var this_index = $(this).parents(".splist_li").index();//当前商品索引
-        var this_input = $(this);//当前的input
-        var storage_index = $(this).siblings(".splist_number").html()//当前商品的库存
-        var myInput=this_input.val();
-        if(isNaN(myInput)||Number(myInput)<1||!myInput){
-            this_input.val(1);
-            modifyGoods(this_pid,1);
-        }else if(Number(myInput)>Number(storage_index)){
-            this_input.val(storage_index);
-            modifyGoods(this_pid,storage_index);
-        }else{
-            modifyGoods(this_pid,$(this).val());
-        }
-    })
-}
-
-//修改商品
-function modifyGoods(spid,num){
-    if($.cookie("user")){
-        var data = {
-            pid:spid,
-            num:num,
-            username:$.cookie("user"),
-        }
-        $.ajax({
-            type: 'post',
-            url: apiUrl+"cart/update",
-            dataType: 'json',
-            data: data,
-            success:function(e){
-                if(e.status == "200"){
-                    ShoppingCart() 
-                }
-            },
-            error:function(){
-                meg("提示","服务器开了小差，请稍后重试","body");
-            }
-        })
-    }else{
-        window.location.reload();
-    }      
-}
 
 //确认交易
 $(".main04_but").click(function(){
@@ -186,7 +115,6 @@ function on_deposit(){
                 var time_x10 = $("#datetimepicker6 input").val();//开始使用日期
                 var time_x20 = $("#datetimepicker7 input").val();//结束使用日期
                 var Remarks = $(".main02_Remarks").val();//备注
-                
                 if(!DOrder_user){
                     meg("提示","收件人不能为空","body");
                     return false;

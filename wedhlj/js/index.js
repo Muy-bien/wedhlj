@@ -17,7 +17,6 @@ $(document).ready(function(){
 				if(tasks>0){
 					for(var i=0;i<tasks;i++){
 						var task=e.taskList[i];
-						console.log(task);
 						main01_html+='<li>'+
 							'<a href="b_TaskAnnouncements.html?releaseUserId='+task.releaseUserId+'">'+
 								'<div class="main01_left_img"><div class="img_auto" style="background-image:url('+apiUrl+task.taskSketch.split(",")[0]+')"></div></div>'+

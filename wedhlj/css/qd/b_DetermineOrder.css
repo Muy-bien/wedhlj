@@ -76,7 +76,7 @@
 }
 
 #datetimepicker6,
-#datetimepicker7 {
+#datetimepicker7{
   width: 500px;
   margin-bottom: 30px;
 }
@@ -427,6 +427,40 @@
 .address_on {
   background: #f85162;
   color: #fff;
+}
+
+/* 礼仪时间 */
+#datetimepicker4{
+  width: 415px;
+  margin-bottom: 30px;
+  height: 24px;
+}
+
+#datetimepicker4 .Ceremony_title{
+  width: 85px;
+  padding : 0;
+  border: none;
+  background: none;
+  color: #333;
+}
+
+#datetimepicker4 .Ceremony_title span{
+  color: #f85162;
+  font-size: 14px;
+  line-height: 24px;
+  height: 24px;
+  font-weight: bold;
+}
+
+#datetimepicker4 input{
+  height: 24px;
+}
+
+#datetimepicker4 .Ceremony_icon{
+  width: 30px;
+  height: 24px;
+  background: none;
+  padding: 0;
 }
 
 /* 详细地址 */

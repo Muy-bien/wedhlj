@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	//验证是否为登录状态
-	if ($.cookie("login_on") == "" || !$.cookie("login_on")){
+	if ($.cookie("login_on") == "" || !$.cookie("login_on") || $.cookie("position")==0 || !$.cookie("position")){
 		window.location.href = "index.html";
 	}else{
 		//获取用户类型
@@ -178,7 +178,6 @@ $(document).ready(function(){
 			dataType: 'json',
 			data: {token:$.cookie("login_on")},
 			success: function(e){
-				console.log(e);
 				var user = e.merchant
 				if(e.status == 200){
 					$(".main_header").html('<div class="main_header_user">'+
