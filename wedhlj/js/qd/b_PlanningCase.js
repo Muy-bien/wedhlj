@@ -1,3 +1,9 @@
+$(document).ready(function(){
+	//导航栏默认选中
+  $(".nav_li").eq(0).find("a").addClass("nav_on");
+})
+//导航栏默认选中
+$(".nav_li").eq(0).find("a").addClass("nav_on");
 var state = 1;
 var status=1;
 var token=$.cookie("login_on");
