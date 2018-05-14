@@ -320,3 +320,27 @@ a:hover{
   float: left;
   font-size: 14px;
 }
+/*地址样式*/
+.main_nav_x10 p{
+  font-size: 14px;
+  padding: 0 15px;
+  height: 30px;
+  line-height: 28px;
+  border: 1px solid #bbb;
+  color: #666;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 10px;
+}
+
+.main_nav_x10 p:hover{
+  border: 1px solid #f85162 !important;
+  background: #f85162;
+  color: #fff;
+}
+
+.main_nav_x10 .main_nav_x10_on{
+  border: 1px solid #f85162 !important;
+  background: #f85162;
+  color: #fff;
+}

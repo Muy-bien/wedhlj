@@ -1,145 +1,167 @@
 $(document).ready(function(){
 	$(".nav_li").eq(1).find("a").addClass("nav_on");
-	//请求数据
-	//四大
-	var data={
-		currentPage:1,
-	}
-	//四大和道具
-	fourProp('task/showByPerson',$(".fourBig"),'ad2.jpg');
-	fourProp('task/showByProp',$(".prop"),'ad3.jpg');
-	function fourProp(addr,selector,picAddr){
-		$.ajax({
-			type:"post",
-			url:apiUrl+addr,
-			data:data,
-			dataType:"json",
-			success:function(e){
-				var objs=e.lists;
-				var html="";
-				if(objs.length==0){
-				}else if(objs.length>=4){
-					for(var i=0;i<4;i++){
-						var obj=objs[i];
-						//console.log(obj);
-						var picture=obj.t_sketch.split(',');
-						html+='<div class="main02_right_01">'+
-									'<a href="b_TaskAnnouncements.html?tid='+obj.t_id+'">'+
-										'<div>'+
-											'<div class="img_auto" style="background-image:url('+picture[0]+')"></div>'+
-										'</div>'+
-										'<p>'+
-											'<span>¥'+obj.maxPrice+'</span>'+obj.t_type+' '+obj.hotelName+' '+obj.entranceTime+
-										'</p>'+
-									'</a>'+
-								'</div>';
-					}
-				}else{
+})
+//任务大厅/task/queryAllTask
+//takeType:四大-1，执行-2，道具-3，舞美-4
+var pageNo=1,pageSize=4;
+function queryAllTask(takeType,selector,picAddr){
+	on_Loading();
+	$.ajax({
+		type:'post',
+		url:apiUrl+'/task/queryAllTask',
+		data:{takeType:takeType,pageNo:1,pageSize:4},
+		success:function(e){
+			console.log(e);
+			var objs=e.taskList;
+			if(takeType==1||takeType==3){
+				if(objs.length>0){
+					var objHtml='';
 					for(var i=0;i<objs.length;i++){
 						var obj=objs[i];
-						//console.log(obj);
-						var picture=obj.t_sketch.split(',');
-						html+='<div class="main02_right_01">'+
-									'<a href="b_TaskAnnouncements.html?tid='+obj.t_id+'">'+
-										'<div>'+
-											'<div class="img_auto" style="background-image:url('+picture[0]+')"></div>'+
-										'</div>'+
+						var picture=obj.taskSketch.split(',');
+						var pictureNull,pictureNotNull;
+						for(var k=0;k<picture.length;k++){
+							if(picture[k]==null||picture[k]=='null'){
+								}else{
+									pictureNotNull=picture[k];
+								}
+						}
+					//通过随机数判断任务的图片
+						var random=Math.random();
+						if(random>=0&&random<0.25){
+							pictureNull='images/b_MissionHall/ad5.jpg';
+						}else if(random>=0.25&&random<0.5){
+							pictureNull='images/b_MissionHall/ad6.jpg';
+						}else if(random>=0.5&&random<0.75){
+							pictureNull='images/b_MissionHall/ad7.jpg';
+						}else{
+							pictureNull='images/b_MissionHall/ad8.jpg';
+						}
+						objHtml+='<div class="main02_right_01">'+
+									'<a href="b_TaskAnnouncements.html">'+
+										'<div>';
+
+								if(!pictureNotNull){
+									picture[0]=pictureNull;
+									objHtml+='<div class="img_auto" style="background-image:url('+picture[0]+')"></div>';
+								}else{
+									picture[0]=pictureNotNull;
+									objHtml+='<div class="img_auto" style="background-image:url('+apiUrl+picture[0]+')"></div>';
+								}
+						objHtml+=			'</div>'+
 										'<p>'+
-											'<span>¥'+obj.maxPrice+'</span>'+obj.t_type+' '+obj.hotelName+' '+obj.entranceTime+
+											'<span>¥ '+obj.takePrice+'</span>'+obj.takeType+' '+obj.hotelName+' '+obj.entranceTime+
 										'</p>'+
 									'</a>'+
-								'</div>';
+								'</div>'
 					}
-				}
-				html+='<div class="main02_ad_01">'+
+					objHtml+='<div class="main02_ad_01">'+
 								'<a href="#">'+
 									'<img src="images/b_MissionHall/'+picAddr+'">'+
 								'</a>'+
 							'</div>';
-				selector.html(html);
-			},
-			error:function(){
-				meg("提示","网络开小差，请稍后再试！","body");
-			}
-		})
-	}
-	//执行和舞美
-	actionStage('task/showByExecute',$(".action"));
-	actionStage('task/showByStage',$(".stage"));
-	function actionStage(addr,selector){
-		$.ajax({
-			type:"post",
-			url:apiUrl+addr,
-			data:data,
-			dataType:"json",
-			success:function(e){
-				var objs=e.lists;
-				var html="";
-				if(objs.length==0){
-				}else if(objs.length>=4){
-				    html+='<div class="main02_right_02">'+
-								'<a href="b_TaskAnnouncements.html?tid='+objs[0].t_id+'">'+
-									'<div>'+
-										'<div class="img_auto" style="background-image:url('+objs[0].t_sketch.split(',')[0]+')"></div>'+
-									'</div>'+
-									'<p class="x10"><span>￥'+objs[0].maxPrice+'</span>'+objs[0].t_type+' '+objs[0].hotelName+' '+objs[0].entranceTime+'</p>'+
+					selector.html(objHtml);
+				}else{
+					var nullobjHtml='<div class="main02_ad_01">'+
+										'<a href="#">'+
+											'<img src="images/b_MissionHall/'+picAddr+'">'+
+										'</a>'+
+									'</div>';
+							selector.html('当前区域没有相关任务！'+nullobjHtml);
+				}
+				
+			}else if(takeType==2||takeType==4){
+				if(objs.length>0){
+						var planHtml='';
+						var img0=objs[0].taskSketch.split(',');
+						var imgNull0,imgNotNull0;
+						for(var s=0;s<img0.length;s++){
+							if(img0[s]==null||img0[s]=='null'){
+							}else{
+								imgNotNull=img0[s];
+							}
+						}
+						//通过随机数判断任务的图片
+							var random=Math.random();
+							if(random>=0&&random<0.25){
+								imgNull0='images/b_MissionHall/ad5.jpg';
+							}else if(random>=0.25&&random<0.5){
+								imgNull0='images/b_MissionHall/ad6.jpg';
+							}else if(random>=0.5&&random<0.75){
+								imgNull0='images/b_MissionHall/ad7.jpg';
+							}else{
+								imgNull0='images/b_MissionHall/ad8.jpg';
+							}
+
+					planHtml+='<div class="main02_right_02">'+
+								'<a href="b_TaskAnnouncements.html">'+
+									'<div>';
+									if(imgNotNull0){
+										planHtml+='<div class="img_auto" style="background-image:url('+apiUrl+imgNotNull0+')"></div>';
+									}else{
+										planHtml+='<div class="img_auto" style="background-image:url('+imgNull0+')"></div>';
+									}
+
+					planHtml+=		'</div>'+
+									'<p class="x10"><span>￥'+objs[0].takePrice+'</span>'+objs[0].takeType+' '+objs[0].hotelName+' '+objs[0].entranceTime+'</p>'+
 								'</a>'+
 							'</div>'+
 							'<div class="main02_right_04">';
-					for(var i=1;i<4;i++){
-						var obj=objs[i];
-						var picture=obj.t_sketch.split(',');
-						html+='<div class="main02_right_03">'+
+
+					for(var m=1;m<objs.length;m++){
+						var obj=objs[m];
+						var imgrs=obj.taskSketch.split(',');
+						var imgNullrs,imgNotNullrs;
+						for(var n=0;n<imgrs.length;n++){
+							if(imgrs[n]==null||imgrs[n]=='null'){
+							}else{
+								imgNotNullrs=imgrs[n];
+							}
+						}
+						//通过随机数判断任务的图片
+							var randomrs=Math.random();
+							if(randomrs>=0&&randomrs<0.25){
+								imgNullrs='images/b_MissionHall/ad5.jpg';
+							}else if(randomrs>=0.25&&randomrs<0.5){
+								imgNullrs='images/b_MissionHall/ad6.jpg';
+							}else if(randomrs>=0.5&&randomrs<0.75){
+								imgNullrs='images/b_MissionHall/ad7.jpg';
+							}else{
+								imgNullrs='images/b_MissionHall/ad8.jpg';
+							}
+						planHtml+='<div class="main02_right_03">'+
 									'<div>'+
-										'<a href="b_TaskAnnouncements.html?tid='+obj.t_id+'">'+
-											'<div class="img_auto" style="background-image:url('+picture[i]+')"></div>'+
-											'<p>¥'+obj.maxPrice+' '+obj.t_type+' '+obj.hotelName+' '+obj.entranceTime+'</p>'+
+										'<a href="b_TaskAnnouncements.html">';
+											if(imgNotNullrs){
+												planHtml+='<div class="img_auto" style="background-image:url('+apiUrl+imgNotNullrs+')"></div>';
+											}else{
+												planHtml+='<div class="img_auto" style="background-image:url('+imgNullrs+')"></div>';
+											}
+
+						planHtml+=			'<p>¥'+obj.takePrice+' '+obj.takeType+' '+obj.hotelName+' '+obj.entranceTime+'</p>'+
 										'</a>'+
 									'</div>'+
 								'</div>';
 					}
-					html+='</div>';
-				}else if(objs.length==1){
-					html+='<div class="main02_right_02">'+
-							'<a href="b_TaskAnnouncements.html?tid='+objs[0].t_id+'">'+
-								'<div>'+
-									'<div class="img_auto" style="background-image:url('+objs[0].t_sketch.split(',')[0]+')"></div>'+
-								'</div>'+
-								'<p class="x10"><span>￥'+objs[0].maxPrice+'</span>'+objs[0].t_type+' '+objs[0].hotelName+' '+objs[0].entranceTime+'</p>'+
-							'</a>'+
-						'</div>'+
-						'<div class="main02_right_04"></div>';
+					planHtml+='</div>';
+					selector.html(planHtml);
 				}else{
-					//1-3
-					html+='<div class="main02_right_02">'+
-							'<a href="b_TaskAnnouncements.html?tid='+objs[0].t_id+'">'+
-								'<div>'+
-									'<div class="img_auto" style="background-image:url('+objs[0].t_sketch.split(',')[0]+')"></div>'+
-								'</div>'+
-								'<p class="x10"><span>￥'+objs[0].maxPrice+'</span>'+objs[0].t_type+' '+objs[0].hotelName+' '+objs[0].entranceTime+'</p>'+
-							'</a>'+
-						'</div>'+
-						'<div class="main02_right_04">';
-					for(var i=1;i<objs.length;i++){
-						var obj=objs[i];
-						var picture=obj.t_sketch.split(',');
-						html+='<div class="main02_right_03">'+
-									'<div>'+
-										'<a href="b_TaskAnnouncements.html?tid='+obj.t_id+'">'+
-											'<div class="img_auto" style="background-image:url('+picture[i]+')"></div>'+
-											'<p>¥'+obj.maxPrice+' '+obj.t_type+' '+obj.hotelName+' '+obj.entranceTime+'</p>'+
-										'</a>'+
-									'</div>'+
-								'</div>';
-					}
-					html+='</div>';
+					selector.html('当前区域没有相关任务！');
 				}
-				selector.html(html);
-			},
-			error:function(){
-				meg("提示","网络开小差，请稍后再试！","body");
 			}
-		})
-	}
-})
-//寻找资源
+			down_Loading();
+		},
+		error:function(){
+			down_Loading();
+			meg('提示','网络开小差，请稍后再试！','body')
+		}
+	})
+}
+// 四大
+queryAllTask(1,$('.fourBig'),'ad2.jpg')
+//道具
+queryAllTask(3,$('.prop'),'ad3.jpg')
+//执行
+queryAllTask(2,$('.action'))
+//舞美
+queryAllTask(4,$('.stage'))

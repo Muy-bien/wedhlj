@@ -209,14 +209,16 @@
 	    $(function () {
             $('#datetimepicker4').datetimepicker({
             	locale: 'zh-cn',
-                format:"YYYY-MM-DD HH:mm"
+                format:"YYYY-MM-DD HH:mm",
+                minDate:new Date()
             });
         });
         //入场时间
 	    $(function () {
             $('#datetimepicker4_entrance').datetimepicker({
             	locale: 'zh-cn',
-                format:"YYYY-MM-DD HH:mm"
+                format:"YYYY-MM-DD HH:mm",
+                minDate:new Date()
             });
         });
 	</script>
