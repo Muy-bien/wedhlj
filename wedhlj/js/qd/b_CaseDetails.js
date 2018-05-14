@@ -79,11 +79,11 @@ function queryScheme(schemeNo){
 		success:function(e){
 			var scheme=e.scheme;
 			//头像
-			$(".main_top_logo").html('<div><img src="'+apiUrl+scheme[0].user.headPhoto+'" alt=""></div>')
+			$(".main_top_logo").html('<div><img src="'+apiUrl+scheme[0].merchant.mLogo+'" alt=""></div>')
 			// 价格
 			$(".main_top_footer>p>span").html(scheme[0].schemePrice);
 			// 星级
-			var star=scheme[0].user.star;
+			var star=scheme[0].merchant.mStar;
 			var starHtml='';
 			for(var i=0;i<star;i++){
 				starHtml+='<i class="main_top_ion"></i>'
