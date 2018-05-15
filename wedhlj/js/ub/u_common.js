@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	//验证是否为登录状态
 	if ($.cookie("login_on") == "" || !$.cookie("login_on") || $.cookie("position")==0 || !$.cookie("position")){
-		window.location.href = "index.html";
+		//window.location.href = "index.html";
 	}else{
 		//获取用户类型
 		$.ajax({
@@ -69,22 +69,13 @@ $(document).ready(function(){
 					'<div class="nav_cont_a nav_cont_off">'+
 						'<a href="u_PersonalCenter.html">个人中心</a>'+
 					'</div>'+
+				'</li>'+
+				'<li>'+
+					'<i></i>'+
+					'<div class="nav_cont_a nav_cont_off">'+
+						'<a href="u_WeddingOrderManagement.html">订单管理</a>'+
+					'</div>'+
 				'</li>';
-				if(h_position == 1){
-					h_nav +='<li>'+
-						'<i></i>'+
-						'<div class="nav_cont_a nav_cont_off">'+
-							'<a href="u_WeddingOrderManagement.html">订单管理</a>'+
-						'</div>'+
-					'</li>';
-				}else if(h_position == 2 || h_position == 3){
-					h_nav +='<li>'+
-						'<i></i>'+
-						'<div class="nav_cont_a nav_cont_off">'+
-							'<a href="u_SupplierOrder_Details.html">订单管理</a>'+
-						'</div>'+
-					'</li>';
-				}
 				h_nav +='<li>'+
 					'<i></i>'+
 					'<div class="nav_cont_a nav_cont_off">'+
@@ -107,7 +98,7 @@ $(document).ready(function(){
 						'</div>'+
 					'</li>';
 				}
-				h_nav +='<li>'+
+				h_nav +='<!--<li>'+
 					'<i></i>'+
 					'<div class="nav_cont_a nav_cont_off">'+
 						'<a href="u_Focus.html">我的关注</a>'+
@@ -118,7 +109,7 @@ $(document).ready(function(){
 					'<div class="nav_cont_a nav_cont_off">'+
 						'<a href="#">运营中心</a>'+
 					'</div>'+
-				'</li>'+
+				'</li>-->'+
 				'<li>'+
 					'<i></i>'+
 					'<div class="nav_cont_a nav_cont_off">'+
@@ -156,7 +147,7 @@ $(document).ready(function(){
 				'<div class="header_name">'+
 					'<p><i></i><span class="h_name">'+$.cookie("user")+'</span></p>'+
 				'</div>'+
-				'<div class="haeder_notice"></div>'+
+				'<!--<div class="haeder_notice"></div>-->'+
 				'<div class="sign_out">'+
 					'<p onclick="sign_out()">退出登录</p>'+
 				'</div>'+

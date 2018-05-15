@@ -9,7 +9,6 @@ $(document).ready(function(){
 		$(this).addClass("Categories_x10_on");
 	})
     //接收URL中的参数spid
-    var id = getUrlParam('id');
     var pageNo = getUrlParam('pageNo');
     Recommend(type);
     if(!id||!type){
@@ -28,6 +27,7 @@ $(document).ready(function(){
         ShoppingCart();
     }
 })
+var id = getUrlParam('id');
 var type = getUrlParam('type');//商家类型
 //商品列表内容刷新
 //id==>商家id
@@ -167,11 +167,11 @@ function ShoppingCart(){
 
                 $(".splist_total span").html("￥"+Total+" 元");
                 $(".splist_x10").html(str);
-                calcNumber()
-                zoom()
+                calcNumber();
+                zoom();
             }else{
                 $(".splist_total span").html("￥0");
-                $(".splist_x10").html("");
+                $(".splist_x10").html("购物车为空");
             }
         },
         error:function(){
@@ -240,6 +240,7 @@ function calcNumber(){
 
 //添加商品
 function AddGoods(spid,id,number){
+    on_Loading();
     if($.cookie("login_on")){
         $.ajax({
             type: 'post',
@@ -248,13 +249,16 @@ function AddGoods(spid,id,number){
             data: {token:$.cookie("login_on"),strProductId:spid,strMerchantId:id,strProductNum:number},
             success:function(e){
                 if(e.status==200){
+                    down_Loading();
                     meg("提示","添加成功","body");
                     ShoppingCart();
                 }else{
+                    down_Loading();
                     meg("提示","添加失败","body");
                 }
             },
             error:function(){
+                down_Loading();
                 meg("提示","服务器开了小差，请稍后重试","body");
             }
         }) 
@@ -290,15 +294,18 @@ function PromptGoods(spid,mid){
         meg2("提示","是否确定删除商品","body",deleteGoods);
         var pid = spid;
         function deleteGoods(){
+            down_Loading();
             $.ajax({
                 type: 'post',
                 url: apiUrl+"/cart/delProductToCart",
                 dataType: 'json',
                 data: {token:$.cookie("login_on"),productId:spid,merchantId:mid},
                 success:function(e){
+                    down_Loading();
                     ShoppingCart()
                 },
                 error:function(){
+                    down_Loading();
                     meg("提示","服务器开了小差，请稍后重试","body");
                 }
             })
@@ -306,7 +313,8 @@ function PromptGoods(spid,mid){
     }else{
         window.location.reload();
     }      
-} 
+}
+//提交订单
 $(".splist_but").click(function(){
     if($(".splist_li").length > 0){
         if(!$.cookie("login_on")){
@@ -316,7 +324,7 @@ $(".splist_but").click(function(){
             meg("提示","请先注册商户，点击商家入驻注册商户","body");
             return false;
         }else{
-            window.open("b_DetermineOrder.html")
+            window.open("b_DetermineOrder.html?mid="+id+"&type="+type)
         }
     }else{
         meg("提示","请选择需要购买得商品","body");

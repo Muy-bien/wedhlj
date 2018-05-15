@@ -73,4 +73,26 @@ $(document).ready(function(){
 		});
 	})
 })
+//导航栏默认选中
+function on_navli(){
+	$(".nav_cont_a").eq(1).addClass("nav_cont_on");
+}
+//添加订单
+var state=1;
+addOrder()
+function addOrder(){
+	if(state==1){
+		state=2
+		var _orderStatusVal=$(".orderStatus").text();//订单状态
+		console.log(_orderStatusVal);
+		var indentOrderStatus=(_orderStatusVal=="跟 单"?0:(_orderStatusVal=="预 定"?1:(_orderStatusVal=="执 行"?2:(_orderStatusVal=="完 成"?3:0))))
+		console.log(indentOrderStatus);
+		
+	}
+}
+$(".orderStatus").change(function() {
+	var _orderStatusVal=$(".orderStatus").text();//订单状态
+	var indentOrderStatus=(_orderStatusVal=="跟 单"?0:(_orderStatusVal="预 定"?1:(_orderStatusVal="执 行"?2:(_orderStatusVal="完 成"?3:0))))
+	console.log(indentOrderStatus);
+});
 

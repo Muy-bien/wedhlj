@@ -185,8 +185,8 @@ function closeTailor() {
 function on_navli(){
     var position = $.cookie("position");
     if(position==2){
-        $(".nav_cont_a").eq(5).addClass("nav_cont_on");
+        $(".nav_cont_a").eq(3).addClass("nav_cont_on");
     }else if(position==1||position==3){
-        $(".nav_cont_a").eq(6).addClass("nav_cont_on");
+        $(".nav_cont_a").eq(4).addClass("nav_cont_on");
     }
 }

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	//当前页面默认选中
-	$(".nav_li").eq(0).find("a").addClass("nav_on")
+	$(".nav_li").eq(0).find("a").addClass("nav_on");
 	//任务公告
 	$.ajax({
 		type: 'POST',
@@ -17,9 +17,15 @@ $(document).ready(function(){
 				if(tasks>0){
 					for(var i=0;i<tasks;i++){
 						var task=e.taskList[i];
+						var task_img="";
+						for(var s=0;s<task.taskSketch.split(",").length;s++){
+							if(task.taskSketch.split(",")[s]!="null"){
+								task_img=task.taskSketch.split(",")[s];
+							}
+						}
 						main01_html+='<li>'+
 							'<a href="b_TaskAnnouncements.html?releaseUserId='+task.releaseUserId+'">'+
-								'<div class="main01_left_img"><div class="img_auto" style="background-image:url('+apiUrl+task.taskSketch.split(",")[0]+')"></div></div>'+
+								'<div class="main01_left_img"><div class="img_auto" style="background-image:url('+(task_img==""?"images/b_MissionHall/ad"+Math.floor(Math.random()*4+5)+".jpg":apiUrl+task_img)+')"></div></div>'+
 								'<div class="main01_left_cont">'+
 									'<h1>'+task.takeName+'</h1>'+
 									'<p>赏金 ￥'+task.takePrice+'<span>|</span>竞标 '+(task.biddingUsers==""?0:task.biddingUsers)+'</p>'+

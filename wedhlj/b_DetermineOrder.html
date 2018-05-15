@@ -26,13 +26,13 @@
 					<div class="DOrder_input">
 						<div class="DOrder_left">收件人：<span>*</span></div>
 						<div class="DOrder_right">
-							<input type="text" class="DOrder_input_x10" placeholder="请使用真实姓名" maxlength="6">
+							<input type="text" class="DOrder_input_x10 userName" placeholder="请使用真实姓名" maxlength="6">
 						</div>
 					</div>
 	                <!-- 礼仪时间 -->
 					<div class='input-group date' id='datetimepicker4'>
 						<span class="input-group-addon Ceremony_title">礼仪时间：<span>*</span></span>
-			            <input type='text' class="form-control">
+			            <input type='text' class="form-control ceremonyTime">
 			            <span class="input-group-addon Ceremony_icon"><span class="glyphicon glyphicon-calendar"></span>
 			            </span>
 			        </div>
@@ -40,14 +40,14 @@
 					<div class="DOrder_input">
 						<div class="DOrder_left">酒店名称：<span>*</span></div>
 						<div class="DOrder_right">
-							<input type="text" class="DOrder_input_x20" placeholder="请填写酒店名称" maxlength="20">
+							<input type="text" class="DOrder_input_x20 hotelName" placeholder="请填写酒店名称" maxlength="20">
 						</div>
 					</div>
 					<!-- 新人姓名 -->
 					<div class="DOrder_input">
 						<div class="DOrder_left">新人姓名：<span>*</span></div>
 						<div class="DOrder_right">
-							<input type="text" class="DOrder_input_x20" placeholder="为确保配送无误，请填写新人姓名" maxlength="10">
+							<input type="text" class="DOrder_input_x20 newName" placeholder="为确保配送无误，请填写新人姓名" maxlength="10">
 						</div>
 					</div>
 					<!-- 收货地址 -->
@@ -108,14 +108,14 @@
 					<div class="DOrder_input">
 						<div class="DOrder_left">详细地址：<span>*</span></div>
 						<div class="DOrder_right">
-							<input type="text" class="DOrder_input_x20" placeholder="请填写详细地址" maxlength="20">
+							<input type="text" class="DOrder_input_x20 address_x40" placeholder="请填写详细地址" maxlength="20">
 						</div>
 					</div>
 					<!-- 联系电话 -->
 					<div class="DOrder_input">
-						<div class="DOrder_left">手机号码：<span>*</span></div>
+						<div class="DOrder_left">联系电话：<span>*</span></div>
 						<div class="DOrder_right">
-							<input type="text" class="DOrder_input_x30" placeholder="请输入11位手机号" maxlength="11">
+							<input type="text" class="DOrder_input_x30 phone" placeholder="请输入11位手机号" maxlength="11">
 						</div>
 					</div>
 				</div>
@@ -126,19 +126,19 @@
 				<div class="main02_cont">
 					<div class='input-group date' id='datetimepicker6'>
 						<span class="input-group-addon">开始使用日期：</span>
-			            <input type='text' class="form-control">
+			            <input type='text' class="form-control startTime">
 			            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
 			            </span>
 			        </div>
 			        <div class='input-group date' id='datetimepicker7'>
 			        	<span class="input-group-addon">结束使用日期：</span>
-	                    <input type='text' class="form-control">
+	                    <input type='text' class="form-control endTime">
 	                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
 	                    </span>
 	                </div>
 	                <div class="main02_Remarks_box">
 	                	<span>备注：</span>
-	                	<textarea class="main02_Remarks" maxlength="150" placeholder="最多输入150个字符"></textarea>
+	                	<textarea class="main02_Remarks remarks" maxlength="150" placeholder="最多输入150个字符"></textarea>
 	                </div>
 				</div>
 			</div>
@@ -180,7 +180,7 @@
 			</div>
 		</div>
 		<!-- 交纳押金 -->
-		<div class="deposit">
+		<!-- <div class="deposit">
 			<div class="deposit_cont">
 				<div class="deposit_title">缴纳押金<span></span></div>
 				<div class="deposit_info">
@@ -197,7 +197,7 @@
 					<p class="deposit_footer_on">押金缴纳金额按每笔订单金额的15%缴纳。</p>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- 底部 -->
 		<footer>
 		</footer>
