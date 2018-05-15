@@ -341,6 +341,7 @@ function queryAllTaskDet(takeType,hotelAddress,sort,pageNo,pageSize,state,reset)
 	console.log(hotelAddress);
 	console.log(sort);
 	console.log(pageNo);
+	on_Loading();
 	$.ajax({
 		type:"post",
 		url: apiUrl+'/task/queryAllTask',
