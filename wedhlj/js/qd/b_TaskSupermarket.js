@@ -376,7 +376,12 @@ function queryAllTaskDet(takeType,hotelAddress,sort,pageNo,pageSize,state,reset)
 			if(taskList.length>0){
 				var html='';
 				for(var i=0;i<taskList.length;i++){
-
+					var biddingUsers;//竞标数量
+					if(taskList[i].biddingUsers){
+						biddingUsers=taskList[i].biddingUsers.split(',').length;
+					}else{
+						biddingUsers=0;
+					}
 					var picture=taskList[i].taskSketch.split(',');
 						var pictureNull,pictureNotNull;
 						for(var k=0;k<picture.length;k++){
@@ -397,7 +402,7 @@ function queryAllTaskDet(takeType,hotelAddress,sort,pageNo,pageSize,state,reset)
 							pictureNull='images/b_MissionHall/ad8.jpg';
 						}
 					html+='<li>'+
-							'<a href="b_TaskAnnouncements.html">'+
+							'<a href="b_TaskAnnouncements.html?taskId='+taskList[i].taskId+'">'+
 								'<div class="main04_cont_img">';
 								if(!pictureNotNull){
 									html+=	'<div class="img_auto" style="background-image:url('+pictureNull+')"></div>'
@@ -407,7 +412,7 @@ function queryAllTaskDet(takeType,hotelAddress,sort,pageNo,pageSize,state,reset)
 					html+=		'</div>'+
 								'<div class="main04__x10">'+
 									'<p class="main04_x20">'+taskList[i].takeName+'</p>'+
-									'<p class="main04_x30">赏金￥'+taskList[i].takePrice+' | 竞标 230</p>'+
+									'<p class="main04_x30">赏金￥'+taskList[i].takePrice+' | 竞标 '+biddingUsers+'</p>'+
 									'<p class="main04_x40">查看更多></p>'+
 								'</div>'+
 							'</a>'+

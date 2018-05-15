@@ -38,7 +38,7 @@ function queryAllTask(takeType,selector,picAddr){
 							pictureNull='images/b_MissionHall/ad8.jpg';
 						}
 						objHtml+='<div class="main02_right_01">'+
-									'<a href="b_TaskAnnouncements.html">'+
+									'<a href="b_TaskAnnouncements.html?taskId='+obj.taskId+'">'+
 										'<div>';
 
 								if(!pictureNotNull){
@@ -94,7 +94,7 @@ function queryAllTask(takeType,selector,picAddr){
 							}
 
 					planHtml+='<div class="main02_right_02">'+
-								'<a href="b_TaskAnnouncements.html">'+
+								'<a href="b_TaskAnnouncements.html?taskId='+objs[0].taskId+'">'+
 									'<div>';
 									if(imgNotNull0){
 										planHtml+='<div class="img_auto" style="background-image:url('+apiUrl+imgNotNull0+')"></div>';
@@ -131,7 +131,7 @@ function queryAllTask(takeType,selector,picAddr){
 							}
 						planHtml+='<div class="main02_right_03">'+
 									'<div>'+
-										'<a href="b_TaskAnnouncements.html">';
+										'<a href="b_TaskAnnouncements.html?taskId='+obj.taskId+'">';
 											if(imgNotNullrs){
 												planHtml+='<div class="img_auto" style="background-image:url('+apiUrl+imgNotNullrs+')"></div>';
 											}else{
