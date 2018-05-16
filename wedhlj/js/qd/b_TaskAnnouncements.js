@@ -99,7 +99,7 @@ $(document).ready(function(){
  		$.ajax({
 				type:"post",
 				url: apiUrl+'/task/queryTask',
-				data:{taskId:taskId},
+				data:{taskId:taskId,token:$.cookie('login_on')},
 				dataType:'json',
 				success:function(e){
 					console.log(e);
@@ -141,11 +141,22 @@ $(document).ready(function(){
 							if(biddingUsers[j]==e.userId){
 								meg("提示","您已经竞标过该任务！","body",doThing)
 							}else{
-								meg("提示","竞标中！","body",doThing)
+								meg("提示","竞标中！","body",compitive)
 							}
 						}
 					}else if(!task.biddingUsers){
-						meg("提示","竞标中！","body",doThing)
+						meg("提示","竞标中！","body",compitive)
+					}
+					//跳转到进度条页面
+					 function doThing(){
+						window.location.href="b_TaskStateDetail_YF.html?taskId="+task.taskId+"";
+					}
+					function compitive(){
+						if(task.takeType=="舞美"||task.takeType=="道具"){
+							window.location.href="b_TaskStateDetail_YF.html?taskId="+task.taskId+"";
+						}else{
+							window.location.href="b_TaskChooseOurPostPerson.html?taskId="+task.taskId+"";
+						}
 					}
 						// $.ajax({
 						// 	type:"post",
@@ -169,13 +180,6 @@ $(document).ready(function(){
 						// 		meg("提示","网络开小差，请检查！","body");
 						// 	}
 						// })
-					// function compitive(){
-					// 	if(taskType=="舞美租赁"||taskType=="道具租赁"){
-					// 		window.location.href="b_TaskStateDetail_YF.html?tid="+tid+"";
-					// 	}else{
-					// 		window.location.href="b_TaskChooseOurPostPerson.html?tid="+tid+"";
-					// 	}
-					// }
 				})
 					down_Loading();
 				},
@@ -189,6 +193,3 @@ $(document).ready(function(){
  function backToLast(){
  	window.history.go(-1);
  }
- function doThing(){
-	window.location.href="b_TaskStateDetail_YF.html?tid="+tid+"";
-}

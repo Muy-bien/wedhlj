@@ -62,9 +62,6 @@ if(!username){
     }else if(!$("input[name=etiquetteTime]").val()){
       meg("提示","请填写礼仪时间！","body");
       return false;//礼仪时间验证
-    }else if(!$("input[name=coupleName]").val()){
-      meg("提示","注：为保证配送无误，请填写新人姓名","body");
-      return false;//新人姓名验证
     }else if(!$("input[name=contactName]").val()){
       meg("提示","请填写联系人姓名","body");
       return false;//联系人姓名验证
@@ -77,8 +74,8 @@ if(!username){
     }else if(!$("input[name=hotelName]").val()){
       meg("提示","请填写酒店名称","body");
       return false;//验证酒店名称
-    }else if(!$("input[name=hotelAddress]").val()){
-      meg("提示","请填写酒店地址","body");
+    }else if(!$("input[name=address]").val()){
+      meg("提示","请填写酒店详细地址","body");
       return false;//验证酒店地址
     }else if(!$("input[name=takePrice]").val()){
       meg("提示","请填写价格","body");

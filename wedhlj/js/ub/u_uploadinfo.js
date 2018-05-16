@@ -141,11 +141,21 @@ function login(url){
 		})
 	}
 }
+
+
+
+//获取url中的参数
+function getUrlParam(name){
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+	//构造一个含有目标参数的正则表达式对象
+	var r = window.location.search.substr(1).match(reg);//匹配目标参数
+	if (r != null) return unescape(r[2]); return null; //返回参数值
+}
 //接收URL中的参数info
 var info = getUrlParam('info');
 //上传按钮
 var info_01 = ["婚庆公司","个人策划"];
-var info_02 = ["主持人","摄影师","摄像师","化妆师","花艺师","婚礼管家"];
+var info_02 = ["主持人","摄影师","摄像师","化妆师","花艺师","婚礼管家","婚礼执行"];
 var info_03 = ["舞美","道具"];
 var cp_type = "";
 if(info == 1){

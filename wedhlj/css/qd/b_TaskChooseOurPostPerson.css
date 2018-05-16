@@ -151,4 +151,8 @@
   left: 0;
   top: 0;
 }
+.main a{
+  color: #666 !important;
+  font-size: 20px;
+}
 /*****************************content-end*****************************/

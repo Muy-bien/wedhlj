@@ -309,3 +309,8 @@ i{
   line-height: 90px;
 }
 /*注释：系统公告css和已发布任务css共用了一部分*/
+/*分页样式*/
+.pageshow{
+  margin-left: -180px !important;
+  margin-top: 30px !important;
+}

@@ -1,30 +1,36 @@
 var state = 1;//防止多次点击
 var username=$.cookie("user");//username
+var takeId=getUrlParam('takeId');
+queryTask(takeId)
 $(document).ready(function(){
   //导航栏默认选中
   $(".nav_li").eq(1).find("a").addClass("nav_on");
   $("input[name=username]").val(username);
 })
+var str=["","","",""];
 if(!username){
   window.location.href="login.html";
 }else{
   //预览图片
   $(".myFileUpload").change(function(e){ 
-   	var file = this.files[0];
-   	var i = $(this).parent(".main_file").index()
-   	if (file) {
-   		if (window.FileReader) {    
+    var file = this.files[0];
+    console.log(file)
+    var i = $(this).parent(".main_file").index();
+    str[i]=file;
+
+    if (file) {
+      if (window.FileReader) {    
               var reader = new FileReader();    
               reader.readAsDataURL(file);  //将文件读取为DataURL  
               //监听文件读取结束后事件    
-            	reader.onloadend = function (e){
-            		$(".show").eq(i).html("<img src='"+e.target.result+"'>")
+              reader.onloadend = function (e){
+                $(".show").eq(i).html("<img src='"+e.target.result+"'>")
             };    
          } 
      }else{
-     		$(".show").eq(i).html("")
+        $(".show").eq(i).html("")
      }
-     	
+      
   }); 
   //点击类型
   $(".Posttask_x20").click(function(){
@@ -49,10 +55,11 @@ if(!username){
     })
   //上传
   $(".Posttask_but").click(function(){
+
     // 酒店详细地址
     $("input[name=hotelAddress]").val($("#s1").val()+','+$("#s2").val()+','+$("#s3").val()+','+$("input[name=address]").val());
     //确定类型
-    $("input[name=type]").val($(".Posttask_x20_on p").html());
+    $("input[name=takeType]").val($(".Posttask_x20_on p").html());
     //方案草图的实际上传个数
     var imgFiles=$(".show img");
     //验证任务项目
@@ -62,9 +69,6 @@ if(!username){
     }else if(!$("input[name=etiquetteTime]").val()){
       meg("提示","请填写礼仪时间！","body");
       return false;//礼仪时间验证
-    }else if(!$("input[name=coupleName]").val()){
-      meg("提示","注：为保证配送无误，请填写新人姓名","body");
-      return false;//新人姓名验证
     }else if(!$("input[name=contactName]").val()){
       meg("提示","请填写联系人姓名","body");
       return false;//联系人姓名验证
@@ -77,8 +81,8 @@ if(!username){
     }else if(!$("input[name=hotelName]").val()){
       meg("提示","请填写酒店名称","body");
       return false;//验证酒店名称
-    }else if(!$("input[name=hotelAddress]").val()){
-      meg("提示","请填写酒店地址","body");
+    }else if(!$("input[name=address]").val()){
+      meg("提示","请填写酒店详细地址","body");
       return false;//验证酒店地址
     }else if(!$("input[name=takePrice]").val()){
       meg("提示","请填写价格","body");
@@ -101,23 +105,32 @@ if(!username){
       state = 2;
       //上传整个form标签
       var form = new FormData($('#uploadForm')[0]);
-      form.append("token",$.cookie("login_on"));
+       // 案例图片
+      for(var s=0;s<str.length;s++){
+        console.log(str[s]);
+        if(str[s]){
+          form.append("taskSketch",str[s]);
+        }else{
+          form.append("taskSketch",'');
+        }
+      }
+      form.append("taskId",takeId);
       for(var a of form){
         console.log(a);
       }
       //刷新页面
-      var doThing = function(){
-        window.location.reload();
-      }
+      // var doThing = function(){
+      //   window.location.reload();
+      // }
       //跳转页面
       var hrefing = function(){
         window.location.href  = 'b_MissionHall.html'
       }
      on_Loading();
-      ///task/addTask发布任务
+      ///task/addTask发布任务/task/updateTask//修改任务
       $.ajax({
         type: 'POST',
-        url: apiUrl+'/task/addTask',
+        url: apiUrl+'/task/updateTask/',
         data: form,
         processData: false,
         contentType: false,
@@ -125,16 +138,78 @@ if(!username){
           console.log(e.status);
           down_Loading();
           if(e.status==200){
-            meg("提示","任务发布成功","body",hrefing);
+            meg("提示","任务修改成功","body",hrefing);
           }else{
-             meg("提示","任务发布失败","body");
+             meg("提示","任务修改失败","body");
           }
         },
         error : function(e) {
           down_Loading();
-          meg('提示','当前网络不畅通,请检查您的网络','body',doThing); 
+          meg('提示','当前网络不畅通,请检查您的网络','body',reload); 
         }
       })
     }
   })
+}
+
+///task/queryTask任务详情查询
+function queryTask(taskId){
+   $.ajax({
+        type: 'POST',
+        url: apiUrl+'/task/queryTask',
+        data: {taskId:taskId},
+        success: function(e) {
+          console.log(e);
+          console.log(e.task[0]);
+          var task=e.task[0];
+          //任务类型
+          var lip=$('.Posttask_x10 p');
+          for(var j=0;j<lip.length;j++){
+            if(lip[j].innerHTML==task.takeType){
+              $('.Posttask_x10 li').eq(j).addClass('Posttask_x20_on');
+            }
+          }
+          //任务名称
+          $('input[name=takeName]').val(task.takeName);
+          //礼仪时间
+          $('input[name=etiquetteTime]').val(task.etiquetteTime);
+          //联系人姓名
+          $('input[name=contactName]').val(task.contactName);
+          //联系人电话
+          $('input[name=contactPhone]').val(task.contactPhone);
+          //酒店名称
+          $('input[name=hotelName]').val(task.hotelName);
+          //地区
+          $("#s1").val(task.hotelAddress.split(',')[0]);
+          $("#s2").val(task.hotelAddress.split(',')[1]);
+          $("#s3").val(task.hotelAddress.split(',')[2]);
+          //详细地址
+          $("input[name=address").val(task.hotelAddress.split(',')[3]);
+          //价格
+          $('input[name=takePrice]').val(task.takePrice);
+          //入场时间
+          $('input[name=entranceTime]').val(task.entranceTime);
+          //入场需求
+          $('textarea[name=takeRequire]').val(task.takeRequire);
+          //方案描述
+          $('textarea[name=taskDesc]').val(task.taskDesc);
+          //方案草图
+          var taskSketch=task.taskSketch.split(',');
+          console.log(taskSketch);
+          for(var i=0;i<taskSketch.length;i++){
+            if(taskSketch[i]==null||taskSketch[i]=='null'){
+
+            }else{
+              $('.main_file').eq(i).find('.show').append('<img src='+apiUrl+taskSketch[i]+'/>')
+            }
+          }
+          // console.log($('.main_file').eq(0).find('.show').append('<img src='+apiUrl+taskSketch[0]+'/>'));
+          // console.log($('.main_file').eq(1).find('.show').append('<img src='+apiUrl+taskSketch[1]+'/>'));
+          // console.log($('.main_file').eq(2).find('.show').append('<img src='+apiUrl+taskSketch[2]+'/>'));
+          // console.log($('.main_file').eq(3).find('.show').append('<img src='+apiUrl+taskSketch[3]+'/>'));
+        },
+        error : function(e) {
+          meg('提示','当前网络不畅通,请检查您的网络','body'); 
+        }
+      })
 }

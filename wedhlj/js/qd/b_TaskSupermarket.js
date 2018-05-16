@@ -411,7 +411,7 @@ function queryAllTaskDet(takeType,hotelAddress,sort,pageNo,pageSize,state,reset)
 								}
 					html+=		'</div>'+
 								'<div class="main04__x10">'+
-									'<p class="main04_x20">'+taskList[i].takeName+'</p>'+
+									'<p class="main04_x20">'+taskList[i].takeName+'('+taskList[i].takeType+')</p>'+
 									'<p class="main04_x30">赏金￥'+taskList[i].takePrice+' | 竞标 '+biddingUsers+'</p>'+
 									'<p class="main04_x40">查看更多></p>'+
 								'</div>'+
