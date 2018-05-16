@@ -282,6 +282,10 @@
 }
 
 .main_cont_x10 .main_cont_title > li{
+  width: 112px;
+}
+
+.main_cont_x30 .main_cont_title > li{
   width: 141px;
 }
 
@@ -321,6 +325,10 @@
 }
 
 .main_cont_x10 .main_cont_list > ul > li{
+  width: 112px;
+}
+
+.main_cont_x30 .main_cont_list > ul > li{
   width: 141px;
 }
 

@@ -5,6 +5,7 @@
 	<title>供应商添加订单</title>
 	<link rel="shortcut icon" href="images/index_Avatar.png" type="image/x-icon">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/common.css">
 	<link rel="stylesheet" href="css/ub/u_AddSupplierOrder_Details.css">
 	<link rel="stylesheet" href="css/ub/u_common.css">
@@ -33,21 +34,21 @@
 							<p>订单状态：</p>
 							<div class="baseMsgItem_cont">
 							    <div class="dropdown">
-							        <a class="btn orderStatus" data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;padding-right: 28px;">完 成</a>
+							        <a class="btn orderStatus" data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;padding-right: 28px;">预 定</a>
 							        <ul class="dropdown-menu orderStatusContent addrPos">
-							            <li><a>跟 单</a></li>
 							            <li><a>预 定</a></li>
+							            <li><a>跟 单</a></li>
 							            <li><a>执 行</a></li>
 							            <li><a>完 成</a></li>
 							        </ul>
 							    </div>
 							</div>
 						</div>
-						<!-- 婚礼日期、时间 -->
-						<div class="baseMsgItem">
-							<p>日期：</p>
-							<div class="baseMsgItem_cont">
-								<input type="text">
+						<!-- 仪式时间 -->
+						<div class="Einlass">
+							<p class="Posttask_title">仪式时间：</p>
+							<div class="Posttask_x40">
+							    <input type='text' class="form-control" id='datetimepicker4' name="etiquetteTime">
 							</div>
 						</div>
 						<!-- 业务来源 -->
@@ -70,28 +71,28 @@
 						<!-- 新娘电话 -->
 						<div class="baseMsgItem">
 							<p>订单商家名称：</p>
-							<div class="baseMsgItem_cont">
+							<div class="baseMsgItem_cont indentBridePhone">
 								<input type="text">
 							</div>
 						</div>
 						<!-- 新郎电话 -->
 						<div class="baseMsgItem">
 							<p>订单负责人：</p>
-							<div class="baseMsgItem_cont">
+							<div class="baseMsgItem_cont indentBridegroomPhone">
 								<input type="text">
 							</div>
 						</div>
 						<!-- 订单负责人 -->
 						<div class="baseMsgItem">
 							<p>负责人电话：</p>
-							<div class="baseMsgItem_cont">
+							<div class="baseMsgItem_cont indentPrincipal">
 								<input type="text">
 							</div>
 						</div>
 						<!-- 酒店名称 -->
 						<div class="baseMsgItem">
 							<p>仪式酒店：</p>
-							<div class="baseMsgItem_cont">
+							<div class="baseMsgItem_cont indentRitualHotel">
 								<input type="text">
 							</div>
 						</div>
@@ -101,7 +102,7 @@
 							<!-- 省 -->
 							<div class="baseMsgItem_cont">
 							    <div class="dropdown">
-							        <a class="btn"
+							        <a class="btn dropdown_x10"
 							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
 							   padding-right: 28px;">四川省</a>
 								    <ul class="dropdown-menu addrPos" >
@@ -112,7 +113,7 @@
 							<!-- 市 -->
 							<div class="baseMsgItem_cont">
 							    <div class="dropdown">
-							        <a class="btn"
+							        <a class="btn dropdown_x20"
 							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
 							   padding-right: 28px;">成都市</a>
 								    <ul class="dropdown-menu addrPos" >
@@ -123,7 +124,7 @@
 							<!-- 区 -->
 							<div class="baseMsgItem_cont">
 							    <div class="dropdown">
-							        <a class="btn hotelAddr"
+							        <a class="btn hotelAddr dropdown_x30"
 							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
 							   padding-right: 28px;">锦江区</a>
 							        <ul class="dropdown-menu hotelAddrContent addrPos">
@@ -137,15 +138,12 @@
 							            <li><a>新都区</a></li>
 							            <li><a>温江区</a></li>
 							            <li><a>高新区</a></li>
-
 							            <li><a>郫县</a></li>
 							            <li><a>双流县</a></li>
 							            <li><a>新津县</a></li>
 							            <li><a>金堂县</a></li>
 							            <li><a>大邑县</a></li>
 							            <li><a>蒲江县</a></li>
-
-
 							            <li><a>邛崃市</a></li>
 							            <li><a>崇州市</a></li>
 							            <li><a>彭州市</a></li>
@@ -157,7 +155,7 @@
 						<!-- 酒店详细地址 -->
 						<div class="baseMsgItem">
 							<p>酒店详细地址：</p>
-							<div class="baseMsgItem_cont detailAddr">
+							<div class="baseMsgItem_cont detailAddr dropdown_x40">
 								<input type="text">
 							</div>
 						</div>
@@ -312,41 +310,27 @@
 					<p>区域：</p>
 					<div class="">
 						<!-- 订单状态 -->
-							<div class="baseMsgItem_cont botBotNo">
-							    <div class="dropdown">
-							        <a class="btn addOrderItem_Addr"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">主舞台</a>
-							        <ul class="dropdown-menu addOrderItem_AddrContent addrPos">
-							            <li><a>主舞台</a></li>
-							            <li><a>主舞台2</a></li>
-							            <li><a>主舞台3</a></li>
-							            <li><a>主舞台4</a></li>
-							        </ul>
-							    </div>
-							</div>
-						
+						<div class="baseMsgItem_cont botBotNo">
+						    <div class="dropdown">
+						        <a class="btn addOrderItem_Addr"
+						           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
+						   padding-right: 28px;">主舞台</a>
+						        <ul class="dropdown-menu addOrderItem_AddrContent addrPos">
+						            <li><a>主舞台</a></li>
+						            <li><a>礼道区</a></li>
+						            <li><a>签到区</a></li>
+						            <li><a>合影区</a></li>
+						            <li><a>甜品台</a></li>
+						        </ul>
+						    </div>
+						</div>
 					</div>
 				</div>
 				<!-- 2 -->
 				<div class="addOrderItemDetail">
 					<p>名称：</p>
 					<div class="">
-						<!-- 订单状态 -->
-							<div class="baseMsgItem_cont botBotNo">
-							    <div class="dropdown">
-							        <a class="btn addOrderItem_Name"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">LED灯</a>
-							        <ul class="dropdown-menu addOrderItem_NameContent addrPos">
-							            <li><a>LED灯</a></li>
-							            <li><a>LED灯1</a></li>
-							            <li><a>LED灯2</a></li>
-							            <li><a>LED灯3</a></li>
-							        </ul>
-							    </div>
-							</div>
-						
+						<input type="text" class="inputOrderMsg">
 					</div>
 				</div>
 			</div>
@@ -475,25 +459,22 @@
 	<!-- script -->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script src="js/moment-with-locales.js"></script>
+    <script src="js/bootstrap-datetimepicker.js"></script>
 	<script type="text/javascript" src="js/ub/u_common.js"></script>
 	<script type="text/javascript" src="js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript" src="js/paging.js"></script>
 	<script type="text/javascript" src="js/ub/u_AddSupplierOrder_Details.js"></script>
 	<script>
-		// $('.main_Pagination').paging({
-  //           initPageNo: 1, // 初始页码
-  //           totalPages: 10, //总页数
-  //           slideSpeed: 600, // 缓动速度。单位毫秒
-  //           jump: true, //是否支持跳转
-  //           // 回调函数
-  //           callback: function(page) { }
-  //       })
- 	// 	$(function(){
-		// 	// 默认显示
-		// 	$(".dropdown-toggle").dropdown('toggle');
-		// }); 
-
+		//仪式时间
+	    $(function () {
+            $('#datetimepicker4').datetimepicker({
+            	locale: 'zh-cn',
+                format:"YYYY-MM-DD HH:mm",
+                minDate:new Date()
+            });
+        });
 	</script>
 </body>
 </html>

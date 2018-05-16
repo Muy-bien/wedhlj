@@ -1,11 +1,6 @@
 $(document).ready(function(){
 	$(".AddOrder_but").click(function(){
-		var position=$.cookie("position");
-		if(position==1){
-			window.location.href="u_AddWeddingOrder_Details.html"
-		}else if(position==2||position==3){
-			window.location.href="u_AddSupplierOrder_Details.html"
-		}
+		window.location.href="u_AddWeddingOrder_Details.html";
 	})
 })
 //导航栏默认选中

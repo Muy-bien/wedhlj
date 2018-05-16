@@ -49,6 +49,8 @@
   border-bottom:1px solid #7a7a7a;
   box-sizing: border-box;
   margin-right: 50px;
+  height: 34px;
+  line-height: 30px;
 }
 .baseMsgItem_cont input{
   width: 200px;
@@ -57,7 +59,8 @@
   text-align: center;
   font-size: 14px;
 }
-.baseMsgItem p{
+.baseMsgItem p,
+.Einlass>.Posttask_title{
   display:inline-block;
   width: 117px;
   font-size: 14px;
@@ -71,21 +74,23 @@
 }
 .addrPos{
   left:24px !important;
+  text-align: center !important;
+}
+.addrPos li{
+  cursor: pointer;
 }
 /*订单详情*/
 .serviceDet{
-  /*height: 700px;*/
   padding-top: 60px;
   box-sizing: border-box;
-  /*border:solid;*/
 }
 .littleTitle{
-  width: 100px;
+  padding-left: 20px;
   height: 30px;
+  line-height: 30px;
   border-left:5px solid #f85162;
   color: #666;
   font-size: 14px;
-  text-align: center;
   margin-bottom: 60px;
 }
 .buttons{
@@ -111,17 +116,30 @@
   height: 50px;
   width: 100%;
 }
+.orderTableTr:last-child>div{
+  border-bottom: none !important;
+}
 .orderTableTr div{
   border-right:1px solid #e6e6e6;
   border-bottom:1px solid #e6e6e6;
   box-sizing: border-box;
   width: 150px;
-  line-height: 50px;
+  line-height: 16px;
+  font-size: 12px;
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }
-/*人员详情*/
-
-
+.orderTableTr_x10>div{
+  width: 126px;
+}
+.orderTableTr_box .orderTableTr>div{
+  width: 126px;
+}
 /*绝对定位弹框*/
   /*订单定位*/
 .addOrderItems,.addPersonItems{
@@ -213,7 +231,7 @@
   align-items: center;
   color: #666;
  }
- .total_calc div{
+.total_calc div{
   margin-right: 10px;
  }
  .part_calc{
@@ -236,20 +254,25 @@
  /*备注*/
  .remarks{
   display: flex;
-  align-items: center;
   height: 152px;
   margin-top: 50px;
   border-top:1px solid #e6e6e6;
   border-bottom:1px solid #e6e6e6;
   box-sizing: border-box;
+  padding-top: 40px;
   color: #666;
+ }
+ .remarks p{
+  line-height: 18px;
  }
  .remarks textarea{
   width: 950px;
   height: 80px;
+  font-size: 12px;
+  color: #666;
+  line-height: 18px;
+  padding: 0 15px;
   border:none;
-  margin-top: 40px;
-  padding-top: 6px;
   box-sizing: border-box;
  }
 /*common*/
@@ -297,6 +320,101 @@ a:hover{
   font-size: 16px;
   text-align: center;
 }
-.commitButtons div:hover{
-  background-color: #f85162;
+/*仪式时间*/
+.Einlass{
+  display: flex;
+  height: 22px;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.Posttask_x40{
+  position: relative;
+}
+
+#datetimepicker4{
+  width: 200px;
+  height: 34px;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid #7a7a7a;
+  border-radius: 0;
+  box-shadow: none;
+  text-align: center;
+}
+/*返回顶部*/
+#icon{
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  top: 90%; left: 50%;
+  margin-left: 650px;
+  z-index: 5;
+  cursor: pointer;
+  display: none;
+  -webkit-transition: 0.35s;
+  transition: 0.35s;
+}
+/*必填标志*/
+.Ricon{
+  color: #f85162;
+  font-size: 14px;
+  margin-right: 6px;
+  box-sizing: border-box;
+}
+/* 全选按钮 */
+.TotalSelection{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+}
+/* 上传 */
+#Upload{
+  background: #f85162;
+  color: #fff;
+}
+.commitButtons>div:active{
+  opacity: 0.9;
+}
+/* 报销业务 */
+.Reimbursement{
+  display: flex;
+  height: 34px;
+  width: 700px;
+  align-items: center;
+}
+
+.Reimbursement li{
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  margin-right: 50px;
+}
+
+.Reimbursement li span{
+  font-size: 14px;
+}
+
+.Reimbursement li>div{
+  width: 20px;
+  height: 20px;
+  border: 1px solid #333;
+  box-sizing: border-box;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.Reimbursement .Reimbursement_on>div i{
+  background: #333;
+}
+
+.Reimbursement li>div i{
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 100%;
 }

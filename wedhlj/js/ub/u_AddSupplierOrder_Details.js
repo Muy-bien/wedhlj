@@ -82,17 +82,19 @@ var state=1;
 addOrder()
 function addOrder(){
 	if(state==1){
-		state=2
-		var _orderStatusVal=$(".orderStatus").text();//订单状态
-		console.log(_orderStatusVal);
-		var indentOrderStatus=(_orderStatusVal=="跟 单"?0:(_orderStatusVal=="预 定"?1:(_orderStatusVal=="执 行"?2:(_orderStatusVal=="完 成"?3:0))))
-		console.log(indentOrderStatus);
-		
+		state=2;
+		//订单状态
+		var _orderStatusVal=$(".orderStatus").text();
+		var indentOrderStatus=(_orderStatusVal=="预 定"?0:(_orderStatusVal=="跟 单"?1:(_orderStatusVal=="执 行"?2:(_orderStatusVal=="完 成"?3:0))))
+		var indentTime=$("#datetimepicker4").val();//仪式时间
+		var indentBusiness=$(".businessCome").text();//订单来源
+		var indentBridePhone=$(".indentBridePhone input").val();//新娘电话
+		var indentBridegroomPhone=$(".indentBridegroomPhone input").val();//新郎电话
+		var indentPrincipal=$(".indentPrincipal input").val();//订单负责人
+		var indentRitualHotel=$(".indentRitualHotel input").val();//仪式酒店
+		var dropdown_x10=$(".dropdown_x10").text();//省
+		var dropdown_x20=$(".dropdown_x20").text();//市
+		var dropdown_x30=$(".dropdown_x30").text();//区
+		var dropdown_x40=$(".dropdown_x40 input").text();//详细地址
 	}
 }
-$(".orderStatus").change(function() {
-	var _orderStatusVal=$(".orderStatus").text();//订单状态
-	var indentOrderStatus=(_orderStatusVal=="跟 单"?0:(_orderStatusVal="预 定"?1:(_orderStatusVal="执 行"?2:(_orderStatusVal="完 成"?3:0))))
-	console.log(indentOrderStatus);
-});
-
