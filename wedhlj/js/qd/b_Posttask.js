@@ -9,6 +9,7 @@ if(!username){
   window.location.href="login.html";
 }else{
   //预览图片
+var str=["","","",""];
   $(".myFileUpload").change(function(e){ 
    	var file = this.files[0];
    	var i = $(this).parent(".main_file").index()
@@ -16,6 +17,7 @@ if(!username){
    		if (window.FileReader) {    
               var reader = new FileReader();    
               reader.readAsDataURL(file);  //将文件读取为DataURL  
+              str[i]=file;
               //监听文件读取结束后事件    
             	reader.onloadend = function (e){
             		$(".show").eq(i).html("<img src='"+e.target.result+"'>")
@@ -102,6 +104,12 @@ if(!username){
       for(var a of form){
         console.log(a);
       }
+      //案例图片
+      for(var s=0;s<str.length;s++){
+        if(str[s]){
+          form.append("taskSketch",str[s]);//新图oldTaskSketch//旧图
+        }
+      }
       //刷新页面
       var doThing = function(){
         window.location.reload();
@@ -129,7 +137,7 @@ if(!username){
         },
         error : function(e) {
           down_Loading();
-          meg('提示','当前网络不畅通,请检查您的网络','body',doThing); 
+          meg('提示','当前网络不畅通,请检查您的网络','body'); 
         }
       })
     }

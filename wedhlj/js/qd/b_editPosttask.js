@@ -1,6 +1,7 @@
 var state = 1;//防止多次点击
 var username=$.cookie("user");//username
 var takeId=getUrlParam('takeId');
+var taskSketchCom//全局变量，用来保存案例图片，方便修改任务的操作
 queryTask(takeId)
 $(document).ready(function(){
   //导航栏默认选中
@@ -106,25 +107,24 @@ if(!username){
       //上传整个form标签
       var form = new FormData($('#uploadForm')[0]);
        // 案例图片
+      console.log('taskSketchCom'+taskSketchCom);
+      console.log('str'+str)
       for(var s=0;s<str.length;s++){
         console.log(str[s]);
         if(str[s]){
-          form.append("taskSketch",str[s]);
-        }else{
-          form.append("taskSketch",'');
+          form.append("taskSketch",str[s]);//新图
+          if(taskSketchCom[s]){
+            form.append("oldTaskSketch",taskSketchCom[s]);//新图oldTaskSketch//旧图
+          }
         }
       }
       form.append("taskId",takeId);
       for(var a of form){
         console.log(a);
       }
-      //刷新页面
-      // var doThing = function(){
-      //   window.location.reload();
-      // }
       //跳转页面
       var hrefing = function(){
-        window.location.href  = 'b_MissionHall.html'
+        window.location.href  = 'u_PersonalCenter.html'
       }
      on_Loading();
       ///task/addTask发布任务/task/updateTask//修改任务
@@ -195,6 +195,7 @@ function queryTask(taskId){
           $('textarea[name=taskDesc]').val(task.taskDesc);
           //方案草图
           var taskSketch=task.taskSketch.split(',');
+          taskSketchCom=task.taskSketch.split(',');
           console.log(taskSketch);
           for(var i=0;i<taskSketch.length;i++){
             if(taskSketch[i]==null||taskSketch[i]=='null'){

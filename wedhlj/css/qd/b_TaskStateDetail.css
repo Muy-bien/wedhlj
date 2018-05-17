@@ -216,7 +216,11 @@
 	width: 285px;
 	height: 250px;
 }
-.aboutDanceAndTool div a img{
+/*.aboutDanceAndTool div a img{
+	width: 100%;
+	height: 100%;
+}*/
+.aboutDanceAndTool div a div{
 	width: 100%;
 	height: 100%;
 }

@@ -1,90 +1,8 @@
 var state=1;
 $(document).ready(function(){
 	$(".nav_li").eq(1).find("a").addClass("nav_on");
-	//接收URL中的参数spid
-	//var tid = getUrlParam('tid');
-	// if(!username){
-	// 	window.location.href="login.html";
-	// }else{
-	// 	$.ajax({
-	// 		type:"post",
-	// 		url: apiUrl+'/task/pushPersonInfo',
-	// 		dataType: 'json',
-	// 		data: {username:username,tid:tid},
-	// 		success:function(e){
-	// 			console.log(e);
-	// 			var persons=e.persons;
-	// 			var html="";
-	// 			for(var i=0;i<persons.length;i++){
-	// 				var person=persons[i];
-	// 			    var createtime=person.createtime.split("-").join(".");
-	// 				(person.pStatus==0)?(person.pStatus="待审核"):(person.pStatus="已审核");
-	// 				html+='<div class="control_total_person_item">'+
-	// 					'<div class="c_check">'+
-	// 						'<input type="checkbox" name="ids" value='+person.pId+'>'+
-	// 						'<input class="hide" type="text" value='+person.pId+'>'+
-	// 					'</div>'+
-	// 					'<div>'+person.pName+'</div>'+
-	// 					'<div><div class="c_pic"><div class="img_auto" style="background-image:url('+person.pLogo+')"></div></div></div>'+
-	// 					'<div>'+person.pPrice+'</div>'+
-	// 					'<div>'+person.pSellnumber+'</div>'+
-	// 					'<div>'+createtime+'</div>'+
-	// 					'<div>'+person.pStatus+'</div>'+
-	// 				'</div>';
-	// 			}
-	// 			$(".control_total_person").append(html);
-	// 		},
-	// 		error:function(){
-	// 			meg("提示","网络开小差，请检查！","body");
-	// 		}
-	// 	})
-	// }
-	//点击推送人员按钮
-	// $(".p_manage_add").click(function(){
-	// 		if(state==1){
-	// 			state=2;
-	// 			// window.location.href="b_TaskStateDetail_YF.html";
-	// 			// 查找被选中的人员
-	// 			var pids="";
-	// 			var checkedPerson=$(":checkbox[name='ids']:checked");
-	// 			for(var s=0;s<checkedPerson.length;s++){
-	// 				//pids.push(checkedPerson[s].value);
-	// 				pids+=checkedPerson[s].value+",";
-	// 			}
-	// 			pids=pids.substr(0,pids.length-1);
-	// 			console.log(pids);
-	// 			console.log(username);
-	// 			var pushPersonData={'tid':tid,'username':username,'pids':pids}
-	// 			console.log(pushPersonData);
-	// 			if(!checkedPerson.length){
-	// 				meg("提示","请添加推送商品或者人员","body");
-	// 			}else{
-	// 				console.log(pushPersonData);
-	// 			$.ajax({
-	// 				type:"post",
-	// 				async:true,
-	// 				url: apiUrl+'/task/pushPerson',
-	// 				dataType:'json',
-	// 				data:pushPersonData,
-	// 				success:function(e){
-	// 					console.log(e);
-	// 					if(e.status==200){
-	// 						window.location.href="b_TaskStateDetail_YF.html?tid="+tid+"";
-	// 					}else if(e.status==400){
-	// 						meg("提示","您已经推送过人员","body", href);
-	// 						function href(){
-	// 							window.location.href="b_TaskStateDetail_YF.html?tid="+tid+"";
-	// 						}
-	// 					}
-	// 				},
-	// 				error:function(){
-	// 					meg("提示","网络开小差，请检查！","body");
-	// 				}
-	// 			})
-	// 		}
-	// 	}
-	// })
 })
+var taskId=getUrlParam('taskId');
 	/*全选*/
 $(function(){
 	$(".check").click(function(){
@@ -111,7 +29,7 @@ function queryAllParticularInfo(token,pageNo,pageSize,PersonnelType){
 					for(var k=0;k<businessPersonnels.length;k++){
 						html+='<div class="control_total_person_item">'+
 								'<div class="c_check">'+
-									'<input type="checkbox" name="ids">'+
+									'<input type="checkbox" name="ids" value="'+businessPersonnels[k].id+'">'+//value='+businessPersonnels[k].id+'
 								'</div>'+
 								'<div>'+businessPersonnels[k].name+'</div>'+
 								'<div><div class="c_pic"><img src="'+apiUrl+businessPersonnels[k].headPortait+'"/></div></div>'+
@@ -121,30 +39,69 @@ function queryAllParticularInfo(token,pageNo,pageSize,PersonnelType){
 								'<div>已审核</div>'+
 							'</div>'
 					}
-					$(".control_total_person").append(html);
+					 $(".control_total_person").append(html);
 				}else{
 					$(".main").html('<a href="u_AddFixedPersonnel.html">您还没有人员可以推送，请前去添加！</a>')
 				}
-				// var persons=e.persons;
-				// var html="";
-				// for(var i=0;i<persons.length;i++){
-				// 	var person=persons[i];
-				//     var createtime=person.createtime.split("-").join(".");
-				// 	(person.pStatus==0)?(person.pStatus="待审核"):(person.pStatus="已审核");
-				// 	html+='<div class="control_total_person_item">'+
-				// 		'<div class="c_check">'+
-				// 			'<input type="checkbox" name="ids" value='+person.pId+'>'+
-				// 			'<input class="hide" type="text" value='+person.pId+'>'+
-				// 		'</div>'+
-				// 		'<div>'+person.pName+'</div>'+
-				// 		'<div><div class="c_pic"><div class="img_auto" style="background-image:url('+person.pLogo+')"></div></div></div>'+
-				// 		'<div>'+person.pPrice+'</div>'+
-				// 		'<div>'+person.pSellnumber+'</div>'+
-				// 		'<div>'+createtime+'</div>'+
-				// 		'<div>'+person.pStatus+'</div>'+
-				// 	'</div>';
-				// }
-				// $(".control_total_person").append(html);
+			},
+			error:function(){
+				meg("提示","网络开小差，请检查！","body");
+			}
+		})
+}
+
+//推送人员
+ $(".p_manage_add").click(function(){
+		if(state==1){
+			state=2;
+			var pids="";
+			var checkedPerson=$(":checkbox[name='ids']:checked");
+			for(var s=0;s<checkedPerson.length;s++){
+				pids+=checkedPerson[s].value+",";
+			}
+			if(!checkedPerson.length){
+				meg("提示","请添加推送商品或者人员","body");
+			}else{
+				pushPerson(pids,taskId);
+		}
+	}
+})
+///task/pushPerson推送人员
+function pushPerson(personnelId,taskId){
+	$.ajax({
+        type: 'POST',
+        url: apiUrl+'/task/pushPerson',
+        data: {personnelId:personnelId,taskId:taskId},
+        success: function(e) {
+        	console.log(e);
+        	if(e.status==200){
+        		theBidding($.cookie('login_on'),taskId);
+        	}else{
+        		meg("提示","人员推送失败，请联系客服！","body");
+        	}
+        },
+        error : function() {
+          meg('提示','当前网络不畅通,请检查您的网络','body'); 
+        }
+	})
+}
+ //竞标/task/theBidding
+function theBidding(token,taskId){
+	$.ajax({
+			type:"post",
+			url: apiUrl+'/task/theBidding',
+			data:{token:token,taskId:taskId},
+			dataType:'json',
+			success:function(e){
+				console.log(e);
+				if(e.status==200){
+					meg("提示","人员推送成功，竞标中！","body",propDance);
+				}else{
+					meg("提示","竞标操作失败，请联系客服！","body");
+				}
+				function propDance(){
+				 	window.location.href="b_TaskStateDetail_YF.html?taskId="+taskId+"";
+				}
 			},
 			error:function(){
 				meg("提示","网络开小差，请检查！","body");

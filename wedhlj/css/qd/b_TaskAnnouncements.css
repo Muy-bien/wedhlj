@@ -137,7 +137,11 @@
 	margin: 15px 0 15px 30px;
 }
 
-.main_cont_right ul li img{
+/*.main_cont_right ul li img{
+	width: 100%;
+	height: 100%;
+}*/
+.main_cont_right ul li div{
 	width: 100%;
 	height: 100%;
 }
