@@ -33,7 +33,7 @@
 }
 
 .main_header_current{
-	width: 20%;
+	width: 13%;
 	height: 4px;
 	background: #f85162;
 }
@@ -46,7 +46,7 @@
 }
 
 .main_header_cont li{
-	width:25%;
+	width:20%;
 	float: left;
 }
 

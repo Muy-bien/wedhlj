@@ -16,6 +16,7 @@ $(function(){
 //PersonnelType:合作--0；固定--1
 queryAllParticularInfo($.cookie('login_on'),1,100,0)
 function queryAllParticularInfo(token,pageNo,pageSize,PersonnelType){
+	on_Loading();
 	$.ajax({
 			type:"post",
 			url: apiUrl+'/BusinessPersonnel/queryAllParticularInfo',
@@ -43,8 +44,10 @@ function queryAllParticularInfo(token,pageNo,pageSize,PersonnelType){
 				}else{
 					$(".main").html('<a href="u_AddFixedPersonnel.html">您还没有人员可以推送，请前去添加！</a>')
 				}
+				down_Loading();
 			},
 			error:function(){
+				down_Loading();
 				meg("提示","网络开小差，请检查！","body");
 			}
 		})

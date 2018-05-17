@@ -291,9 +291,17 @@ $(document).ready(function(){
 				data:{taskId:taskId,token:$.cookie('login_on')},
 				dataType:'json',
 				success:function(e){
-					console.log(e);
+					console.log(e);					
+					console.log(e.deposit);
 					var task=e.task[0];
-					console.log(task.takeType);
+					//缴纳保证金的数据
+					$(".deposit_info_x10 span").html('￥'+e.deposit);
+					var makeSureMon=task.takePrice*0.15-e.deposit;
+					makeSureMon=makeSureMon.toFixed(2);
+					$(".deposit_info_x20 span").html(makeSureMon);
+					$('.deposit_but').click(function(){
+						aliPayToTake(task.payOrderNo,'缴纳保证金'+task.payOrderNo,makeSureMon,'婚礼匠任务保证金缴纳');
+					})
 					var taskSketch=task.taskSketch;
 					//根据任务类型请求竞标人员或者商家信息的查询
 					// if(task.takeType!='舞美'&&task.takeType!='道具'){
@@ -328,6 +336,51 @@ $(document).ready(function(){
 							}
 						}
 					$('.main_cont_right ul').html(picHtml);
+					console.log(task.taskStatus);
+				//状态条的状态展示
+				var pstates=$(".main_header_cont li p");
+						if(task.taskStatus==0){
+							$(".s1").removeClass("main_header_x20").addClass("main_header_x10");
+							compState('13%');
+							//显示确认和取消按钮
+							if(task.acceptuserinfo!=null&&task.acceptuserinfo.search(username)!=-1){
+								$(".makeSure").css("display","block");
+							}
+						}else if(task.taskStatus==1){
+							state=2;
+							$(".payMoney").css("display","block");
+							$(".makeSure").css("display","none");
+							$(".s1").removeClass("main_header_x20").addClass("main_header_x10");
+							$(".s2").removeClass("main_header_x20").addClass("main_header_x10");
+							compState('38%');
+						}else if(task.taskStatus==2){
+							$(".makeSure").css("display","none");
+							$(".s1").removeClass("main_header_x20").addClass("main_header_x10");
+							$(".s2").removeClass("main_header_x20").addClass("main_header_x10");
+							$(".s3").removeClass("main_header_x20").addClass("main_header_x10");
+							compState('63%');
+						}else if(task.taskStatus==3){
+							$(".makeSure").css("display","none");
+							$(".s1").removeClass("main_header_x20").addClass("main_header_x10");
+							$(".s2").removeClass("main_header_x20").addClass("main_header_x10");
+							$(".s3").removeClass("main_header_x20").addClass("main_header_x10");
+							$(".s4").removeClass("main_header_x20").addClass("main_header_x10");
+							compState('87%');
+						}else if(task.taskStatus==4){
+							$(".makeSure").css("display","none");
+							$(".s1").removeClass("main_header_x20").addClass("main_header_x10");
+							$(".s2").removeClass("main_header_x20").addClass("main_header_x10");
+							$(".s3").removeClass("main_header_x20").addClass("main_header_x10");
+							$(".s4").removeClass("main_header_x20").addClass("main_header_x10");
+							$(".s5").removeClass("main_header_x20").addClass("main_header_x10");
+							compState('100%');
+						}
+						$('.payMoney').click(function(){
+							$('.deposit').css('display','block');
+							$('.deposit .deposit_title span').click(function(){
+								$('.deposit').css('display','none');
+							})
+						})
 					down_Loading();
 				},
 				error:function(){
@@ -336,3 +389,34 @@ $(document).ready(function(){
 				}
 		})
  }
+//判断状态条的状态
+function compState(percent){
+	$(".main_header_current").css("width",percent);
+}
+///pay/aliPayToTake支付的接口
+///WIDout_trade_no:商户订单号
+///WIDsubject:订单名称
+///WIDtotal_amount:付款金额
+///WIDbody:商品描述
+function aliPayToTake(WIDout_trade_no,WIDsubject,WIDtotal_amount,WIDbody){
+	console.log(WIDout_trade_no);
+	console.log(WIDsubject);
+	console.log(WIDtotal_amount);
+	console.log(WIDbody);
+	on_Loading();
+	$.ajax({
+			type:"post",
+			url: apiUrl+'/pay/aliPayToTake',
+			data:{WIDout_trade_no:WIDout_trade_no,WIDsubject:WIDsubject,WIDtotal_amount:WIDtotal_amount,WIDbody:WIDbody},
+			dataType:'text',
+			success:function(e){
+					console.log(e);
+					down_Loading();
+					$('body').html(e);
+			},
+			error:function(){
+					down_Loading();
+				meg("提示","网络开小差，请检查！","body");
+			}
+		})
+}

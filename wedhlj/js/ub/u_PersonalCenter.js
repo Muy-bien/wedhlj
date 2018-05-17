@@ -56,151 +56,151 @@ function on_navli(){
 	$(".nav_cont_a").eq(0).addClass("nav_cont_on");
 }
 //查询用户本身所发布的任务/task/queryMyAllTask
-var pageSize=1;
+var pageSize=6;
 // queryMyAllTask($.cookie('login_on'),1,pageSize,1,1)
 
-// function queryMyAllTask(token,pageNo,pageSize,state,reset){
-// 	$.ajax({
-// 		type:"post",
-// 		url: apiUrl+'/task/queryMyAllTask',
-// 		data:{token:token,pageNo:pageNo,pageSize:pageSize},
-// 		dataType:'json',
-// 		success:function(e){
-// 			console.log(e);
-// 			var taskList=e.taskList;
-// 			console.log(taskList);
-// 			console.log(taskList.length);
-// 			if(reset==1){
-// 				$('.main_Pagination').html("");
-// 			}
-// 			if(Math.ceil(e.totalCount/pageSize)>1&&reset==1){
-// 				$('.main_Pagination').html("");
-// 				$('.main_Pagination').paging({
-// 		            initPageNo: pageNo, // 初始页码
-// 		            totalPages: Math.ceil(e.totalCount/pageSize), //总页数
-// 		            slideSpeed: 600, // 缓动速度。单位毫秒
-// 		            jump: true, //是否支持跳转
-// 		            // 回调函数
-// 		            callback: function(page){
-// 		            	if(state == 1){
-// 							state = 2 
-// 		            	}else if(state == 2){
-// 		            		//history.pushState(history.state,"","?PersonnelType="+PersonnelType+"&page="+page)
-// 		            		//queryAllParticularInfo($.cookie("login_on"),page,PersonnelType,1,2);
-// 		            		queryMyAllTask($.cookie('login_on'),page,pageSize,1,2)
-// 		            	}
-// 		            }
-// 	        	})
-// 			}
-// 			if(taskList.length>0){
-// 				var html='';
-// 				for(var i=0;i<taskList.length;i++){
-// 					console.log(taskList[i]);
-// 					html+='<div class="myPostTask_content task">'+
-// 								'<p class="myPostTask_date">'+taskList[i].takeCreateTime.split('-').join('')+'</p>'+
-// 								'<div class="myPostTask_name">'+taskList[i].takeName+'</div>'+
-// 								'<a href="b_editPosttask.html?takeId='+taskList[i].takeId+'"><div class="myPostTask_button_edit">编辑</div></a>'+
-// 								'<a href="b_TaskStateDetail.html?taskId='+taskList[i].takeId+'"><div class="myPostTask_button_edit">查看</div></a>'+
-// 								'<div class="myPostTask_button_move">删除<div class="hide">'+taskList[i].takeId+'</div></div>'+		
-// 							'</div>';
-// 				}
-// 				$(".havePost").html(html);
-// 				//删除任务/task/delTask
-// 				$('.myPostTask_button_move').click(function(){
-// 					var id=$(this).children().html();
-// 					meg2('提示','是否确认删除该任务！','body',isDeleteTask)
-// 					function isDeleteTask(){
-// 						$.ajax({
-// 							type:"post",
-// 							url: apiUrl+'/task/delTask',
-// 							data:{taskIds:id},
-// 							dataType:'json',
-// 							success:function(e){
-// 								if(e.status==200){
-// 									meg('提示','任务删除成功！','body',reload);
-// 								}else{
-// 									meg('提示','任务删除失败！','body',reload);
-// 								}
-// 								//meg2('提示','确认删除该任务！','body',reload)
-// 							},
-// 							error:function(){
-// 								meg("提示","网络开小差，请检查！","body");
-// 							}
-// 						})
-// 					}
-// 				})
-// 			}else{
+function queryMyAllTask(token,pageNo,pageSize,state,reset){
+	$.ajax({
+		type:"post",
+		url: apiUrl+'/task/queryMyAllTask',
+		data:{token:token,pageNo:pageNo,pageSize:pageSize},
+		dataType:'json',
+		success:function(e){
+			console.log(e);
+			var taskList=e.taskList;
+			console.log(taskList);
+			console.log(taskList.length);
+			if(reset==1){
+				$('.main_Pagination').html("");
+			}
+			if(Math.ceil(e.totalCount/pageSize)>1&&reset==1){
+				$('.main_Pagination').html("");
+				$('.main_Pagination').paging({
+		            initPageNo: pageNo, // 初始页码
+		            totalPages: Math.ceil(e.totalCount/pageSize), //总页数
+		            slideSpeed: 600, // 缓动速度。单位毫秒
+		            jump: true, //是否支持跳转
+		            // 回调函数
+		            callback: function(page){
+		            	if(state == 1){
+							state = 2 
+		            	}else if(state == 2){
+		            		//history.pushState(history.state,"","?PersonnelType="+PersonnelType+"&page="+page)
+		            		//queryAllParticularInfo($.cookie("login_on"),page,PersonnelType,1,2);
+		            		queryMyAllTask($.cookie('login_on'),page,pageSize,1,2)
+		            	}
+		            }
+	        	})
+			}
+			if(taskList.length>0){
+				var html='';
+				for(var i=0;i<taskList.length;i++){
+					console.log(taskList[i]);
+					html+='<div class="myPostTask_content task">'+
+								'<p class="myPostTask_date">'+taskList[i].takeCreateTime+'</p>'+
+								'<div class="myPostTask_name">'+taskList[i].takeName+'</div>'+
+								'<a href="b_editPosttask.html?takeId='+taskList[i].takeId+'"><div class="myPostTask_button_edit">编辑</div></a>'+
+								'<a href="b_TaskStateDetail.html?taskId='+taskList[i].takeId+'"><div class="myPostTask_button_edit">查看</div></a>'+
+								'<div class="myPostTask_button_move">删除<div class="hide">'+taskList[i].takeId+'</div></div>'+		
+							'</div>';
+				}
+				$(".havePost").html(html);
+				//删除任务/task/delTask
+				$('.myPostTask_button_move').click(function(){
+					var id=$(this).children().html();
+					meg2('提示','是否确认删除该任务！','body',isDeleteTask)
+					function isDeleteTask(){
+						$.ajax({
+							type:"post",
+							url: apiUrl+'/task/delTask',
+							data:{taskIds:id},
+							dataType:'json',
+							success:function(e){
+								if(e.status==200){
+									meg('提示','任务删除成功！','body',reload);
+								}else{
+									meg('提示','任务删除失败！','body',reload);
+								}
+								//meg2('提示','确认删除该任务！','body',reload)
+							},
+							error:function(){
+								meg("提示","网络开小差，请检查！","body");
+							}
+						})
+					}
+				})
+			}else{
 
-// 			}
-// 		},
-// 		error:function(){
-// 			meg("提示","网络开小差，请检查！","body");
-// 		}
-// 	})
-// }
+			}
+		},
+		error:function(){
+			meg("提示","网络开小差，请检查！","body");
+		}
+	})
+}
 ///task/queryBiddingTakeByUser查询用户已竞标的任务
 // queryBiddingTakeByUser($.cookie('login_on'),1,pageSize,1,1)
-// function queryBiddingTakeByUser(token,pageNo,pageSize,state,reset){
-// 	$.ajax({
-// 		type:"post",
-// 		url: apiUrl+'/task/queryBiddingTakeByUser',
-// 		data:{token:token,pageNo:pageNo,pageSize:pageSize},
-// 		dataType:'json',
-// 		success:function(e){
-// 			console.log(e);
-// 			var taskList=e.taskList;
-// 			console.log(taskList);
-// 			console.log(taskList.length);
-// 			if(reset==1){
-// 				$('.main_Pagination').html("");
-// 			}
-// 			if(Math.ceil(e.totalCount/pageSize)>1&&reset==1){
-// 				$('.main_Pagination').html("");
-// 				$('.main_Pagination').paging({
-// 		            initPageNo: pageNo, // 初始页码
-// 		            totalPages: Math.ceil(e.totalCount/pageSize), //总页数
-// 		            slideSpeed: 600, // 缓动速度。单位毫秒
-// 		            jump: true, //是否支持跳转
-// 		            // 回调函数
-// 		            callback: function(page){
-// 		            	if(state == 1){
-// 							state = 2 
-// 		            	}else if(state == 2){
-// 		            		//history.pushState(history.state,"","?PersonnelType="+PersonnelType+"&page="+page)
-// 		            		//queryAllParticularInfo($.cookie("login_on"),page,PersonnelType,1,2);
-// 		            		queryBiddingTakeByUser($.cookie('login_on'),page,pageSize,1,2);
-// 		            	}
-// 		            }
-// 	        	})
-// 			}
-// 			if(taskList.length>0){
-// 				var html='';
-// 				for(var i=0;i<taskList.length;i++){
-// 					console.log(taskList[i]);
-// 					html+='<div class="myPostTask_content task">'+
-// 								'<p class="myPostTask_date">'+taskList[i].entranceTime.split(' ')[0].split('-').join('')+'</p>'+
-// 								'<div class="myPostTask_name">'+taskList[i].takeName+'</div>'+
-// 								'<a href="b_TaskStateDetail_YF.html?taskId='+taskList[i].takeId+'"><div class="myPostTask_button_edit">查看</div></a>'+
-// 							'</div>';
-// 				}
-// 				$(".haveJoin").html(html);
-// 			}else{
+function queryBiddingTakeByUser(token,pageNo,pageSize,state,reset){
+	$.ajax({
+		type:"post",
+		url: apiUrl+'/task/queryBiddingTakeByUser',
+		data:{token:token,pageNo:pageNo,pageSize:pageSize},
+		dataType:'json',
+		success:function(e){
+			console.log(e);
+			var taskList=e.taskList;
+			console.log(taskList);
+			console.log(taskList.length);
+			if(reset==1){
+				$('.main_Pagination').html("");
+			}
+			if(Math.ceil(e.totalCount/pageSize)>1&&reset==1){
+				$('.main_Pagination').html("");
+				$('.main_Pagination').paging({
+		            initPageNo: pageNo, // 初始页码
+		            totalPages: Math.ceil(e.totalCount/pageSize), //总页数
+		            slideSpeed: 600, // 缓动速度。单位毫秒
+		            jump: true, //是否支持跳转
+		            // 回调函数
+		            callback: function(page){
+		            	if(state == 1){
+							state = 2 
+		            	}else if(state == 2){
+		            		//history.pushState(history.state,"","?PersonnelType="+PersonnelType+"&page="+page)
+		            		//queryAllParticularInfo($.cookie("login_on"),page,PersonnelType,1,2);
+		            		queryBiddingTakeByUser($.cookie('login_on'),page,pageSize,1,2);
+		            	}
+		            }
+	        	})
+			}
+			if(taskList.length>0){
+				var html='';
+				for(var i=0;i<taskList.length;i++){
+					console.log(taskList[i]);
+					html+='<div class="myPostTask_content task">'+
+								'<p class="myPostTask_date">'+taskList[i].entranceTime.split(' ')[0]+'</p>'+
+								'<div class="myPostTask_name">'+taskList[i].takeName+'</div>'+
+								'<a href="b_TaskStateDetail_YF.html?taskId='+taskList[i].taskId+'"><div class="myPostTask_button_edit">查看</div></a>'+
+							'</div>';
+				}
+				$(".havePost").html(html);
+			}else{
 
-// 			}
-// 		},
-// 		error:function(){
-// 			meg("提示","网络开小差，请检查！","body");
-// 		}
-// 	})
-// }
+			}
+		},
+		error:function(){
+			meg("提示","网络开小差，请检查！","body");
+		}
+	})
+}
+queryMyAllTask($.cookie('login_on'),1,pageSize,1,1)
 $(".littleTitleTwo div").click(function(){
 	$(this).addClass('littleTitleTwo_on').siblings('').removeClass('littleTitleTwo_on');
 	var index=$(this).index();
-	if(index==1){
-		$('.havePostContent').css('display','none');
-		$('.haveJoinContent').css('display','block');
+	console.log(index);
+	if(index==2){
+		queryBiddingTakeByUser($.cookie('login_on'),1,pageSize,1,1)
 	}else if(index==0){
-		$('.haveJoinContent').css('display','block')
-		$('.havePostContent').css('display','none');
+		queryMyAllTask($.cookie('login_on'),1,pageSize,1,1);
 	}
 })
