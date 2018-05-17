@@ -318,8 +318,11 @@ function PromptGoods(spid,mid){
 $(".splist_but").click(function(){
     if($(".splist_li").length > 0){
         if(!$.cookie("login_on")){
-            meg("提示","请先登录","body");
-            return false;
+            meg("提示","请先登录","body",dothing);
+            //跳转到登录
+            function dothing(){
+                window.location.href = "login.html";
+            }
         }else if($.cookie("position")==0){
             meg("提示","请先注册商户，点击商家入驻注册商户","body");
             return false;
@@ -341,4 +344,5 @@ function zoom(){
         }
     })
 }
+
      

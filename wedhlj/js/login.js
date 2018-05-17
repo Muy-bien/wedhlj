@@ -117,7 +117,14 @@ function login(){
 					$.cookie("user", userVal,{ path:'/',secure:false }); //储存用户名
 					$.cookie("login_on", e.token,{ path:'/',secure:false}); //登录成功返回信息
 					saveUserInfo();//保存用户信息
-					location.href = "index.html";
+					if($.cookie("PreviousUrl")){
+						var PreviousUrl = decodeURIComponent($.cookie("PreviousUrl")).split("/")[1];
+						$.cookie("PreviousUrl","",{ path:'/',secure:false , expires: -1});
+						window.location.href = PreviousUrl;
+					}else{
+						window.location.href = "index.html";
+					}
+					
 				}else{
 					state = 1;
 					$(".login_uesr").text("发生未知错误,请联系网站管理人员");
@@ -130,8 +137,6 @@ function login(){
 		})
 	}
 }
-
-
 //-----点击回车执行登录命令
 $(document).ready(function(e) {
   $(this).keydown(function (e){

@@ -53,6 +53,20 @@
 						    <input type='text' class="form-control" id='datetimepicker4' name="etiquetteTime">
 						</div>
 					</div>
+					<!-- 入场时间 -->
+					<div class="Einlass">
+						<p class="Posttask_title"><i class="Ricon">*</i>入场时间：</p>
+						<div class="Posttask_x40">
+						    <input type='text' class="form-control" id='datetimepicker5' name="etiquetteTime">
+						</div>
+					</div>
+					<!-- 布场时长 -->
+					<div class="baseMsgItem">
+						<p><i class="Ricon">*</i>布场时长：</p>
+						<div class="baseMsgItem_cont indentFieldTime">
+							<input type="text">
+						</div>
+					</div>
 					<!-- 业务来源 -->
 					<div class="baseMsgItem">
 						<p><i class="Ricon">*</i>业务来源：</p>
@@ -121,7 +135,7 @@
 					</div>
 					<!-- 酒店经理电话 -->
 					<div class="baseMsgItem">
-						<p>酒店经理电话：</p>
+						<p><i class="Ricon">*</i>酒店经理电话：</p>
 						<div class="baseMsgItem_cont indentManagerPhone">
 							<input type="text">
 						</div>
@@ -168,15 +182,12 @@
 						            <li><a>新都区</a></li>
 						            <li><a>温江区</a></li>
 						            <li><a>高新区</a></li>
-
 						            <li><a>郫县</a></li>
 						            <li><a>双流县</a></li>
 						            <li><a>新津县</a></li>
 						            <li><a>金堂县</a></li>
 						            <li><a>大邑县</a></li>
 						            <li><a>蒲江县</a></li>
-
-
 						            <li><a>邛崃市</a></li>
 						            <li><a>崇州市</a></li>
 						            <li><a>彭州市</a></li>
@@ -194,7 +205,7 @@
 					</div>
 					<!-- 接亲地址 -->
 					<div class="baseMsgItem">
-						<p>接亲地址：</p>
+						<p><i class="Ricon">*</i>接亲地址：</p>
 						<!-- 省 -->
 						<div class="baseMsgItem_cont">
 						    <div class="dropdown">
@@ -234,15 +245,12 @@
 						            <li><a>新都区</a></li>
 						            <li><a>温江区</a></li>
 						            <li><a>高新区</a></li>
-
 						            <li><a>郫县</a></li>
 						            <li><a>双流县</a></li>
 						            <li><a>新津县</a></li>
 						            <li><a>金堂县</a></li>
 						            <li><a>大邑县</a></li>
 						            <li><a>蒲江县</a></li>
-
-
 						            <li><a>邛崃市</a></li>
 						            <li><a>崇州市</a></li>
 						            <li><a>彭州市</a></li>
@@ -253,14 +261,14 @@
 					</div>
 					<!-- 接亲详细地址 -->
 					<div class="baseMsgItem">
-						<p>接亲详细地址：</p>
+						<p><i class="Ricon">*</i>接亲详细地址：</p>
 						<div class="baseMsgItem_cont detailAddr dropdown_x80">
 							<input type="text">
 						</div>
 					</div>
 					<!-- 报销业务 -->
 					<div class="baseMsgItem">
-						<p>报销业务：</p>
+						<p><i class="Ricon">*</i>报销业务：</p>
 						<ul class="Reimbursement">
 							<li>
 								<div><i></i></div>
@@ -375,7 +383,7 @@
 				</div>
 				<!-- 提交保存 -->
 				<div class="commitButtons">
-					<div>取消</div>
+					<div class="Cancel">取消</div>
 					<div id="Upload">保存</div>
 				</div>
 			</div>
@@ -453,6 +461,7 @@
 						        <ul class="dropdown-menu addOrderItem_PriContent addrPos">
 						            <li><a>舞美</a></li>
 						            <li><a>道具</a></li>
+						            <li><a>印刷物料</a></li>
 						        </ul>
 						    </div>
 						</div>
@@ -555,6 +564,11 @@
 		//仪式时间
 	    $(function () {
             $('#datetimepicker4').datetimepicker({
+            	locale: 'zh-cn',
+                format:"YYYY-MM-DD HH:mm",
+                minDate:new Date() 
+            });
+            $('#datetimepicker5').datetimepicker({
             	locale: 'zh-cn',
                 format:"YYYY-MM-DD HH:mm",
                 minDate:new Date() 

@@ -24,9 +24,13 @@ $(document).ready(function(){
 	//_content 选中框内容填放处标记
 	function dropDown(_item,_content){
 		$(_item).click(function(){
-		$(_content).html($(this).html())
-	})
+			$(_content).html($(this).html())
+		})
 	}
+	//取消返回上一页
+	$(".Cancel").click(function(){
+		window.location.href="u_WeddingOrderManagement.html"
+	})
 	//下拉框样式
 	dropDown('.orderStatusContent a','.orderStatus');//订单状态
 	dropDown('.businessComeContent a','.businessCome');//业务来源
@@ -61,6 +65,8 @@ function addOrder(){
 		var _orderStatusVal=$(".orderStatus").text();
 		var indentOrderStatus=(_orderStatusVal=="预 定"?0:(_orderStatusVal=="跟 单"?1:(_orderStatusVal=="执 行"?2:(_orderStatusVal=="完 成"?3:0))))
 		var indentTime=$("#datetimepicker4").val();//仪式时间
+		var indentEinlass=$("#datetimepicker5").val();//入场时间
+		var indentFieldTime=$(".indentFieldTime input").val();//布场时长
 		var indentBusiness=$(".businessCome").text();//订单来源
 		var indentBrideName=$(".indentBrideName input").val();//新娘姓名
 		var indentBridegroomName=$(".indentBridegroomName input").val();//新郎姓名
@@ -88,6 +94,12 @@ function addOrder(){
 		}else if(!indentBrideName){
 			meg("提示","请填写新娘姓名","body");
 			return false;
+		}else if(!indentEinlass){
+			meg("提示","请选择入场时间","body");
+			return false;
+		}else if(!indentFieldTime){
+			meg("提示","请填写布场时长","body");
+			return false;
 		}else if(!indentBridegroomName){
 			meg("提示","请填写新郎姓名","body");
 			return false;
@@ -106,8 +118,14 @@ function addOrder(){
 		}else if(!indentRitualHotel){
 			meg("提示","请填写仪式酒店","body");
 			return false;
+		}else if(!indentManagerPhone){
+			meg("提示","请填写酒店经理电话","body");
+			return false;
 		}else if(!dropdown_x40){
 			meg("提示","请填写酒店详细地址","body");
+			return false;
+		}else if(!dropdown_x80){
+			meg("提示","请填写接亲详细地址","body");
 			return false;
 		}
 		var particularArea=[];//区域
@@ -177,7 +195,9 @@ function addOrder(){
 			indentRemarks:indentRemarks,
 			total:total,
 			particularNumber:particularNumber.join(","),
-			indentRbb:indentRbb.join(",")
+			indentRbb:indentRbb.join(","),
+			indentEinlass:indentEinlass,
+			indentFieldTime:indentFieldTime
 		}
 		console.log(data);
 		$.ajax({

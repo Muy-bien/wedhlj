@@ -43,8 +43,25 @@
   border:none;
   border-bottom:1px solid #999;
   font-size: 14px;
+  line-height: 20px;
   color: #666;
   text-align: center;
+  box-sizing: border-box;
+}
+.newPersonItem p > i{
+  display: inline-block;
+  color: #f85162;
+  font-size: 14px;
+  margin-right: 6px;
+}
+.newPersonItem_text{
+  width: 200px;
+  border-bottom:1px solid #999;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  line-height: 20px;
+  box-sizing: border-box;
 }
 .newPersonItem .addr_detail{
   width: 871px;
@@ -75,7 +92,7 @@
 }
 /*道具清单*/
 .cont_box{
-  width: 533px;
+  width: 100%;
   min-height: 200px;
   box-sizing:border-box;
   margin-top: 56px;
@@ -92,41 +109,133 @@
 }
 .c_content>div{
   width: 132px;
-  height: 99px;
-  line-height: 99px;
-  text-align: center;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
   border-right:1px solid #e6e6e6;
   border-top:1px solid #e6e6e6;
   box-sizing: border-box;
 }
-.c_content>div:nth-child(4){
+.c_content>div:last-child{
   border-right:none;
-}
-.remarks{
-  height: 101px;
-  color: #666;
-  font-size: 14px;
-  border-bottom: 1px solid #e6e6e6;
-  margin-top: 32px;
 }
 /*操作对接单*/
 .buttons{
   display: flex;
   margin-top: 70px !important;
-  width: 571px;
-  margin:0 auto;
-  justify-content: space-between;
+  width: 100%;
+  justify-content: center;
 }
 .buttons div{
   width: 200px;
   height: 43px;
   line-height: 43px;
-  background-color: #bfbfbf;
+  background-color: #f85162;
   color: #fff;
   cursor: pointer;
   font-size: 16px;
   text-align: center;
+  margin: 0 50px;
 }
-.buttons div:hover{
-  background-color: #f85162;
+.buttons div:active{
+  opacity: 0.9;
+}
+/* 报销业务 */
+.baseMsgItem{
+  display: flex;
+  align-items: center;
+  height: 22px;
+  color: #666;
+}
+
+.baseMsgItem p{
+  display: inline-block;
+  width: 120px;
+  font-size: 14px;
+}
+
+.Reimbursement{
+  display: flex;
+  height: 34px;
+  width: 700px;
+  align-items: center;
+}
+
+.Reimbursement li{
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+}
+
+.Reimbursement li span{
+  font-size: 14px;
+}
+
+.Reimbursement li>div{
+  width: 20px;
+  height: 20px;
+  border: 1px solid #666;
+  box-sizing: border-box;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.Reimbursement .Reimbursement_on>div i{
+  background: #666;
+}
+
+.Reimbursement li>div i{
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 100%;
+}
+/* 添加时间 */
+.newPersonItem_x10{
+  position: relative;
+}
+
+#datetimepicker1,
+#datetimepicker2{
+  border-radius: 0;
+  box-shadow: none;
+  height: 22px;
+}
+
+#datetimepicker1:focus,
+#datetimepicker2:focus{
+  border-color: #999;
+}
+
+.addr_detail{
+  border-bottom: 1px solid #999;
+  font-size: 14px;
+  line-height: 20px;
+  color: #666;
+  text-align: center;
+}
+/* 对接单 */
+#ButtCheck{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+  overflow-y: scroll;
+  top: 0;
+  z-index: 2;
+}
+
+#ButtCheck_box{
+  width: 700px;
+  height: 1000px;
+  background: #fff;
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
 }

@@ -2,15 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>对接单</title>
+	<title>编辑对接单</title>
 	<link rel="shortcut icon" href="images/index_Avatar.png" type="image/x-icon">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/common.css">
 	<link rel="stylesheet" href="css/ub/u_ButtLists.css">
 	<link rel="stylesheet" href="css/ub/u_common.css">
-	<!-- 百度地图 -->
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
-    <!-- 百度地图 -->
 </head>
 <body>
 	<div class="box">
@@ -21,7 +19,7 @@
 		<header>
 		</header>
 		<!-- 内容 -->
-		<form class="main">
+		<div class="main">
 			<!-- 新人信息 -->
 			<div>
 				<div class="m_title">新人信息</div>
@@ -31,12 +29,12 @@
 						<!-- 新娘名字： -->
 						<div class="newPersonItem"> 
 							<p>新娘名字：</p>
-							<input type="text">
+							<div class="newPersonItem_text">王磊</div>
 						</div>
 						<!-- 新娘电话： -->
 						<div class="newPersonItem"> 
 							<p>新娘电话：</p>
-							<input type="text">
+							<div class="newPersonItem_text">王磊</div>
 						</div>
 					</div>
 					<!-- 新郎 -->
@@ -44,12 +42,12 @@
 						<!-- 新郎名字 -->
 						<div class="newPersonItem"> 
 							<p>新郎名字：</p>
-							<input type="text">
+							<div class="newPersonItem_text">王磊</div>
 						</div>
 						<!-- 新郎电话： -->
 						<div class="newPersonItem"> 
 							<p>新郎电话：</p>
-							<input type="text">
+							<div class="newPersonItem_text">王磊</div>
 						</div>
 					</div>
 					<!-- 负责人 -->
@@ -57,12 +55,12 @@
 						<!-- 负责人名字 -->
 						<div class="newPersonItem"> 
 							<p>负责人名字：</p>
-							<input type="text">
+							<div class="newPersonItem_text">王磊</div>
 						</div>
 						<!-- 负责人电话： -->
 						<div class="newPersonItem"> 
 							<p>负责人电话：</p>
-							<input type="text">
+							<div class="newPersonItem_text">王磊</div>
 						</div>
 					</div>
 					<!-- 时间 -->
@@ -70,12 +68,12 @@
 						<!-- 入场时间 -->
 						<div class="newPersonItem"> 
 							<p>入场时间：</p>
-							<input type="text">
+							<div class="newPersonItem_text">王磊</div>
 						</div>
-						<!-- 布场时间 -->
+						<!-- 布场时长 -->
 						<div class="newPersonItem"> 
-							<p>布场时间：</p>
-							<input type="text">
+							<p>布场时长：</p>
+							<div class="newPersonItem_text">王磊</div>
 						</div>
 					</div>
 					<!-- 酒店名称 -->
@@ -83,7 +81,7 @@
 						<!-- 酒店名称 -->
 						<div class="newPersonItem"> 
 							<p>酒店名称：</p>
-							<input type="text">
+							<div class="newPersonItem_text">王磊</div>
 						</div>
 					</div>
 					<!-- 酒店详细地址 -->
@@ -91,84 +89,60 @@
 						<!-- 酒店详细地址 -->
 						<div class="newPersonItem"> 
 							<p>酒店详细地址：</p>
-							<input type="text" class="addr_detail">
+							<div class="addr_detail">王磊</div>
 						</div>
 					</div>
-					<!-- 酒店详细地址地图 -->
-					<div class="addr_cap" id="hotelmap"></div>
 					<!-- 接亲详细地址 -->
 					<div class="newPersonItems">
 						<!-- 接亲详细地址 -->
 						<div class="newPersonItem"> 
 							<p>接亲详细地址：</p>
-							<input type="text" class="addr_detail">
+							<div class="addr_detail">王磊</div>
 						</div>
 					</div>
-					<!-- 接亲详细地址地图 -->
-					<div class="addr_cap" id="allmap"></div>
 					<!-- 报销业务 -->
-					<div class="newPersonItems">
-						<div class="newPersonItem introduce"> 
-							<p>报销业务：</p>
-							<!-- 提供住宿 -->
-							<div class="checked">
-							  <div class="checked_item"></div>
-							  <p>提供住宿</p>
-							</div>
-							<!-- 提供工作餐 -->
-							<div class="checked">
-							  <div class="checked_item"></div>
-							  <p>提供工作餐</p>
-							</div>
-							<!-- 报销路费 -->
-							<div class="checked">
-							  <div class="checked_item"></div>
-							  <p>报销路费</p>
-							</div>
-						</div>
+					<div class="baseMsgItem">
+						<p>报销业务：</p>
+						<ul class="Reimbursement">
+							<li class="Reimbursement_on">
+								<div><i></i></div>
+								<span>提供住宿</span>
+							</li>
+							<li>
+								<div><i></i></div>
+								<span>提供工作餐</span>
+							</li>
+							<li>
+								<div><i></i></div>
+								<span>报销路费</span>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
-			<!-- 场景信息 -->
-			<!-- <div>
-				<div class="m_title">场景信息</div>
-			</div> -->
 			<!-- 道具清单 -->
 			<div>
 				<div class="m_title">道具清单</div>
 				<div class="cont_box">
 					<!-- title -->
 					<div class="c_content c_title">
-						<div>图片</div>
+						<div>区域</div>
 						<div>名称</div>
-						<div>价格</div>
+						<div>尺寸</div>
+						<div>颜色</div>
 						<div>数量</div>
+						<div>单价</div>
+						<div>责任人信息</div>
 					</div>
-					<!-- content -->
 					<div class="c_content">
 						<div></div>
 						<div></div>
 						<div></div>
 						<div></div>
-					</div>
-					<!-- content -->
-					<div class="c_content">
-						<div></div>
 						<div></div>
 						<div></div>
 						<div></div>
 					</div>
-					<!-- content -->
-					<div class="c_content">
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-					</div>
-				</div>
-				<!-- 备注 -->
-				<div class="remarks">
-					<span>备注：</span>
 				</div>
 			</div>
 			<!-- 舞美清单 -->
@@ -177,36 +151,23 @@
 				<div class="cont_box">
 					<!-- title -->
 					<div class="c_content c_title">
-						<div>图片</div>
+						<div>区域</div>
 						<div>名称</div>
-						<div>价格</div>
+						<div>尺寸</div>
+						<div>颜色</div>
 						<div>数量</div>
+						<div>单价</div>
+						<div>责任人信息</div>
 					</div>
-					<!-- content -->
 					<div class="c_content">
 						<div></div>
 						<div></div>
 						<div></div>
 						<div></div>
-					</div>
-					<!-- content -->
-					<div class="c_content">
-						<div></div>
 						<div></div>
 						<div></div>
 						<div></div>
 					</div>
-					<!-- content -->
-					<div class="c_content">
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-					</div>
-				</div>
-				<!-- 备注 -->
-				<div class="remarks">
-					<span>备注：</span>
 				</div>
 			</div>
 			<!-- 印刷物料 -->
@@ -215,7 +176,6 @@
 				<div class="cont_box">
 					<!-- title -->
 					<div class="c_content c_title">
-						<div>图片</div>
 						<div>名称</div>
 						<div>价格</div>
 						<div>数量</div>
@@ -225,63 +185,49 @@
 						<div></div>
 						<div></div>
 						<div></div>
-						<div></div>
 					</div>
 					<!-- content -->
 					<div class="c_content">
 						<div></div>
 						<div></div>
 						<div></div>
-						<div></div>
 					</div>
-					<!-- content -->
-					<div class="c_content">
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-					</div>
-				</div>
-				<!-- 备注 -->
-				<div class="remarks">
-					<span>备注：</span>
 				</div>
 			</div>
-
-		<!-- 操作对接单 -->
-		<div class="buttons">
-			<div>打印对接单</div>
-			<div>下载对接单</div>
+			<!-- 操作对接单 -->
+			<div class="buttons">
+				<div>在线打印</div>
+				<div>下载对接单</div>
+			</div>
 		</div>
-		</form>
-		
 	</div>
-
+	<div id="ButtCheck">
+		<div id="ButtCheck_box"></div>
+	</div>
 	<!-- script -->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script src="js/moment-with-locales.js"></script>
+    <script src="js/bootstrap-datetimepicker.js"></script>
 	<script type="text/javascript" src="js/ub/u_common.js"></script>
 	<script type="text/javascript" src="js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript" src="js/paging.js"></script>
 	<script type="text/javascript" src="js/ub/u_ButtLists.js"></script>
-	<script type="text/javascript">
-		capapi("hotelmap");
-		capapi("allmap");
-		function capapi(selector){
-	  // 百度地图API功能
-	  var map = new BMap.Map(selector);
-	  map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
-	  // 添加带有定位的导航控件
-	  var navigationControl = new BMap.NavigationControl({
-	    // 靠左上角位置
-	    anchor: BMAP_ANCHOR_TOP_LEFT,
-	    // LARGE类型
-	    type: BMAP_NAVIGATION_CONTROL_LARGE,
-	    // 启用显示定位
-	    enableGeolocation: true
-	  });
-	  map.addControl(navigationControl);
-	  }
-</script>
+	<script>
+		//仪式时间
+	    $(function () {
+            $('#datetimepicker1').datetimepicker({
+            	locale: 'zh-cn',
+                format:"YYYY-MM-DD HH:mm",
+                minDate:new Date() 
+            });
+            $('#datetimepicker2').datetimepicker({
+            	locale: 'zh-cn',
+                format:"YYYY-MM-DD HH:mm",
+                minDate:new Date() 
+            });
+        });
+	</script>
 </body>
 </html>

@@ -115,6 +115,8 @@ $(document).ready(function(){
 			}
 		})
 	}else if($.cookie("login_on") == "" || !$.cookie("login_on")){
+		var PreviousUrl = window.location.pathname + window.location.search + window.location.hash;
+		$.cookie("PreviousUrl",PreviousUrl,{ path:'/',secure:false });
 		$(".header_ht").removeClass('hp_block');
 		$(".header_user_img").removeClass('header_user_img_on');
 		$(".header_user_cont").html('<a href="login.html">登录</a><span>|</span><a href="register.html">注册</a>');//头部样式

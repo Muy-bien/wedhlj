@@ -323,7 +323,7 @@ a:hover{
 /*仪式时间*/
 .Einlass{
   display: flex;
-  height: 22px;
+  height: 34px;
   margin-bottom: 30px;
   align-items: center;
 }
@@ -332,7 +332,8 @@ a:hover{
   position: relative;
 }
 
-#datetimepicker4{
+#datetimepicker4,
+#datetimepicker5{
   width: 200px;
   height: 34px;
   font-size: 14px;

@@ -1,6 +1,10 @@
 $(document).ready(function(){
 	//验证是否为登录状态
-	if ($.cookie("login_on") == "" || !$.cookie("login_on") || $.cookie("position")==0 || !$.cookie("position")){
+	if ($.cookie("login_on") == "" || !$.cookie("login_on") || $.cookie("position")==0){
+		var PreviousUrl = window.location.pathname + window.location.search + window.location.hash;
+		$.cookie("PreviousUrl",PreviousUrl,{ path:'/',secure:false });
+		//window.location.href = "login.html";
+	}else if(!$.cookie("position")){
 		//window.location.href = "index.html";
 	}else{
 		//获取用户类型

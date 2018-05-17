@@ -24,7 +24,7 @@ $(document).ready(function(){
 							}
 						}
 						main01_html+='<li>'+
-							'<a href="b_TaskAnnouncements.html?releaseUserId='+task.releaseUserId+'">'+
+							'<a href="b_TaskAnnouncements.html?taskId='+task.taskId+'">'+
 								'<div class="main01_left_img"><div class="img_auto" style="background-image:url('+(task_img==""?"images/b_MissionHall/ad"+Math.floor(Math.random()*4+5)+".jpg":apiUrl+task_img)+')"></div></div>'+
 								'<div class="main01_left_cont">'+
 									'<h1>'+task.takeName+'</h1>'+
