@@ -126,11 +126,16 @@
   -webkit-transition: 0.35s;
   transition: 0.35s;
 }
-
-.banner div {
+.banner div.img_auto{
+  width: 100%;
+  height: 100%;
+  -webkit-transition: 0.35s;
+  transition: 0.35s;
+}
+/*.banner div {
   overflow: hidden;
   background: #fff;
-}
+}*/
 
 .banner img:hover {
   -webkit-transform: scale(1.1);
@@ -477,12 +482,15 @@
   color: #fff;
   text-align: center;
 }
-
+/*.main02_right_04 .main02_right_03:nth-child(1){
+  padding-top: 0;
+}*/
 .main02_right_03 {
   width: 232px;
   height: 146px;
   overflow: hidden;
-  padding-top: 20px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
 }
 
 .main02_right_03 > div {
@@ -529,8 +537,8 @@
   -ms-flex-line-pack: justify;
   align-content: space-between;
   -ms-flex-wrap: wrap;
-  /*flex-wrap: wrap;*/
-  flex-direction:column; 
+   flex-wrap: wrap; 
+  margin-left:20px;
 }
 
 /*广告*/

@@ -5,13 +5,11 @@ $(document).ready(function(){
 //takeType:四大-1，执行-2，道具-3，舞美-4
 var pageNo=1,pageSize=4;
 function queryAllTask(takeType,selector,picAddr){
-	on_Loading();
 	$.ajax({
 		type:'post',
 		url:apiUrl+'/task/queryAllTask',
 		data:{takeType:takeType,pageNo:1,pageSize:4},
 		success:function(e){
-			console.log(e);
 			var objs=e.taskList;
 			if(takeType==1||takeType==3){
 				if(objs.length>0){
@@ -149,10 +147,8 @@ function queryAllTask(takeType,selector,picAddr){
 					selector.html('当前区域没有相关任务！');
 				}
 			}
-			down_Loading();
 		},
 		error:function(){
-			down_Loading();
 			meg('提示','网络开小差，请稍后再试！','body')
 		}
 	})
@@ -165,3 +161,40 @@ queryAllTask(3,$('.prop'),'ad3.jpg')
 queryAllTask(2,$('.action'))
 //舞美
 queryAllTask(4,$('.stage'))
+
+//任务公告栏
+$.ajax({
+		type: 'POST',
+		url: apiUrl+'/task/queryAllTask',
+		dataType: 'json',
+		data:{sort:2,pageNo:1,pageSize:100},
+		success:function(e){
+			if(e.status==200){
+				if(e.taskList.length>0){
+					var rw_html = "";
+					for(var i=0;i<e.taskList.length;i++){
+						var list = e.taskList[i];
+						rw_html+='<div class="swiper-slide swiper-no-swiping blue-slide swiper-slide-prev">'+
+									'<p class="main01_x10"><span>¥ '+list.takePrice+'</span>'+list.takeName+'</p>'+
+									'<p class="main01_x20"><span>竞标人数：'+(list.biddingUsers==''?0:list.biddingUsers.split(',').length)+'</span>执行时间：'+list.etiquetteTime.split(' ')[0]+'</p>'+
+								'</div>'
+					}
+					$('.main01_cont').html(rw_html);
+					var mySwiper = new Swiper('.mian01_left', {
+							prevButton:'.swiper-button-prev',
+							nextButton:'.swiper-button-next',
+							direction : 'vertical',
+							autoplay: 5000,//可选选项，自动滑动
+							autoplayDisableOnInteraction : false,
+							loop : true,
+							slidesPerView : 'auto',
+							loopedSlides :7,
+						})
+					
+				}
+			}
+		},
+		error:function(){
+			meg("提示","网络开小差，请检查！","body");
+		}
+	})

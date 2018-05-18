@@ -210,10 +210,11 @@ queryTask(taskId)
 					}
 					//点击缴纳保证金按钮
 					$('.givingMoney').click(function(){
-						$('.deposit').css('display','block');
-						$('.deposit .deposit_title span').click(function(){
-							$('.deposit').css('display','none');
-						})
+						meg("提示","付款功能正在升级！","body");
+						// $('.deposit').css('display','block');
+						// $('.deposit .deposit_title span').click(function(){
+						// 	$('.deposit').css('display','none');
+						// })
 					})
 					console.log(task.takeType);
 					var taskSketch=task.taskSketch;
