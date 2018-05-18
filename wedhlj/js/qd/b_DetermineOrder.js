@@ -28,7 +28,6 @@ function ShoppingCart(){
         data:{token:$.cookie("login_on")},
         success:function(e){
             if(e.status==200){
-                console.log(e)
                 var str = "";
                 var Total = "";//总价
                 var Total_num = "";//总数
@@ -159,7 +158,6 @@ function Transaction(orderCash,amount,cartId){
                         dataType: 'json',
                         data:data,
                         success:function(e){
-                            console.log(e);
                             down_Loading();
                             if(e.status == "200"){
                                 PayDeposit(orderCash,e.orderNo,e.orderName);

@@ -16,7 +16,6 @@ function show(id,type){
         data:{merchantId:id},
         dataType:"json",
         success:function(e){
-            console.log(e)
             if(e.merchantAndProduct != ""){
                 var data = e.merchantAndProduct;
                 $(".info_logo_img").html(data.logo==""?"":'<img src="'+apiUrl+data.logo+'">');//头像

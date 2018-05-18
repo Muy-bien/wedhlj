@@ -12,7 +12,8 @@
   margin-left:254px;
   margin-top:5px;
   width: 1149px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .container{
   margin:0 auto;
@@ -22,12 +23,17 @@
   font-size: 16px;
   color: #333;
   height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-bottom:1px solid #f85162;
   position: relative;
   padding-left: 25px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .p_title i{
   display: inline-block;
@@ -64,12 +70,18 @@
   background: #f85162;
 }
 .add_type_name{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 600px;
   min-height: 54px;
-  align-items: center;
-  align-content: center;
-  flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   border:1px solid #e6e6e6;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -92,14 +104,21 @@
   height: 100%;
 }
 .pictures{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 /*审核结果*/
 .p_result{
   width: 605px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .p_result div{
   width: 250px;
@@ -130,18 +149,28 @@
 }
 .add_type_img{
   width: 730px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .add_type_img li{
   width: 120px;
   height: 120px;
   margin: 0 20px 15px 0;
   border: 1px solid #aaa;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   cursor: pointer;
 }
 .add_type_img li img{

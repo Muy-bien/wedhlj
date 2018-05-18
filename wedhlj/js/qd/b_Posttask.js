@@ -101,9 +101,6 @@ var str=["","","",""];
       //上传整个form标签
       var form = new FormData($('#uploadForm')[0]);
       form.append("token",$.cookie("login_on"));
-      for(var a of form){
-        console.log(a);
-      }
       //案例图片
       for(var s=0;s<str.length;s++){
         if(str[s]){
@@ -127,7 +124,6 @@ var str=["","","",""];
         processData: false,
         contentType: false,
         success: function(e) {
-          console.log(e.status);
           down_Loading();
           if(e.status==200){
             meg("提示","任务发布成功","body",hrefing);

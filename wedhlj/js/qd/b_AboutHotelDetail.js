@@ -2,7 +2,6 @@ $(document).ready(function(){
 	$(".nav_li").eq(4).find("a").addClass("nav_on");	
 	//接收URL中的参数spid
 	var hid = getUrlParam('hid');
-	console.log(hid);
 	Exhibition(hid)
 })
 //展示详情
@@ -13,7 +12,6 @@ function Exhibition(id){
 		data: {id:id},
 		dataType: 'json',
 		success:function(e){
-			console.log(e)
 			if(e.status == 200){
 				var hotel = e.hotel[0];
 				//酒店图片渲染

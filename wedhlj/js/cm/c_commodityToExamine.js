@@ -16,7 +16,6 @@ function selectById(myid){
 		data:{productNo:myid},
 		dataType: 'json',
 		success:function(e){
-			console.log(e);
 			var user=e.product[0];
 			// 商品名称
 			$(".productName").html(user.productName);

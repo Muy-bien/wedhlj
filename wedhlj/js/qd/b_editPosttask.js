@@ -15,7 +15,6 @@ if(!username){
   //预览图片
   $(".myFileUpload").change(function(e){ 
     var file = this.files[0];
-    console.log(file)
     var i = $(this).parent(".main_file").index();
     str[i]=file;
 
@@ -107,10 +106,7 @@ if(!username){
       //上传整个form标签
       var form = new FormData($('#uploadForm')[0]);
        // 案例图片
-      console.log('taskSketchCom'+taskSketchCom);
-      console.log('str'+str)
       for(var s=0;s<str.length;s++){
-        console.log(str[s]);
         if(str[s]){
           form.append("taskSketch",str[s]);//新图
           if(taskSketchCom[s]){
@@ -120,7 +116,6 @@ if(!username){
       }
       form.append("taskId",takeId);
       for(var a of form){
-        console.log(a);
       }
       //跳转页面
       var hrefing = function(){
@@ -135,7 +130,6 @@ if(!username){
         processData: false,
         contentType: false,
         success: function(e) {
-          console.log(e.status);
           down_Loading();
           if(e.status==200){
             meg("提示","任务修改成功","body",hrefing);
@@ -159,8 +153,6 @@ function queryTask(taskId){
         url: apiUrl+'/task/queryTask',
         data: {taskId:taskId},
         success: function(e) {
-          console.log(e);
-          console.log(e.task[0]);
           var task=e.task[0];
           //任务类型
           var lip=$('.Posttask_x10 p');
@@ -196,7 +188,6 @@ function queryTask(taskId){
           //方案草图
           var taskSketch=task.taskSketch.split(',');
           taskSketchCom=task.taskSketch.split(',');
-          console.log(taskSketch);
           for(var i=0;i<taskSketch.length;i++){
             if(taskSketch[i]==null||taskSketch[i]=='null'){
 
@@ -204,10 +195,6 @@ function queryTask(taskId){
               $('.main_file').eq(i).find('.show').append('<img src='+apiUrl+taskSketch[i]+'/>')
             }
           }
-          // console.log($('.main_file').eq(0).find('.show').append('<img src='+apiUrl+taskSketch[0]+'/>'));
-          // console.log($('.main_file').eq(1).find('.show').append('<img src='+apiUrl+taskSketch[1]+'/>'));
-          // console.log($('.main_file').eq(2).find('.show').append('<img src='+apiUrl+taskSketch[2]+'/>'));
-          // console.log($('.main_file').eq(3).find('.show').append('<img src='+apiUrl+taskSketch[3]+'/>'));
         },
         error : function(e) {
           meg('提示','当前网络不畅通,请检查您的网络','body'); 

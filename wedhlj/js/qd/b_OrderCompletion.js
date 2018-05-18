@@ -19,7 +19,6 @@ $(document).ready(function(){
         dataType: 'json',
         data:{orderId:id},
         success:function(e){
-        	console.log(e)
         	if(e.order.list){
         		var str = "";
         		var Total = "";//总价

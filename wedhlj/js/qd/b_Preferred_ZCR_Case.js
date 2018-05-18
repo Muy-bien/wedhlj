@@ -61,12 +61,17 @@ function queryBusinessPersonnelInfo(PersonnelNo){
 				var videoHtml='';
 				var video=person.case_video.split(",");
 				video.pop();
-				for(var i=0;i<video.length;i++){
-					videoHtml+='<a href="'+video[i]+'">'+
-								'<img src="images/b_Preferred_ZCR_Case/image_show_pic07.png">'+
-							'</a>'
+				if(video.length<=0){
+					$(".result_video_show").html('该人员没有上传对应作品！');
+				}else{
+					for(var i=0;i<video.length;i++){
+						videoHtml+='<a href="'+video[i]+'">'+
+									'<img src="images/b_Preferred_ZCR_Case/image_show_pic07.png">'+
+								'</a>'
+					}
+					$(".result_video_show").html(videoHtml);
 				}
-				$(".result_video_show").html(videoHtml);
+
 
 		},
 		error:function(e){meg("提示","网络开小差，请检查！","body")}

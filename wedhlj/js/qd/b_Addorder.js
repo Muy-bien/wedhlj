@@ -19,7 +19,6 @@ function show(productNo,type){
         dataType: 'json',
         data: {productNo:productNo},
         success:function(e){
-            console.log(e);
             var data = e.product[0];
             //商品图片
             var pimage = data.productImage.split(",");
@@ -71,7 +70,6 @@ function addCommodity(id,productNumber,type,mid){
         if(state==1){
             state=2;
             var show_num = Number($(".show_num").val());
-            console.log(show_num+"<==>"+productNumber)
             if(!$.cookie("login_on")){
                 function dothing(){
                     window.open("login.html");

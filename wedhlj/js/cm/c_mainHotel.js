@@ -21,7 +21,6 @@ function queryAllHotelInfo(pageNo,state){
 		dataType: 'json',
 		data: {pageSize:8,pageNo:pageNo},
 		success:function(e){
-			console.log(e);
 			$(".main_Pagination").html("");
 			if(e.totalCount>=1){
 				var totalPage=Math.ceil(e.totalCount/8);

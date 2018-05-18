@@ -1,7 +1,8 @@
 /*nav*/
 .nav_border_x10{
   position: absolute;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 440px;
   height: 3px;
   display: block;
@@ -12,6 +13,8 @@
 .nav_cont{
   position: absolute;
   top: 0; left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -39,10 +42,17 @@
   color: #666;
   border-left: 5px solid #f85868;
   padding-left: 20px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .main_title span{
@@ -59,15 +69,22 @@
 .main_commodity_cont{
   padding: 20px 0;
   padding-left: 80px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 14px;
   color: #333;
 }
 
 .main_commodity_cont li{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 10px 0;
   border-bottom: 1px dashed #ccc;
 }
@@ -78,8 +95,12 @@
 
 .main_commodity_x10{
   width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .main_commodity_x10 img{
@@ -102,6 +123,8 @@
 }
 
 .main_commodity_x20{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -112,10 +135,13 @@
 
 /* 订单详情 */
 .main_Order_cont{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   padding: 30px 0;
   padding-left: 80px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 14px;
   line-height: 24px;
   color: #333;

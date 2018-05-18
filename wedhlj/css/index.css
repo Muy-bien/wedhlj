@@ -95,7 +95,9 @@ a:hover {
   transition: -webkit-transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) 0s;
   -webkit-transition: -webkit-transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1)
     0s;
+  -webkit-transition: -webkit-transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) 0s;
   transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) 0s;
+  transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) 0s, -webkit-transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) 0s;
   transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) 0s,
     -webkit-transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) 0s;
 }
@@ -229,7 +231,9 @@ a:hover {
   transition: -webkit-transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) 0s;
   -webkit-transition: -webkit-transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1)
     0s;
+  -webkit-transition: -webkit-transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) 0s;
   transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) 0s;
+  transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) 0s, -webkit-transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) 0s;
   transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) 0s,
     -webkit-transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) 0s;
   background: #ff1930 none repeat scroll 0 0;
@@ -241,7 +245,8 @@ a:hover {
 }
 
 .main01_left ul li:hover .img_auto{
-  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .main01_left_cont h1 {
@@ -671,7 +676,8 @@ a:hover {
 }
 
 .personnel_right_cont:hover .img_auto{
-  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 .personnel_right_cont01 {

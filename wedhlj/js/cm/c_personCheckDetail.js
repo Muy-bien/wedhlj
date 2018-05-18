@@ -16,7 +16,6 @@ function selectById(myid){
 		data:{PersonnelNo:myid},
 		dataType: 'json',
 		success:function(e){
-			console.log(e);
 			var user=e.businessPersonnelList[0];
 			// 名称
 			$(".name").html(user.name);

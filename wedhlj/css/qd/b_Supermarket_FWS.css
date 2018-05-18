@@ -20,11 +20,14 @@
   width: 1200px;
   margin: 0 auto;
   padding: 70px 130px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .info > div{
@@ -36,7 +39,8 @@
   height: 260px;
   background: #f85162;
   padding-top: 20px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .info_logo_img{
@@ -186,8 +190,12 @@
   height: 28px;
   font-size: 24px;
   color: #333;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding-left: 10px;
   border-left: 3px solid #f85162;
   margin-bottom: 30px;
@@ -390,9 +398,15 @@
 }
 
 .main_left03_but {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 200px;
   height: 40px;
   color: #f85162;

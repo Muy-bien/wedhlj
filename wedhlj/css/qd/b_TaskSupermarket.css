@@ -39,7 +39,8 @@ a:hover{
 
 /*日期*/
 .datePrice{
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background: url(../../images/main_nav02.png) no-repeat 120px center;
   position: relative;
 }
@@ -53,6 +54,7 @@ a:hover{
   border-top: none;
   z-index: 2;
   overflow: hidden;
+  -webkit-transition: height 0.15s;
   transition: height 0.15s;
 }
 .datePrice_x10 p{
@@ -61,7 +63,8 @@ a:hover{
   height: 30px;
   line-height: 28px;
   color: #666;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .datePrice_x10 p:hover{
   color:#333;
@@ -72,7 +75,8 @@ a:hover{
 .datePrice_x20{
   border: 1px solid #f85162;
   border-top: none;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background: #fff;
   padding:15px;
   height: auto;
@@ -142,7 +146,8 @@ a:hover{
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-      flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
 }
 
 .main04_cont_left li{

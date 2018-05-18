@@ -7,7 +7,6 @@ $(document).ready(function(){
 				dataType: 'json',
 				data: {username:$.cookie("user")},
 				success:function(e){
-					console.log(e)
 					window.location.href = "index.html"
 				}
 			})

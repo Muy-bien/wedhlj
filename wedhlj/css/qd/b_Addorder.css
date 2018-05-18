@@ -41,9 +41,15 @@
 .target_pic{
   width: 861px;
   height:540px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .target_pic>img{
   max-width: 100%;
@@ -59,16 +65,23 @@ ul.show_sale_list{
           flex-direction: column;
 }
 .show_sale_list>li{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   overflow: hidden;
   width: 124px;
   height: 100px;
   cursor: pointer;
   margin-bottom: 10px;
   border:2px solid #ccc;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .show_sale_list>li:last-child{
   margin: none;
@@ -144,11 +157,19 @@ ul.show_sale_list{
     width: 110px;
     height: 33px;
     border: 1px solid #aaa;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
   .show_sale_part2_num>input{
     height: 31px;
@@ -166,7 +187,8 @@ ul.show_sale_list{
   .show_sale_part2_num>button{
     width: 32px;
     height: 31px;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     line-height: 32px;
     text-align: center;
     border:none;
@@ -210,7 +232,8 @@ ul.show_sale_list{
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
  }
  .show_sale_part2_right_sale>span{
   display: block;

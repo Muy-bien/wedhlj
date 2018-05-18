@@ -48,7 +48,6 @@ function showFinalPayment(mytid,myusername){
 		data:{tid:mytid,username:myusername},
 		dataType: 'json',
 		success:function(e){
-			console.log(e);
 			var task=e.task;
 				//状态条的状态展示
 				var pstates=$(".main_header_cont li p");
@@ -133,7 +132,6 @@ function updateOffline(mytid){
 		data:{tid:mytid},
 		dataType: 'json',
 		success:function(e){
-			console.log(e);
 			if(e.status==400){
 				meg("提示","付款提交失败，请稍后再试！","body",reload);
 			}else if(e.status==200){
@@ -153,7 +151,6 @@ function confirmOffline (mytid){
 		data:{tid:mytid},
 		dataType: 'json',
 		success:function(e){
-			console.log(e);
 			if(e.status==400){
 				meg("提示","确认收款失败，请稍后再试！","body",reload);
 			}else if(e.status==200){
@@ -177,7 +174,6 @@ function finalPayment(mytid,myusername){
 		data:{tid:mytid,username:myusername},
 		dataType: 'json',
 		success:function(e){
-			console.log(e);
 		},
 		error:function(){
 			meg("提示","网络开小差，请检查！","body");

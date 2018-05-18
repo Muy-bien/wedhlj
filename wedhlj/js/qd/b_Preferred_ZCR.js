@@ -145,7 +145,6 @@ function findAllParticularInfo(type,address,sort,pageNo,pageSize,state,Reset){
 			if(businessPersonnels.length>0){
 				var perHtml='';
 				for(var i=0;i<businessPersonnels.length;i++){
-					console.log(businessPersonnels[i]);
 					var case_img=businessPersonnels[i].case_img.split(",");//案例图片
 					perHtml+='<li>'+
 								'<a href="b_Preferred_ZCR_Case.html?PersonnelNo='+businessPersonnels[i].personnelNo+'">'+

@@ -27,7 +27,6 @@ function selectOrderById(myorderId){
 		data:{orderId:myorderId},
 		dataType: 'json',
 		success:function(e){
-			console.log(e);
 			var order=e.order;
 			var html='';
 			html+='<h1>订单详情</h1>'+
@@ -226,7 +225,6 @@ function refund(myorderId){
 		data:{orderId:myorderId},
 		dataType: 'json',
 		success:function(e){
-			console.log(e);
 			if(e.status==200){
 				//退款成功
 			}else if(e.status==300){
