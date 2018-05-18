@@ -10,14 +10,10 @@ var state=1;//防止多次点击
 var username = $.cookie("user");
 
 $(".headImg_heart").click(function(){
-	console.log(123)
 })
 $(".danceImg_heart").click(function(){
-	console.log(456);
 })
 $(".planImg_heart").click(function(){
-	console.log(789);
 })
 $(".searching_button").click(function(){
-	console.log(112);
 })

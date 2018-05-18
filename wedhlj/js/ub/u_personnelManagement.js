@@ -185,7 +185,6 @@ function deletePerson(PersonnelNos){
 		data: {PersonnelNos:PersonnelNos},
 		dataType: 'json',
 		success:function(e){
-			console.log(e);
 			if(e.status==200){
 				meg("提示","人员删除成功！","body",reload);
 			}else{

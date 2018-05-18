@@ -25,29 +25,6 @@ testNumber($(".yourPrice"));
 // 风格
 queryUser($.cookie("login_on"));
 
-//上传头像
-// $(".myFileUpload_head").change(function(e){ 
-//  	var file = this.files[0];
-//  	if (file){
-//  		$(".blueButton_head").css("display","none");
-//  		if (window.FileReader) {    
-//             var reader = new FileReader();
-//             reader.readAsDataURL(file); //将文件读取为DataURL  
-//             //监听文件读取结束后事件 
-//           	reader.onloadend = function (e){
-//           		var result=$(this).result;
-//           		// console.log(e.target.result);
-//           		var src=e.target.result.substr(22);
-//           		var base64Img=e.target.result;
-//           		$(".show_head").html('<div class="img_auto" style="background-image:url('+base64Img+')"></div>');
-//           	};    
-//        	}
-// 	}else{
-//    		$(".blueButton_head").css("display","block");
-//    		$(".show_head").html("");
-//     }
-// });
-
 //添加案例视频
 	/*添加地址*/
 	$(".add_addr_btn").on("click",function(){
@@ -156,7 +133,6 @@ $("#btn").on('click', function() {
 				function uploadSuccess(){
 					location.href="u_personnelManagement.html?PersonnelType=0&page=1";
 				}
-				console.log(e)
 				if(e.status==200){
 					meg("提示","人员修改成功","body",uploadSuccess);
 				}else{
@@ -182,9 +158,7 @@ function queryUser(token){
 			data:{token:token},
 			dataType:'json',
 			success: function(e){
-				// var type=e.user.companyType;
 				var type=e.companyType;
-				console.log(type);
 				if(type=='婚庆公司'||type=='个人策划'){
 					arr=["西式","新中式","小清新","简约","户外","汉婚","教堂"];
 					style(arr);

@@ -151,9 +151,6 @@ function login(id){
 		var hrefing = function(){
 			window.location.href  = 'u_management.html'
 		}
-		for(p of data){
-			console.log(p)
-		}
 		$.ajax({
 			type: 'POST',
 			url: apiUrl+'/product/updateProduct',

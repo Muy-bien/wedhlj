@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>婚庆方添加订单</title>
+	<title>供应商添加订单</title>
 	<link rel="shortcut icon" href="images/index_Avatar.png" type="image/x-icon">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
@@ -36,10 +36,10 @@
 						    <div class="dropdown">
 						        <a class="btn orderStatus"
 						           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-						   padding-right: 28px;">跟 单</a>
+						   padding-right: 28px;">预 定</a>
 						        <ul class="dropdown-menu orderStatusContent addrPos">
-						            <li><a>跟 单</a></li>
 						            <li><a>预 定</a></li>
+						            <li><a>跟 单</a></li>
 						            <li><a>执 行</a></li>
 						            <li><a>完 成</a></li>
 						        </ul>
@@ -60,13 +60,6 @@
 						    <input type='text' class="form-control" id='datetimepicker5' name="etiquetteTime">
 						</div>
 					</div>
-					<!-- 布场时长 -->
-					<div class="baseMsgItem">
-						<p><i class="Ricon">*</i>布场时长：</p>
-						<div class="baseMsgItem_cont indentFieldTime">
-							<input type="text" maxlength="20">
-						</div>
-					</div>
 					<!-- 业务来源 -->
 					<div class="baseMsgItem">
 						<p><i class="Ricon">*</i>业务来源：</p>
@@ -74,32 +67,11 @@
 							<input type="text" maxlength="13">
 						</div>
 					</div>
-					<!-- 新娘姓名 -->
+					<!-- 订单商家 -->
 					<div class="baseMsgItem">
-						<p><i class="Ricon">*</i>新娘姓名：</p>
-						<div class="baseMsgItem_cont indentBrideName">
+						<p><i class="Ricon">*</i>订单商家：</p>
+						<div class="baseMsgItem_cont indentOrderMerchant">
 							<input type="text" maxlength="13">
-						</div>
-					</div>
-					<!-- 新郎姓名 -->
-					<div class="baseMsgItem">
-						<p><i class="Ricon">*</i>新郎姓名：</p>
-						<div class="baseMsgItem_cont indentBridegroomName">
-							<input type="text" maxlength="13">
-						</div>
-					</div>
-					<!-- 新娘电话 -->
-					<div class="baseMsgItem">
-						<p><i class="Ricon">*</i>新娘电话：</p>
-						<div class="baseMsgItem_cont indentBridePhone">
-							<input type="text" maxlength="11">
-						</div>
-					</div>
-					<!-- 新郎电话 -->
-					<div class="baseMsgItem">
-						<p><i class="Ricon">*</i>新郎电话：</p>
-						<div class="baseMsgItem_cont indentBridegroomPhone">
-							<input type="text" maxlength="11">
 						</div>
 					</div>
 					<!-- 订单负责人 -->
@@ -121,13 +93,6 @@
 						<p><i class="Ricon">*</i>仪式酒店：</p>
 						<div class="baseMsgItem_cont indentRitualHotel">
 							<input type="text" maxlength="13">
-						</div>
-					</div>
-					<!-- 酒店经理电话 -->
-					<div class="baseMsgItem">
-						<p><i class="Ricon">*</i>酒店经理电话：</p>
-						<div class="baseMsgItem_cont indentManagerPhone">
-							<input type="text" maxlength="11">
 						</div>
 					</div>
 					<!-- 酒店地址 -->
@@ -193,90 +158,9 @@
 							<input type="text" maxlength="20">
 						</div>
 					</div>
-					<!-- 接亲地址 -->
-					<div class="baseMsgItem">
-						<p><i class="Ricon">*</i>接亲地址：</p>
-						<!-- 省 -->
-						<div class="baseMsgItem_cont">
-						    <div class="dropdown">
-						        <a class="btn dropdown_x50"
-						           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-						   padding-right: 28px;">四川省</a>
-							    <ul class="dropdown-menu addrPos" >
-							            <li><a>四川省</a></li>
-						       </ul>
-						    </div>
-						</div>
-						<!-- 市 -->
-						<div class="baseMsgItem_cont">
-						    <div class="dropdown">
-						        <a class="btn dropdown_x60"
-						           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-						   padding-right: 28px;">成都市</a>
-							    <ul class="dropdown-menu addrPos" >
-							            <li><a>成都市</a></li>
-						       </ul>
-						    </div>
-						</div>
-						<!-- 区 -->
-						<div class="baseMsgItem_cont">
-						    <div class="dropdown">
-						        <a class="btn jieqinAddr dropdown_x70"
-						           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-						   padding-right: 28px;">锦江区</a>
-						        <ul class="dropdown-menu  jieqinAddrContent addrPos">
-						            <li><a>锦江区</a></li>
-						            <li><a>青羊区</a></li>
-						            <li><a>金牛区</a></li>
-						            <li><a>成华区</a></li>
-						            <li><a>武侯区</a></li>
-						            <li><a>龙泉驿区</a></li>
-						            <li><a>青白江区</a></li>
-						            <li><a>新都区</a></li>
-						            <li><a>温江区</a></li>
-						            <li><a>高新区</a></li>
-						            <li><a>郫县</a></li>
-						            <li><a>双流县</a></li>
-						            <li><a>新津县</a></li>
-						            <li><a>金堂县</a></li>
-						            <li><a>大邑县</a></li>
-						            <li><a>蒲江县</a></li>
-						            <li><a>邛崃市</a></li>
-						            <li><a>崇州市</a></li>
-						            <li><a>彭州市</a></li>
-						            <li><a>都江堰市</a></li>
-						        </ul>
-						    </div>
-						</div>
-					</div>
-					<!-- 接亲详细地址 -->
-					<div class="baseMsgItem">
-						<p><i class="Ricon">*</i>接亲详细地址：</p>
-						<div class="baseMsgItem_cont detailAddr dropdown_x80">
-							<input type="text" maxlength="20">
-						</div>
-					</div>
-					<!-- 报销业务 -->
-					<div class="baseMsgItem">
-						<p><i class="Ricon">*</i>报销业务：</p>
-						<ul class="Reimbursement">
-							<li>
-								<div><i></i></div>
-								<span>提供住宿</span>
-							</li>
-							<li>
-								<div><i></i></div>
-								<span>提供工作餐</span>
-							</li>
-							<li>
-								<div><i></i></div>
-								<span>报销路费</span>
-							</li>
-						</ul>
-					</div>
 				</div>
 				<!-- 道具舞美详情 -->
-				<div class="serviceDet">
+				<div class="serviceDet serviceDet_Prop">
 					<div class="littleTitle">道具舞美详情</div>
 					<div class="buttons">
 						<div class="removeButton removeButton_Prop">删除</div>
@@ -322,7 +206,7 @@
 					</div>
 				</div>
 				<!-- 人员详情 -->
-				<div class="serviceDet">
+				<div class="serviceDet serviceDet_personnel">
 					<div class="littleTitle">人员详情</div>
 					<div class="buttons">
 						<div class="removeButton removeButton_person">删除</div>
@@ -359,11 +243,6 @@
 					<!-- 小计 -->
 					<div class="part_calc">
 						<p class="c_little_calc">小计：<span class="part_calc_personnel">0</span></p>
-					</div>
-				</div>
-				<div class="total_calc">
-					<div>
-						<p class="c_total">合计：<span class="total_calc_Total">0</span></p>
 					</div>
 				</div>
 				<!-- 备注 -->
@@ -549,7 +428,7 @@
 	<script type="text/javascript" src="js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript" src="js/paging.js"></script>
-	<script type="text/javascript" src="js/ub/u_AddWeddingOrder_Details.js"></script>
+	<script type="text/javascript" src="js/ub/u_EditSupplierOrder_Details.js"></script>
 	<script>
 		//仪式时间
 	    $(function () {

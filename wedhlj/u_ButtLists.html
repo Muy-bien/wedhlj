@@ -197,16 +197,21 @@
 			<!-- 操作对接单 -->
 			<div class="buttons">
 				<div>在线打印</div>
-				<div>下载对接单</div>
+				<div class="Download">下载对接单</div>
 			</div>
 		</div>
 	</div>
 	<div id="ButtCheck">
-		<div id="ButtCheck_box"></div>
+		<div id="ButtCheck_box">
+			<div id="ButtCheck_table"></div>
+			<div class="Download">下载对接单</div>
+		</div>
 	</div>
 	<!-- script -->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/FileSaver.js"></script>
+	<script type="text/javascript" src="js/jquery.wordexport.js"></script>
 	<script src="js/moment-with-locales.js"></script>
     <script src="js/bootstrap-datetimepicker.js"></script>
 	<script type="text/javascript" src="js/ub/u_common.js"></script>
@@ -227,6 +232,9 @@
                 format:"YYYY-MM-DD HH:mm",
                 minDate:new Date() 
             });
+            $(".Download").click(function(event){
+				$("#ButtCheck_table").wordExport("对接单");
+			});
         });
 	</script>
 </body>

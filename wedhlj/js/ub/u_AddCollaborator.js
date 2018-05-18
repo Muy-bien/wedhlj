@@ -31,7 +31,6 @@ $(".upload").click(function(){
 			stylePer+=$(".Posttask_x10 li.Posttask_x20_on p")[i].innerHTML+','
 		}
 		$("input[name=style]").val(stylePer);
-		console.log(stylePer);
 		if(!$("input[name=name]").val()){//名称
 			meg("提示","请填写名称！","body");
 			return false;
@@ -49,9 +48,6 @@ $(".upload").click(function(){
 		var data=new FormData($("#uploadForm")[0]);
 		data.append("PersonnelType",1)//固定人员;
 		data.append("token",$.cookie("login_on"));//加token
-		for(p of data){
-			console.log(p)
-		}
 		$.ajax({
 			type: 'POST',
 			url: apiUrl+'/BusinessPersonnel/addFixedBusinessPersonnel',
@@ -85,10 +81,7 @@ function queryUser(token){
 			data:{token:token},
 			dataType:'json',
 			success: function(e){
-				console.log(e)
-				// var type=e.user.companyType;
 				var type=e.companyType;
-				console.log(type);
 				if(type=='婚庆公司'||type=='个人策划'){
 					arr=["西式","新中式","小清新","简约","户外","汉婚","教堂"];
 					style(arr);

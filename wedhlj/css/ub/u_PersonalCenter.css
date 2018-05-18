@@ -112,16 +112,17 @@
   color: #77010d;
 }
 /* **** */
-.content{
+.content {
   width: 1130px;
   margin-top: 48px;
   background: #f7f7f7;
   padding-top: 29px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border:1px solid #f0eff0;
+  border: 1px solid #f0eff0;
   border-radius: 5px;
 }
-.littleTitle{
+.littleTitle {
   width: 180px;
   height: 30px;
   border-left: 5px solid #f85162;
@@ -132,10 +133,15 @@
   color: #666666;
   line-height: 30px;
   padding-left: 20px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.littleTitleTwo{
+.littleTitleTwo {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   min-width: 180px;
   height: 30px;
@@ -147,10 +153,11 @@
   color: #666666;
   line-height: 30px;
   padding-left: 20px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   cursor: pointer;
 }
-.littleTitleTwo i{
+.littleTitleTwo i {
   display: block;
   background-color: #f85162;
   width: 5px;
@@ -158,177 +165,194 @@
   margin-left: 20px;
   margin-right: 20px;
 }
-.littleTitleTwo_on{
+.littleTitleTwo_on {
   color: #f85162 !important;
 }
 /* 已发布任务 */
-.myPostTask{
+.myPostTask {
   height: 404px;
   position: relative;
 }
-.taskBox{
+.taskBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
-.myPostTask_content{
+.myPostTask_content {
   width: 799px;
   height: 34px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-left: 46px;
   color: #666;
   font-size: 16px;
 }
-.myPostTask_date{
+.myPostTask_date {
   margin-right: 22px;
   width: 120px;
 }
-.myPostTask_name{
+.myPostTask_name {
   width: 317px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin-right:100px;
+  margin-right: 100px;
 }
-.myPostTask_button_edit{
+.myPostTask_button_edit {
   width: 90px;
   text-align: center;
 }
-.myPostTask_button_move{
+.myPostTask_button_move {
   width: 90px;
   text-align: center;
   cursor: pointer;
 }
 /*已发布任务右边*/
-.myPostTask_right{
+.myPostTask_right {
   width: 258px;
   height: 342px;
-  position:absolute;
-  right:0;
+  position: absolute;
+  right: 0;
   top: 20px;
   border-left: 1px solid #ddd;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.myPostTask_right_button{
-  border:1px solid #f85162;
+.myPostTask_right_button {
+  border: 1px solid #f85162;
   width: 154px;
   height: 44px;
   line-height: 44px;
-  margin:0 auto;
+  margin: 0 auto;
   text-align: center;
   border-radius: 5px;
   font-size: 20px;
   color: #f85162;
   margin-top: 150px;
 }
-.task:hover{
+.task:hover {
   color: #f85162;
 }
-.task:hover a{
+.task:hover a {
   color: #f85162;
 }
-.task:hover i{
-  background:#f85162;
+.task:hover i {
+  background: #f85162;
 }
 /*档期安排*/
-.myDatePlan{
+.myDatePlan {
   height: 700px;
   position: relative;
 }
 /*日历插件中的css*/
 html {
-    font: 500 14px 'roboto';
-    color: #333;
-    background-color: #fafafa;
-  }
-  a {
-    text-decoration: none;
-  }
-  ul, ol, li {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  #demo {
-    width: 300px;
-    margin: 50px auto;
-  }
-  p {
-    margin: 0;
-  }
-  #dt {
-    margin: 30px auto;
-    height: 28px;
-    width: 200px;
-    padding: 0 6px;
-    border: 1px solid #ccc;
-    outline: none;
-  }
-  .boxc{
-    color: #6f6f6f;
-    width: 180px;
-    height: 220px;
-    position:absolute;
-    font-size: 16px;
-    top: 200px;
-    left: 53px;
-  }
-  .boxc_item{
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  .box_radius{
-    width: 12px;
-    height: 12px;
-    background: #FF808E;
-    border-radius: 50%;
-    margin-right: 27px;
-  }
-  .box_content{
-    width: 130px;
-  }
-/*公告与通知*/
-.notice{
+  font: 500 14px "roboto";
+  color: #333;
+  background-color: #fafafa;
+}
+a {
+  text-decoration: none;
+}
+ul,
+ol,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#demo {
+  width: 300px;
+  margin: 50px auto;
+}
+p {
+  margin: 0;
+}
+#dt {
+  margin: 30px auto;
+  height: 28px;
+  width: 200px;
+  padding: 0 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+.boxc {
+  color: #6f6f6f;
+  width: 180px;
+  height: 220px;
+  position: absolute;
+  font-size: 16px;
+  top: 200px;
+  left: 53px;
+}
+.boxc_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.box_radius {
+  width: 12px;
+  height: 12px;
+  background: #ff808e;
+  border-radius: 50%;
+  margin-right: 27px;
+}
+.box_content {
+  width: 130px;
+}
+/*公告与通知*/
+.notice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   width: 1130px;
   height: 405px;
   margin-top: 50px;
 }
 /*系统公告*/
-.systemBulletin{
+.systemBulletin {
   width: 730px;
   margin-top: 0;
 }
 /*站内通知*/
-.stationNotice{
+.stationNotice {
   width: 350px;
   margin-top: 0;
 }
-.systemBulletin_name{
+.systemBulletin_name {
   width: 376px;
 }
-.stationNotice_name{
+.stationNotice_name {
   width: 179px;
 }
 /*--查看更多--按钮*/
-.lookingMore{
+.lookingMore {
   width: 64px;
   height: 24px;
   font-size: 16px;
   text-align: center;
-  margin:15px auto auto 33px;
+  margin: 15px auto auto 33px;
   color: #666;
   border-bottom: 1px solid #999;
   cursor: pointer;
 }
-a{
+a {
   color: #666;
 }
-a:hover{
+a:hover {
   text-decoration: none;
 }
-i{
+i {
   display: inline-block;
   width: 1px;
   height: 19px;
@@ -337,7 +361,7 @@ i{
 }
 /*注释：系统公告css和已发布任务css共用了一部分*/
 /*分页样式*/
-.pageshow{
+.pageshow {
   margin-left: -180px !important;
   margin-top: 30px !important;
 }

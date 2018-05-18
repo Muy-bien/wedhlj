@@ -13,7 +13,6 @@ function Obtain_info(){
         dataType: 'json',
         data: {token:$.cookie("login_on")},
         success: function(e){
-            console.log(e)
             if(e.status==200){
                 var data=e.merchant
                 $(".cp_name").text(data.mName);//名称
@@ -66,9 +65,6 @@ function upload(){
             data.append('mAddress',$(".province").val()+","+$(".city").val()+","+$(".county").val()+","+$(".address").val());//地址
             data.append('mLogo',blob);//头像
             data.append('token',$.cookie("login_on"));//token
-            for(var p of data){
-                console.log(p)
-            }
             on_Loading();
             $.ajax({
                 type: "post",

@@ -4,131 +4,162 @@
   margin-left: auto;
   padding-bottom: 200px;
   padding-left: 40px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.main>div{
+.main > div {
   margin-top: 60px;
 }
-.m_title{
+.m_title {
   width: 150px;
   height: 35px;
   line-height: 35px;
-  border-left:5px solid #f85162;
+  border-left: 5px solid #f85162;
   font-size: 18px;
   color: #666;
   font-weight: bold;
   text-align: center;
 }
 /*新人信息*/
-.newPerson{
+.newPerson {
   margin-top: 40px;
 }
-.newPersonItems{
-  display:flex;
+.newPersonItems {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   font-size: 14px;
   color: #666;
   padding-right: 100px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin-bottom: 40px;
 }
-.newPersonItem{
+.newPersonItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
-.newPersonItem>p{
+.newPersonItem > p {
   width: 120px;
 }
-.newPersonItem input{
+.newPersonItem input {
   width: 200px;
-  border:none;
-  border-bottom:1px solid #999;
+  border: none;
+  border-bottom: 1px solid #999;
   font-size: 14px;
   line-height: 20px;
   color: #666;
   text-align: center;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.newPersonItem p > i{
+.newPersonItem p > i {
   display: inline-block;
   color: #f85162;
   font-size: 14px;
   margin-right: 6px;
 }
-.newPersonItem_text{
+.newPersonItem_text {
   width: 200px;
-  border-bottom:1px solid #999;
+  border-bottom: 1px solid #999;
   font-size: 14px;
   color: #666;
   text-align: center;
   line-height: 20px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.newPersonItem .addr_detail{
+.newPersonItem .addr_detail {
   width: 871px;
 }
-.addr_cap{
+.addr_cap {
   width: 800px;
   height: 454px;
-  margin:0 auto;
+  margin: 0 auto;
   margin-bottom: 40px;
 }
-.checked{
+.checked {
   width: 102px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
-.checked_item{
-  width:15px;
+.checked_item {
+  width: 15px;
   height: 15px;
-  box-sizing:border-box;
-  border:1px solid #999;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #999;
 }
-.newPersonItems .introduce>div{
+.newPersonItems .introduce > div {
   margin-right: 50px;
 }
-.checked_on{
+.checked_on {
   background-color: #f85162;
 }
 /*道具清单*/
-.cont_box{
+.cont_box {
   width: 100%;
   min-height: 200px;
-  box-sizing:border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   margin-top: 56px;
   font-size: 14px;
   color: #666;
 }
-.c_title>div{
+.c_title > div {
   height: 50px !important;
   line-height: 50px !important;
-  border-top:none !important;
+  border-top: none !important;
 }
-.c_content{
+.c_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
-.c_content>div{
+.c_content > div {
   width: 132px;
   height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   padding: 5px;
-  border-right:1px solid #e6e6e6;
-  border-top:1px solid #e6e6e6;
+  border-right: 1px solid #e6e6e6;
+  border-top: 1px solid #e6e6e6;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.c_content>div:last-child{
-  border-right:none;
+.c_content > div:last-child {
+  border-right: none;
 }
 /*操作对接单*/
-.buttons{
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-top: 70px !important;
   width: 100%;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
-.buttons div{
+.buttons div {
   width: 200px;
   height: 43px;
   line-height: 43px;
@@ -139,80 +170,100 @@
   text-align: center;
   margin: 0 50px;
 }
-.buttons div:active{
+.buttons div:active {
   opacity: 0.9;
 }
 /* 报销业务 */
-.baseMsgItem{
+.baseMsgItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   height: 22px;
   color: #666;
 }
 
-.baseMsgItem p{
+.baseMsgItem p {
   display: inline-block;
   width: 120px;
   font-size: 14px;
 }
 
-.Reimbursement{
+.Reimbursement {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 34px;
   width: 700px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
-.Reimbursement li{
+.Reimbursement li {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   margin-right: 50px;
 }
 
-.Reimbursement li span{
+.Reimbursement li span {
   font-size: 14px;
 }
 
-.Reimbursement li>div{
+.Reimbursement li > div {
   width: 20px;
   height: 20px;
   border: 1px solid #666;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border-radius: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   margin-right: 8px;
 }
 
-.Reimbursement .Reimbursement_on>div i{
+.Reimbursement .Reimbursement_on > div i {
   background: #666;
 }
 
-.Reimbursement li>div i{
+.Reimbursement li > div i {
   display: inline-block;
   width: 14px;
   height: 14px;
   border-radius: 100%;
 }
 /* 添加时间 */
-.newPersonItem_x10{
+.newPersonItem_x10 {
   position: relative;
 }
 
 #datetimepicker1,
-#datetimepicker2{
+#datetimepicker2 {
   border-radius: 0;
+  -webkit-box-shadow: none;
   box-shadow: none;
   height: 22px;
 }
 
 #datetimepicker1:focus,
-#datetimepicker2:focus{
+#datetimepicker2:focus {
   border-color: #999;
 }
 
-.addr_detail{
+.addr_detail {
   border-bottom: 1px solid #999;
   font-size: 14px;
   line-height: 20px;
@@ -220,17 +271,18 @@
   text-align: center;
 }
 /* 对接单 */
-#ButtCheck{
+#ButtCheck {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
   top: 0;
   z-index: 2;
-  padding : 200px 0;
+  padding: 200px 0;
+  overflow: scroll;
 }
 
-#ButtCheck_box{
+#ButtCheck_box {
   width: 700px;
   height: 1000px;
   background: #fff;

@@ -3,9 +3,9 @@ $(document).ready(function(){
 	if ($.cookie("login_on") == "" || !$.cookie("login_on") || $.cookie("position")==0){
 		var PreviousUrl = window.location.pathname + window.location.search + window.location.hash;
 		$.cookie("PreviousUrl",PreviousUrl,{ path:'/',secure:false });
-		//window.location.href = "login.html";
+		window.location.href = "login.html";
 	}else if(!$.cookie("position")){
-		//window.location.href = "index.html";
+		window.location.href = "index.html";
 	}else{
 		//获取用户类型
 		$.ajax({
@@ -14,6 +14,7 @@ $(document).ready(function(){
 			dataType: 'json',
 			data: {userName:$.cookie("user"),token:$.cookie("login_on")},
 			success: function(e){
+				$.cookie("position",e.userType,{ path:'/',secure:false });
 				if($("div").hasClass("nav") == true){
 					onNav(e.userType);//用户类型定位信息
 				}

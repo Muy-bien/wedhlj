@@ -35,23 +35,15 @@ function queryBusinessPersonnelInfo(PersonnelNo){
 		data:{PersonnelNo:PersonnelNo},
 		dataType:'json',
 		success:function(e){
-			console.log(e);
-			console.log(e.businessPersonnelList[0]);
 			var list=e.businessPersonnelList[0];
 			// 名称
 			$("input[name=name]").val(list.name);
 			// 风格
-			console.log($(".Posttask_x10 ul>li>p").length);
-			console.log(list.style);
 			var style=list.style.split(",");
-			console.log(style);
 			for(var i=0;i<style.length;i++){
-				console.log('coming1');
 				for(var j=0;j<$(".Posttask_x10 ul>li>p").length;j++){
-					console.log('coming2');
 					if(style[i]==$(".Posttask_x10 ul>li>p")[j].innerHTML){
-					console.log('coming3');
-							$(".Posttask_x10 ul>li").eq(j).addClass("Posttask_x20_on");
+						$(".Posttask_x10 ul>li").eq(j).addClass("Posttask_x20_on");
 					}
 				}
 			}
@@ -76,7 +68,6 @@ $(".upload").click(function(){
 			stylePer+=$(".Posttask_x10 li.Posttask_x20_on p")[i].innerHTML+','
 		}
 		$("input[name=style]").val(stylePer);
-		console.log(stylePer);
 		if(!$("input[name=name]").val()){//名称
 			meg("提示","请填写名称！","body");
 			return false;
@@ -95,9 +86,6 @@ $(".upload").click(function(){
 		data.append("PersonnelType",1)//固定人员;
 		//data.append("token",$.cookie("login_on"));//加token
 		data.append("PersonnelNo",PersonnelNo);//加token
-		for(p of data){
-			console.log(p)
-		}
 		//BusinessPersonnel/updateProduct人员修改
 		$.ajax({
 			type: 'POST',
@@ -132,10 +120,7 @@ function queryUser(token){
 			data:{token:token},
 			dataType:'json',
 			success: function(e){
-				console.log(e)
-				// var type=e.user.companyType;
 				var type=e.companyType;
-				console.log(type);
 				if(type=='婚庆公司'||type=='个人策划'){
 					arr=["西式","新中式","小清新","简约","户外","汉婚","教堂"];
 					style(arr);

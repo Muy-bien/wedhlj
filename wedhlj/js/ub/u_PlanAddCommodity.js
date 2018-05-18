@@ -69,7 +69,6 @@ $(".Upload").click(function(){
 			contentType: false,
 			success: function(e) {
 				down_Loading()
-				console.log(e);
 				if (e.status == "200") {
 					meg("提示","策划上传成功","body",dothing);
 				}else{

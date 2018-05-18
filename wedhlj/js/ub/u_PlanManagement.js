@@ -58,7 +58,6 @@ function queryAllScheme(token,auditStatus,pageNo){
 		            	}else if(state==2){
 		            		location.href='u_PlanManagement.html?chooseStatus='+chooseStatus+'&pageNo='+page+'';
 		            	}
-		            	//console.log(window.search())
 		            }
 	       		 })
 				var items=e.schemeList;

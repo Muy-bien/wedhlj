@@ -31,9 +31,6 @@ $(document).ready(function(){
 			}
 		],
         onSelected: function (view, date, data) {
-           // detail day
-            console.log('date:' + (Number(date.toISOString().slice(8,10))+1));
-            console.log('data:' + (data || 'None'));
             if(data){
             	var dataArr=data.split(";");
             	var thingHtml='';
@@ -66,10 +63,7 @@ function queryMyAllTask(token,pageNo,pageSize,state,reset){
 		data:{token:token,pageNo:pageNo,pageSize:pageSize},
 		dataType:'json',
 		success:function(e){
-			console.log(e);
 			var taskList=e.taskList;
-			console.log(taskList);
-			console.log(taskList.length);
 			if(reset==1){
 				$('.main_Pagination').html("");
 			}
@@ -95,7 +89,6 @@ function queryMyAllTask(token,pageNo,pageSize,state,reset){
 			if(taskList.length>0){
 				var html='';
 				for(var i=0;i<taskList.length;i++){
-					console.log(taskList[i]);
 					html+='<div class="myPostTask_content task">'+
 								'<p class="myPostTask_date">'+taskList[i].takeCreateTime+'</p>'+
 								'<div class="myPostTask_name">'+taskList[i].takeName+'</div>'+
@@ -147,10 +140,7 @@ function queryBiddingTakeByUser(token,pageNo,pageSize,state,reset){
 		data:{token:token,pageNo:pageNo,pageSize:pageSize},
 		dataType:'json',
 		success:function(e){
-			console.log(e);
 			var taskList=e.taskList;
-			console.log(taskList);
-			console.log(taskList.length);
 			if(reset==1){
 				$('.main_Pagination').html("");
 			}
@@ -176,7 +166,6 @@ function queryBiddingTakeByUser(token,pageNo,pageSize,state,reset){
 			if(taskList.length>0){
 				var html='';
 				for(var i=0;i<taskList.length;i++){
-					console.log(taskList[i]);
 					html+='<div class="myPostTask_content task">'+
 								'<p class="myPostTask_date">'+taskList[i].entranceTime.split(' ')[0]+'</p>'+
 								'<div class="myPostTask_name">'+taskList[i].takeName+'</div>'+
@@ -197,7 +186,6 @@ queryMyAllTask($.cookie('login_on'),1,pageSize,1,1)
 $(".littleTitleTwo div").click(function(){
 	$(this).addClass('littleTitleTwo_on').siblings('').removeClass('littleTitleTwo_on');
 	var index=$(this).index();
-	console.log(index);
 	if(index==2){
 		queryBiddingTakeByUser($.cookie('login_on'),1,pageSize,1,1)
 	}else if(index==0){

@@ -202,11 +202,11 @@
   margin: 5px;
 }
 
-.input_Doot span{
+.input_Doot span {
   margin-left: 30px;
 }
 
-.input_Doot span i{
+.input_Doot span i {
   color: #f85162;
   margin-right: 7px;
   font-size: 14px;
@@ -235,7 +235,7 @@
   overflow: hidden;
   position: relative;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .upload_imgc_show {
@@ -284,7 +284,7 @@
   border: 1px dashed #999;
   border-radius: 8px;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 2px;
   cursor: pointer;
 }
@@ -318,6 +318,6 @@
   bottom: 0;
 }
 
-.input_Num{
+.input_Num {
   padding: 0 5px !important;
 }

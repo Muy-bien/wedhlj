@@ -7,8 +7,9 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/common.css">
-	<link rel="stylesheet" href="css/ub/u_AddSupplierOrder_Details.css">
+	<link rel="stylesheet" href="css/ub/u_AddWeddingOrder_Details.css">
 	<link rel="stylesheet" href="css/ub/u_common.css">
+	
 </head>
 <body>
 	<div class="box">
@@ -22,176 +23,171 @@
 		<form class="main">
 			<div class="container">
 				<div class="main_title_cont">
-					<a href="#baseMsg"><h2 class="main_title_cont_on">基本信息录入</h2></a>
-					<a href="#serviceDet"><h2>服务明细</h2></a>
-					<a href="#remarks"><h2>填写备注</h2></a>
+					<a href=".container"><h2 class="main_title_cont_on">基本信息录入</h2></a>
+					<a href=".serviceDet"><h2>服务明细</h2></a>
+					<a href=".remarks"><h2>填写备注</h2></a>
 				</div>
 				<!-- 基本信息录入 -->
-				<a name="baseMsg">
-					<div class="baseMsg">
-						<!-- 订单状态 -->
-						<div class="baseMsgItem">
-							<p>订单状态：</p>
-							<div class="baseMsgItem_cont">
-							    <div class="dropdown">
-							        <a class="btn orderStatus" data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;padding-right: 28px;">预 定</a>
-							        <ul class="dropdown-menu orderStatusContent addrPos">
-							            <li><a>预 定</a></li>
-							            <li><a>跟 单</a></li>
-							            <li><a>执 行</a></li>
-							            <li><a>完 成</a></li>
-							        </ul>
-							    </div>
-							</div>
-						</div>
-						<!-- 仪式时间 -->
-						<div class="Einlass">
-							<p class="Posttask_title">仪式时间：</p>
-							<div class="Posttask_x40">
-							    <input type='text' class="form-control" id='datetimepicker4' name="etiquetteTime">
-							</div>
-						</div>
-						<!-- 业务来源 -->
-						<div class="baseMsgItem">
-							<p>订单来源：</p>
-							<div class="baseMsgItem_cont">
-								<div class="dropdown">
-							        <a class="btn businessCome"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">线 上</a>
-							        <ul class="dropdown-menu businessComeContent addrPos">
-							            <li><a>线 上</a></li>
-							            <li><a>地 推</a></li>
-							            <li><a>客 户 介 绍</a></li>
-							            <li><a>其 他</a></li>
-							        </ul>
-							    </div>
-							</div>
-						</div>
-						<!-- 新娘电话 -->
-						<div class="baseMsgItem">
-							<p>订单商家名称：</p>
-							<div class="baseMsgItem_cont indentBridePhone">
-								<input type="text">
-							</div>
-						</div>
-						<!-- 新郎电话 -->
-						<div class="baseMsgItem">
-							<p>订单负责人：</p>
-							<div class="baseMsgItem_cont indentBridegroomPhone">
-								<input type="text">
-							</div>
-						</div>
-						<!-- 订单负责人 -->
-						<div class="baseMsgItem">
-							<p>负责人电话：</p>
-							<div class="baseMsgItem_cont indentPrincipal">
-								<input type="text">
-							</div>
-						</div>
-						<!-- 酒店名称 -->
-						<div class="baseMsgItem">
-							<p>仪式酒店：</p>
-							<div class="baseMsgItem_cont indentRitualHotel">
-								<input type="text">
-							</div>
-						</div>
-						<!-- 酒店地址 -->
-						<div class="baseMsgItem">
-							<p>酒店地址：</p>
-							<!-- 省 -->
-							<div class="baseMsgItem_cont">
-							    <div class="dropdown">
-							        <a class="btn dropdown_x10"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">四川省</a>
-								    <ul class="dropdown-menu addrPos" >
-								            <li><a>四川省</a></li>
-							       </ul>
-							    </div>
-							</div>
-							<!-- 市 -->
-							<div class="baseMsgItem_cont">
-							    <div class="dropdown">
-							        <a class="btn dropdown_x20"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">成都市</a>
-								    <ul class="dropdown-menu addrPos" >
-								            <li><a>成都市</a></li>
-							       </ul>
-							    </div>
-							</div>
-							<!-- 区 -->
-							<div class="baseMsgItem_cont">
-							    <div class="dropdown">
-							        <a class="btn hotelAddr dropdown_x30"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">锦江区</a>
-							        <ul class="dropdown-menu hotelAddrContent addrPos">
-							            <li><a>锦江区</a></li>
-							            <li><a>青羊区</a></li>
-							            <li><a>金牛区</a></li>
-							            <li><a>成华区</a></li>
-							            <li><a>武侯区</a></li>
-							            <li><a>龙泉驿区</a></li>
-							            <li><a>青白江区</a></li>
-							            <li><a>新都区</a></li>
-							            <li><a>温江区</a></li>
-							            <li><a>高新区</a></li>
-							            <li><a>郫县</a></li>
-							            <li><a>双流县</a></li>
-							            <li><a>新津县</a></li>
-							            <li><a>金堂县</a></li>
-							            <li><a>大邑县</a></li>
-							            <li><a>蒲江县</a></li>
-							            <li><a>邛崃市</a></li>
-							            <li><a>崇州市</a></li>
-							            <li><a>彭州市</a></li>
-							            <li><a>都江堰市</a></li>
-							        </ul>
-							    </div>
-							</div>
-						</div>
-						<!-- 酒店详细地址 -->
-						<div class="baseMsgItem">
-							<p>酒店详细地址：</p>
-							<div class="baseMsgItem_cont detailAddr dropdown_x40">
-								<input type="text">
-							</div>
+				<div class="baseMsg">
+					<!-- 订单状态 -->
+					<div class="baseMsgItem">
+						<p><i class="Ricon">*</i>订单状态：</p>
+						<div class="baseMsgItem_cont">
+						    <div class="dropdown">
+						        <a class="btn orderStatus"
+						           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
+						   padding-right: 28px;">预 定</a>
+						        <ul class="dropdown-menu orderStatusContent addrPos">
+						            <li><a>预 定</a></li>
+						            <li><a>跟 单</a></li>
+						            <li><a>执 行</a></li>
+						            <li><a>完 成</a></li>
+						        </ul>
+						    </div>
 						</div>
 					</div>
-				</a>
-				<!-- 订单详情 -->
-				<a name="serviceDet">
-					<div class="serviceDet">
-						<div class="littleTitle">订单详情</div>
-						<div class="buttons">
-							<div class="removeButton">删除</div>
-							<div class="addButton orderAddButton">添加</div>
+					<!-- 仪式时间 -->
+					<div class="Einlass">
+						<p class="Posttask_title"><i class="Ricon">*</i>仪式时间：</p>
+						<div class="Posttask_x40">
+						    <input type='text' class="form-control" id='datetimepicker4' name="etiquetteTime">
 						</div>
-						<div class="orderTable">
-							<!-- 目录 -->
-							<div class="orderTableTr">
-								<div>
-									<label for="totalChoose">
-										<input type="checkbox" class="ordercheck" id="totalChoose">
-										全选
-									</label>
-								</div>
-								<div>区域</div>
-								<div>性质</div>
-								<div>名称</div>
-								<div>尺寸</div>
-								<div>颜色</div>
-								<div>小计</div>
-								<div class="rightBorderNone">责任人信息</div>
+					</div>
+					<!-- 入场时间 -->
+					<div class="Einlass">
+						<p class="Posttask_title"><i class="Ricon">*</i>入场时间：</p>
+						<div class="Posttask_x40">
+						    <input type='text' class="form-control" id='datetimepicker5' name="etiquetteTime">
+						</div>
+					</div>
+					<!-- 业务来源 -->
+					<div class="baseMsgItem">
+						<p><i class="Ricon">*</i>业务来源：</p>
+						<div class="baseMsgItem_cont indentBusiness">
+							<input type="text" maxlength="13">
+						</div>
+					</div>
+					<!-- 订单商家 -->
+					<div class="baseMsgItem">
+						<p><i class="Ricon">*</i>订单商家：</p>
+						<div class="baseMsgItem_cont indentOrderMerchant">
+							<input type="text" maxlength="13">
+						</div>
+					</div>
+					<!-- 订单负责人 -->
+					<div class="baseMsgItem">
+						<p><i class="Ricon">*</i>订单负责人：</p>
+						<div class="baseMsgItem_cont indentPrincipal">
+							<input type="text" maxlength="13">
+						</div>
+					</div>
+					<!-- 负责人电话 -->
+					<div class="baseMsgItem">
+						<p><i class="Ricon">*</i>负责人电话：</p>
+						<div class="baseMsgItem_cont indentPrincipalPhone">
+							<input type="text" maxlength="11">
+						</div>
+					</div>
+					<!-- 酒店名称 -->
+					<div class="baseMsgItem">
+						<p><i class="Ricon">*</i>仪式酒店：</p>
+						<div class="baseMsgItem_cont indentRitualHotel">
+							<input type="text" maxlength="13">
+						</div>
+					</div>
+					<!-- 酒店地址 -->
+					<div class="baseMsgItem">
+						<p><i class="Ricon">*</i>酒店地址：</p>
+						<!-- 省 -->
+						<div class="baseMsgItem_cont">
+						    <div class="dropdown">
+						        <a class="btn dropdown_x10"
+						           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
+						   padding-right: 28px;">四川省</a>
+							    <ul class="dropdown-menu addrPos" >
+							            <li><a>四川省</a></li>
+						       </ul>
+						    </div>
+						</div>
+						<!-- 市 -->
+						<div class="baseMsgItem_cont">
+						    <div class="dropdown">
+						        <a class="btn dropdown_x20"
+						           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
+						   padding-right: 28px;">成都市</a>
+							    <ul class="dropdown-menu addrPos" >
+							            <li><a>成都市</a></li>
+						       </ul>
+						    </div>
+						</div>
+						<!-- 区 -->
+						<div class="baseMsgItem_cont">
+						    <div class="dropdown">
+						        <a class="btn hotelAddr dropdown_x30"
+						           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
+						   padding-right: 28px;">锦江区</a>
+						        <ul class="dropdown-menu hotelAddrContent addrPos">
+						            <li><a>锦江区</a></li>
+						            <li><a>青羊区</a></li>
+						            <li><a>金牛区</a></li>
+						            <li><a>成华区</a></li>
+						            <li><a>武侯区</a></li>
+						            <li><a>龙泉驿区</a></li>
+						            <li><a>青白江区</a></li>
+						            <li><a>新都区</a></li>
+						            <li><a>温江区</a></li>
+						            <li><a>高新区</a></li>
+						            <li><a>郫县</a></li>
+						            <li><a>双流县</a></li>
+						            <li><a>新津县</a></li>
+						            <li><a>金堂县</a></li>
+						            <li><a>大邑县</a></li>
+						            <li><a>蒲江县</a></li>
+						            <li><a>邛崃市</a></li>
+						            <li><a>崇州市</a></li>
+						            <li><a>彭州市</a></li>
+						            <li><a>都江堰市</a></li>
+						        </ul>
+						    </div>
+						</div>
+					</div>
+					<!-- 酒店详细地址 -->
+					<div class="baseMsgItem">
+						<p><i class="Ricon">*</i>酒店详细地址：</p>
+						<div class="baseMsgItem_cont detailAddr dropdown_x40">
+							<input type="text" maxlength="20">
+						</div>
+					</div>
+				</div>
+				<!-- 道具舞美详情 -->
+				<div class="serviceDet serviceDet_Prop">
+					<div class="littleTitle">道具舞美详情</div>
+					<div class="buttons">
+						<div class="removeButton removeButton_Prop">删除</div>
+						<div class="addButton orderAddButton">添加</div>
+					</div>
+					<div class="orderTable">
+						<!-- 目录 -->
+						<div class="orderTableTr orderTableTr_x10">
+							<div>
+								<label for="totalChoose" class="TotalSelection">
+									<input type="checkbox" class="ordercheck" id="totalChoose">全选
+								</label>
 							</div>
-							<!-- item -->
-							<div class="orderTableTr">
+							<div>区域</div>
+							<div>性质</div>
+							<div>名称</div>
+							<div>尺寸</div>
+							<div>颜色</div>
+							<div>数量</div>
+							<div>单价</div>
+							<div class="rightBorderNone">责任人信息</div>
+						</div>
+						<div class="orderTableTr_box">
+							<!-- <div class="orderTableTr">
 								<div>
 									<label for="totalChoose">
 										<input type="checkbox" name='cds' id="totalChoose">
-										
 									</label>
 								</div>
 								<div>区域</div>
@@ -201,54 +197,37 @@
 								<div>颜色</div>
 								<div>小计</div>
 								<div class="rightBorderNone">责任人信息</div>
-							</div>
-							<!-- item -->
-							<div class="orderTableTr">
-								<div>
-									<label for="totalChoose">
-										<input type="checkbox" name='cds'  id="totalChoose">
-										
-									</label>
-								</div>
-								<div>区域</div>
-								<div>性质</div>
-								<div>名称</div>
-								<div>尺寸</div>
-								<div>颜色</div>
-								<div>小计</div>
-								<div class="rightBorderNone">责任人信息</div>
-							</div>
-						</div>
-						<!-- 小计 -->
-						<div class="part_calc">
-							<p class="c_little_calc">小计：<span>123</span></p>
+							</div> -->
 						</div>
 					</div>
-				</a>
+					<!-- 小计 -->
+					<div class="part_calc">
+						<p class="c_little_calc">小计：<span class="part_calcProp">0</span></p>
+					</div>
+				</div>
 				<!-- 人员详情 -->
-				<a>
-					<div class="serviceDet">
-						<div class="littleTitle">人员详情</div>
-						<div class="buttons">
-							<div class="removeButton">删除</div>
-							<div class="addButton personAddButton">添加</div>
-						</div>
-						<div class="orderTable">
-							<!-- 目录 -->
-							<div class="orderTableTr">
-								<div>
-									<label for="totalChoose">
-										<input type="checkbox" class="check" id="totalChoose">
-										全选
-									</label>
-								</div>
-								<div>人员类型</div>
-								<div>人员名称</div>
-								<div>价格</div>
-								<div class="rightBorderNone">联系方式</div>
+				<div class="serviceDet serviceDet_personnel">
+					<div class="littleTitle">人员详情</div>
+					<div class="buttons">
+						<div class="removeButton removeButton_person">删除</div>
+						<div class="addButton personAddButton">添加</div>
+					</div>
+					<div class="orderTable">
+						<!-- 目录 -->
+						<div class="orderTableTr">
+							<div>
+								<label for="totalChoose" class="TotalSelection">
+									<input type="checkbox" class="check" id="totalChoose">
+									全选
+								</label>
 							</div>
-							<!-- item -->
-							<div class="orderTableTr">
+							<div>人员类型</div>
+							<div>人员名称</div>
+							<div>价格</div>
+							<div class="rightBorderNone">联系方式</div>
+						</div>
+						<div class="personnel_box">
+							<!-- <div class="orderTableTr">
 								<div>
 									<label for="totalChoose">
 										<input type="checkbox" name="ids" id="totalChoose">
@@ -258,43 +237,23 @@
 								<div>人员名称</div>
 								<div>价格</div>
 								<div class="rightBorderNone">联系方式</div>
-							</div>
-							<!-- item -->
-							<div class="orderTableTr personDetail">
-								<div>
-									<label for="totalChoose">
-										<input type="checkbox" name="ids" id="totalChoose">
-										
-									</label>
-								</div>
-								<div>人员类型</div>
-								<div>人员名称</div>
-								<div>价格</div>
-								<div class="rightBorderNone">联系方式</div>
-							</div>
-						</div>
-						<!-- 小计 -->
-						<div class="part_calc">
-							<p class="c_little_calc">小计：<span>123</span></p>
+							</div> -->
 						</div>
 					</div>
-				</a>
-				<div class="total_calc">
-					<div>
-						<p class="c_total">合计：<span>123</span></p>
+					<!-- 小计 -->
+					<div class="part_calc">
+						<p class="c_little_calc">小计：<span class="part_calc_personnel">0</span></p>
 					</div>
 				</div>
 				<!-- 备注 -->
-				<a name="remarks">
-					<div class="remarks">
-						<p>备注：</p>
-						<textarea></textarea> 
-					</div>
-				</a>
+				<div class="remarks">
+					<p>备注：</p>
+					<textarea class="indentRemarks" maxlength="250"></textarea> 
+				</div>
 				<!-- 提交保存 -->
 				<div class="commitButtons">
-					<div>取消</div>
-					<div>保存</div>
+					<div class="Cancel">取消</div>
+					<div id="Upload">保存</div>
 				</div>
 			</div>
 		</form>
@@ -303,7 +262,7 @@
 	<!-- 绝对定位 弹框-->
 	<div class="addOrderItems">
 		<div class="addOrderItem">
-			<div class="addOrderItemTitle">添加订单详情<span></span></div>
+			<div class="addOrderItemTitle">添加道具舞美详情<span class="CloseProps"></span></div>
 			<!-- 1行 -->
 			<div class="addOrderItemContent">
 				<div class="addOrderItemDetail">
@@ -312,7 +271,7 @@
 						<!-- 订单状态 -->
 						<div class="baseMsgItem_cont botBotNo">
 						    <div class="dropdown">
-						        <a class="btn addOrderItem_Addr"
+						        <a class="btn addOrderItem_Addr addProp_x10"
 						           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
 						   padding-right: 28px;">主舞台</a>
 						        <ul class="dropdown-menu addOrderItem_AddrContent addrPos">
@@ -329,8 +288,8 @@
 				<!-- 2 -->
 				<div class="addOrderItemDetail">
 					<p>名称：</p>
-					<div class="">
-						<input type="text" class="inputOrderMsg">
+					<div class="addProp_x20">
+						<input type="text" class="inputOrderMsg" maxlength="12">
 					</div>
 				</div>
 			</div>
@@ -338,24 +297,24 @@
 			<div class="addOrderItemContent">
 				<div class="addOrderItemDetail">
 					<p>尺寸：</p>
-					<div class="">
-						<input type="text" class="inputOrderMsg">
+					<div class="addProp_x30">
+						<input type="text" class="inputOrderMsg" maxlength="12">
 					</div>
 				</div>
 				<!-- 2 -->
 				<div class="addOrderItemDetail">
 					<p>颜色：</p>
-					<div class="">
-						<input type="text" class="inputOrderMsg">
+					<div class="addProp_x40">
+						<input type="text" class="inputOrderMsg" maxlength="12">
 					</div>
 				</div>
 			</div>
 			<!-- 3行 -->
 			<div class="addOrderItemContent">
 				<div class="addOrderItemDetail">
-					<p>小计：</p>
-					<div class="">
-						<input type="text" class="inputOrderMsg">
+					<p>单价：</p>
+					<div class="addProp_x50">
+						<input type="text" class="inputOrderMsg input_Num" maxlength="12">
 					</div>
 				</div>
 				<!-- 2 -->
@@ -363,72 +322,76 @@
 					<p>性质：</p>
 					<div class="">
 						<!-- 订单状态 -->
-							<div class="baseMsgItem_cont botBotNo">
-							    <div class="dropdown">
-							        <a class="btn addOrderItem_Pri"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">舞美</a>
-							        <ul class="dropdown-menu addOrderItem_PriContent addrPos">
-							            <li><a>舞美</a></li>
-							            <li><a>舞美1</a></li>
-							            <li><a>舞美2</a></li>
-							            <li><a>舞美3</a></li>
-							        </ul>
-							    </div>
-							</div>
-						
+						<div class="baseMsgItem_cont botBotNo">
+						    <div class="dropdown">
+						        <a class="btn addOrderItem_Pri addProp_x60"
+						           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
+						   padding-right: 28px;">舞美</a>
+						        <ul class="dropdown-menu addOrderItem_PriContent addrPos">
+						            <li><a>舞美</a></li>
+						            <li><a>道具</a></li>
+						            <li><a>印刷物料</a></li>
+						        </ul>
+						    </div>
+						</div>
 					</div>
 				</div>
 			</div>
 			<!-- 4行 -->
 			<div class="addOrderItemContent">
-				<!-- 1 -->
 				<div class="addOrderItemDetail">
-					<p>责任人信息：</p>
-					<div class="">
-						<input type="text" class="inputOrderMsg">
+					<p>责任人电话：</p>
+					<div class="addProp_x70">
+						<input type="text" class="inputOrderMsg input_Num" maxlength="11">
+					</div>
+				</div>
+				<div class="addOrderItemDetail">
+					<p>数量：</p>
+					<div class="addProp_x80">
+						<input type="text" class="inputOrderMsg input_Num" maxlength="11">
 					</div>
 				</div>
 			</div>
 			<!-- 按钮 -->
 			<div class="orderAddItemButton">
 				<div class="buttonstyle add_order">添加</div>
-				<div class="buttonstyle remove_order">取消</div>
+				<div class="buttonstyle remove_order CloseProps">取消</div>
 			</div>
 		</div>
 	</div>
-	<!-- 订单定位 -->
+	<!-- 人员定位 -->
 	<div class="addPersonItems">
 		<div class="addPersonItem">
-			<div class="addPersonItemTitle">添加人员详情<span></span></div>
+			<div class="addPersonItemTitle">添加人员详情<span class="remove_person"></span></div>
 			<!-- 1行 -->
 			<div class="addOrderItemContent">
 				<div class="addOrderItemDetail">
 					<p>人员类型：</p>
 					<div class="">
 						<!-- 人员类型 -->
-							<div class="baseMsgItem_cont botBotNo">
-							    <div class="dropdown">
-							        <a class="btn addPersonItem_Type"
-							           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
-							   padding-right: 28px;">主持人</a>
-							        <ul class="dropdown-menu addPersonItem_TypeContent addrPos">
-							            <li><a>主持人</a></li>
-							            <li><a>摄像师</a></li>
-							            <li><a>摄像师</a></li>
-							            <li><a>化妆师</a></li>
-							            <li><a>花艺师</a></li>
-							        </ul>
-							    </div>
-							</div>
-						
+						<div class="baseMsgItem_cont botBotNo">
+						    <div class="dropdown">
+						        <a class="btn addPersonItem_Type addpersonnel_x10"
+						           data-toggle="dropdown"  style="background: url(http://ourjs.github.io/static/2015/arrow.png) no-repeat scroll right center transparent;
+						   padding-right: 28px;">主持人</a>
+						        <ul class="dropdown-menu addPersonItem_TypeContent addrPos">
+						            <li><a>主持人</a></li>
+						            <li><a>摄像师</a></li>
+						            <li><a>摄像师</a></li>
+						            <li><a>化妆师</a></li>
+						            <li><a>花艺师</a></li>
+						            <li><a>婚礼执行</a></li>
+						            <li><a>婚礼管家</a></li>
+						        </ul>
+						    </div>
+						</div>
 					</div>
 				</div>
 				<!-- 2 -->
 				<div class="addOrderItemDetail">
 					<p>名称：</p>
-					<div class="">
-						<input type="text" class="inputOrderMsg">
+					<div class="addpersonnel_x20">
+						<input type="text" class="inputOrderMsg" maxlength="12">
 					</div>
 				</div>
 			</div>
@@ -436,15 +399,15 @@
 			<div class="addOrderItemContent">
 				<!-- 1 -->
 				<div class="addOrderItemDetail">
-					<p>联系方式：</p>
-					<div class="">
-						<input type="text" class="inputOrderMsg">
+					<p>价格：</p>
+					<div class="addpersonnel_x30">
+						<input type="text" class="inputOrderMsg input_Num" maxlength="11">
 					</div>
 				</div>
 				<div class="addOrderItemDetail">
-					<p>价格：</p>
-					<div class="">
-						<input type="text" class="inputOrderMsg">
+					<p>联系方式：</p>
+					<div class="addpersonnel_x40">
+						<input type="text" class="inputOrderMsg input_Num" maxlength="11">
 					</div>
 				</div>
 			</div>
@@ -472,9 +435,18 @@
             $('#datetimepicker4').datetimepicker({
             	locale: 'zh-cn',
                 format:"YYYY-MM-DD HH:mm",
-                minDate:new Date()
+                minDate:new Date() 
+            });
+            $('#datetimepicker5').datetimepicker({
+            	locale: 'zh-cn',
+                format:"YYYY-MM-DD HH:mm",
+                minDate:new Date() 
             });
         });
+ 		$(function(){
+			// 默认显示
+			$(".dropdown-toggle").dropdown('toggle');
+		});
 	</script>
 </body>
 </html>

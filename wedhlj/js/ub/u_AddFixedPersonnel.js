@@ -145,9 +145,7 @@ function queryUser(token){
 			data:{token:token},
 			dataType:'json',
 			success: function(e){
-				// var type=e.user.companyType;
 				var type=e.companyType;
-				console.log(type);
 				if(type=='婚庆公司'||type=='个人策划'){
 					arr=["西式","新中式","小清新","简约","户外","汉婚","教堂"];
 					style(arr);

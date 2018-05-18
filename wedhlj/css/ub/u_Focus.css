@@ -3,77 +3,96 @@
 .container {
   width: 1130px;
   margin-left: auto;
-  margin-top:30px;
+  margin-top: 30px;
 }
 
-.foucus_title{
+.foucus_title {
   width: 1130px;
   min-height: 200px;
   background: url(../../images/b_Foucus/foucus.png) no-repeat 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 /*title左边*/
-.title_left{
-  margin-left:135px;
+.title_left {
+  margin-left: 135px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
-.foucus_pic{
+.foucus_pic {
   width: 110px;
   height: 110px;
-  border-radius:50%;
-  border:1px solid #9e9b9c;
-  position:relative;
+  border-radius: 50%;
+  border: 1px solid #9e9b9c;
+  position: relative;
 }
-.foucus_pic div{
+.foucus_pic div {
   width: 100px;
   height: 100px;
-  border-radius:50%;
-  position:absolute;
+  border-radius: 50%;
+  position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
-.aboutme{
-  margin-left:30px;
+.aboutme {
+  margin-left: 30px;
   font-size: 16px;
 }
-.mytype{
+.mytype {
   width: 150px;
   height: 26px;
   padding-left: 30px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   color: #999;
   background: url(../../images/b_Foucus/type.png) no-repeat 0 0;
 }
-.myname{
-  margin-top:10px;
+.myname {
+  margin-top: 10px;
 }
 /*title右边*/
-.title_right{
-  margin-right:135px;
+.title_right {
+  margin-right: 135px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   color: #999;
   width: 300px;
 }
-.title_right h3{
+.title_right h3 {
   margin-bottom: 20px;
   font-size: 16px;
 }
 /*parttwo*/
-.choose_nav{
+.choose_nav {
   width: 100%;
   height: 60px;
   margin-top: 40px;
   position: relative;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-.choose_nav ul{
+.choose_nav ul {
   position: absolute;
   top: 0;
   left: 0;
@@ -81,23 +100,24 @@
   color: #666;
 }
 
-.choose_nav_li{
+.choose_nav_li {
   margin-left: 100px;
   display: inline-block;
-  padding:18px;
+  padding: 18px;
   cursor: pointer;
 }
-.choose_nav_li:hover{
+.choose_nav_li:hover {
   color: #f85162;
-  border-bottom:3px solid #f85162;
-  transition: .15s;
+  border-bottom: 3px solid #f85162;
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
 }
 /*选中状态*/
-.check_on{
+.check_on {
   color: #f85162;
-  border-bottom:3px solid #f85162;
+  border-bottom: 3px solid #f85162;
 }
-.nav_border{
+.nav_border {
   display: block;
   position: absolute;
   bottom: 0;
@@ -105,95 +125,106 @@
   height: 1px;
   background: #ccc;
 }
-.f_searching{
+.f_searching {
   width: 209px;
   height: 34px;
-  border:1px solid #666;
+  border: 1px solid #666;
   border-radius: 27px;
   position: absolute;
   right: 20px;
   bottom: 10px;
   padding-left: 20px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   background: url(../../images/b_Foucus/search.png) no-repeat 95% 50%;
   color: #666;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
-.searching{
+.searching {
   width: 151px;
   height: 32px;
-  border:none;
+  border: none;
   color: #666;
 }
-.searching_button{
+.searching_button {
   display: inline-block;
   width: 25px;
   height: 25px;
   cursor: pointer;
 }
 /*partthree*/
-.foucus_content{
+.foucus_content {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-bottom: 50px;
 }
-.foucus_content  a >div{
+.foucus_content a > div {
   width: 350px;
-  border:1px solid #e5e5e5;
-  margin-top:50px;
+  border: 1px solid #e5e5e5;
+  margin-top: 50px;
   margin-right: 22px;
 }
 /*人员*/
-.foucus_content_item{
+.foucus_content_item {
   width: 350px;
   height: 230px;
-  border:1px solid #e5e5e5;
-  margin-top:50px;
+  border: 1px solid #e5e5e5;
+  margin-top: 50px;
   margin-right: 22px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.headImg{
+.headImg {
   position: relative;
 }
-.headImg_heart{
+.headImg_heart {
   position: absolute;
   width: 27px;
   height: 23px;
   right: 42px;
-  top:69px;
+  top: 69px;
   cursor: pointer;
-  background: url(../../images/b_Foucus/heart.png) no-repeat ;
+  background: url(../../images/b_Foucus/heart.png) no-repeat;
   display: none;
 }
-.foucus_content .foucus_head{
+.foucus_content .foucus_head {
   width: 110px;
   height: 110px;
-  border-radius:50%;
-  margin:0 auto;
+  border-radius: 50%;
+  margin: 0 auto;
   margin-top: 18px;
-  position:relative;
-  border:1px solid transparent;
+  position: relative;
+  border: 1px solid transparent;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.foucus_content .foucus_head .pic{
-    width: 100px;
-    height: 100px;
-    border:1px solid #e5e5e5;
-    border-radius:50%;
-    position:absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
+.foucus_content .foucus_head .pic {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
-.foucus_content .foucus_head .foucus_who{
-    position:absolute;
-    top:128px;
-    color: #666;
-    font-size: 14px;
+.foucus_content .foucus_head .foucus_who {
+  position: absolute;
+  top: 128px;
+  color: #666;
+  font-size: 14px;
 }
-.red i{
+.red i {
   display: inline-block;
   width: 15px;
   height: 15px;
@@ -201,124 +232,133 @@
   margin-bottom: 10px;
   background: url(../../images/b_Supermarket_WM/star_on.png) no-repeat;
 }
-.gray i{
+.gray i {
   display: inline-block;
   width: 15px;
   height: 15px;
   margin-right: 3px;
   margin-bottom: 10px;
-   background:url(../../images/b_Addorder/star.png) no-repeat; 
+  background: url(../../images/b_Addorder/star.png) no-repeat;
   /*background: url(../../images/b_Supermarket_WM/star_on.png) no-repeat !important;*/
 }
-.foucus_who p{
+.foucus_who p {
   margin-bottom: 5px;
   color: #666;
 }
 
-.headImg:hover .foucus_content_item{
-  border-color:#f85162;
+.headImg:hover .foucus_content_item {
+  border-color: #f85162;
   /*background: url(../../images/b_Foucus/heart.png) no-repeat  90% 10%;*/
 }
-.headImg:hover .headImg_heart{
+.headImg:hover .headImg_heart {
   display: block;
 }
-.headImg:hover .foucus_head{
-    border:1px solid #f85162;
-    box-sizing: border-box;
+.headImg:hover .foucus_head {
+  border: 1px solid #f85162;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.headImg:hover .foucus_who p{
-  color: #f85162 ;
+.headImg:hover .foucus_who p {
+  color: #f85162;
 }
-.headImg:hover .gray i{
+.headImg:hover .gray i {
   background: url(../../images/b_Supermarket_WM/star_on.png) no-repeat !important;
 }
 /*舞美道具*/
-.danceImg{
+.danceImg {
   position: relative;
 }
-.danceImg_heart{
+.danceImg_heart {
   position: absolute;
   width: 27px;
   height: 23px;
   right: 41px;
-  top:248px;
+  top: 248px;
   cursor: pointer;
-  background: url(../../images/b_Foucus/heart.png) no-repeat ;
+  background: url(../../images/b_Foucus/heart.png) no-repeat;
   display: none;
 }
-.danceTools{
+.danceTools {
   width: 350px;
   height: 359px;
   cursor: pointer;
 }
-.danceTools_img{
+.danceTools_img {
   height: 234px;
   width: 100%;
 }
-.danceTools_img img{
-    margin-left: 86%;
-    margin-top: 57%;
-    opacity:0;
+.danceTools_img img {
+  margin-left: 86%;
+  margin-top: 57%;
+  opacity: 0;
 }
-.danceTools_detail{
-  margin-top:25px;
+.danceTools_detail {
+  margin-top: 25px;
   width: 100%;
   height: 81px;
   padding-left: 17px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.d_name{
+.d_name {
   font-size: 16px;
   color: #666;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-.d_type{
+.d_type {
   font-size: 14px;
   color: #999;
   margin-top: 12px;
 }
-.d_star{
+.d_star {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   padding-right: 17px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 /*移入效果*/
-.danceImg:hover .danceTools{
-  border:1px solid #f85162;
+.danceImg:hover .danceTools {
+  border: 1px solid #f85162;
 }
-.danceImg:hover .d_name{
+.danceImg:hover .d_name {
   color: #f85162;
 }
-.danceImg:hover .d_type{
+.danceImg:hover .d_type {
   color: #f85162;
 }
-.danceImg:hover .gray i{
+.danceImg:hover .gray i {
   background: url(../../images/b_Supermarket_WM/star_on.png) no-repeat !important;
 }
 /*.danceTools:hover .danceTools_img img{
   opacity:1;
 }*/
-.danceImg:hover .danceImg_heart{
+.danceImg:hover .danceImg_heart {
   display: block;
 }
 
 /*策划案例*/
-.planImg_heart{
+.planImg_heart {
   position: absolute;
   width: 27px;
   height: 23px;
   right: 41px;
-  top:309px;
+  top: 309px;
   cursor: pointer;
-  background: url(../../images/b_Foucus/heart.png) no-repeat ;
+  background: url(../../images/b_Foucus/heart.png) no-repeat;
   display: none;
 }
-.planImg:hover .planImg_heart{
+.planImg:hover .planImg_heart {
   display: block;
 }
 /*.case:hover .danceTools_detail{
@@ -338,8 +378,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 .main_Pagination button {
   padding: 0 10px;
@@ -400,6 +440,6 @@
 }
 
 /*a标签*/
-a:hover{
+a:hover {
   text-decoration: none;
 }

@@ -120,7 +120,6 @@ function onDelete(id,auditStatus){
 			data: {productNos:id},
 			dataType: 'json',
 			success:function(e){
-				console.log(e)
 				if(e.status == 200){
 					meg("提示","商品删除成功","body",dothing)
 					function dothing(){
