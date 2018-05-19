@@ -46,10 +46,14 @@ $(document).ready(function(){
 			$(this).addClass('Reimbursement_on');
 		}
 	})
-	//点击保存
+	//获取订单详情信息
+	var indentNos = getUrlParam("id");
+	pick_up_information(indentNos);
+	//点击确认修改
 	$("#Upload").click(function(){
-		addOrder();
+		addOrder(indentNos);
 	})
+	
 })
 //导航栏默认选中
 function on_navli(){
@@ -57,7 +61,7 @@ function on_navli(){
 }
 //添加订单
 var state=1;
-function addOrder(){
+function addOrder(indentNo){
 	if(state==1){
 		state=2;
 		//订单状态
@@ -169,11 +173,11 @@ function addOrder(){
 			}
 		}
 		var data = {
-			token:$.cookie("login_on"),
+			indentNo:indentNo,
 			indentOrderStatus:indentOrderStatus,
 			indentTime:indentTime,
 			indentBusiness:indentBusiness,
-			indentBrideName:indentBrideName,
+			indentBrideName1:indentBrideName,
 			indentBridegroomName:indentBridegroomName,
 			indentBridePhone:indentBridePhone,
 			indentBridegroomPhone:indentBridegroomPhone,
@@ -201,31 +205,34 @@ function addOrder(){
 			indentEinlass:indentEinlass,
 			indentFieldTime:indentFieldTime
 		}
+		on_Loading();
 		$.ajax({
 			type: 'POST',
-			url: apiUrl+'/indent/addIndent',
+			url: apiUrl+'/indent/updateIndent',
 			data: data,
 			dataType: 'json',
 			success:function(e){
+				down_Loading();
 				if(e.status==200){
-					meg("提示","上传成功，返回订单管理","body",dothing);
+					meg("提示","保存成功，返回订单管理","body",dothing);
 					function dothing(){
 						window.location.href="u_WeddingOrderManagement.html"
 					}
 				}else{
-					meg("提示","服务器繁忙，请稍后再试","body");
+					meg("提示","保存失败，请稍后再试","body");
 				}
 			},
 			error(){
+				down_Loading();
 				meg("提示","服务器繁忙，请稍后再试","body");
 			}
 		})
 	}
 }
 var addProp=[];
-addProps();
 //道具舞美添加
 function addProps(){
+	ToupdateProp();
 	// 点击订单详情的添加按钮
 	$(".orderAddButton").click(function(){
 		$(".addOrderItems").css("display","block");
@@ -328,8 +335,8 @@ function addProps(){
 }	
 //人员添加
 var addpersonnel=[];
-addpersonnels();
 function addpersonnels(){
+	ToupdateProp();
 	// 点击订单详情的添加按钮
 	$(".personAddButton").click(function(){
 		$(".addPersonItems").css("display","block");
@@ -412,5 +419,84 @@ function addpersonnels(){
 	$(".remove_person").click(function(){
 		$(".addPersonItems").css("display","none");
 		emptyProp();
+	})
+}
+//获取订单信息
+function pick_up_information(indentNos){
+	on_Loading();
+	$.ajax({
+		type: 'POST',
+		url: apiUrl+'/indent/queryIndentInfo',
+		data: {indentNo:indentNos},
+		dataType: 'json',
+		success:function(e){
+			down_Loading();
+			if(e.status==200){
+				var data = e.indent[0];
+				var _orderStatusVal=data.indentOrderStatus;//订单状态
+				$(".orderStatus").text((_orderStatusVal=="0"?"预 定":(_orderStatusVal=="1"?"跟 单":(_orderStatusVal=="2"?"执 行":(_orderStatusVal==3?"完 成":"预 定")))))
+				$("#datetimepicker4").val(data.indentTime);//仪式时间
+				$("#datetimepicker5").val(data.indentEinlass);//入场时间
+				$(".indentFieldTime input").val(data.indentFieldTime);//布场时长
+				$(".indentBusiness input").val(data.indentBusiness);//业务来源
+				$(".indentBrideName input").val(data.indentBrideName);//新娘姓名
+				$(".indentBridegroomName input").val(data.indentBridegroomName);//新郎姓名
+				$(".indentBridePhone input").val(data.indentBridePhone);//新娘电话
+				$(".indentBridegroomPhone input").val(data.indentBridegroomPhone);//新郎电话
+				$(".indentPrincipal input").val(data.indentPrincipal);//订单负责人
+				$(".indentPrincipalPhone input").val(data.indentPrincipalPhone);//负责人电话
+				$(".indentRitualHotel input").val(data.indentRitualHotel);//仪式酒店
+				$(".indentManagerPhone input").val(data.indentManagerPhone);//酒店经理电话
+				$(".dropdown_x30").val(data.indentDetailedGreetAddress.split(",")[2]);//酒店地址
+				$(".dropdown_x40 input").val(data.indentDetailedGreetAddress.split(",")[3]);//酒店地址
+				$(".dropdown_x70").val(data.indentDetailedHotelAddress.split(",")[2]);//接亲地址
+				$(".dropdown_x80 input").val(data.indentDetailedHotelAddress.split(",")[3]);//接亲地址
+				$(".indentRemarks").val(data.indentRemarks);//备注
+				indentRbb=data.indentRbb.split(",");//报销业务
+				for(var i=0;i<indentRbb.length;i++){
+					for(var p=0;p<3;p++){
+						if(indentRbb[i]==$(".Reimbursement li").eq(p).find("span").text()){
+							$(".Reimbursement li").eq(p).addClass('Reimbursement_on');
+						}
+					}
+				}
+				//道具舞美
+				if(data.indentParticulars!=""){
+					for(var x=0;x<data.indentParticulars.length;x++){
+						var data01=data.indentParticulars[x];
+						addProp.push({
+							x10:data01.particularArea,
+							x20:data01.particularName,
+							x30:data01.particularSize,
+							x40:data01.particularColour,
+							x50:data01.particularSubtotal,
+							x60:data01.particularNature,
+							x70:data01.particularPrincipalMessage,
+							x80:data01.particularNumber
+						})
+					}
+				}
+				addProps();
+				//人员
+				if(data.indentPersonnels!=""){
+					for(var v=0;v<data.indentPersonnels.length;v++){
+						var data02=data.indentPersonnels[v];
+						addpersonnel.push({
+							x10:data02.personnelType,
+							x20:data02.personnelName,
+							x30:data02.personnelPrice,
+							x40:data02.personnelPhone
+						})
+					}
+				}
+				addpersonnels();
+			}else{
+				meg("提示","订单信息查询失败，请稍后重试","body");
+			}
+		},
+		error(){
+			down_Loading();
+			meg("提示","服务器繁忙，请稍后再试","body");
+		}
 	})
 }

@@ -11,6 +11,7 @@ $(document).ready(function(){
 	var pageIndentOrderStatus = getUrlParam("pageIndentOrderStatus");
 	if(page==null||pageIndentOrderStatus==null){
 		show(1,0,1,1);
+		history.pushState(history.state,"","?page=1&pageIndentOrderStatus=0");
 		$(".main_title_cont h1").eq(0).addClass('main_title_cont_on');
 	}else{
 		show(page,pageIndentOrderStatus,1,1)
@@ -25,6 +26,8 @@ $(document).ready(function(){
 			show(1,this_index,1,1);
 		}	
 	})
+	//订单数量获取
+	OrderQuantity();
 })
 //导航栏默认选中
 function on_navli(){
@@ -101,15 +104,15 @@ function showlist(e,pageIndentOrderStatus){
 					'<ul>'+
 						'<li><p>'+(data.indentOrderStatus==0?'预定':data.indentOrderStatus==1?'跟单':data.indentOrderStatus==2?'执行':data.indentOrderStatus==3?'完成':'暂无')+'</p></li>'+
 						'<li><p>'+data.indentTime.split(" ")[0]+'</p></li>'+
-						'<li><p>'+(position==1?'<h4>新娘：'+data.indentBrideName+'<br>'+data.indentBridePhone+'<br>新郎：'+data.indentBridegroomName+'<br>'+data.indentBridegroomPhone+'</h4>':'<li>'+data.indentOrderMerchant+'</li>')+'</p></li>'+
+						'<li>'+(position==1?'<h4>新娘：'+data.indentBrideName+'<br>'+data.indentBridePhone+'<br>新郎：'+data.indentBridegroomName+'<br>'+data.indentBridegroomPhone+'</h4>':'<p>'+data.indentOrderMerchant+'</p>')+'</li>'+
 						'<li><p>'+data.indentPrincipal+'</p></li>'+
 						'<li><p>'+data.indentPrincipalPhone+'</p></li>'+
 						'<li><p>'+data.indentRitualHotel+'</p></li>'+
 						'<li><p>'+data.indentBusiness+'</p></li>'+
 						'<li><div class="Remarks"><div class="Remarks_cont"><div class="Remarks_text">'+(data.indentRemarks==""?'暂无':data.indentRemarks)+'</div></div></div></li>'+
 						'<li>'+
-							'<button onclick="ModifyOrder('+data.indentId+')">查看订单</button>'+
-							'<button onclick="DeleteOrder('+data.indentId+')">删除订单</button>'+
+							'<button onclick="ModifyOrder('+data.indentNo+')">查看订单</button>'+
+							'<button onclick="DeleteOrder('+data.indentNo+')">删除订单</button>'+
 						'</li>'+
 					'</ul>'+
 				'</div>'+
@@ -122,7 +125,6 @@ function showlist(e,pageIndentOrderStatus){
 	down_Loading();
 	state=1;
 }
-OrderQuantity()
 //订单数量
 function OrderQuantity(){
 	$.ajax({
@@ -151,6 +153,8 @@ function DeleteOrder(indentNos){
 			success:function(e){
 				if(e.status==200){
 					meg("提示","删除成功","body")
+					OrderQuantity();
+					show(1,this_index,1,1);
 				}else{
 					meg("提示","删除失败","body")
 				}
@@ -161,7 +165,7 @@ function DeleteOrder(indentNos){
 		})
 	}
 }
-//修改订单
+//点击查看订单
 function ModifyOrder(indentNos){
 	if($.cookie("position")==1){
 		window.location.href="u_EditWeddingOrder_Details.html?id="+indentNos

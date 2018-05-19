@@ -316,7 +316,7 @@ function PromptGoods(spid,mid){
 }
 //提交订单
 $(".splist_but").click(function(){
-    if($(".splist_li").length > 0){
+    /*if($(".splist_li").length > 0){
         if(!$.cookie("login_on")){
             meg("提示","请先登录","body",dothing);
             //跳转到登录
@@ -331,8 +331,8 @@ $(".splist_but").click(function(){
         }
     }else{
         meg("提示","请选择需要购买得商品","body");
-    }
-    
+    }*/
+    meg("提示","功能正在升级，尽情期待","body");
 })
 //缩放
 function zoom(){

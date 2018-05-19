@@ -201,12 +201,14 @@ function addOrder(){
 			indentEinlass:indentEinlass,
 			indentFieldTime:indentFieldTime
 		}
+		on_Loading();
 		$.ajax({
 			type: 'POST',
 			url: apiUrl+'/indent/addIndent',
 			data: data,
 			dataType: 'json',
 			success:function(e){
+				down_Loading();
 				if(e.status==200){
 					meg("提示","上传成功，返回订单管理","body",dothing);
 					function dothing(){
@@ -217,6 +219,7 @@ function addOrder(){
 				}
 			},
 			error(){
+				down_Loading();
 				meg("提示","服务器繁忙，请稍后再试","body");
 			}
 		})
