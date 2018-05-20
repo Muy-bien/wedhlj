@@ -111,8 +111,8 @@ function showlist(e,pageIndentOrderStatus){
 						'<li><p>'+data.indentBusiness+'</p></li>'+
 						'<li><div class="Remarks"><div class="Remarks_cont"><div class="Remarks_text">'+(data.indentRemarks==""?'暂无':data.indentRemarks)+'</div></div></div></li>'+
 						'<li>'+
-							'<button onclick="ModifyOrder('+data.indentNo+')">查看订单</button>'+
-							'<button onclick="DeleteOrder('+data.indentNo+')">删除订单</button>'+
+							'<button onclick="ModifyOrder('+data.indentId+')">查看订单</button>'+
+							'<button onclick="DeleteOrder('+data.indentId+')">删除订单</button>'+
 						'</li>'+
 					'</ul>'+
 				'</div>'+
@@ -137,24 +137,27 @@ function OrderQuantity(){
 			for(var i=0;i<$(".main_title_cont h1").length;i++){
 				$(".main_title_cont h1").eq(i).find("span").html("("+str[i]+")");
 			}
+			$(".main_header_info li").eq(1).find("p").text(e.fullOrder);
 		}
 	})
 }
 //删除订单
-//indentNos==>>订单id
-function DeleteOrder(indentNos){
+//indentId==>>订单id
+function DeleteOrder(indentId){
 	meg2("提示","是否确认删除此订单","body",onDeleteOrder)
 	function onDeleteOrder(){
 		$.ajax({
 			type: 'POST',
 			url: apiUrl+'/indent/delIndent',
-			data: {indentNos:indentNos},
+			data: {indentIds:indentId},
 			dataType: 'json',
 			success:function(e){
 				if(e.status==200){
 					meg("提示","删除成功","body")
 					OrderQuantity();
-					show(1,this_index,1,1);
+					var pageIndentOrderStatus = getUrlParam("pageIndentOrderStatus");
+					show(1,pageIndentOrderStatus,1,1);
+					history.pushState(history.state,"","?page=1&pageIndentOrderStatus="+pageIndentOrderStatus);
 				}else{
 					meg("提示","删除失败","body")
 				}
@@ -166,10 +169,10 @@ function DeleteOrder(indentNos){
 	}
 }
 //点击查看订单
-function ModifyOrder(indentNos){
+function ModifyOrder(indentId){
 	if($.cookie("position")==1){
-		window.location.href="u_EditWeddingOrder_Details.html?id="+indentNos
+		window.location.href="u_EditWeddingOrder_Details.html?id="+indentId
 	}else if($.cookie("position")==2 || $.cookie("position")==3){
-		window.location.href="u_EditSupplierOrder_Details.html?id="+indentNos
+		window.location.href="u_EditSupplierOrder_Details.html?id="+indentId
 	}
 }

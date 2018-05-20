@@ -47,11 +47,11 @@ $(document).ready(function(){
 		}
 	})
 	//获取订单详情信息
-	var indentNos = getUrlParam("id");
-	pick_up_information(indentNos);
+	var indentId = getUrlParam("id");
+	pick_up_information(indentId);
 	//点击确认修改
 	$("#Upload").click(function(){
-		addOrder(indentNos);
+		addOrder(indentId);
 	})
 	
 })
@@ -61,7 +61,7 @@ function on_navli(){
 }
 //添加订单
 var state=1;
-function addOrder(indentNo){
+function addOrder(indentId){
 	if(state==1){
 		state=2;
 		//订单状态
@@ -173,11 +173,11 @@ function addOrder(indentNo){
 			}
 		}
 		var data = {
-			indentNo:indentNo,
+			indentId:indentId,
 			indentOrderStatus:indentOrderStatus,
 			indentTime:indentTime,
 			indentBusiness:indentBusiness,
-			indentBrideName1:indentBrideName,
+			indentBrideName:indentBrideName,
 			indentBridegroomName:indentBridegroomName,
 			indentBridePhone:indentBridePhone,
 			indentBridegroomPhone:indentBridegroomPhone,
@@ -422,12 +422,12 @@ function addpersonnels(){
 	})
 }
 //获取订单信息
-function pick_up_information(indentNos){
+function pick_up_information(indentId){
 	on_Loading();
 	$.ajax({
 		type: 'POST',
 		url: apiUrl+'/indent/queryIndentInfo',
-		data: {indentNo:indentNos},
+		data: {indentId:indentId},
 		dataType: 'json',
 		success:function(e){
 			down_Loading();
