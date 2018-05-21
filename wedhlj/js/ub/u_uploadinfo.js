@@ -1,8 +1,38 @@
 $(document).ready(function(){
-	if($.cookie("position") != "" && $.cookie("position") != 0){
+	if($.cookie("position") != 0){
 		window.location.href = "login.html";
+	}else{
+		//获取用户类型
+		$.ajax({
+			type: 'POST',
+			url: apiUrl+'/user/resultUserType',
+			dataType: 'json',
+			data: {userName:$.cookie("user"),token:$.cookie("login_on")},
+			success: function(e){
+				$.cookie("position",e.userType,{ path:'/',secure:false });
+				if($("header").length >= 1){
+					header(e.userType);//头部
+				}
+			}
+		})
 	}
 })
+//头部
+function header(h_position){
+	var h_header = "";
+	h_header += '<div class="header">'+
+		'<div class="Return_index">'+
+			'<a href="index.html"><p>返回首页</p></a>'+
+		'</div>'+
+		'<div class="header_name">'+
+			'<p><i></i><span class="h_name">'+$.cookie("user")+'</span></p>'+
+		'</div>'+
+		'<div class="sign_out">'+
+			'<p onclick="sign_out()">退出登录</p>'+
+		'</div>'+
+	'</div>';
+	$("header").html(h_header);
+}
 
 //商家地址
 $("#s1").focus(function(){
