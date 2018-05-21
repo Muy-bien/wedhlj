@@ -1,45 +1,45 @@
 
-/*var dt = new Date();   
-dt.setSeconds(dt.getSeconds() + 60);   
-document.cookie = "cookietest=1; expires=" + dt.toGMTString();   
-var cookiesEnabled = document.cookie.indexOf("cookietest=") != -1;   
-if(!cookiesEnabled) {   
-    //没有启用cookie   
-    alert("没有启用cookie ");  
-} else{  
-    //已经启用cookie   
-    alert("已经启用cookie ");  
+/*var dt = new Date();
+dt.setSeconds(dt.getSeconds() + 60);
+document.cookie = "cookietest=1; expires=" + dt.toGMTString();
+var cookiesEnabled = document.cookie.indexOf("cookietest=") != -1;
+if(!cookiesEnabled) {
+    //没有启用cookie
+    alert("没有启用cookie ");
+} else{
+    //已经启用cookie
+    alert("已经启用cookie ");
 }  */
 
 var user_length = 1;
-//初始化页面时验证是否记住了密码 
-$(document).ready(function() { 
-	if ($.cookie("rmbUser") == 'true'){ 
+//初始化页面时验证是否记住了密码
+$(document).ready(function() {
+	if ($.cookie("rmbUser") == 'true'){
 		user_length = 2;
 		$("#rmbUser").attr("checked", true);
-		$(".username").val($.cookie("userName")); 
-		$(".password").val($.cookie("passWord")); 
-	} 
-}); 
-//保存用户信息 
+		$(".username").val($.cookie("userName"));
+		$(".password").val($.cookie("passWord"));
+	}
+});
+//保存用户信息
 function saveUserInfo() {
-	if ($("#rmbUser").is(':checked') == true) { 
-		var userName = $(".username").val(); 
-		var passWord = $(".password").val(); 
-		$.cookie("rmbUser", "true", { expires: 7 }); // 存储一个带7天期限的 cookie 
-		$.cookie("userName", userName, { expires: 7 }); // 存储一个带7天期限的 cookie 
+	if ($("#rmbUser").is(':checked') == true) {
+		var userName = $(".username").val();
+		var passWord = $(".password").val();
+		$.cookie("rmbUser", "true", { expires: 7 }); // 存储一个带7天期限的 cookie
+		$.cookie("userName", userName, { expires: 7 }); // 存储一个带7天期限的 cookie
 		if(user_length == 1){
-			$.cookie("passWord",hex_md5(passWord),{ expires: 7 }); // 存储一个带7天期限的 cookie 
+			$.cookie("passWord",hex_md5(passWord),{ expires: 7 }); // 存储一个带7天期限的 cookie
 		}else if(user_length == 2){
-			$.cookie("passWord",passWord,{ expires: 7 }); // 存储一个带7天期限的 cookie 
-		}	
-	} 
-	else { 
-		$.cookie("rmbUser",null); 
-		$.cookie("userName",null); 
-		$.cookie("passWord",null); 
-	} 
-} 
+			$.cookie("passWord",passWord,{ expires: 7 }); // 存储一个带7天期限的 cookie
+		}
+	}
+	else {
+		$.cookie("rmbUser",null);
+		$.cookie("userName",null);
+		$.cookie("passWord",null);
+	}
+}
 
 //用户名发生改变清空密码框
 $(".username").change(function(){
@@ -65,9 +65,9 @@ $("input[name='vehicle']").click(function(){
 var state = 1;
 function login(){
 	if (state == 1) {
-		state = 2;
-		var userVal = $('.username').val();
-		var passVal = $('.password').val();
+			state = 2;
+			var userVal = $('.username').val();
+			var passVal = $('.password').val();
 	  	var checked = $("input[name='vehicle']").is(':checked');
 	  	remove()
 	  	if(userVal == ""){
@@ -99,8 +99,8 @@ function login(){
    		//  @data  获取验证码需要的数据
 		//注册需要的参数
 		var data = {
-			username: userVal,
-			password: pass_cont,
+			username: userVal,;
+			password: pass_cont,;
 			flag: checked,
 		};
 		$.ajax({
@@ -110,9 +110,12 @@ function login(){
 			data: data,
 			success: function(e){
 				//登录失败返回
-				if(e.status == 400){
+				if(e.status == "401.2"){
 					state = 1;
-					$(".login_uesr").text("账户或密码不正确");
+					$(".login_uesr").text("用户名不存在");
+				}else if(e.status == "401.1"){
+					state = 1;
+					$(".login_pass").text("密码错误");
 				}else if(e.status == 200){
 					$.cookie("user", userVal,{ path:'/',secure:false }); //储存用户名
 					$.cookie("login_on", e.token,{ path:'/',secure:false}); //登录成功返回信息
@@ -126,7 +129,7 @@ function login(){
 					}
 				}else{
 					state = 1;
-					$(".login_uesr").text("发生未知错误,请联系网站管理人员");
+					$(".login_uesr").text("发生未知错误,请稍后重试");
 				}
 			},
 			error : function(e) {
@@ -156,6 +159,3 @@ $('.button').click(function(){
 function remove(){
 	$(".login_ts").text("");
 };
-
-
-
