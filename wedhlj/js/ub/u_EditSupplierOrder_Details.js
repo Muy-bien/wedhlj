@@ -27,7 +27,7 @@ $(document).ready(function(){
 			$("#icon").css("display","none");
 		}
 	})
-	//_item 下拉框中的选项标记 
+	//_item 下拉框中的选项标记
 	//_content 选中框内容填放处标记
 	function dropDown(_item,_content){
 		$(_item).click(function(){
@@ -170,7 +170,7 @@ function addOrder(indentId){
 		on_Loading();
 		$.ajax({
 			type: 'POST',
-			url: apiUrl+'/indent/addIndent',
+			url: apiUrl+'/indent/updateIndent',
 			data: data,
 			dataType: 'json',
 			success:function(e){
@@ -295,7 +295,7 @@ function addProps(){
 		$(".addOrderItems").css("display","none");
 		emptyProp();
 	})
-}	
+}
 //人员添加
 var addpersonnel=[];
 addpersonnels();
@@ -450,4 +450,3 @@ function pick_up_information(indentId){
 		}
 	})
 }
-

@@ -57,15 +57,15 @@ $(".Upload").click(function(){
 			for(var t=0;t<imgbox_name[r].length;t++){
 				if(imgbox_name[r][t]){
 					img_hide += imgbox_name[r][t]+",";
-				}	
+				}
 			}
 			$(".img_hide input").eq(r).val(img_hide);
-		}	
+		}
 		//用formDate对象上传
 		var data = new FormData($('#uploadForm')[0]);
 		for(var i=0;i<imgFile.length;i++){
 			for(var s=0;s<imgFile[i].length;s++){
-				data.append(files_data[i],imgFile[i][s]);	
+				data.append(files_data[i],imgFile[i][s]);
 			}
 		}
 		//返回商品管理页面/scheme/addSchemeInfo
@@ -92,7 +92,7 @@ $(".Upload").click(function(){
 				down_Loading()
 				meg("提示","服务器开了小差，请稍后重试","body");
 			}
-		});	
+		});
 	}
 })
 //导航栏默认选中
@@ -144,7 +144,7 @@ function queryScheme(schemeNo){
 						'<div class="show">'+
 						'<img src="'+apiUrl+sStage_img[a]+'" alt="">'+
 						'</div>'+
-				#imgBox		'<div onclick="remove_default(this,\'0\')" class="main_file_hide remove_default">删除</div>'+
+						'<div onclick="remove_default(this,\'0\')" class="main_file_hide remove_default">删除</div>'+
 						'</div>';
 				}
 				$("#imgBox01").html(sStage);
@@ -228,6 +228,5 @@ function queryScheme(schemeNo){
 				down_Loading()
 				meg("提示","服务器开了小差，请稍后重试","body");
 			}
-		});	
+		});
 }
-
