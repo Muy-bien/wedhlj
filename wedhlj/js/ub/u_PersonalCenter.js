@@ -187,8 +187,10 @@ $(".littleTitleTwo div").click(function(){
 	$(this).addClass('littleTitleTwo_on').siblings('').removeClass('littleTitleTwo_on');
 	var index=$(this).index();
 	if(index==2){
+		$(".havePost").html('');
 		queryBiddingTakeByUser($.cookie('login_on'),1,pageSize,1,1)
 	}else if(index==0){
+		$(".havePost").html('');
 		queryMyAllTask($.cookie('login_on'),1,pageSize,1,1);
 	}
 })

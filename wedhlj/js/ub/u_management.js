@@ -74,11 +74,14 @@ function show(page,auditStatus,state,Reset){
 }
 //渲染列表内容
 function showlist(data,auditStatus){
+	console.log(data.productList);
 	var str = "";
 	if(data.productList != ""){
 		for(var i=0;i<data.productList.length;i++){
 			var productList = data.productList[i];
-			str +='<ul>'+
+			console.log(productList.productNo);
+			console.log(productList.productType);
+			str +='<ul onclick="turnShop('+productList.productNo+','+productList.productType+')">'+
 				'<li><p>'+productList.productNo+'</p></li>'+
 				'<li><div class="main_cont_list_img img_auto" style="background-image:url('+apiUrl+productList.productImage.split(",")[0]+')"></div></li>'+
 				'<li><p>'+productList.productName+'</p></li>'+
@@ -136,5 +139,10 @@ function onDelete(id,auditStatus){
 //编辑
 function Edit(id){
 	window.location.href = "u_management_edit.html?id="+id
+}
+
+// 跳转到商品详情页面
+function turnShop(productNo,type){
+	window.location.href="b_Addorder.html?productNo="+productNo+"&type="+type+"";
 }
 

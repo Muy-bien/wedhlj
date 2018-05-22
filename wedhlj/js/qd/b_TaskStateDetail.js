@@ -268,33 +268,24 @@ queryTask(taskId)
 				data:{taskId:taskId},
 				dataType:'json',
 				success:function(e){
-					console.log(e);
 					// 竞标商家数量
 					var merchantAndPersonnel=e.merchantAndPersonnel;
 					if(merchantAndPersonnel.length>0){
 						var html='';
 						for(var i=0;i<merchantAndPersonnel.length;i++){
-							console.log(merchantAndPersonnel[i]);
 							html+='<div class="compitiveMerchant_content">'+
 									'<h1>'+merchantAndPersonnel[i].merchantName+'</h1>'+
 									'<div class="compitive_introduce_person">';
 							
 							var personnelList=merchantAndPersonnel[i].personnelList;
-							console.log(personnelList);
-							console.log(personnelList.length);
 							for(var j=0;j<personnelList.length;j++){
-								console.log(personnelList[j]);
-								console.log(personnelList[j].taskStatus);
-								console.log(personnelList[j]);
 								if(personnelList[j].taskStatus==2||personnelList[j].taskStatus==3||personnelList[j].taskStatus==4){
-
-								console.log(personnelList[j]);
 									html='';
 									html+='<div class="compitiveMerchant_content">'+
 									'<h1>'+merchantAndPersonnel[i].merchantName+'</h1>'+
 									'<div class="compitive_introduce_person">';
 									html+=	'<div>'+
-												'<a href="">'+
+												'<a href="b_Preferred_ZCR_Case.html?PersonnelNo='+personnelList[j].personnelNo+'">'+
 													//'<img src="'+apiUrl+personnelList[j].headPortait+'" alt="">'+
 													'<div class="img_auto" style="background-image:url('+apiUrl+personnelList[j].headPortait+')"></div>'+
 												'</a>'+
@@ -317,7 +308,7 @@ queryTask(taskId)
 								}else{
 
 									html+=	'<div>'+
-												'<a href="">'+
+												'<a href="b_Preferred_ZCR_Case.html?PersonnelNo='+personnelList[j].personnelNo+'">'+
 													'<div class="img_auto" style="background-image:url('+apiUrl+personnelList[j].headPortait+')"></div>'+
 												'</a>'+
 												'<p class="c_name">'+personnelList[j].name+'</p>'+
@@ -371,17 +362,13 @@ function acceptUsee(taskId,userId){
 				data:{taskId:taskId},
 				dataType:'json',
 				success:function(e){
-					console.log(e);
-					console.log(e.merchantList);
 					var merchantList=e.merchantList;
 					var html='';
 					for(var i=0;i<merchantList.length;i++){
-						console.log(merchantList[i]);
-						console.log(merchantList[i].mId);
 						if(merchantList[i].userId==acceptUserIdTotal){
 							html='';
 							html+='<div>'+
-									'<a href="">'+
+									'<a href="b_Supermarket_FWS.html?id='+merchantList[i].mId+'&type='+merchantList[i].mType+'">'+
 										//'<img src="'+apiUrl+merchantList[i].mLogo+'" alt="">'+
 										'<div class="img_auto" style="background-image:url('+apiUrl+merchantList[i].mLogo+')"></div>'+
 									'</a>'+
@@ -391,7 +378,7 @@ function acceptUsee(taskId,userId){
 								break;
 						}else{
 						html+='<div>'+
-								'<a href="">'+
+								'<a href="b_Supermarket_FWS.html?id='+merchantList[i].mId+'&type='+merchantList[i].mType+'">'+
 									//'<img src="'+apiUrl+merchantList[i].mLogo+'" alt="">'+
 									'<div class="img_auto" style="background-image:url('+apiUrl+merchantList[i].mLogo+')"></div>'+
 								'</a>'+
@@ -403,10 +390,6 @@ function acceptUsee(taskId,userId){
 
 					}
 					$('.aboutDanceAndTool').html(html);
-					console.log(acceptUserIdTotal);
-					$(".c_chooseButton").click(function(){
-						console.log($(this).children().val());
-					})
 					down_Loading();
 				},
 				error:function(){
