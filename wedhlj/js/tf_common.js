@@ -105,7 +105,7 @@ function onSignIn(){
 		$(".header_user_img").addClass('header_user_img_on');
 		$(".header_ht").addClass('hp_block');
 		$(".header_user_cont").html('<span class="hp_block">'+$.cookie("user")+'</span>|<span class="off_login">退出登录</span>');//头部样式
-		clickBlock(h_position,h_checkStatus);//点击进入后台触发事件
+		clickBlock($.cookie("position"),$.cookie("checkStatus"));//点击进入后台触发事件
 	}else if($.cookie("login_on") == "" || !$.cookie("login_on")){
 		//未登录
 		judgeLogin=2;
