@@ -56,6 +56,14 @@
   font-weight: normal;
 }
 
+.main_box h3 {
+  width: 110px;
+  line-height: 30px;
+  font-size: 16px;
+  color: #666;
+  font-weight: normal;
+}
+
 .main_box_x10 {
   border-left: 9px solid #f85162;
   width: 500px;
@@ -149,6 +157,21 @@
 
 .main_box_x30_on i {
   background: #4c4c4c;
+}
+
+.main_box_x40{
+  display: flex;
+  width: 500px;
+  height: 30px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 35px;
+}
+
+.main_box_x40 select{
+  width: 150px;
+  height: 100%;
+  text-align: center;
 }
 
 .policy,

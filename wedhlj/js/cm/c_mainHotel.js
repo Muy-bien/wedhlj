@@ -29,7 +29,7 @@ function queryAllHotelInfo(pageNo,state){
 					html+='<div class="hotel_detail_item">'+
 								'<a href="b_AboutHotelDetail.html?hid='+e.hotelList[i].hotelId+'" target="_blank"><div>'+e.hotelList[i].hotelName+'</div></a>'+
 								'<div>'+e.hotelList[i].hotelTelephone+'</div>	'+
-								'<div>'+e.hotelList[i].hotelAddress+'</div>'+	
+								'<div>'+e.hotelList[i].hotelAddress.split(",").join("")+'</div>'+	
 								'<div class="buttons">'+
 									'<a href="c_AboutHotelEdit.html?id='+e.hotelList[i].hotelId+'"><div class="showbutton">编辑</div></a>'+
 									'<div class="showbutton" onclick="meg_delete('+e.hotelList[i].hotelId+')">删除</div>'+

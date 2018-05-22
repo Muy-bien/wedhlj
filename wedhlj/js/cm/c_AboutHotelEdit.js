@@ -7,13 +7,6 @@ $(document).ready(function(){
 			$(this).addClass('main_box_x30_on')
 		}
 	})
-	//获取url中的参数
-	function getUrlParam(name){
-		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-		//构造一个含有目标参数的正则表达式对象
-		var r = window.location.search.substr(1).match(reg);//匹配目标参数
-		if (r != null) return decodeURI(r[2]); return null; //返回参数值
-	}
 	var id = getUrlParam("id");
 	Exhibition(id);//获取数据
 	on_addhall(id);//点击添加大厅
@@ -102,6 +95,7 @@ function addHall(id,input_img){
 		for(var i=0;i<input_img.length;i++){
 			data.append("lobbyImgUrl",input_img[i])
 		}
+		on_Loading();
 		//发送请求上传大厅
 		$.ajax({
 			type: 'POST',
@@ -110,6 +104,7 @@ function addHall(id,input_img){
 			processData: false,
 			contentType: false,
 			success:function(e){
+				down_Loading();
 				if(e.status == 200){
 					meg("提示","上传成功","body",dothing)
 					function dothing(){
@@ -120,6 +115,9 @@ function addHall(id,input_img){
 				}else{
 					meg("提示","上传失败，请稍后重试","body")
 				}
+			},
+			error:function(){
+				down_Loading();
 			}
 		})
 	}				
@@ -261,7 +259,10 @@ function Refresh_hotelInfo(info){
 	var info = info.hotel[0];
 	$("input[name=T_hotel_name]").val(info.hotelName);
 	$("input[name=T_hotel_telephone]").val(info.hotelTelephone);
-	$("input[name=T_hotel_address]").val(info.hotelAddress);
+	$(".address_x10").val(info.hotelAddress.split(",")[0]);
+	$(".address_x20").val(info.hotelAddress.split(",")[1]);
+	$(".address_x30").val(info.hotelAddress.split(",")[2]);
+	$(".address_x40").val(info.hotelAddress.split(",")[3]);
 	$("input[name=T_hotel_price]").val(info.hotelPrice);
 	$(".T_hotel_introduction").val(info.hotelIntroduction);
 	$("input[name=T_hotel_cuisine_price_section]").val(info.hotelCuisinePriceSection);
@@ -511,6 +512,7 @@ function on_edit_hallInfo(hall_id,img_edit,input_img,id){
 		}
 		//修改大厅图片名称
 		data.append("oldImg",HallInfo_oldImg)
+		on_Loading();
 		//发送请求上传大厅
 		$.ajax({
 			type: 'POST',
@@ -519,6 +521,7 @@ function on_edit_hallInfo(hall_id,img_edit,input_img,id){
 			processData: false,
 			contentType: false,
 			success:function(e){
+				down_Loading();
 				if(e.status == 200){
 					meg("提示","修改成功","body",dothing)
 					function dothing(){
@@ -529,6 +532,9 @@ function on_edit_hallInfo(hall_id,img_edit,input_img,id){
 				}else{
 					meg("提示","修改失败","body")
 				}
+			},
+			error:function(){
+				down_Loading();
 			}
 		})
 	})
@@ -542,7 +548,7 @@ function edit_Hotel(id){
 		}else if(!$("input[name=T_hotel_telephone]").val()){
 			meg("提示","酒店电话不能为空","body")
 			return false;
-		}else if(!$("input[name=T_hotel_address]").val()){
+		}else if(!$(".address_x40").val()){
 			meg("提示","酒店地址不能为空","body")
 			return false;
 		}else if(!$("input[name=T_hotel_price]").val()){
@@ -590,6 +596,9 @@ function edit_Hotel(id){
 				data.append(files_data[i],imgFile[i][s]);
 			}
 		}
+		//酒店地址
+		var T_hotel_address=[$(".address_x10").val(),$(".address_x20").val(),$(".address_x30").val(),$(".address_x40").val()];
+		data.append('T_hotel_address',T_hotel_address);
 		//验证图标
 		var icon = ["T_hotel_wifi_status","T_hotel_park_status","T_hotel_restaurant_status","T_hotel_luggage_status"];
 		for(var x=0;x<icon.length;x++){
@@ -611,17 +620,15 @@ function edit_Hotel(id){
 			processData: false,
 			contentType: false,
 			success: function(e){
+				down_Loading()
 				if(e.status == 200){
-					down_Loading()
 					meg('提示','酒店信息修改成功','body',dothing);
 					function dothing(){
 						window.location.href = "c_mainHotel.html"
 					}
 				}else if(e.status == 401){
-					down_Loading()
 					meg('提示','酒店信息修改失败','body');
 				}else if(e.status == 500){
-					down_Loading()
 					meg('提示','服务器开了小差，请稍后重试','body');
 				}	
 			},

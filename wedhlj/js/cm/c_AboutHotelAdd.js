@@ -18,7 +18,7 @@ $(".main_but_on").click(function(){
 	}else if(!$("input[name=T_hotel_telephone]").val()){
 		meg("提示","酒店电话不能为空","body")
 		return false;
-	}else if(!$("input[name=T_hotel_address]").val()){
+	}else if(!$(".address_x40").val()){
 		meg("提示","酒店地址不能为空","body")
 		return false;
 	}else if(!$("input[name=T_hotel_price]").val()){
@@ -66,6 +66,9 @@ $(".main_but_on").click(function(){
 			data.append(files_data[i],imgFile[i][s]);
 		}
 	}
+	//酒店地址
+	var T_hotel_address=[$(".address_x10").val(),$(".address_x20").val(),$(".address_x30").val(),$(".address_x40").val()];
+	data.append('T_hotel_address',T_hotel_address);
 	//验证图标
 	var icon = ["T_hotel_wifi_status","T_hotel_park_status","T_hotel_restaurant_status","T_hotel_luggage_status"];
 	for(var x=0;x<icon.length;x++){
