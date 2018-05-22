@@ -91,9 +91,10 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state,reset){
 									'<li>操作</li>'+
 								'</ul>';
 	        		for(var i=0;i<businessPersonnels.length;i++){
+	        			console.log(businessPersonnels[i].personnelNo);
 	        			businessPersonnels[i].audit=0?'未通过':(businessPersonnels[i].audit==1?'通过':'未审核');
 	        			var status=businessPersonnels[i].audit;
-						personHtml+='<div class="main_cont_list">'+
+						personHtml+='<div class="main_cont_list cooperate_cont_list">'+
 										'<ul>'+
 											'<li><p>'+businessPersonnels[i].personnelNo+'</p></li>'+
 											'<li><div class="main_cont_list_img img_auto" style="background-image:url('+apiUrl+businessPersonnels[i].headPortait+')"></div></li>'+
@@ -112,6 +113,11 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state,reset){
 										'</ul>'+
 									'</div>'
 		        		}
+					$(".main_cont").html(personHtml);
+					$('.cooperate_cont_list').click(function(){
+						//console.log($(this).find('ul li p').eq(0).html());
+						window.location.href="b_Preferred_ZCR_Case.html?PersonnelNo="+$(this).find('ul li p').eq(0).html()+"";
+					})
 	        	}else if(PersonnelType==1){//固定人员
 	        			personHtml+='<ul class="main_cont_title main_cont_title_x10">'+
 										'<li>编号</li>'+
@@ -151,9 +157,9 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state,reset){
 											'</ul>'+
 										'</div>';
 						}
+					$(".main_cont").html(personHtml);
 	        	}
 
-				$(".main_cont").html(personHtml);
 				// 点击备注
 				$(".Remarks").click(function(){
 					$(this).children().toggleClass("show");

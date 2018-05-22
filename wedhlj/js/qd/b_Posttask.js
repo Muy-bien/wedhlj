@@ -104,7 +104,7 @@ var str=["","","",""];
       //案例图片
       for(var s=0;s<str.length;s++){
         if(str[s]){
-          form.append("taskSketch",str[s]);//新图oldTaskSketch//旧图
+          form.append("taskSketch",str[s]);//新图oldTaskSketch
         }
       }
       //刷新页面

@@ -154,6 +154,7 @@ function queryTask(taskId){
         data: {taskId:taskId},
         success: function(e) {
           var task=e.task[0];
+          console.log(e);
           //任务类型
           var lip=$('.Posttask_x10 p');
           for(var j=0;j<lip.length;j++){
@@ -186,15 +187,13 @@ function queryTask(taskId){
           //方案描述
           $('textarea[name=taskDesc]').val(task.taskDesc);
           //方案草图
-          var taskSketch=task.taskSketch.split(',');
-          taskSketchCom=task.taskSketch.split(',');
-          for(var i=0;i<taskSketch.length;i++){
-            if(taskSketch[i]==null||taskSketch[i]=='null'){
-
-            }else{
-              $('.main_file').eq(i).find('.show').append('<img src='+apiUrl+taskSketch[i]+'/>')
+          if(task.taskSketch){
+            var taskSketch=task.taskSketch.split(',');
+            for(var i=0;i<taskSketch.length;i++){
+             $('.main_file').eq(i).find('.show').append('<img src='+apiUrl+taskSketch[i]+'/>')
             }
           }
+          taskSketchCom=task.taskSketch.split(',');//存放旧图
         },
         error : function(e) {
           meg('提示','当前网络不畅通,请检查您的网络','body'); 
