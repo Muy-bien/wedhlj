@@ -90,6 +90,7 @@ function login(){
 			password: pass_cont,
 			flag: checked,
 		};
+		on_Loading();
 		$.ajax({
 			type: 'POST',
 			url: apiUrl+'login/validation',
@@ -98,9 +99,11 @@ function login(){
 			success: function(e){
 				//登录失败返回
 				if(e.status == "401.2"){
+					down_Loading();
 					state = 1;
 					$(".login_uesr").text("用户名不存在");
 				}else if(e.status == "401.1"){
+					down_Loading();
 					state = 1;
 					$(".login_pass").text("密码错误");
 				}else if(e.status == 200){
@@ -115,11 +118,13 @@ function login(){
 						window.location.href = PreviousUrl;
 					}
 				}else{
+					down_Loading();
 					state = 1;
 					$(".login_uesr").text("发生未知错误,请稍后重试");
 				}
 			},
 			error : function(e) {
+				down_Loading();
 				state = 1;
 				$(".login_uesr").text("未能成功连接服务器,请稍后重试");
 			}
@@ -145,7 +150,7 @@ function remove(){
 //驗證是否登錄
 setInterval("settime()",1000);
 function settime(){
-	if ($.cookie("login_on")!= "" || $.cookie("login_on") || $.cookie("login_on")!=null){
+	if ($.cookie("login_on")){
 		window.location.href = "index.html";
 	}
 }
