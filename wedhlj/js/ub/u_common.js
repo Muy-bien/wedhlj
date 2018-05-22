@@ -22,13 +22,13 @@ $(document).ready(function(){
 					header(e.userType);//头部
 				}
 			}
-		})
+		});
 		//获取用户基本信息
 		if($("div").hasClass("main_header") == true){
 			userInfo();
 		}
 	}
-	
+
 	//侧边栏
 	function onNav(h_position){
 		var h_nav = "";
@@ -125,7 +125,7 @@ $(document).ready(function(){
 		}
 		$(".nav").html(h_nav);
 		if(typeof on_navli === "function"){
-			on_navli()
+			on_navli();
 		}
 	}
 
@@ -161,9 +161,9 @@ $(document).ready(function(){
 		$("header").html(h_header);
 		$(".haeder_notice").click(function(){
 			window.location.href = "u_NoticeInTheStation.html";
-		})
+		});
 		if(typeof add_header === "function"){
-			add_header()
+			add_header();
 		}
 	}
 	//商户个人信息
@@ -174,7 +174,7 @@ $(document).ready(function(){
 			dataType: 'json',
 			data: {token:$.cookie("login_on")},
 			success: function(e){
-				var user = e.merchant
+				var user = e.merchant;
 				if(e.status == 200){
 					$(".main_header").html('<div class="main_header_user">'+
 						'<div class="main_header_user_img"><div>'+(user.logo==""?"":'<img src="'+apiUrl+user.logo+'">')+'</div></div>'+
@@ -196,22 +196,32 @@ $(document).ready(function(){
 							'<h2>余额</h2>'+
 							'<p>'+(user.money=="0.0"?0:user.money)+'</p>'+
 						'</li>'+
-					'</ul>')
+					'</ul>');
 				}
 			}
-		})
-	}	
-	
-})
+		});
+	}
+});
 //退出登录
 function sign_out(){
 	$(".sign_out").click(function(){
-		meg2("提示","是否确定退出登录","body",doThing)
+		meg2("提示","是否确定退出登录","body",doThing);
 		function doThing(){
 			$.cookie("login_on","",{ path:'/',secure:false , expires: -1});//清空token
 			$.cookie("user","",{ path:'/',secure:false , expires: -1});//清空用户名
 			$.cookie("position","",{ path:'/',secure:false , expires: -1});//清空用户名
 			window.location.href = "index.html";
 		}
-	})
-}	
+	});
+}
+//驗證是否登錄
+setInterval('settime()',1000);
+function settime(){
+	if ($.cookie("login_on") == "" || !$.cookie("login_on") || $.cookie("position")==0){
+		var PreviousUrl = window.location.pathname + window.location.search + window.location.hash;
+		$.cookie("PreviousUrl",PreviousUrl,{ path:'/',secure:false });
+		window.location.href = "login.html";
+	}else if(!$.cookie("position")){
+		window.location.href = "index.html";
+	}
+}
