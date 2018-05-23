@@ -8,14 +8,7 @@ $(".main_title_cont>h1").click(function(){
 		}else if($(this).text().substr(0,3)=='未通过'){
 			location.href='u_PlanManagement.html?chooseStatus=0&pageNo=1';
 		}
-	})
-//获取url中的参数
-function getUrlParam(name){
-	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-	//构造一个含有目标参数的正则表达式对象
-	var r = window.location.search.substr(1).match(reg);//匹配目标参数
-	if (r != null) return decodeURI(r[2]); return null; //返回参数值
-}
+});
 if(!chooseStatus){
 	location.href='u_PlanManagement.html?chooseStatus=1&pageNo=1';
 }
@@ -43,7 +36,7 @@ function queryAllScheme(token,auditStatus,pageNo){
 		url: apiUrl+"/scheme/queryAllScheme",
 		data: {token:token,auditStatus:auditStatus,pageNo:pageNo,pageSize:pageSize},
 		success: function(e) {
-			down_Loading()
+			down_Loading();
 			if(e.schemeList.length!=0){
 				var totalpage=Math.ceil(e.totalCount/pageSize);
 				$('.main_Pagination').paging({
@@ -52,19 +45,19 @@ function queryAllScheme(token,auditStatus,pageNo){
 		            slideSpeed: 600, // 缓动速度。单位毫秒
 		            jump: true, //是否支持跳转
 		            // 回调函数
-		            callback: function(page) { 
+		            callback: function(page) {
 		            	if(state==1){
 		            		state=2;
 		            	}else if(state==2){
 		            		location.href='u_PlanManagement.html?chooseStatus='+chooseStatus+'&pageNo='+page+'';
 		            	}
 		            }
-	       		 })
+	       		 });
 				var items=e.schemeList;
 				var itemsHtml='';
 				for(var i=0;i<items.length;i++){
 					var img=items[i].schemePassageArea.split(",")[0];
-	        		var checStatus=items[i].auditStatus==1?"审核通过":items[i].auditStatus==0?"审核未通过":"未审核" 
+	        		var checStatus=items[i].auditStatus==1?"审核通过":items[i].auditStatus==0?"审核未通过":"未审核";
 					itemsHtml+='<ul>'+
 									'<li><p>'+items[i].schemeNo+'</p></li>'+
 									'<li><div class="main_cont_list_img img_auto" style="background-image:url('+apiUrl+img+')"></div></li>'+
@@ -76,10 +69,11 @@ function queryAllScheme(token,auditStatus,pageNo){
 									'<li><p>'+checStatus+'</p></li>'+
 									'<li>'+
 										'<a href="u_PlanEditCommodity.html?schemeNo='+items[i].schemeNo+'"><button>编辑</button></a>'+
+										'<a href="b_CaseDetails.html?schemeNo='+items[i].schemeNo+'" target="_blank"><button>查看</button></a>'+
 										'<button class="removePlan">删除</button>'+
 										'<button class="hide schemeNo">'+items[i].schemeNo+'</button>'+
 									'</li>'+
-								'</ul>'
+								'</ul>';
 				}
 				$(".main_cont_list").html(itemsHtml);
 				// 点击删除
@@ -87,19 +81,19 @@ function queryAllScheme(token,auditStatus,pageNo){
 					meg2("提示","确定删除该策划吗？","body",removeState);
 					var id=$(this).next('.schemeNo').html();
 					function removeState(){
-						delSchemeInfo(id)
+						delSchemeInfo(id);
 					}
-				})
+				});
 
 			}else{
 				$(".main_cont_list").html('当前区域没有您需要的相关数据！');
 			}
 		},
 		error : function(e) {
-			down_Loading()
+			down_Loading();
 			meg("提示","服务器开了小差，请稍后重试","body");
 		}
-	})
+	});
 }
 // 调用策划信息分页函数
 queryAllScheme($.cookie("login_on"),chooseStatus,pageNo);
@@ -112,7 +106,7 @@ function delSchemeInfo(schemeNos){
 		url: apiUrl+"/scheme/delSchemeInfo",
 		data: {schemeNos:schemeNos},
 		success: function(e) {
-			down_Loading()
+			down_Loading();
 			if(e.status==200){
 				meg("提示","策划删除成功！","body",refresh);
 			}else{
@@ -120,10 +114,10 @@ function delSchemeInfo(schemeNos){
 			}
 		},
 		error : function(e) {
-			down_Loading()
+			down_Loading();
 			meg("提示","服务器开了小差，请稍后重试","body");
 		}
-	})
+	});
 }
 // 刷新页面
 function refresh(){
@@ -136,15 +130,15 @@ function resultCount(token){
 		url: apiUrl+"/scheme/resultCount",
 		data: {token:token},
 		success: function(e) {
-			down_Loading()
+			down_Loading();
 			$(".one span").html('('+e.successAuditCount+')');
 			$(".two span").html('('+e.reviewAuditCount+')');
 			$(".three span").html('('+e.failureAuditingCount+')');
 		},
 		error : function(e) {
-			down_Loading()
+			down_Loading();
 			meg("提示","服务器开了小差，请稍后重试","body");
 		}
-	})
+	});
 }
 resultCount($.cookie("login_on"));

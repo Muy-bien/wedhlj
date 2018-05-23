@@ -16,23 +16,23 @@ $(document).ready(function(){
 		}else{
 			location.href="u_AddCollaborator.html";
 		}
-	})
+	});
 	// 点击人员类型
 	$(".main_title_cont h1").click(function(){
 		$(this).addClass("main_title_cont_on").siblings().removeClass("main_title_cont_on");
 		var index=$(this).index();
 		if(index==0){
 			history.pushState(history.state,"","?PersonnelType=0&page=1");
-			queryAllParticularInfo($.cookie("login_on"),1,0,1,1)
+			queryAllParticularInfo($.cookie("login_on"),1,0,1,1);
 		}else if(index==1){
 			history.pushState(history.state,"","?PersonnelType=1&page=1");
-			queryAllParticularInfo($.cookie("login_on"),1,1,1,1)
+			queryAllParticularInfo($.cookie("login_on"),1,1,1,1);
 		}
-	})
+	});
 	// 根据导航栏判断人员类型
 	if(!PersonnelType){
 		$(".main_title_cont h1").eq(0).addClass('main_title_cont_on');
-		queryAllParticularInfo($.cookie("login_on"),1,0,1,1)
+		queryAllParticularInfo($.cookie("login_on"),1,0,1,1);
 	}else if(PersonnelType==0){
 		$(".main_title_cont h1").eq(0).addClass('main_title_cont_on');
 		queryAllParticularInfo($.cookie("login_on"),page,0,1,1);
@@ -40,7 +40,7 @@ $(document).ready(function(){
 		$(".main_title_cont h1").eq(1).addClass('main_title_cont_on');
 		queryAllParticularInfo($.cookie("login_on"),page,1,1,1);
 	}
-})
+});
 ///BusinessPersonnel/queryAllParticularInfo
 ///PersonnelType  0---合作 1--固定
 var pageSize=5;
@@ -58,20 +58,20 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state,reset){
 			if(Math.ceil(e.totalCount/pageSize)>1&&reset==1){
 				$('.main_Pagination').html("");
 				$('.main_Pagination').paging({
-		            initPageNo: pageNo, // 初始页码
-		            totalPages: Math.ceil(e.totalCount/pageSize), //总页数
-		            slideSpeed: 600, // 缓动速度。单位毫秒
-		            jump: true, //是否支持跳转
-		            // 回调函数
-		            callback: function(page){
-		            	if(state == 1){
-							state = 2 
-		            	}else if(state == 2){
-		            		history.pushState(history.state,"","?PersonnelType="+PersonnelType+"&page="+page)
-		            		queryAllParticularInfo($.cookie("login_on"),page,PersonnelType,1,2);
-		            	}
-		            }
-	        	})
+            initPageNo: pageNo, // 初始页码
+            totalPages: Math.ceil(e.totalCount/pageSize), //总页数
+            slideSpeed: 600, // 缓动速度。单位毫秒
+            jump: true, //是否支持跳转
+            // 回调函数
+            callback: function(page){
+            	if(state == 1){
+								state = 2 ;
+            	}else if(state == 2){
+            		history.pushState(history.state,"","?PersonnelType="+PersonnelType+"&page="+page);
+            		queryAllParticularInfo($.cookie("login_on"),page,PersonnelType,1,2);
+            	}
+            }
+      	});
 			}
 
 			if(businessPersonnels.length>=1){
@@ -91,7 +91,6 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state,reset){
 									'<li>操作</li>'+
 								'</ul>';
 	        		for(var i=0;i<businessPersonnels.length;i++){
-	        			console.log(businessPersonnels[i].personnelNo);
 	        			businessPersonnels[i].audit=0?'未通过':(businessPersonnels[i].audit==1?'通过':'未审核');
 	        			var status=businessPersonnels[i].audit;
 						personHtml+='<div class="main_cont_list cooperate_cont_list">'+
@@ -111,13 +110,12 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state,reset){
 												'<button class="deletePlan">删除<div class="hide">'+businessPersonnels[i].personnelNo+'</div></button>'+
 											'</li>'+
 										'</ul>'+
-									'</div>'
+									'</div>';
 		        		}
 					$(".main_cont").html(personHtml);
 					$('.cooperate_cont_list').click(function(){
-						//console.log($(this).find('ul li p').eq(0).html());
 						window.location.href="b_Preferred_ZCR_Case.html?PersonnelNo="+$(this).find('ul li p').eq(0).html()+"";
-					})
+					});
 	        	}else if(PersonnelType==1){//固定人员
 	        			personHtml+='<ul class="main_cont_title main_cont_title_x10">'+
 										'<li>编号</li>'+
@@ -144,9 +142,9 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state,reset){
 													'<div class="Remarks">'+
 														'<div class="Remarks_cont">';
 														if(!businessPersonnels[i].note){
-															personHtml+='<div class="Remarks_text">没有备注'
+															personHtml+='<div class="Remarks_text">没有备注';
 														}else{
-															personHtml+='<div class="Remarks_text">'+businessPersonnels[i].note+''
+															personHtml+='<div class="Remarks_text">'+businessPersonnels[i].note+'';
 														}
 							personHtml+=			'</div>'+
 												'</li>'+
@@ -163,7 +161,7 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state,reset){
 				// 点击备注
 				$(".Remarks").click(function(){
 					$(this).children().toggleClass("show");
-				})
+				});
 				// 点击删除按钮 /BusinessPersonnel/delParticularInfo'
 				$(".deletePlan").click(function(){
 					meg2("提示","确定删除该人员？","body",deleteSuccess);
@@ -171,16 +169,16 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state,reset){
 					function deleteSuccess(){
 					 deletePerson(PersonnelNos);
 					}
-				})
+				});
 			}else{
 				$(".main_cont").html('当前区域没有你查找的相关人员！');
 			}
 
 		},
 		error:function(){
-			meg("提示","网络错误，请稍后再试","body")
+			meg("提示","网络错误，请稍后再试","body");
 		}
-	})
+	});
 }
 
 //删除人员接口
@@ -197,8 +195,10 @@ function deletePerson(PersonnelNos){
 				meg("提示","人员删除失败！","body",reload);
 			}
 		},
-		error:function(){meg("提示","网络错误，请稍后再试","body")}
-	})
+		error:function(){
+			meg("提示","网络错误，请稍后再试","body");
+		}
+	});
 }
 //查询数据条数/BusinessPersonnel/resultTypeCount
 function resultTypeCount(token){
@@ -208,10 +208,12 @@ function resultTypeCount(token){
 		data: {token:token},
 		dataType: 'json',
 		success:function(e){
-			$(".coop span").html('('+e.fixedNumberCount+')')
-			$(".fixed span").html('('+e.cooperationNumCount+')')
+			$(".coop span").html('('+e.fixedNumberCount+')');
+			$(".fixed span").html('('+e.cooperationNumCount+')');
 		},
-		error:function(){meg("提示","网络错误，请稍后再试","body")}
-	})
+		error:function(){
+			meg("提示","网络错误，请稍后再试","body");
+		}
+	});
 }
-resultTypeCount($.cookie('login_on'))
+resultTypeCount($.cookie('login_on'));

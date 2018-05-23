@@ -274,7 +274,7 @@
 }
 
 .main_cont_list ul li button {
-  width: 56px;
+  min-width: 56px;
   height: 26px;
   border: 1px solid #999;
   -webkit-box-sizing: border-box;
@@ -326,7 +326,7 @@
 .Remarks_text {
   font-size: 14px;
   line-height: 18px;
-  color: #666; /* 
+  color: #666; /*
   max-height: 130px;
   overflow: auto;  */
 }

@@ -168,7 +168,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 					</div>
 					<!-- 案例视频 -->
 					<div class="p_name">
@@ -207,36 +207,38 @@
 			</div>
 		</div>
 	</form>
-		<!--图片裁剪框 start-->
-		<div style="display: none" class="tailoring-container">
-		    <div class="black-cloth" onclick="closeTailor(this)"></div>
-		    <div class="tailoring-content">
-		            <div class="tailoring-content-one">
-		                <label title="上传图片" for="chooseImg" class="l-btn choose-btn">
-		                    <input type="file" accept="image/jpg,image/jpeg,image/png" name="file" id="chooseImg" class="hidden" onchange="selectImg(this)">
-		                    选择图片
-		                </label>
-		                <div class="close-tailoring"  onclick="closeTailor(this)">×</div>
-		            </div>
-		            <div class="tailoring-content-two">
-		                <div class="tailoring-box-parcel">
-		                    <img id="tailoringImg">
-		                </div>
-		                <div class="preview-box-parcel">
-		                    <p>图片预览：</p>
-		                    <div class="square previewImg"></div>
-		                    <div class="circular previewImg"></div>
-		                </div>
-		            </div>
-		            <div class="tailoring-content-three">
-		                <button class="l-btn cropper-reset-btn">复位</button>
-		                <button class="l-btn cropper-rotate-btn">旋转</button>
-		                <button class="l-btn cropper-scaleX-btn">换向</button>
-		                <button class="l-btn sureCut" id="sureCut">确定</button>
-		            </div>
-		        </div>
-		</div>
-		<!--图片裁剪框 end-->
+	<!--图片裁剪框 start-->
+	<div style="display: none" class="tailoring-container">
+			<div class="black-cloth" onclick="closeTailor(this)"></div>
+			<div class="tailoring-content">
+						<div class="tailoring-content-one">
+								<div class="close-tailoring"  onclick="closeTailor(this)">×</div>
+						</div>
+						<div class="tailoring-content-two">
+								<div class="tailoring-box-parcel">
+										<img id="tailoringImg">
+								</div>
+								<div class="preview-box-parcel">
+										<p>图片预览：</p>
+										<div class="square previewImg"></div>
+										<div class="circular previewImg"></div>
+								</div>
+						</div>
+						<div class="tailoring-content-three">
+								<div>
+									<button class="l-btn cropper-reset-btn">复位</button>
+									<button class="l-btn cropper-rotate-btn">旋转</button>
+									<button class="l-btn cropper-scaleX-btn">换向</button>
+									<label title="选择图片" for="chooseImg" class="l-btn choose-btn">
+											<input type="file" accept="image/jpg,image/jpeg,image/png" name="file" id="chooseImg" class="hidden" onchange="selectImg(this)">
+											选择图片
+									</label>
+								</div>
+								<button class="l-btn sureCut" id="sureCut">确定</button>
+						</div>
+				</div>
+	</div>
+	<!--图片裁剪框 end-->
 	<!-- script -->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
@@ -244,7 +246,7 @@
 	<script type="text/javascript" src="js/ub/u_common.js"></script>
 	<script type="text/javascript" src="js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="js/ub/u_AddFixedPersonnel.js"></script>
-	
+
 	<script>
 		imgUpload({
 			uploadBox:'.upload_img',//索引大框

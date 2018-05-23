@@ -6,10 +6,10 @@ $(document).ready(function(){
 	var header = '<div class="logo"><img src="images/logo.png" alt=""></div>'+
 		'<div class="header_cont">'+
 			'<div class="header_cont_top">'+
-				'<div class="header_search">'+
+				'<!--<div class="header_search">'+
 					'<input type="text" class="input_search">'+
 					'<div class="but_search"></div>'+
-				'</div>'+
+				'</div>-->'+
 				'<div class="header_ht">商家入驻</div>'+
 				'<div class="header_user">'+
 					'<div class="header_user_img"></div>'+
@@ -97,15 +97,15 @@ function onSignIn(){
 				}else if(h_position == 4){
 					$(".header_ht").text('管理员后台');
 				}
+				$(".header_user_img").addClass('header_user_img_on');
+				$(".header_ht").addClass('hp_block');
+				$(".header_user_cont").html('<span class="hp_block">'+$.cookie("user")+'</span>|<span class="off_login">退出登录</span>');//头部样式
+				clickBlock($.cookie("position"),$.cookie("checkStatus"));//点击进入后台触发事件
 			},
 			error:function(){
 				down_Loading();
 			}
 		});
-		$(".header_user_img").addClass('header_user_img_on');
-		$(".header_ht").addClass('hp_block');
-		$(".header_user_cont").html('<span class="hp_block">'+$.cookie("user")+'</span>|<span class="off_login">退出登录</span>');//头部样式
-		clickBlock($.cookie("position"),$.cookie("checkStatus"));//点击进入后台触发事件
 	}else if($.cookie("login_on") == "" || !$.cookie("login_on")){
 		//未登录
 		judgeLogin=2;

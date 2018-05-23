@@ -163,10 +163,11 @@
   background: none;
   color: #999;
   margin: 0 30px;
+  margin-bottom: 10px;
 }
 
-.main_cont_list ul li button:first-child {
-  margin-bottom: 20px;
+.main_cont_list ul li button:last-child {
+  margin-bottom: 0;
 }
 
 .main_cont_list ul li button:hover {
