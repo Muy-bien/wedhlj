@@ -1,11 +1,9 @@
 $(document).ready(function(){
 	//验证是否为登录状态
-	if ($.cookie("login_on") == "" || !$.cookie("login_on") || $.cookie("position")==0){
+	if ($.cookie("login_on") == "" || !$.cookie("login_on")){
 		var PreviousUrl = window.location.pathname + window.location.search + window.location.hash;
-		$.cookie("PreviousUrl",PreviousUrl,{ path:'/',secure:false });
+		$.cookie("PreviousUrl",PreviousUrl.split("/")[1],{ path:'/',secure:false });
 		window.location.href = "login.html";
-	}else if(!$.cookie("position")){
-		window.location.href = "index.html";
 	}else{
 		//获取用户类型
 		$.ajax({
@@ -21,6 +19,7 @@ $(document).ready(function(){
 				if($("header").length >= 1){
 					header(e.userType);//头部
 				}
+				setInterval('Verification()',1000);
 			}
 		});
 		//获取用户基本信息
@@ -217,11 +216,14 @@ function sign_out(){
 //驗證是否登錄
 setInterval('settime()',1000);
 function settime(){
-	if ($.cookie("login_on") == "" || !$.cookie("login_on") || $.cookie("position")==0){
+	if ($.cookie("login_on") == "" || !$.cookie("login_on")){
 		var PreviousUrl = window.location.pathname + window.location.search + window.location.hash;
-		$.cookie("PreviousUrl",PreviousUrl,{ path:'/',secure:false });
+		$.cookie("PreviousUrl",PreviousUrl.split("/")[1],{ path:'/',secure:false });
 		window.location.href = "login.html";
-	}else if(!$.cookie("position")){
+		}
+}
+function Verification(){
+	if(!$.cookie("position") || !$.cookie("checkStatus")=="-1" || $.cookie("position")=="0"){
 		window.location.href = "index.html";
 	}
 }

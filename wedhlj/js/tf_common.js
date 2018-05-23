@@ -99,6 +99,7 @@ function onSignIn(){
 				}
 				$(".header_user_img").addClass('header_user_img_on');
 				$(".header_ht").addClass('hp_block');
+				$(".header_ht").removeClass('loginGO');
 				$(".header_user_cont").html('<span class="hp_block">'+$.cookie("user")+'</span>|<span class="off_login">退出登录</span>');//头部样式
 				clickBlock($.cookie("position"),$.cookie("checkStatus"));//点击进入后台触发事件
 			},
@@ -109,12 +110,13 @@ function onSignIn(){
 	}else if($.cookie("login_on") == "" || !$.cookie("login_on")){
 		//未登录
 		judgeLogin=2;
-		var PreviousUrl = window.location.pathname + window.location.search + window.location.hash;
-		$.cookie("PreviousUrl",PreviousUrl.split("/")[1],{ path:'/',secure:false});
 		$(".header_ht").removeClass('hp_block');
+		$(".header_ht").addClass('loginGO');
 		$(".header_user_img").removeClass('header_user_img_on');
-		$(".header_user_cont").html('<a href="login.html">登录</a><span>|</span><a href="register.html">注册</a>');//头部样式
-		$(".header_ht").click(function(){
+		$(".header_user_cont").html('<a class="loginGO">登录</a><span>|</span><a href="register.html">注册</a>');//头部样式
+		$(".loginGO").click(function(){
+			var PreviousUrl = window.location.pathname + window.location.search + window.location.hash;
+			$.cookie("PreviousUrl",PreviousUrl.split("/")[1],{ path:'/',secure:false});
 			window.location.href = "login.html";
 		});
 	}
@@ -170,13 +172,14 @@ function settime(){
 	if(judgeLogin==1){
 		if($.cookie("login_on") == "" || !$.cookie("login_on")){
 			judgeLogin=2;
-			var PreviousUrl = window.location.pathname + window.location.search + window.location.hash;
-			$.cookie("PreviousUrl",PreviousUrl.split("/")[1],{ path:'/',secure:false});
 			$(".header_ht").text('商家入驻');
+			$(".header_ht").addClass('loginGO');
 			$(".header_ht").removeClass('hp_block');
 			$(".header_user_img").removeClass('header_user_img_on');
-			$(".header_user_cont").html('<a href="login.html">登录</a><span>|</span><a href="register.html">注册</a>');//头部样式
-			$(".header_ht").click(function(){
+			$(".header_user_cont").html('<a class="loginGO">登录</a><span>|</span><a href="register.html">注册</a>');//头部样式
+			$(".loginGO").click(function(){
+				var PreviousUrl = window.location.pathname + window.location.search + window.location.hash;
+				$.cookie("PreviousUrl",PreviousUrl.split("/")[1],{ path:'/',secure:false});
 				window.location.href = "login.html";
 			});
 		}
@@ -185,6 +188,7 @@ function settime(){
 			judgeLogin=1;
 			$(".header_user_img").addClass('header_user_img_on');
 			$(".header_ht").addClass('hp_block');
+			$(".header_ht").removeClass('loginGO');
 			$(".header_user_cont").html('<span class="hp_block">'+$.cookie("user")+'</span>|<span class="off_login">退出登录</span>');//头部样式
 			var h_position = $.cookie("position");//用户类型定位信息
 			var h_checkStatus = $.cookie("checkStatus");//审核状态

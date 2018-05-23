@@ -48,6 +48,8 @@ $("input[name='vehicle']").click(function(){
 		$.cookie("rmbUser","",{ path:'/',secure:false , expires: -1});
 	}
 });
+var PreviousUrl = decodeURIComponent($.cookie("PreviousUrl"));
+console.log(PreviousUrl);
 //-----完成登录
 var state = 1;
 function login(){
@@ -97,28 +99,25 @@ function login(){
 			dataType: 'json',
 			data: data,
 			success: function(e){
+				down_Loading();
 				//登录失败返回
 				if(e.status == "401.2"){
-					down_Loading();
 					state = 1;
 					$(".login_uesr").text("用户名不存在");
 				}else if(e.status == "401.1"){
-					down_Loading();
 					state = 1;
 					$(".login_pass").text("密码错误");
 				}else if(e.status == 200){
 					$.cookie("user", userVal,{ path:'/',secure:false }); //储存用户名
 					$.cookie("login_on", e.token,{ path:'/',secure:false}); //登录成功返回信息
 					saveUserInfo();//保存用户信息
-					PreviousUrl = decodeURIComponent($.cookie("PreviousUrl")).split("/")[0];
-					if(!PreviousUrl){
+					if(PreviousUrl=="undefined"){
 						window.location.href = "index.html";
 					}else{
 						$.cookie("PreviousUrl","",{ path:'/',secure:false , expires: -1});
 						window.location.href = PreviousUrl;
 					}
 				}else{
-					down_Loading();
 					state = 1;
 					$(".login_uesr").text("发生未知错误,请稍后重试");
 				}
@@ -151,6 +150,10 @@ function remove(){
 setInterval("settime()",1000);
 function settime(){
 	if ($.cookie("login_on")){
-		window.location.href = "index.html";
+		if(PreviousUrl=="undefined"){
+			window.location.href = "index.html";
+		}else{
+			window.location.href=PreviousUrl;
+		}
 	}
 }
