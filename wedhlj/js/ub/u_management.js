@@ -79,9 +79,9 @@ function showlist(data,auditStatus){
 	if(data.productList != ""){
 		for(var i=0;i<data.productList.length;i++){
 			var productList = data.productList[i];
-			console.log(productList.productNo);
+			console.log(productList.merchantId);
 			console.log(productList.productType);
-			str +='<ul onclick="turnShop('+productList.productNo+','+productList.productType+')">'+
+			str +='<ul onclick="turnShop('+productList.merchantId+','+productList.productType+')">'+
 				'<li><p>'+productList.productNo+'</p></li>'+
 				'<li><div class="main_cont_list_img img_auto" style="background-image:url('+apiUrl+productList.productImage.split(",")[0]+')"></div></li>'+
 				'<li><p>'+productList.productName+'</p></li>'+
@@ -142,7 +142,12 @@ function Edit(id){
 }
 
 // 跳转到商品详情页面
-function turnShop(productNo,type){
-	window.location.href="b_Addorder.html?productNo="+productNo+"&type="+type+"";
+// function turnShop(productNo,type){
+// 	window.location.href="b_Supermarket_FWS.html?id="+productNo+"&type="+type+"";
+// }
+function turnShop(id,type){
+	console.log(id);
+	console.log(type);
+	window.location.href="b_Supermarket_FWS.html?id="+id+"&type="+type;
 }
 
