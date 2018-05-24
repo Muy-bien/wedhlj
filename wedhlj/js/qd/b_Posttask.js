@@ -5,8 +5,15 @@ $(document).ready(function(){
   $(".nav_li").eq(1).find("a").addClass("nav_on");
   $("input[name=username]").val(username);
 })
-if(!username){
+if(!$.cookie('login_on')){
+  var PreviousUrl = window.location.pathname + window.location.search + window.location.hash;
+  $.cookie("PreviousUrl",PreviousUrl.split("/")[1],{ path:'/',secure:false});
   window.location.href="login.html";
+}else if($.cookie('checkStatus')!=1){
+  meg("提示","商户未通过审核，暂时不能发布任务！","body",turn);
+  function turn(){
+   window.location.href="b_MissionHall.html";
+  }
 }else{
   //预览图片
 var str=["","","",""];
