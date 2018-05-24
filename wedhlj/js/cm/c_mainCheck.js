@@ -46,6 +46,7 @@ if(!type || !AuditStatus || !pageNo){
 }
 //点击审核状态
 $(".stateItem").click(function(){
+	type = getUrlParam("type");
 	var this_index = $(this).index();
 	$(this).addClass('stateItem_on').siblings('').removeClass('stateItem_on');
 	if(this_index==0){

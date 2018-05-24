@@ -31,7 +31,7 @@ function Exhibition(id){
 				var main_header = "";
 				main_header += ''+
 				'<h1>'+hotel.hotelName+'</h1>'+
-				'<h2>'+hotel.hotelAddress+'</h2>'+
+				'<h2>'+hotel.hotelAddress.split(",").join("")+'</h2>'+
 				'<ul class="main_header_Icon">';
 					if(hotel.wifiStatus == 1){
 						main_header +='<li class="Icon_01"></li>'

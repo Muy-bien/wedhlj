@@ -168,7 +168,7 @@ function queryAllHotelInfo(pageSize,sort,address,pageNo,state,Reset){
 									'<div class="h_item01 img_auto" style="background-image: url('+apiUrl+img+')"></div>'+
 									'<div class="h_item02">'+
 										'<p class="h_name">'+e.hotelList[i].hotelName+'</p>'+
-										'<div class="h_address">'+e.hotelList[i].hotelAddress+'</div>'+
+										'<div class="h_address">'+e.hotelList[i].hotelAddress.split(",").join("")+'</div>'+
 										'<div>'+
 											'<div class="h_base">酒店基本信息</div>'+
 											'<div class="h_base_content">'+e.hotelList[i].hotelInformation+''+
