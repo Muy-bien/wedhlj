@@ -225,7 +225,10 @@ function calcNumber(){
         var this_plus = this_input.siblings(".main_lcont_plus");
         var this_input = Number(this_input.val());
         var storage_index = Number($(this).siblings(".splist_number").html());//当前商品的库存
-        if(this_input <= 1){
+        if(this_input==1){
+            this_Less.addClass('main_lcont_on');
+            this_plus.addClass('main_lcont_on');
+        }else if(this_input <= 1){
             this_Less.addClass('main_lcont_on');
             this_plus.removeClass('main_lcont_on');
         }else if(this_input >= storage_index){

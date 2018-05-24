@@ -21,6 +21,7 @@ function login(){
 				sp_color.push($(".input_color input").eq(i).val())
 			}
 		}
+		console.log(sp_color.length)
 		var pname = $("input[name='productName']").val(); //商品名称
 		var height = $(".height").val(); //商品尺寸
 		var width = $(".width").val(); //商品尺寸
@@ -35,7 +36,7 @@ function login(){
 		}else if (!height || !width || !length){
 			meg('提示','请输入商品尺寸','body');
 			return false;
-		}else if (!sp_color) {
+		}else if (sp_color.length<1) {
 			meg('提示','请选择商品颜色','body');
 			return false;
 		}else if (!price) {
@@ -73,11 +74,9 @@ function login(){
 		var doThing = function(){
 			window.location.reload();
 		}
-
 		var hrefing = function(){
 			window.location.href  = 'u_management.html'
 		}
-		
 		$.ajax({
 			type: 'POST',
 			url: apiUrl+'/product/addProductInfo',
@@ -89,17 +88,16 @@ function login(){
 				if(e.status == 200) {
 					meg2('提示','上传成功,返回商品管理页面','body',hrefing,doThing); 
 				}else{				
-					meg('提示','上传失败','body',doThing); 
+					meg('提示','上传失败','body'); 
 				}
 			},
 			error : function(e) {
 				down_Loading()
-				meg('提示','未能成功连接服务器，请稍后重试','body',doThing); 
+				meg('提示','未能成功连接服务器，请稍后重试','body'); 
 			}
 		})
 	}	
 }
-
 //上传商品
 $(".Upload").click(function(){
 	login()

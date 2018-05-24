@@ -92,13 +92,14 @@ function login(id){
 		var dis_price = $("input[name='discountPrice']").val(); //商品折扣价
 		var number = $("input[name='productNumber']").val(); //商品数量
 		var pdesc = $("textarea[name='productDesc']").val(); //商品描述
+		console.log(sp_color.length)
 		if (!pname) {
 			meg('提示','请输入商品名称','body');
 			return false;
 		}else if (!height || !width || !length){
 			meg('提示','请输入商品尺寸','body');
 			return false;
-		}else if (!sp_color) {
+		}else if (sp_color.length==0) {
 			meg('提示','请选择商品颜色','body');
 			return false;
 		}else if (!price) {
