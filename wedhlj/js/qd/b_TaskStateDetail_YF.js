@@ -332,7 +332,7 @@ $(document).ready(function(){
 							var picHtml='';
 							var taskSketch=task.taskSketch.split(',');
 							for(var i=0;i<taskSketch.length;i++){
-								picHtml+='<li><a href=""><div class="img_auto" style="background-image:('+apiUrl+taskSketch[i]+')"></div></li>'
+								picHtml+='<li><a href=""><div class="img_auto" style="background-image:url('+apiUrl+taskSketch[i]+')"></div></li>'
 							}
 						}
 					$('.main_cont_right ul').html(picHtml);

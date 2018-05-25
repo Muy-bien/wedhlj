@@ -30,7 +30,7 @@ function queryBusinessPersonnelInfo(PersonnelNo){
 							for(var i=0;i<star;i++){
 								htmlOne+='<i></i>'
 							}
-			htmlOne+=		'<div class="p_price">￥20000<em>起</em></div>'+
+			htmlOne+=		'<div class="p_price">￥'+person.order_price+'<em>起</em></div>'+
 							'<div class="p_addr">'+person.address.split(",").join('')+'</div>'+
 							'<div class="p_sale_content">'+person.notice+'</div>'+
 							'<input type="button" value="预约TA" class="pre_con">'+
