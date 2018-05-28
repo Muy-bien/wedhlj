@@ -60,7 +60,6 @@ function queryBusinessPersonnelInfo(PersonnelNo){
 				//作品展示
 				var videoHtml='';
 				var video=person.case_video.split(",");
-				video.pop();
 				if(video.length<=0){
 					$(".result_video_show").html('该人员没有上传对应作品！');
 				}else{
