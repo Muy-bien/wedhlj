@@ -105,7 +105,7 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state,reset){
 											'<li><p>'+businessPersonnels[i].orderQuantity+'</p></li>'+
 											'<li><p>'+businessPersonnels[i].completeOrder+'</p></li>'+
 											'<li><p>'+status+'</p></li>'+
-											'<li>'+
+											'<li class="special">'+
 												'<a href="u_editAddFixedPersonnel.html?PersonnelNo='+businessPersonnels[i].personnelNo+'"><button>编辑</button></a>'+
 												'<button class="deletePlan">删除<div class="hide">'+businessPersonnels[i].personnelNo+'</div></button>'+
 											'</li>'+
@@ -124,7 +124,7 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state,reset){
 					$('.cooperate_cont_list li').click(function(){
 						window.location.href="b_Preferred_ZCR_Case.html?PersonnelNo="+$(this).parent().find('li').eq(0).text()+"";
 					});
-					$('.cooperate_cont_list li').eq(10).unbind();
+					$('.special').unbind();
 	        	}else if(PersonnelType==1){//固定人员
 	        			personHtml+='<ul class="main_cont_title main_cont_title_x10">'+
 										'<li>编号</li>'+
