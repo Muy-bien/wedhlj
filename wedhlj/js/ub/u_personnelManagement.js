@@ -113,9 +113,18 @@ function queryAllParticularInfo(token,pageNo,PersonnelType,state,reset){
 									'</div>';
 		        		}
 					$(".main_cont").html(personHtml);
-					$('.cooperate_cont_list').click(function(){
-						window.location.href="b_Preferred_ZCR_Case.html?PersonnelNo="+$(this).find('ul li p').eq(0).html()+"";
+					// 点击删除按钮 /BusinessPersonnel/delParticularInfo'
+					$(".deletePlan").click(function(){
+						meg2("提示","确定删除该人员？","body",deleteSuccess);
+						var PersonnelNos=$(this).children().html();
+						function deleteSuccess(){
+						 deletePerson(PersonnelNos);
+						}
 					});
+					$('.cooperate_cont_list li').click(function(){
+						window.location.href="b_Preferred_ZCR_Case.html?PersonnelNo="+$(this).parent().find('li').eq(0).text()+"";
+					});
+					$('.cooperate_cont_list li').eq(10).unbind();
 	        	}else if(PersonnelType==1){//固定人员
 	        			personHtml+='<ul class="main_cont_title main_cont_title_x10">'+
 										'<li>编号</li>'+
