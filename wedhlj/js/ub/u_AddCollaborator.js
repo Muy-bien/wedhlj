@@ -37,12 +37,6 @@ $(".upload").click(function(){
 		}else if(!$("input[name=style]").val()){//风格
 			meg("提示","至少选择一种风格！","body");
 			return false;
-		}else if(!$("input[name=wage]").val()){//基础工资
-			meg("提示","请填写基础工资！","body");
-			return false;
-		}else if(!$("input[name=commission]").val()){//提成率
-			meg("提示","请填写提成率！","body");
-			return false;
 		}
 		on_Loading();
 		var data=new FormData($("#uploadForm")[0]);
@@ -85,7 +79,7 @@ function queryUser(token){
 				if(type=='婚庆公司'||type=='个人策划'){
 					arr=["西式","新中式","小清新","简约","户外","汉婚","教堂"];
 					style(arr);
-				}else if(type=='舞美'||type=='道具'){
+				}else if(type=='舞美'||type=='道具'||type=="婚礼执行"){
 					arr=["靠谱","效率","省心","沟通达人","细致","布场能手","耐心"];
 					style(arr);
 				}else if(type=='主持人'){

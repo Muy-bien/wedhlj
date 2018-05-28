@@ -79,12 +79,6 @@ $("#btn").on('click', function() {
 		}else if(!$("input[name=style]").val()){
 			meg("提示","至少选择一种风格","body");
 			return false;//风格验证
-		}else if(!$("input[name=wage]").val()){
-			meg("提示","基本工资不能为空","body");
-			return false;//基本工资
-		}else if(!$("input[name=commission]").val()){
-			meg("提示","提成率不能为空","body");
-			return false;//提成率
 		}else if(!$("input[name=order_price]").val()){
 			meg("提示","接单价格不能为空","body");
 			return false;//接单价格
@@ -162,7 +156,7 @@ function queryUser(token){
 				if(type=='婚庆公司'||type=='个人策划'){
 					arr=["西式","新中式","小清新","简约","户外","汉婚","教堂"];
 					style(arr);
-				}else if(type=='舞美'||type=='道具'){
+				}else if(type=='舞美'||type=='道具'||type=="婚礼执行"){
 					arr=["靠谱","效率","省心","沟通达人","细致","布场能手","耐心"];
 					style(arr);
 				}else if(type=='主持人'){
