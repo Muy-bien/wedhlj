@@ -19,8 +19,8 @@ function queryBusinessPersonnelInfo(PersonnelNo){
 							'<div class="person_pic_left_bg">'+
 								
 								'<div class="person_pic_left_head">'+
-									'<img src="'+apiUrl+person.headPortait+'">'+
-									//'<div class="img_auto" style="background-image;url('+apiUrl+person.headPortait+')"></div>'
+									//'<img src="'+apiUrl+person.headPortait+'">'+
+									'<div class="img_auto" style="background-image:url('+apiUrl+person.headPortait+')"></div>'+
 								'</div>'+
 							'</div>'+
 						'</div>'+

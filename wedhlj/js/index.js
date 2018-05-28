@@ -37,7 +37,7 @@ $(document).ready(function(){
 				}
 			}	
 			for(var s=0;s<Fill_index;s++){
-				Fill +='<li><a href="b_MissionHall.html"><div class="main01_left_img"><div class="img_auto" style="background-image:url(images/b_Preferred_ZCR/personnel_optimization.png)"></div></div><div class="main01_left_cont"><h1>当前暂无任务</h1><p>赏金 ￥0<span>|</span>竞标 0</p><div class="main_left_but">发布任务</div></div></a></li>'
+				Fill +='<li><a href="b_MissionHall.html"><div class="main01_left_img"><div class="img_auto" style="background-image:url(images/b_MissionHall/ad'+Math.floor(Math.random()*4+5)+'.jpg)"></div></div><div class="main01_left_cont"><h1>当前暂无任务</h1><p>赏金 ￥0<span>|</span>竞标 0</p><div class="main_left_but">发布任务</div></div></a></li>'
 			}
 			$(".main01_left ul").html(main01_html+Fill);
 		}
@@ -140,7 +140,8 @@ $(document).ready(function(){
 			var str = "";
 			if(e.status==200){
 				if(e.businessPersonnels.length>0){
-					for(var i=0;i<e.businessPersonnels.length;i++){
+					var buslength=(e.businessPersonnels.length>8?8:e.businessPersonnels.length);
+					for(var i=0;i<buslength;i++){
 						var lists = e.businessPersonnels[i];
 						str+='<div class="personnel_right_cont personnel_right_off">'+
 							'<div class="personnel_right_cont01">'+

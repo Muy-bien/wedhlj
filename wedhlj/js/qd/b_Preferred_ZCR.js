@@ -150,7 +150,7 @@ function findAllParticularInfo(type,address,sort,pageNo,pageSize,state,Reset){
 								'<a href="b_Preferred_ZCR_Case.html?PersonnelNo='+businessPersonnels[i].personnelNo+'">'+
 									'<div class="details">'+
 										'<div class="details_user">'+
-											'<div class="details_logo"><img src="'+apiUrl+businessPersonnels[i].headPortait+'" alt=""></div>'+
+											'<div class="details_logo"><div class="img_auto" style="background-image:url('+apiUrl+businessPersonnels[i].headPortait+')"></div></div>'+
 											'<h1>'+businessPersonnels[i].name+'</h1>'+
 											'<p>'+businessPersonnels[i].address.split(",").join('')+'</p>'+
 											'<span>';
