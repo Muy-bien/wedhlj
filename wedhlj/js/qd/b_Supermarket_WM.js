@@ -71,6 +71,7 @@ function NewInfo(sort,address,type,page,state,Reset){
 			}else{
 				$(".main_cont").html("未查询到相关信息");
 			}
+			Jump(".box",0);
 		}
 	})
 }

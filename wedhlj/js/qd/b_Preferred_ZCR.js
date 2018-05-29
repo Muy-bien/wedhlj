@@ -212,7 +212,7 @@ function findAllParticularInfo(type,address,sort,pageNo,pageSize,state,Reset){
 		        	})
 				}	
 			}
-			Jump(".box",0)
+			Jump(".box",0);
 		},
 		error:function(){
 			meg("提示","网络故障，请稍后再试！","body");
