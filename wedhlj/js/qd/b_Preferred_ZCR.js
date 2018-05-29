@@ -192,7 +192,7 @@ function findAllParticularInfo(type,address,sort,pageNo,pageSize,state,Reset){
 				$(".main_cont").html("当前区域没有你查找的相关人员");
 			}
 			if(Reset==1){
-				$(".main_Pagination").html();
+				$(".main_Pagination").html("");
 				var totalCount = Math.ceil(e.totalCount/pageSize);
 				if(totalCount>1){
 					$('.main_Pagination').paging({
@@ -212,6 +212,7 @@ function findAllParticularInfo(type,address,sort,pageNo,pageSize,state,Reset){
 		        	})
 				}	
 			}
+			Jump(".box",0)
 		},
 		error:function(){
 			meg("提示","网络故障，请稍后再试！","body");

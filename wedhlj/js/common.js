@@ -316,6 +316,13 @@ function getUrlParam(name){
 function reload(){
 	location.reload();
 }
+// 页面跳转到指定位置
+// href===>位置
+// time===>时间
+function Jump(href,time){
+	$("html, body").animate({scrollTop: $(href).offset().top}, time);
+    return false;//不要这句会有点卡顿
+}
 
 
 
