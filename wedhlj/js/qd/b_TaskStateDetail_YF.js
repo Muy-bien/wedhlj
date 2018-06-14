@@ -295,12 +295,17 @@ $(document).ready(function(){
 					console.log(e.deposit);
 					var task=e.task[0];
 					//缴纳保证金的数据
+					console.log(e.deposit);
 					$(".deposit_info_x10 span").html('￥'+e.deposit);
 					var makeSureMon=task.takePrice*0.15-e.deposit;
+					console.log(makeSureMon);
 					makeSureMon=makeSureMon.toFixed(2);
 					$(".deposit_info_x20 span").html(makeSureMon);
 					$('.deposit_but').click(function(){
-						aliPayToTake(task.payOrderNo,'缴纳保证金'+task.payOrderNo,makeSureMon,'婚礼匠任务保证金缴纳');
+						console.log(task.payOrderNo.split(',')[1]);
+					
+						aliPay(task.payOrderNo.split(',')[1],'婚礼匠任务系统,受理方保证金缴纳',makeSureMon,'')
+						//aliPayToTake(task.payOrderNo,'缴纳保证金'+task.payOrderNo,makeSureMon,'婚礼匠任务保证金缴纳');
 					})
 					var taskSketch=task.taskSketch;
 					//根据任务类型请求竞标人员或者商家信息的查询
@@ -376,11 +381,11 @@ $(document).ready(function(){
 							compState('100%');
 						}
 						$('.payMoney').click(function(){
-							meg("提示","付款功能正在升级！","body");
-							// $('.deposit').css('display','block');
-							// $('.deposit .deposit_title span').click(function(){
-							// 	$('.deposit').css('display','none');
-							// })
+							//meg("提示","付款功能正在升级！","body");
+							$('.deposit').css('display','block');
+							$('.deposit .deposit_title span').click(function(){
+								$('.deposit').css('display','none');
+							})
 						})
 					down_Loading();
 				},
@@ -421,3 +426,25 @@ function aliPayToTake(WIDout_trade_no,WIDsubject,WIDtotal_amount,WIDbody){
 			}
 		})
 }
+
+// 支付宝支付/pay/aliPay
+// WIDout_trade_no:商品订单号
+// WIDsubject:商品说明
+// WIDtotal_amount：付款金额
+// WIDbody;商品描述（可空）
+function aliPay(WIDout_trade_no,WIDsubject,WIDtotal_amount,WIDbody){
+	$.ajax({
+			type:"post",
+			url: apiUrl+'/pay/aliPay',
+			data:{WIDout_trade_no:WIDout_trade_no,WIDsubject:WIDsubject,WIDtotal_amount:WIDtotal_amount,WIDbody:WIDbody},
+			dataType:'text',
+			success:function(e){
+					console.log(e);
+					$('body').html(e);
+			},
+			error:function(){
+				meg("提示","网络开小差，请检查！","body");
+			}
+		})
+}
+
