@@ -358,21 +358,23 @@ $(document).ready(function(){
 							$(".s1").removeClass("main_header_x20").addClass("main_header_x10");
 							$(".s2").removeClass("main_header_x20").addClass("main_header_x10");
 							compState('38%');
-						}else if(task.taskStatus==2){
+						}else if(task.taskStatus==2||task.taskStatus==3){
 							$(".makeSure").css("display","none");
 							$(".s1").removeClass("main_header_x20").addClass("main_header_x10");
 							$(".s2").removeClass("main_header_x20").addClass("main_header_x10");
 							$(".s3").removeClass("main_header_x20").addClass("main_header_x10");
 							compState('63%');
-						}else if(task.taskStatus==3){
+						}else if(task.taskStatus==4){
 							$(".makeSure").css("display","none");
+							$(".getMoney").css("display","block");
 							$(".s1").removeClass("main_header_x20").addClass("main_header_x10");
 							$(".s2").removeClass("main_header_x20").addClass("main_header_x10");
 							$(".s3").removeClass("main_header_x20").addClass("main_header_x10");
 							$(".s4").removeClass("main_header_x20").addClass("main_header_x10");
 							compState('87%');
-						}else if(task.taskStatus==4){
+						}else if(task.taskStatus==6){
 							$(".makeSure").css("display","none");
+							$(".getMoney").css("display","none");
 							$(".s1").removeClass("main_header_x20").addClass("main_header_x10");
 							$(".s2").removeClass("main_header_x20").addClass("main_header_x10");
 							$(".s3").removeClass("main_header_x20").addClass("main_header_x10");

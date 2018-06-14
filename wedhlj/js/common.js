@@ -1,6 +1,6 @@
 //存url地址
 //var apiUrl = "http://172.16.14.16:8080/";/*星儒本地测试api地址*/
-var apiUrl='http://www.wedhlj.com:8080/HunLIManage/';
+var apiUrl='http://www.wedhlj.com:8585/hlj/';
 
 //var apiUrl = "http://www.wedhlj.com:8585/hlj/";/*星儒本地测试api地址*/
 //var apiUrl = "http://192.168.43.6:8080/";/*星儒本地测试api地址*/

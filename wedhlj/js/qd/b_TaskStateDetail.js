@@ -196,7 +196,10 @@ queryTask(taskId)
 					makeSureMon=makeSureMon.toFixed(2);
 					$(".deposit_info_x20 span").html(makeSureMon);
 					$('.deposit_but').click(function(){
-						aliPayToTake(task.payOrderNo,'缴纳保证金'+task.payOrderNo,makeSureMon,'婚礼匠任务保证金缴纳');
+						console.log(task.payOrderNo.split(',')[0]);
+					
+						aliPay(task.payOrderNo.split(',')[0],'婚礼匠任务系统,发布方保证金缴纳',makeSureMon,'')
+						//aliPayToTake(task.payOrderNo,'缴纳保证金'+task.payOrderNo,makeSureMon,'婚礼匠任务保证金缴纳');
 					})
 					//console.log(e.deposit);
 					//商家接受的商家id
@@ -205,16 +208,30 @@ queryTask(taskId)
 					console.log(acceptUserId);
 					//判断是否前去缴纳保证金
 					console.log(task.taskStatus);
-					if(task.taskStatus==1){
+					if(task.taskStatus==2){
 						$('.givingMoney').css('display','block')
+					}else{
+						$('.givingMoney').css('display','none')
 					}
+					if(task.taskStatus==4){
+						$('.getMoney').css('display','block')
+					}else{
+						$('.getMoney').css('display','none')
+					}
+					//缴纳尾款
+					$('.getMoney').click(function(){
+						console.log(task.takePrice);
+					
+						aliPay(task.payOrderNo.split(',')[2],'婚礼匠任务系统,尾款缴纳',task.takePrice,'')
+						//aliPayToTake(task.payOrderNo,'缴纳保证金'+task.payOrderNo,makeSureMon,'婚礼匠任务保证金缴纳');
+					})
 					//点击缴纳保证金按钮
 					$('.givingMoney').click(function(){
-						meg("提示","付款功能正在升级！","body");
-						// $('.deposit').css('display','block');
-						// $('.deposit .deposit_title span').click(function(){
-						// 	$('.deposit').css('display','none');
-						// })
+						//meg("提示","付款功能正在升级！","body");
+						$('.deposit').css('display','block');
+						$('.deposit .deposit_title span').click(function(){
+							$('.deposit').css('display','none');
+						})
 					})
 					console.log(task.takeType);
 					var taskSketch=task.taskSketch;
@@ -574,3 +591,46 @@ function aliPayToTake(WIDout_trade_no,WIDsubject,WIDtotal_amount,WIDbody){
 			}
 		})
 }
+
+// 支付宝支付/pay/aliPay
+// WIDout_trade_no:商品订单号
+// WIDsubject:商品说明
+// WIDtotal_amount：付款金额
+// WIDbody;商品描述（可空）
+function aliPay(WIDout_trade_no,WIDsubject,WIDtotal_amount,WIDbody){
+	$.ajax({
+			type:"post",
+			url: apiUrl+'/pay/aliPay',
+			data:{WIDout_trade_no:WIDout_trade_no,WIDsubject:WIDsubject,WIDtotal_amount:WIDtotal_amount,WIDbody:WIDbody},
+			dataType:'text',
+			success:function(e){
+					console.log(e);
+					$('body').html(e);
+			},
+			error:function(){
+				meg("提示","网络开小差，请检查！","body");
+			}
+		})
+}
+///pay/aliRefund
+//WIDTRout_trade_no：商户订单号
+//WIDTRtrade_no：支付宝交易号
+//WIDTRrefund_amount：需退款金额
+///WIDTRrefund_reason:退款原因
+function aliRefund(WIDTRout_trade_no,WIDTRtrade_no,WIDTRrefund_amount,WIDTRrefund_reason){
+	$.ajax({
+			type:"post",
+			url: apiUrl+'/pay/aliPay',
+			data:{WIDTRout_trade_no:WIDTRout_trade_no,WIDTRtrade_no:WIDTRtrade_no,WIDTRrefund_amount:WIDTRrefund_amount,WIDTRrefund_reason:WIDTRrefund_reason},
+			dataType:'text',
+			success:function(e){
+				console.log(1233);
+					console.log(e);
+					$('body').html(e);
+			},
+			error:function(){
+				meg("提示","网络开小差，请检查！","body");
+			}
+		})
+}
+//aliRefund(WIDTRout_trade_no,WIDTRtrade_no,WIDTRrefund_amount,WIDTRrefund_reason)
