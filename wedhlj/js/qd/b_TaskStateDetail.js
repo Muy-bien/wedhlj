@@ -602,7 +602,7 @@ function aliPay(WIDout_trade_no,WIDsubject,WIDtotal_amount,WIDbody,taskId){
 		var date=new Date(); 
 		date.setTime(date.getTime()+30*60*1000); //设置date为当前时间+30分
 		//document.cookie="key=value; expires="+date.toGMTString(); //将date赋值给expires
-		$.cookie("taskId","true",{expires:date.toGMTString()});// 存储一个30分钟期限的 cookie
+		$.cookie("taskId",taskId,{expires:date.toGMTString()});// 存储一个30分钟期限的 cookie
 	}
 	$.ajax({
 			type:"post",
