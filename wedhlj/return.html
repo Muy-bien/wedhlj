@@ -4,9 +4,64 @@
 	<meta charset="UTF-8">
 </head>
 <body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/tf_common.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
 	<script>
-		var total_amount=getUrlParam("total_amount");
-		var out_trade_no=getUrlParam("out_trade_no");
+
+		// var total_amount=getUrlParam("total_amount");
+		// var out_trade_no=getUrlParam("out_trade_no");
+		// var subject=getUrlParam("subject");
+		$(document).ready(function(){
+			var taskId=$.cookie("taskId");
+			if(taskId){
+				queryTask(taskId)
+			}
+			//location.href="u_PersonalCenter.html";
+		})
+function queryTask(taskId){
+	$.ajax({
+			type:"post",
+			url: apiUrl+'/task/queryTask',
+			data:{taskId:taskId},
+			dataType:'text',
+			success:function(e){
+					console.log(e);
+					var task=e.task;
+					console.log(task);
+					var payOrderNo=task.payOrderNo.split(',');
+					var paymentNo=task.paymentNo.split(',');
+					var turnMoney=task.takePrice*0.15;
+					aliRefund(payOrderNo[0],paymentNo[0],turnMoney,'交易完成');
+					aliRefund(payOrderNo[1],paymentNo[1],turnMoney,'交易完成');
+			},
+			error:function(){
+				meg("提示","网络开小差，请检查！","body");
+			}
+		})
+}
+///pay/aliRefund
+//WIDTRout_trade_no：商户订单号
+//WIDTRtrade_no：支付宝交易号
+//WIDTRrefund_amount：需退款金额
+///WIDTRrefund_reason:退款原因
+function aliRefund(WIDTRout_trade_no,WIDTRtrade_no,WIDTRrefund_amount,WIDTRrefund_reason){
+	$.ajax({
+			type:"post",
+			url: apiUrl+'/pay/aliPay',
+			data:{WIDTRout_trade_no:WIDTRout_trade_no,WIDTRtrade_no:WIDTRtrade_no,WIDTRrefund_amount:WIDTRrefund_amount,WIDTRrefund_reason:WIDTRrefund_reason},
+			dataType:'text',
+			success:function(e){
+				console.log(1233);
+					console.log(e);
+					$('body').html(e);
+			},
+			error:function(){
+				meg("提示","网络开小差，请检查！","body");
+			}
+		})
+}
 	</script>
 </body>
 </html>

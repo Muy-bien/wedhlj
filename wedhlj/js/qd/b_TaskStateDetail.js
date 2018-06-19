@@ -190,6 +190,7 @@ queryTask(taskId)
 				success:function(e){
 					console.log(e);
 					var task=e.task[0];
+						console.log(task.taskId);
 					//缴纳保证金的数据
 					$(".deposit_info_x10 span").html('￥'+e.deposit);
 					var makeSureMon=task.takePrice*0.15-e.deposit;
@@ -197,7 +198,6 @@ queryTask(taskId)
 					$(".deposit_info_x20 span").html(makeSureMon);
 					$('.deposit_but').click(function(){
 						console.log(task.payOrderNo.split(',')[0]);
-					
 						aliPay(task.payOrderNo.split(',')[0],'婚礼匠任务系统,发布方保证金缴纳',makeSureMon,'')
 						//aliPayToTake(task.payOrderNo,'缴纳保证金'+task.payOrderNo,makeSureMon,'婚礼匠任务保证金缴纳');
 					})
@@ -205,7 +205,7 @@ queryTask(taskId)
 					//商家接受的商家id
 					var acceptUserId=task.acceptUserId;
 					acceptUserIdTotal=acceptUserId;
-					console.log(acceptUserId);
+					console.log(acceptUserId);	
 					//判断是否前去缴纳保证金
 					console.log(task.taskStatus);
 					if(task.taskStatus==2){
@@ -222,7 +222,7 @@ queryTask(taskId)
 					$('.getMoney').click(function(){
 						console.log(task.takePrice);
 					
-						aliPay(task.payOrderNo.split(',')[2],'婚礼匠任务系统,尾款缴纳',task.takePrice,'')
+						aliPay(task.payOrderNo.split(',')[2],'婚礼匠任务系统,尾款缴纳',task.takePrice,'',task.taskId)
 						//aliPayToTake(task.payOrderNo,'缴纳保证金'+task.payOrderNo,makeSureMon,'婚礼匠任务保证金缴纳');
 					})
 					//点击缴纳保证金按钮
@@ -597,7 +597,13 @@ function aliPayToTake(WIDout_trade_no,WIDsubject,WIDtotal_amount,WIDbody){
 // WIDsubject:商品说明
 // WIDtotal_amount：付款金额
 // WIDbody;商品描述（可空）
-function aliPay(WIDout_trade_no,WIDsubject,WIDtotal_amount,WIDbody){
+function aliPay(WIDout_trade_no,WIDsubject,WIDtotal_amount,WIDbody,taskId){
+	if(taskId){
+		var date=new Date(); 
+		date.setTime(date.getTime()+30*60*1000); //设置date为当前时间+30分
+		//document.cookie="key=value; expires="+date.toGMTString(); //将date赋值给expires
+		$.cookie("taskId","true",{expires:date.toGMTString()});// 存储一个30分钟期限的 cookie
+	}
 	$.ajax({
 			type:"post",
 			url: apiUrl+'/pay/aliPay',
