@@ -14,25 +14,26 @@
 		// var out_trade_no=getUrlParam("out_trade_no");
 		// var subject=getUrlParam("subject");
 		$(document).ready(function(){
-			var taskId=$.cookie("taskId");
-			if(taskId){
-				queryTask(taskId)
-			}
-			//location.href="u_PersonalCenter.html";
+			location.href="u_PersonalCenter.html";
 		})
 function queryTask(taskId){
 	$.ajax({
 			type:"post",
 			url: apiUrl+'/task/queryTask',
 			data:{taskId:taskId},
-			dataType:'text',
+			dataType:'json',
 			success:function(e){
 					console.log(e);
-					var task=e.task;
+					var json = eval('(' + e + ')'); 
+					console.log(json);
+					var task=json.task;
 					console.log(task);
 					var payOrderNo=task.payOrderNo.split(',');
 					var paymentNo=task.paymentNo.split(',');
 					var turnMoney=task.takePrice*0.15;
+					console.log(payOrderNo);
+					console.log(paymentNo);
+					console.log(turnMoney);
 					aliRefund(payOrderNo[0],paymentNo[0],turnMoney,'交易完成');
 					aliRefund(payOrderNo[1],paymentNo[1],turnMoney,'交易完成');
 			},

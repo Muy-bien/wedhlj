@@ -436,7 +436,7 @@
 	text-indent: 2em;
 	margin-bottom: 60px;
 }
-.getMoney{
+.getMoney,.returnMoney{
 	width: 245px;
 	height: 50px;
 	font-size: 20px;
